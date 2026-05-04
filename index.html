@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sunken Suite · Festival App</title>
-<link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Exo+2:wght@400;600;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Poppins:wght@400;500;600;700;800;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -24,11 +24,12 @@
   }
 
   body {
-    font-family: 'Exo 2', sans-serif;
+    font-family: 'Poppins', sans-serif;
     background: var(--ocean-deep);
     color: var(--text-light);
     min-height: 100vh;
     overflow-x: hidden;
+    font-size: 15px;
   }
 
   .bg-ocean {
@@ -55,11 +56,11 @@
     justify-content: space-between; padding: 0 24px;
   }
   .nav-logo {
-    font-family: 'Pirata One', cursive; font-size: 21px;
+    font-family: 'Pirata One', cursive; font-size: 24px;
     color: var(--gold-bright); text-shadow: 0 0 18px rgba(245,200,66,0.45); line-height: 1;
   }
   .nav-logo span {
-    display: block; font-size: 9px; font-family: 'Exo 2', sans-serif;
+    display: block; font-size: 11px; font-family: 'Poppins', sans-serif;
     color: var(--teal-glow); letter-spacing: 3px; text-transform: uppercase; font-weight: 600;
   }
   .nav-right { display: flex; align-items: center; gap: 10px; }
@@ -78,7 +79,7 @@
     width: 36px; height: 36px; border-radius: 50%;
     background: linear-gradient(135deg, var(--gold-warm), var(--purple-mutiny));
     display: flex; align-items: center; justify-content: center;
-    font-weight: 700; font-size: 12px; cursor: pointer; border: 2px solid var(--gold-bright);
+    font-weight: 700; font-size: 14px; cursor: pointer; border: 2px solid var(--gold-bright);
   }
 
   /* MAIN */
@@ -116,7 +117,7 @@
     .desktop-nav-link {
       display: flex; align-items: center; gap: 6px;
       padding: 8px 14px; border-radius: 10px; cursor: pointer;
-      font-size: 12px; font-weight: 700; letter-spacing: 1px;
+      font-size: 14px; font-weight: 700; letter-spacing: 1px;
       text-transform: uppercase; text-decoration: none; color: var(--text-muted);
       border: 1px solid transparent; transition: all 0.15s;
     }
@@ -130,8 +131,8 @@
 
     /* Bigger schedule card */
     .sched-artist { font-size: 14px; }
-    .announce-text strong { font-size: 13px; }
-    .announce-text p { font-size: 12px; }
+    .announce-text strong { font-size: 15px; }
+    .announce-text p { font-size: 14px; }
   }
 
   @media (min-width: 1100px) {
@@ -150,10 +151,10 @@
   }
   .announce-icon { font-size: 18px; flex-shrink: 0; }
   .announce-text strong {
-    display: block; font-size: 11px; font-weight: 700;
+    display: block; font-size: 15px; font-weight: 700;
     color: var(--gold-bright); letter-spacing: 1px; text-transform: uppercase;
   }
-  .announce-text p { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
+  .announce-text p { font-size: 15px; color: var(--text-muted); line-height: 1.4; }
 
   /* FLYER SECTION */
   .flyer-section {
@@ -195,7 +196,7 @@
   .flyer-hint {
     position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
     background: rgba(2,11,26,0.78); border: 1px solid rgba(245,200,66,0.35);
-    border-radius: 20px; padding: 5px 14px; font-size: 9px; font-weight: 700;
+    border-radius: 20px; padding: 5px 14px; font-size: 12px; font-weight: 700;
     color: var(--gold-bright); letter-spacing: 1.5px; text-transform: uppercase;
     white-space: nowrap; pointer-events: none;
     animation: hintFade 4s ease-in-out 1.2s forwards; opacity: 0;
@@ -215,12 +216,12 @@
     font-family: 'Orbitron', sans-serif; font-size: 20px;
     font-weight: 900; color: var(--gold-bright); line-height: 1; margin-bottom: 3px;
   }
-  .stat-label { font-size: 9px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+  .stat-label { font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
 
   /* SECTION HEADER */
   .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
-  .section-title { font-family: 'Orbitron', sans-serif; font-size: 11px; font-weight: 700; color: var(--gold-bright); letter-spacing: 2px; text-transform: uppercase; }
-  .section-see-all { font-size: 11px; color: var(--teal-glow); cursor: pointer; text-decoration: none; }
+  .section-title { font-family: 'Orbitron', sans-serif; font-size: 13px; font-weight: 700; color: var(--gold-bright); letter-spacing: 2px; text-transform: uppercase; }
+  .section-see-all { font-size: 13px; color: var(--teal-glow); cursor: pointer; text-decoration: none; font-weight: 600; }
 
   /* SCHEDULE */
   .schedule-card {
@@ -231,17 +232,17 @@
   .day-tab {
     flex: 1; padding: 6px 4px; border-radius: 8px; text-align: center; cursor: pointer;
     border: 1px solid rgba(255,255,255,0.1); background: transparent; color: var(--text-muted);
-    font-family: 'Exo 2', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1px; transition: all 0.15s;
+    font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 1px; transition: all 0.15s;
   }
   .day-tab.active { background: linear-gradient(135deg,var(--gold-warm),var(--gold-sunset)); border-color: transparent; color: var(--ocean-deep); }
   .schedule-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
   .schedule-item:last-child { border-bottom: none; }
-  .sched-time { font-family: 'Orbitron', sans-serif; font-size: 10px; font-weight: 700; color: var(--teal-glow); min-width: 44px; line-height: 1.2; }
+  .sched-time { font-family: 'Orbitron', sans-serif; font-size: 14px; font-weight: 700; color: var(--teal-glow); min-width: 44px; line-height: 1.2; }
   .sched-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
   .sched-info { flex: 1; }
-  .sched-artist { font-size: 12px; font-weight: 700; color: var(--text-light); }
-  .sched-stage { font-size: 10px; color: var(--text-muted); }
-  .sched-badge { font-size: 9px; font-weight: 700; color: white; padding: 2px 7px; border-radius: 20px; }
+  .sched-artist { font-size: 14px; font-weight: 700; color: var(--text-light); }
+  .sched-stage { font-size: 14px; color: var(--text-muted); }
+  .sched-badge { font-size: 11px; font-weight: 700; color: white; padding: 2px 8px; border-radius: 20px; }
   .badge-soon { background: var(--pink-coral); animation: pulse 1.5s ease-in-out infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
 
@@ -264,7 +265,7 @@
     border: 1px solid transparent; display: flex; align-items: center; justify-content: center;
     transition: all 0.15s; font-size: 18px;
   }
-  .nav-label { font-size: 8px; font-weight: 700; letter-spacing: 0.5px; color: rgba(122,184,224,0.6); text-transform: uppercase; white-space: nowrap; }
+  .nav-label { font-size: 10px; font-weight: 600; letter-spacing: 0.5px; color: rgba(122,184,224,0.6); text-transform: uppercase; white-space: nowrap; }
   .nav-item.active .nav-icon-wrap { background: linear-gradient(135deg,rgba(245,200,66,0.2),rgba(232,148,26,0.2)); border-color: rgba(245,200,66,0.5); }
   .nav-item.active .nav-label { color: var(--gold-bright); }
   .nav-item.nav-sos .nav-icon-wrap { background: rgba(255,77,141,0.15); border-color: rgba(255,77,141,0.4); }
@@ -294,7 +295,7 @@
   .modal-header {
     display: flex; align-items: center; justify-content: space-between; padding: 16px 20px 0;
   }
-  .modal-header-label { font-size: 10px; font-weight: 700; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
+  .modal-header-label { font-size: 14px; font-weight: 700; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
   .modal-close {
     width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.1);
     border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
@@ -310,26 +311,26 @@
   }
   .modal-name { font-family: 'Orbitron', sans-serif; font-size: 18px; font-weight: 900; color: white; line-height: 1.1; margin-bottom: 5px; }
   .modal-stage-badge {
-    display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 2px;
+    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 2px;
     text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-bottom: 5px;
   }
-  .modal-genre { font-size: 11px; color: var(--text-muted); }
+  .modal-genre { font-size: 13px; color: var(--text-muted); font-weight: 500; }
 
   .modal-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 0 20px; }
 
   .modal-section { padding: 14px 20px; }
-  .modal-section-title { font-size: 10px; font-weight: 700; color: var(--gold-bright); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
-  .modal-bio { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+  .modal-section-title { font-size: 11px; font-weight: 700; color: var(--gold-bright); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+  .modal-bio { font-size: 14px; color: var(--text-muted); line-height: 1.7; font-weight: 400; }
 
   .set-info-row { display: flex; gap: 8px; }
   .set-info-card { flex: 1; background: rgba(10,61,107,0.4); border: 1px solid rgba(0,212,200,0.2); border-radius: 12px; padding: 10px; }
-  .set-info-label { font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
-  .set-info-val { font-size: 12px; font-weight: 700; color: white; }
+  .set-info-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; font-weight: 600; }
+  .set-info-val { font-size: 13px; font-weight: 700; color: white; }
 
   .social-row { display: flex; gap: 8px; flex-wrap: wrap; }
   .social-btn {
     display: inline-flex; align-items: center; gap: 6px;
-    padding: 8px 14px; border-radius: 20px; cursor: pointer; font-size: 11px; font-weight: 700;
+    padding: 8px 14px; border-radius: 20px; cursor: pointer; font-size: 13px; font-weight: 600;
     text-decoration: none; border: 1px solid rgba(255,255,255,0.15); transition: opacity 0.15s; color: white;
   }
   .social-btn:active { opacity: 0.7; }
@@ -341,12 +342,12 @@
     background: rgba(30,215,96,0.08); border: 1px solid rgba(30,215,96,0.2);
     border-radius: 12px; padding: 14px; text-align: center;
   }
-  .spotify-placeholder { font-size: 12px; color: var(--text-muted); margin-bottom: 10px; }
+  .spotify-placeholder { font-size: 14px; color: var(--text-muted); margin-bottom: 10px; }
   .spotify-play-btn {
     display: inline-flex; align-items: center; gap: 8px;
     background: #1ed760; color: #000; border: none;
-    padding: 10px 22px; border-radius: 20px; font-weight: 700; font-size: 12px; cursor: pointer;
-    font-family: 'Exo 2', sans-serif;
+    padding: 10px 22px; border-radius: 20px; font-weight: 700; font-size: 14px; cursor: pointer;
+    font-family: 'Poppins', sans-serif;
   }
 </style>
 </head>
@@ -567,28 +568,28 @@ const artists = {
 // The flyer artist section starts at ~51% from the top of the image
 // ========================
 const hotspots = [
-  // ---- DNB HEADLINERS ROW 1 ----
-  { name:"DARA",          pos:[51.8, 1.5, 10,   3.0] },
-  { name:"DEEKLINE",      pos:[51.8, 13,  14.5, 3.0] },
-  { name:"DEGS",          pos:[51.8, 29,  9.5,  3.0] },
-  { name:"EVOL INTENT",   pos:[51.8, 40,  19,   3.0] },
-  { name:"GEORGIE RIOT",  pos:[51.8, 61,  22,   3.0] },
-  // ---- DNB HEADLINERS ROW 2 ----
-  { name:"JFB",           pos:[55.5, 1.5, 7.5,  3.0] },
-  { name:"PHANTOM 45",    pos:[55.5, 10,  18,   3.0] },
-  { name:"RONI SIZE",     pos:[55.5, 30,  17,   3.0] },
-  { name:"SPOR",          pos:[55.5, 49,  10,   3.0] },
-  { name:"UNGLUED",       pos:[55.5, 61,  18,   3.0] },
-  // ---- OASIS STAGE ROW 1 ----
-  { name:"CARLO LIO",     pos:[63.0, 1.5, 16,   3.0] },
-  { name:"CODES",         pos:[63.0, 19,  10,   3.0] },
-  { name:"GETTOBLASTER",  pos:[63.0, 31,  23,   3.0] },
-  { name:"J. PHLIP",      pos:[63.0, 56,  15,   3.0] },
-  // ---- OASIS STAGE ROW 2 ----
-  { name:"KRAFTY KUTZ",   pos:[67.0, 1.5, 18,   3.0] },
-  { name:"MADAM X",       pos:[67.0, 22,  14,   3.0] },
-  { name:"THE SPONGES",   pos:[67.0, 38,  20,   3.0] },
-  { name:"UNIQU3",        pos:[67.0, 61,  13,   3.0] },
+  // ---- DNB ROW 1 (pixel-measured from 1224x1800 source) ----
+  { name:"DARA",         pos:[49.33,  0.98, 13.56, 4.39] },
+  { name:"DEEKLINE",     pos:[49.33, 15.28, 16.83, 4.39] },
+  { name:"DEGS",         pos:[49.33, 34.48, 10.95, 4.39] },
+  { name:"EVOL INTENT",  pos:[49.33, 48.37, 21.57, 4.39] },
+  { name:"GEORGIE RIOT", pos:[49.33, 72.71, 25.00, 4.39] },
+  // ---- DNB ROW 2 ----
+  { name:"JFB",          pos:[53.33,  7.92, 10.29, 4.39] },
+  { name:"PHANTOM 45",   pos:[53.33, 19.61, 25.57, 4.39] },
+  { name:"RONI SIZE",    pos:[53.33, 47.39, 20.42, 4.39] },
+  { name:"SPOR",         pos:[53.33, 69.44, 11.11, 4.39] },
+  { name:"UNGLUED",      pos:[53.33, 81.70, 16.34, 4.39] },
+  // ---- OASIS ROW 1 ----
+  { name:"CARLO LIO",    pos:[61.44,  9.97, 26.47, 4.39] },
+  { name:"CODES",        pos:[61.44, 36.76, 12.75, 4.39] },
+  { name:"GETTOBLASTER", pos:[61.44, 49.84, 26.96, 4.39] },
+  { name:"J. PHLIP",     pos:[61.44, 78.19, 16.83, 4.39] },
+  // ---- OASIS ROW 2 ----
+  { name:"KRAFTY KUTZ",  pos:[65.56,  8.17, 26.63, 4.39] },
+  { name:"MADAM X",      pos:[65.56, 35.95, 17.97, 4.39] },
+  { name:"THE SPONGES",  pos:[65.56, 54.49, 24.75, 4.39] },
+  { name:"UNIQU3",       pos:[65.56, 81.05, 14.54, 4.39] },
 ];
 
 function buildHotspots() {
