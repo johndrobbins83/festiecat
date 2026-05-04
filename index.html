@@ -29,8 +29,6 @@
     color: var(--text-light);
     min-height: 100vh;
     overflow-x: hidden;
-    max-width: 430px;
-    margin: 0 auto;
   }
 
   .bg-ocean {
@@ -49,12 +47,12 @@
 
   /* TOP NAV */
   .top-nav {
-    position: fixed; top: 0; left: 50%; transform: translateX(-50%);
-    width: 100%; max-width: 430px; height: var(--nav-height);
+    position: fixed; top: 0; left: 0; right: 0;
+    height: var(--nav-height);
     background: rgba(2,11,26,0.93); backdrop-filter: blur(14px);
     border-bottom: 1px solid rgba(245,200,66,0.25);
     z-index: 200; display: flex; align-items: center;
-    justify-content: space-between; padding: 0 16px;
+    justify-content: space-between; padding: 0 24px;
   }
   .nav-logo {
     font-family: 'Pirata One', cursive; font-size: 21px;
@@ -86,10 +84,62 @@
   /* MAIN */
   .main-content {
     position: relative; z-index: 10;
-    padding-top: calc(var(--nav-height) + 10px);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: calc(var(--nav-height) + 16px);
     padding-bottom: calc(72px + 20px);
-    padding-left: 12px; padding-right: 12px;
+    padding-left: 16px; padding-right: 16px;
   }
+
+  /* DESKTOP TWO-COLUMN LAYOUT */
+  @media (min-width: 768px) {
+    .main-content {
+      padding-left: 32px; padding-right: 32px;
+      padding-bottom: 40px;
+    }
+    .desktop-grid {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+    .desktop-col-left { position: sticky; top: calc(var(--nav-height) + 16px); }
+    .desktop-col-right {}
+
+    /* Hide mobile bottom nav on desktop, show sidebar nav instead */
+    .bottom-nav { display: none; }
+    .desktop-sidenav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .desktop-nav-link {
+      display: flex; align-items: center; gap: 6px;
+      padding: 8px 14px; border-radius: 10px; cursor: pointer;
+      font-size: 12px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; text-decoration: none; color: var(--text-muted);
+      border: 1px solid transparent; transition: all 0.15s;
+    }
+    .desktop-nav-link:hover { color: var(--gold-bright); border-color: rgba(245,200,66,0.3); background: rgba(245,200,66,0.06); }
+    .desktop-nav-link.active { color: var(--gold-bright); border-color: rgba(245,200,66,0.4); background: rgba(245,200,66,0.1); }
+    .desktop-nav-link.sos { color: var(--pink-coral); border-color: rgba(255,77,141,0.3); background: rgba(255,77,141,0.08); }
+    .desktop-nav-link.sos:hover { background: rgba(255,77,141,0.15); }
+
+    /* Widen stats grid */
+    .stats-row { grid-template-columns: repeat(3,1fr); }
+
+    /* Bigger schedule card */
+    .sched-artist { font-size: 14px; }
+    .announce-text strong { font-size: 13px; }
+    .announce-text p { font-size: 12px; }
+  }
+
+  @media (min-width: 1100px) {
+    .desktop-grid { grid-template-columns: 480px 1fr; }
+  }
+
+  /* Mobile: hide desktop sidenav */
+  .desktop-sidenav { display: none; }
 
   /* ANNOUNCE BANNER */
   .announce-banner {
@@ -197,8 +247,8 @@
 
   /* BOTTOM NAV */
   .bottom-nav {
-    position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
-    width: 100%; max-width: 430px; height: 72px;
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: 72px;
     background: rgba(2,11,26,0.97); border-top: 1px solid rgba(245,200,66,0.2);
     display: flex; align-items: center; justify-content: space-around;
     z-index: 200; padding: 0 4px; padding-bottom: env(safe-area-inset-bottom,0);
@@ -313,6 +363,14 @@
 <!-- TOP NAV -->
 <nav class="top-nav">
   <div class="nav-logo">☠ SUNKEN SUITE<span>Festival App · BP² Edition</span></div>
+  <nav class="desktop-sidenav">
+    <a class="desktop-nav-link active" href="index.html">🏠 Home</a>
+    <a class="desktop-nav-link" href="schedule.html">📅 Schedule</a>
+    <a class="desktop-nav-link" href="artists.html">🎤 Artists</a>
+    <a class="desktop-nav-link" href="map.html">🗺️ Map</a>
+    <a class="desktop-nav-link" href="more.html">⋯ More</a>
+    <a class="desktop-nav-link sos" href="sos.html">🆘 SOS</a>
+  </nav>
   <div class="nav-right">
     <div class="nav-bell">🔔<div class="notif-dot"></div></div>
     <div class="nav-avatar">AD</div>
@@ -330,84 +388,95 @@
     </div>
   </div>
 
-  <!-- FLYER WITH CLICKABLE ARTIST HOTSPOTS -->
-  <div class="flyer-section">
-    <img src="flyer.jpg" alt="Sunken Suite 2026 Official Flyer" class="flyer-img" id="flyerImg">
-    <div class="flyer-overlay" id="flyerOverlay"></div>
-    <div class="flyer-hint">👆 Tap an artist name to view profile</div>
-  </div>
+  <div class="desktop-grid">
 
-  <!-- STATS -->
-  <div class="stats-row">
-    <div class="stat-card"><div class="stat-num">47+</div><div class="stat-label">Artists</div></div>
-    <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Days</div></div>
-    <div class="stat-card"><div class="stat-num">2</div><div class="stat-label">Stages</div></div>
-  </div>
+    <!-- LEFT COL: Flyer (sticky on desktop) -->
+    <div class="desktop-col-left">
+      <!-- FLYER WITH CLICKABLE ARTIST HOTSPOTS -->
+      <div class="flyer-section">
+        <img src="flyer.jpg" alt="Sunken Suite 2026 Official Flyer" class="flyer-img" id="flyerImg">
+        <div class="flyer-overlay" id="flyerOverlay"></div>
+        <div class="flyer-hint">👆 Tap an artist name to view profile</div>
+      </div>
+    </div>
 
-  <!-- SCHEDULE -->
-  <div class="section-header">
-    <div class="section-title">📅 Schedule Preview</div>
-    <a class="section-see-all" href="schedule.html">Full schedule →</a>
-  </div>
-  <div class="schedule-card">
-    <div class="day-tabs">
-      <button class="day-tab active" data-day="fri">FRI 7/17</button>
-      <button class="day-tab" data-day="sat">SAT 7/18</button>
-      <button class="day-tab" data-day="sun">SUN 7/19</button>
-    </div>
-    <div id="schedule-fri">
-      <div class="schedule-item">
-        <div class="sched-time">9:00<br>PM</div>
-        <div class="sched-dot" style="background:#9b3dff;"></div>
-        <div class="sched-info"><div class="sched-artist">Doors Open / Welcome</div><div class="sched-stage">Main Lobby</div></div>
-        <span class="sched-badge badge-soon">SOON</span>
+    <!-- RIGHT COL: Stats + Schedule -->
+    <div class="desktop-col-right">
+
+      <!-- STATS -->
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-num">47+</div><div class="stat-label">Artists</div></div>
+        <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Days</div></div>
+        <div class="stat-card"><div class="stat-num">2</div><div class="stat-label">Stages</div></div>
       </div>
-      <div class="schedule-item">
-        <div class="sched-time">10:00<br>PM</div>
-        <div class="sched-dot" style="background:#f5c842;"></div>
-        <div class="sched-info"><div class="sched-artist">Deekline</div><div class="sched-stage">DNB Stage</div></div>
+
+      <!-- SCHEDULE -->
+      <div class="section-header">
+        <div class="section-title">📅 Schedule Preview</div>
+        <a class="section-see-all" href="schedule.html">Full schedule →</a>
       </div>
-      <div class="schedule-item">
-        <div class="sched-time">11:30<br>PM</div>
-        <div class="sched-dot" style="background:#00d4c8;"></div>
-        <div class="sched-info"><div class="sched-artist">Codes</div><div class="sched-stage">Oasis Stage</div></div>
+      <div class="schedule-card">
+        <div class="day-tabs">
+          <button class="day-tab active" data-day="fri">FRI 7/17</button>
+          <button class="day-tab" data-day="sat">SAT 7/18</button>
+          <button class="day-tab" data-day="sun">SUN 7/19</button>
+        </div>
+        <div id="schedule-fri">
+          <div class="schedule-item">
+            <div class="sched-time">9:00<br>PM</div>
+            <div class="sched-dot" style="background:#9b3dff;"></div>
+            <div class="sched-info"><div class="sched-artist">Doors Open / Welcome</div><div class="sched-stage">Main Lobby</div></div>
+            <span class="sched-badge badge-soon">SOON</span>
+          </div>
+          <div class="schedule-item">
+            <div class="sched-time">10:00<br>PM</div>
+            <div class="sched-dot" style="background:#f5c842;"></div>
+            <div class="sched-info"><div class="sched-artist">Deekline</div><div class="sched-stage">DNB Stage</div></div>
+          </div>
+          <div class="schedule-item">
+            <div class="sched-time">11:30<br>PM</div>
+            <div class="sched-dot" style="background:#00d4c8;"></div>
+            <div class="sched-info"><div class="sched-artist">Codes</div><div class="sched-stage">Oasis Stage</div></div>
+          </div>
+          <div class="schedule-item">
+            <div class="sched-time">1:00<br>AM</div>
+            <div class="sched-dot" style="background:#9b3dff;"></div>
+            <div class="sched-info"><div class="sched-artist">Roni Size</div><div class="sched-stage">DNB Stage · HEADLINER</div></div>
+          </div>
+        </div>
+        <div id="schedule-sat" style="display:none;">
+          <div class="schedule-item">
+            <div class="sched-time">8:00<br>PM</div>
+            <div class="sched-dot" style="background:#f5c842;"></div>
+            <div class="sched-info"><div class="sched-artist">Degs</div><div class="sched-stage">DNB Stage</div></div>
+          </div>
+          <div class="schedule-item">
+            <div class="sched-time">10:00<br>PM</div>
+            <div class="sched-dot" style="background:#00d4c8;"></div>
+            <div class="sched-info"><div class="sched-artist">Gettoblaster</div><div class="sched-stage">Oasis Stage</div></div>
+          </div>
+          <div class="schedule-item">
+            <div class="sched-time">12:00<br>AM</div>
+            <div class="sched-dot" style="background:#ff4d8d;"></div>
+            <div class="sched-info"><div class="sched-artist">SPOR</div><div class="sched-stage">DNB Stage · HEADLINER</div></div>
+          </div>
+        </div>
+        <div id="schedule-sun" style="display:none;">
+          <div class="schedule-item">
+            <div class="sched-time">4:00<br>PM</div>
+            <div class="sched-dot" style="background:#f5c842;"></div>
+            <div class="sched-info"><div class="sched-artist">Pool Party / Games</div><div class="sched-stage">Poolside</div></div>
+          </div>
+          <div class="schedule-item">
+            <div class="sched-time">9:00<br>PM</div>
+            <div class="sched-dot" style="background:#9b3dff;"></div>
+            <div class="sched-info"><div class="sched-artist">Evol Intent</div><div class="sched-stage">DNB Stage · HEADLINER</div></div>
+          </div>
+        </div>
       </div>
-      <div class="schedule-item">
-        <div class="sched-time">1:00<br>AM</div>
-        <div class="sched-dot" style="background:#9b3dff;"></div>
-        <div class="sched-info"><div class="sched-artist">Roni Size</div><div class="sched-stage">DNB Stage · HEADLINER</div></div>
-      </div>
-    </div>
-    <div id="schedule-sat" style="display:none;">
-      <div class="schedule-item">
-        <div class="sched-time">8:00<br>PM</div>
-        <div class="sched-dot" style="background:#f5c842;"></div>
-        <div class="sched-info"><div class="sched-artist">Degs</div><div class="sched-stage">DNB Stage</div></div>
-      </div>
-      <div class="schedule-item">
-        <div class="sched-time">10:00<br>PM</div>
-        <div class="sched-dot" style="background:#00d4c8;"></div>
-        <div class="sched-info"><div class="sched-artist">Gettoblaster</div><div class="sched-stage">Oasis Stage</div></div>
-      </div>
-      <div class="schedule-item">
-        <div class="sched-time">12:00<br>AM</div>
-        <div class="sched-dot" style="background:#ff4d8d;"></div>
-        <div class="sched-info"><div class="sched-artist">SPOR</div><div class="sched-stage">DNB Stage · HEADLINER</div></div>
-      </div>
-    </div>
-    <div id="schedule-sun" style="display:none;">
-      <div class="schedule-item">
-        <div class="sched-time">4:00<br>PM</div>
-        <div class="sched-dot" style="background:#f5c842;"></div>
-        <div class="sched-info"><div class="sched-artist">Pool Party / Games</div><div class="sched-stage">Poolside</div></div>
-      </div>
-      <div class="schedule-item">
-        <div class="sched-time">9:00<br>PM</div>
-        <div class="sched-dot" style="background:#9b3dff;"></div>
-        <div class="sched-info"><div class="sched-artist">Evol Intent</div><div class="sched-stage">DNB Stage · HEADLINER</div></div>
-      </div>
-    </div>
-  </div>
+
+    </div><!-- end right col -->
+  </div><!-- end desktop-grid -->
 
 </main>
 
