@@ -28,8 +28,8 @@ body { font-family:'Poppins',sans-serif; background:var(--ocean-deep); color:var
   border-bottom:1px solid rgba(245,200,66,0.25);
   z-index:200; display:flex; align-items:center; justify-content:space-between; padding:0 24px;
 }
-.nav-logo { font-family:'Pirata One',cursive; font-size:24px; color:var(--gold-bright); text-shadow:0 0 18px rgba(245,200,66,0.45); line-height:1; }
-.nav-logo span { display:block; font-size:11px; font-family:'Poppins',sans-serif; color:var(--teal-glow); letter-spacing:3px; text-transform:uppercase; font-weight:600; }
+.nav-logo { font-family:'Pirata One',cursive; font-size:22px; color:var(--gold-bright); text-shadow:0 0 18px rgba(245,200,66,0.45); line-height:1; white-space:nowrap; flex-shrink:0; text-decoration:none; }
+.nav-logo span { display:block; font-size:10px; font-family:'Poppins',sans-serif; color:var(--teal-glow); letter-spacing:2px; text-transform:uppercase; font-weight:600; white-space:nowrap; }
 .nav-right { display:flex; align-items:center; gap:10px; }
 .nav-bell { width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); display:flex; align-items:center; justify-content:center; cursor:pointer; position:relative; font-size:15px; }
 .notif-dot { position:absolute; top:6px; right:6px; width:8px; height:8px; background:var(--pink-coral); border-radius:50%; border:1.5px solid var(--ocean-deep); }
@@ -703,6 +703,25 @@ body { font-family:'Poppins',sans-serif; background:var(--ocean-deep); color:var
   font-size: 11px; font-weight: 700; color: var(--gold-bright); text-align: center;
 }
 
+
+/* ── NAV FINAL OVERRIDES ─────────────────────────────────── */
+/* Desktop: show top links, hide bottom nav */
+@media (min-width: 768px) {
+  .desktop-nav-links { display: flex !important; align-items: center; gap: 4px; }
+  .bottom-nav         { display: none !important; }
+  .hamburger-btn      { display: none !important; }
+  .mobile-drawer      { display: none !important; }
+}
+/* Mobile: hide top links, show bottom nav */
+@media (max-width: 767px) {
+  .desktop-nav-links { display: none !important; }
+  .bottom-nav        { display: flex !important; }
+  .hamburger-btn     { display: none !important; }
+  .mobile-drawer     { display: none !important; }
+}
+/* Ensure nav-logo is always a link */
+.nav-logo { text-decoration: none; }
+
 </style>
 </head>
 <body>
@@ -713,18 +732,20 @@ body { font-family:'Poppins',sans-serif; background:var(--ocean-deep); color:var
 
 <!-- TOP NAV -->
 <nav class="top-nav">
-  <div class="nav-logo">☠ SUNKEN SUITE<span>Festival App · BP² Edition</span></div>
-
-  <!-- Desktop nav links -->
+  <a class="nav-logo" href="index.html">☠ SUNKEN SUITE<span>The Mutiny</span></a>
   <nav class="desktop-nav-links">
     <a class="desktop-nav-link" href="index.html">🏠 Home</a>
     <a class="desktop-nav-link active" href="schedule.html">📅 Schedule</a>
     <a class="desktop-nav-link" href="artists.html">🎤 Artists</a>
     <a class="desktop-nav-link" href="map.html">🗺️ Map</a>
-    <a class="desktop-nav-link" href="checklist.html">✅ Checklist</a>
-    <a class="desktop-nav-link" href="more.html">⋯ More</a>
+    <a class="desktop-nav-link" href="checklist.html">✅ List</a>
     <a class="desktop-nav-link sos" href="sos.html">🆘 SOS</a>
   </nav>
+  <div class="nav-right">
+    <div class="nav-bell">🔔<div class="notif-dot"></div></div>
+    <div class="nav-avatar">AD</div>
+  </div>
+</nav>
 
     <!-- Right side: weather + bell + avatar + hamburger -->
   <div class="nav-right">
@@ -758,16 +779,10 @@ body { font-family:'Poppins',sans-serif; background:var(--ocean-deep); color:var
 
     <div class="nav-bell">🔔<div class="notif-dot"></div></div>
     <div class="nav-avatar">AD</div>
-    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
   </div>
 
 </nav>
 
-<!-- Mobile drawer -->
-<div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
-  <div class="drawer-backdrop" id="drawerBackdrop"></div>
   <div class="drawer-panel">
     <div class="drawer-links">
       <a class="drawer-link" href="index.html">🏠 Home</a>
@@ -801,7 +816,7 @@ body { font-family:'Poppins',sans-serif; background:var(--ocean-deep); color:var
         <button class="day-tab active" data-day="fri">FRI 7/17</button>
         <button class="day-tab" data-day="sat">SAT 7/18</button>
         <button class="day-tab" data-day="sun">SUN 7/19</button>
-        <button class="day-tab mine-tab" data-day="mine" id="mySchedTab">⭐ Mine</button>
+        <button class="day-tab mine-tab" data-day="mine" id="mySchedTab">⭐ My Schedule</button>
       </div>
       <div class="filter-row">
         <span class="filter-label">Stage:</span>
@@ -809,15 +824,15 @@ body { font-family:'Poppins',sans-serif; background:var(--ocean-deep); color:var
         <button class="stage-pill dnb"      data-stage="dnb">🥁 DNB</button>
         <button class="stage-pill oasis"    data-stage="oasis">🌴 Oasis</button>
         <div class="view-toggle">
-          <button class="view-btn active" id="viewList" title="List view">☰</button>
-          <button class="view-btn" id="viewGrid" title="Block view">⊞</button>
+          <button class="view-btn" id="viewList" title="List view">☰</button>
+          <button class="view-btn active" id="viewGrid" title="Block view">⊞</button>
         </div>
       </div>
     </div>
   </div>
 
   <!-- LIST VIEW WRAP -->
-  <div class="list-view-wrap" id="listViewWrap">
+  <div class="list-view-wrap hidden" id="listViewWrap">
 
   <!-- FRIDAY -->
   <div class="schedule-day active" id="day-fri">
@@ -994,7 +1009,7 @@ body { font-family:'Poppins',sans-serif; background:var(--ocean-deep); color:var
   </div>
 
   <!-- BLOCK VIEW — rendered by JS -->
-  <div class="block-view" id="blockView">
+  <div class="block-view active" id="blockView">
     <div class="block-view-scroll">
       <div class="block-view-inner" id="blockViewInner"></div>
     </div>
@@ -1009,7 +1024,6 @@ body { font-family:'Poppins',sans-serif; background:var(--ocean-deep); color:var
   <a class="nav-item" href="artists.html"><div class="nav-icon-wrap">🎤</div><span class="nav-label">Artists</span></a>
   <a class="nav-item" href="map.html"><div class="nav-icon-wrap">🗺️</div><span class="nav-label">Map</span></a>
   <a class="nav-item" href="checklist.html"><div class="nav-icon-wrap">✅</div><span class="nav-label">List</span></a>
-  <a class="nav-item" href="more.html"><div class="nav-icon-wrap">⋯</div><span class="nav-label">More</span></a>
   <a class="nav-item nav-sos" href="sos.html"><div class="nav-icon-wrap">🆘</div><span class="nav-label">SOS</span></a>
 </nav>
 
@@ -1180,7 +1194,7 @@ function refreshAllButtons() {
 function updateMySchedTab() {
   const mine = getMySchedule();
   const tab = document.getElementById('mySchedTab');
-  if (tab) tab.textContent = mine.length > 0 ? `⭐ Mine (${mine.length})` : '⭐ Mine';
+  if (tab) tab.textContent = mine.length > 0 ? `⭐ My Schedule (${mine.length})` : '⭐ My Schedule';
   document.getElementById('clearMySchedule').style.display = mine.length > 0 ? 'block' : 'none';
 }
 
@@ -1222,6 +1236,7 @@ function renderMySchedule() {
 // DAY TABS
 // ============================================================
 let currentDay = 'fri';
+
 document.querySelectorAll('.day-tab').forEach(tab => {
   tab.addEventListener('click', function() {
     document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
@@ -1406,39 +1421,6 @@ updateMySchedTab();
 </script>
 
 <script>
-(function() {
-  const btn    = document.getElementById('hamburgerBtn');
-  const drawer = document.getElementById('mobileDrawer');
-  const backdrop = document.getElementById('drawerBackdrop');
-  if (!btn || !drawer) return;
-
-  function openDrawer() {
-    btn.classList.add('open');
-    drawer.classList.add('open');
-    btn.setAttribute('aria-expanded', 'true');
-    drawer.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeDrawer() {
-    btn.classList.remove('open');
-    drawer.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
-    drawer.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  btn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    drawer.classList.contains('open') ? closeDrawer() : openDrawer();
-  });
-  backdrop.addEventListener('click', closeDrawer);
-  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeDrawer(); });
-
-  // Close drawer on link click (navigation)
-  drawer.querySelectorAll('.drawer-link').forEach(function(link) {
-    link.addEventListener('click', closeDrawer);
-  });
-})();
 </script>
 
 <script>
@@ -1655,7 +1637,7 @@ function renderBlockView(dayKey, stageFilter) {
   if (!inner) return;
   // My schedule / mine tab — fall back to list
   if (dayKey === 'mine') {
-    inner.innerHTML = '<div style="text-align:center;padding:40px;color:var(--text-muted);font-size:14px;">Block view not available for personal schedule. Switch to list view.</div>';
+    inner.innerHTML = '<div style="text-align:center;padding:40px;color:var(--text-muted);font-size:14px;">Block view not available for My Schedule. Switch to list view.</div>';
     return;
   }
   // If search is active, don't render block view
@@ -1674,7 +1656,14 @@ function headerForDay(dayKey) {
 }
 
 // ── VIEW TOGGLE ──────────────────────────────────────────────
-let currentViewMode = 'list'; // 'list' | 'block'
+let currentViewMode = 'block'; // default to block view
+
+// Set initial button states to reflect block default
+document.getElementById('viewGrid').classList.add('active');
+document.getElementById('viewList').classList.remove('active');
+document.getElementById('listViewWrap').classList.add('hidden');
+document.getElementById('blockView').classList.add('active');
+renderBlockView(currentDay, currentStage);
 
 document.getElementById('viewList').addEventListener('click', function() {
   currentViewMode = 'list';
