@@ -3,394 +3,479 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Artists · Sunken Suite 2026</title>
+<title>Sunken Suite · Schedule</title>
 <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Poppins:wght@400;500;600;700;800;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --ocean-deep:#020b1a; --ocean-mid:#041d3a; --ocean-surf:#0a3d6b;
+  --gold-bright:#f5c842; --gold-warm:#e8941a; --gold-sunset:#ff6b1a;
+  --teal-glow:#00d4c8; --pink-coral:#ff4d8d; --purple-mutiny:#9b3dff;
+  --dnb-color:#9b3dff; --oasis-color:#00d4c8;
+  --text-light:#e8f4ff; --text-muted:#7ab8e0; --nav-height:64px;
+}
+body { font-family:'Poppins',sans-serif; background:var(--ocean-deep); color:var(--text-light); min-height:100vh; overflow-x:hidden; font-size:15px; }
 
-  :root {
-    --ocean-deep: #020b1a;
-    --ocean-mid: #041d3a;
-    --ocean-surf: #0a3d6b;
-    --gold-bright: #f5c842;
-    --gold-warm: #e8941a;
-    --gold-sunset: #ff6b1a;
-    --teal-glow: #00d4c8;
-    --pink-coral: #ff4d8d;
-    --purple-mutiny: #9b3dff;
-    --text-light: #e8f4ff;
-    --text-muted: #7ab8e0;
-    --nav-height: 64px;
-  }
+.bg-ocean { position:fixed; inset:0; background:linear-gradient(180deg,#020b1a 0%,#041d3a 40%,#0a3d6b 70%,#041d3a 100%); z-index:0; }
+.wave { position:fixed; bottom:0; left:-100%; width:300%; height:100px; z-index:1; opacity:0.1; animation:waveFlow 8s linear infinite; }
+.wave:nth-child(2){ animation-delay:-3s; opacity:0.06; height:70px; }
+@keyframes waveFlow { 0%{transform:translateX(0)} 100%{transform:translateX(33.33%)} }
 
-  body {
-    font-family: 'Poppins', sans-serif;
-    background: var(--ocean-deep);
-    color: var(--text-light);
-    min-height: 100vh;
-    overflow-x: hidden;
-    font-size: 15px;
-  }
+/* NAV */
+.top-nav {
+  position:fixed; top:0; left:0; right:0; height:var(--nav-height);
+  background:rgba(2,11,26,0.93); backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(245,200,66,0.25);
+  z-index:200; display:flex; align-items:center; justify-content:space-between; padding:0 24px;
+}
+.nav-logo { font-family:'Pirata One',cursive; font-size:24px; color:var(--gold-bright); text-shadow:0 0 18px rgba(245,200,66,0.45); line-height:1; }
+.nav-logo span { display:block; font-size:11px; font-family:'Poppins',sans-serif; color:var(--teal-glow); letter-spacing:3px; text-transform:uppercase; font-weight:600; }
+.nav-right { display:flex; align-items:center; gap:10px; }
+.nav-bell { width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); display:flex; align-items:center; justify-content:center; cursor:pointer; position:relative; font-size:15px; }
+.notif-dot { position:absolute; top:6px; right:6px; width:8px; height:8px; background:var(--pink-coral); border-radius:50%; border:1.5px solid var(--ocean-deep); }
+.nav-avatar { width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,var(--gold-warm),var(--purple-mutiny)); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px; cursor:pointer; border:2px solid var(--gold-bright); }
+.desktop-sidenav { display:none; }
+@media(min-width:768px){
+  .desktop-sidenav { display:flex; align-items:center; gap:6px; }
+  .desktop-nav-link { display:flex; align-items:center; gap:6px; padding:8px 14px; border-radius:10px; cursor:pointer; font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; text-decoration:none; color:var(--text-muted); border:1px solid transparent; transition:all 0.15s; }
+  .desktop-nav-link:hover { color:var(--gold-bright); border-color:rgba(245,200,66,0.3); background:rgba(245,200,66,0.06); }
+  .desktop-nav-link.active { color:var(--gold-bright); border-color:rgba(245,200,66,0.4); background:rgba(245,200,66,0.1); }
+  .desktop-nav-link.sos { color:var(--pink-coral); border-color:rgba(255,77,141,0.3); background:rgba(255,77,141,0.08); }
+  .bottom-nav { display:none; }
+}
 
-  .bg-ocean {
-    position: fixed; inset: 0;
-    background: linear-gradient(180deg, #020b1a 0%, #041d3a 40%, #0a3d6b 70%, #041d3a 100%);
-    z-index: 0;
-  }
+/* MAIN */
+.main-content { position:relative; z-index:10; max-width:1100px; margin:0 auto; padding:calc(var(--nav-height) + 16px) 16px calc(80px + 20px); }
+@media(min-width:768px){ .main-content { padding:calc(var(--nav-height) + 24px) 32px 40px; } }
 
-  .wave {
-    position: fixed; bottom: 0; left: -100%;
-    width: 300%; height: 100px; z-index: 1;
-    opacity: 0.12; animation: waveFlow 8s linear infinite;
-  }
-  .wave:nth-child(2) { animation-delay: -3s; opacity: 0.07; height: 70px; }
-  @keyframes waveFlow { 0%{transform:translateX(0)} 100%{transform:translateX(33.33%)} }
+/* PAGE HEADER */
+.page-header { margin-bottom:20px; }
+.page-title { font-family:'Poppins',sans-serif; font-size:24px; font-weight:800; color:var(--gold-bright); letter-spacing:1px; text-transform:uppercase; margin-bottom:4px; }
+.page-sub { font-size:14px; color:var(--text-muted); font-weight:500; }
 
-  /* TOP NAV */
-  .top-nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    height: var(--nav-height);
-    background: rgba(2,11,26,0.93); backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(245,200,66,0.25);
-    z-index: 200; display: flex; align-items: center;
-    justify-content: space-between; padding: 0 24px;
-  }
-  .nav-logo {
-    font-family: 'Pirata One', cursive; font-size: 24px;
-    color: var(--gold-bright); text-shadow: 0 0 18px rgba(245,200,66,0.45); line-height: 1;
-  }
-  .nav-logo span {
-    display: block; font-size: 11px; font-family: 'Poppins', sans-serif;
-    color: var(--teal-glow); letter-spacing: 3px; text-transform: uppercase; font-weight: 600;
-  }
-  .nav-right { display: flex; align-items: center; gap: 10px; }
-  .nav-bell {
-    width: 36px; height: 36px; border-radius: 50%;
-    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15);
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer; position: relative; font-size: 15px;
-  }
-  .notif-dot {
-    position: absolute; top: 6px; right: 6px;
-    width: 8px; height: 8px; background: var(--pink-coral);
-    border-radius: 50%; border: 1.5px solid var(--ocean-deep);
-  }
-  .nav-avatar {
-    width: 36px; height: 36px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--gold-warm), var(--purple-mutiny));
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 700; font-size: 14px; cursor: pointer; border: 2px solid var(--gold-bright);
-  }
+/* CONTROLS BAR */
+.controls-bar {
+  display:flex; flex-direction:column; gap:10px; margin-bottom:16px;
+  position:sticky; top:var(--nav-height); z-index:100;
+  background:rgba(2,11,26,0.92); backdrop-filter:blur(12px);
+  padding:12px 0 8px; margin-left:-16px; margin-right:-16px; padding-left:16px; padding-right:16px;
+  border-bottom:1px solid rgba(245,200,66,0.1);
+}
+@media(min-width:768px){ .controls-bar { margin-left:-32px; margin-right:-32px; padding-left:32px; padding-right:32px; } }
 
-  /* DESKTOP SIDENAV */
-  .desktop-sidenav { display: none; }
-  @media (min-width: 768px) {
-    .desktop-sidenav {
-      display: flex; align-items: center; gap: 6px;
-    }
-    .bottom-nav { display: none; }
-  }
-  .desktop-nav-link {
-    display: flex; align-items: center; gap: 6px;
-    padding: 8px 14px; border-radius: 10px; cursor: pointer;
-    font-size: 14px; font-weight: 700; letter-spacing: 1px;
-    text-transform: uppercase; text-decoration: none; color: var(--text-muted);
-    border: 1px solid transparent; transition: all 0.15s;
-  }
-  .desktop-nav-link:hover { color: var(--gold-bright); border-color: rgba(245,200,66,0.3); background: rgba(245,200,66,0.06); }
-  .desktop-nav-link.active { color: var(--gold-bright); border-color: rgba(245,200,66,0.4); background: rgba(245,200,66,0.1); }
-  .desktop-nav-link.sos { color: var(--pink-coral); border-color: rgba(255,77,141,0.3); background: rgba(255,77,141,0.08); }
+/* SEARCH */
+.search-wrap { position:relative; }
+.search-input {
+  width:100%; padding:10px 16px 10px 40px;
+  background:rgba(10,61,107,0.5); border:1px solid rgba(0,212,200,0.25);
+  border-radius:12px; color:var(--text-light); font-family:'Poppins',sans-serif;
+  font-size:14px; font-weight:500; outline:none; transition:border-color 0.15s;
+}
+.search-input::placeholder { color:var(--text-muted); }
+.search-input:focus { border-color:var(--teal-glow); }
+.search-icon { position:absolute; left:14px; top:50%; transform:translateY(-50%); font-size:16px; pointer-events:none; }
 
-  /* MAIN */
-  .main-content {
-    position: relative; z-index: 10;
-    max-width: 1100px; margin: 0 auto;
-    padding-top: calc(var(--nav-height) + 16px);
-    padding-bottom: calc(72px + 24px);
-    padding-left: 16px; padding-right: 16px;
-  }
-  @media (min-width: 768px) {
-    .main-content { padding-left: 32px; padding-right: 32px; padding-bottom: 40px; }
-  }
+/* DAY TABS */
+.day-tabs { display:flex; gap:6px; }
+.day-tab {
+  flex:1; padding:8px 6px; border-radius:10px; text-align:center; cursor:pointer;
+  border:1px solid rgba(255,255,255,0.1); background:transparent; color:var(--text-muted);
+  font-family:'Poppins',sans-serif; font-size:14px; font-weight:700; transition:all 0.15s;
+}
+.day-tab.active { background:linear-gradient(135deg,var(--gold-warm),var(--gold-sunset)); border-color:transparent; color:var(--ocean-deep); }
+.day-tab:hover:not(.active) { border-color:rgba(245,200,66,0.3); color:var(--gold-bright); }
+.day-tab.mine-tab { flex:1.3; }
+.day-tab.mine-tab.active { background:linear-gradient(135deg,#1a4a6b,#0a3d6b); color:var(--teal-glow); border-color:var(--teal-glow); }
 
-  /* PAGE HEADER */
-  .page-header {
-    margin-bottom: 20px;
-  }
-  .page-title {
-    font-family: 'Poppins', sans-serif; font-size: 24px; font-weight: 800;
-    color: var(--gold-bright); letter-spacing: 2px; text-transform: uppercase;
-    text-shadow: 0 0 20px rgba(245,200,66,0.3); margin-bottom: 4px;
-  }
-  .page-subtitle { font-size: 14px; color: var(--text-muted); font-weight: 500; }
+/* STAGE FILTER PILLS */
+.filter-row { display:flex; gap:8px; align-items:center; }
+.filter-label { font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; white-space:nowrap; }
+.stage-pill {
+  padding:5px 14px; border-radius:20px; font-size:12px; font-weight:700;
+  cursor:pointer; border:1px solid transparent; transition:all 0.15s; white-space:nowrap;
+}
+.stage-pill.all    { border-color:rgba(245,200,66,0.4); color:var(--gold-bright); background:rgba(245,200,66,0.08); }
+.stage-pill.all.on { background:rgba(245,200,66,0.2); }
+.stage-pill.dnb    { border-color:rgba(155,61,255,0.4); color:#c084fc; background:rgba(155,61,255,0.08); }
+.stage-pill.dnb.on { background:rgba(155,61,255,0.25); }
+.stage-pill.oasis  { border-color:rgba(0,212,200,0.4); color:var(--teal-glow); background:rgba(0,212,200,0.08); }
+.stage-pill.oasis.on { background:rgba(0,212,200,0.2); }
 
-  /* SEARCH + FILTER BAR */
-  .filter-bar {
-    display: flex; flex-direction: column; gap: 10px;
-    margin-bottom: 20px;
-  }
-  @media (min-width: 600px) {
-    .filter-bar { flex-direction: row; align-items: center; }
-  }
+/* SCHEDULE CONTAINER */
+.schedule-day { display:none; }
+.schedule-day.active { display:block; }
 
-  .search-wrap {
-    position: relative; flex: 1;
-  }
-  .search-icon {
-    position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
-    font-size: 16px; pointer-events: none;
-  }
-  .search-input {
-    width: 100%; padding: 10px 14px 10px 38px;
-    background: rgba(4,29,58,0.8); border: 1px solid rgba(0,212,200,0.25);
-    border-radius: 12px; color: var(--text-light);
-    font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 500;
-    outline: none; transition: border-color 0.15s;
-  }
-  .search-input::placeholder { color: rgba(122,184,224,0.5); }
-  .search-input:focus { border-color: rgba(0,212,200,0.6); background: rgba(4,29,58,0.95); }
+/* STAGE SECTION */
+.stage-section { margin-bottom:20px; }
+.stage-section-header {
+  display:flex; align-items:center; gap:10px; padding:10px 14px;
+  border-radius:12px 12px 0 0; margin-bottom:1px;
+  font-family:'Poppins',sans-serif; font-size:12px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase;
+}
+.stage-section-header.dnb  { background:rgba(155,61,255,0.2); border:1px solid rgba(155,61,255,0.35); color:#c084fc; }
+.stage-section-header.oasis{ background:rgba(0,212,200,0.15); border:1px solid rgba(0,212,200,0.3); color:var(--teal-glow); }
+.stage-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
 
-  .stage-filters { display: flex; gap: 6px; flex-shrink: 0; }
-  .stage-btn {
-    padding: 9px 14px; border-radius: 10px; cursor: pointer;
-    font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 700;
-    letter-spacing: 1px; text-transform: uppercase;
-    border: 1px solid rgba(255,255,255,0.12);
-    background: transparent; color: var(--text-muted); transition: all 0.15s;
-  }
-  .stage-btn:hover { background: rgba(255,255,255,0.06); }
-  .stage-btn.active-all { background: linear-gradient(135deg, var(--gold-warm), var(--gold-sunset)); border-color: transparent; color: var(--ocean-deep); }
-  .stage-btn.active-dnb { background: rgba(155,61,255,0.25); border-color: rgba(155,61,255,0.5); color: #c084fc; }
-  .stage-btn.active-oasis { background: rgba(0,212,200,0.2); border-color: rgba(0,212,200,0.5); color: var(--teal-glow); }
+/* SCHEDULE ITEMS */
+.sched-list { background:rgba(4,29,58,0.6); border:1px solid rgba(255,255,255,0.07); border-radius:0 0 12px 12px; overflow:hidden; }
+.sched-item {
+  display:flex; align-items:center; gap:12px;
+  padding:12px 14px; border-bottom:1px solid rgba(255,255,255,0.05);
+  cursor:pointer; transition:background 0.15s;
+}
+.sched-item:last-child { border-bottom:none; }
+.sched-item:hover { background:rgba(245,200,66,0.05); }
+.sched-item.headliner { background:rgba(155,61,255,0.06); }
+.sched-item.headliner:hover { background:rgba(155,61,255,0.12); }
+.sched-item.oasis-headliner { background:rgba(0,212,200,0.05); }
+.sched-item.oasis-headliner:hover { background:rgba(0,212,200,0.1); }
+.sched-item.hidden { display:none; }
+.sched-item.no-profile { cursor:default; }
+.sched-item.no-profile:hover { background:transparent; }
 
-  /* RESULTS COUNT */
-  .results-meta {
-    font-size: 12px; color: var(--text-muted); font-weight: 600;
-    letter-spacing: 1px; text-transform: uppercase;
-    margin-bottom: 12px;
-  }
+.item-time {
+  font-family:'Poppins',sans-serif; font-size:13px; font-weight:700;
+  color:var(--teal-glow); min-width:52px; line-height:1.3; text-align:center;
+}
+.item-time .ampm { font-size:10px; opacity:0.8; }
 
-  /* ARTIST GRID — photo card layout */
-  .artist-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 4px;
-  }
-  @media (min-width: 480px) { .artist-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; } }
-  @media (min-width: 700px) { .artist-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; } }
-  @media (min-width: 960px) { .artist-grid { grid-template-columns: repeat(5, 1fr); gap: 10px; } }
+.item-avatar {
+  width:42px; height:42px; border-radius:10px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Poppins',sans-serif; font-size:11px; font-weight:800;
+  color:white; text-shadow:0 1px 2px rgba(0,0,0,0.4);
+}
 
-  /* ARTIST CARD — square photo tile */
-  .artist-card {
-    position: relative;
-    aspect-ratio: 1 / 1;
-    border-radius: 10px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.18s, box-shadow 0.18s;
-    background: var(--ocean-mid);
-  }
-  .artist-card:hover { transform: scale(1.03); box-shadow: 0 12px 40px rgba(0,0,0,0.6); z-index: 2; }
-  .artist-card.hidden { display: none; }
+.item-info { flex:1; min-width:0; }
+.item-name { font-size:15px; font-weight:700; color:var(--text-light); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.item-meta { font-size:13px; color:var(--text-muted); font-weight:500; margin-top:2px; }
+.item-headliner-badge {
+  font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+  padding:2px 7px; border-radius:10px; margin-left:6px; vertical-align:middle;
+  background:rgba(245,200,66,0.2); color:var(--gold-bright); border:1px solid rgba(245,200,66,0.3);
+}
 
-  /* Photo layer */
-  .card-photo {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: center top;
-    display: block;
-  }
+.item-actions { display:flex; align-items:center; gap:8px; flex-shrink:0; }
+.item-arrow { font-size:16px; color:rgba(122,184,224,0.5); font-weight:600; }
+.add-btn {
+  width:32px; height:32px; border-radius:50%; border:2px solid rgba(0,212,200,0.4);
+  background:transparent; color:var(--teal-glow);
+  font-size:20px; font-weight:300; line-height:1;
+  cursor:pointer; display:flex; align-items:center; justify-content:center;
+  transition:all 0.18s; flex-shrink:0;
+}
+.add-btn:hover { background:rgba(0,212,200,0.15); border-color:var(--teal-glow); transform:scale(1.1); }
+.add-btn.added { background:linear-gradient(135deg,var(--teal-glow),#00a89e); border-color:var(--teal-glow); color:var(--ocean-deep); font-size:14px; }
+.add-btn.added:hover { background:rgba(255,77,141,0.2); border-color:var(--pink-coral); color:var(--pink-coral); }
 
-  /* Placeholder shown when no photo */
-  .card-placeholder {
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .card-placeholder svg { width: 52%; height: 52%; opacity: 0.9; }
+/* NON-ARTIST ROW (pool party, doors open etc) */
+.sched-event-row {
+  display:flex; align-items:center; gap:12px; padding:10px 14px;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.event-icon { width:42px; height:42px; border-radius:10px; background:rgba(245,200,66,0.1); border:1px solid rgba(245,200,66,0.2); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+.event-info { flex:1; }
+.event-name { font-size:15px; font-weight:700; color:var(--gold-bright); }
+.event-meta { font-size:13px; color:var(--text-muted); }
 
-  /* Dark gradient overlay at bottom */
-  .card-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(2,11,26,0) 30%,
-      rgba(2,11,26,0.55) 60%,
-      rgba(2,11,26,0.92) 100%
-    );
-  }
+/* MY SCHEDULE */
+.my-sched-section { margin-bottom:20px; }
+.my-sched-header {
+  display:flex; align-items:center; justify-content:space-between;
+  margin-bottom:12px; padding:0 2px;
+}
+.my-sched-title { font-family:'Poppins',sans-serif; font-size:14px; font-weight:800; color:var(--gold-bright); letter-spacing:1.5px; text-transform:uppercase; }
+.my-sched-clear-btn {
+  background:transparent; border:1px solid rgba(255,77,141,0.35);
+  color:var(--pink-coral); font-family:'Poppins',sans-serif;
+  font-size:12px; font-weight:600; padding:5px 14px; border-radius:20px; cursor:pointer;
+  transition:background 0.15s;
+}
+.my-sched-clear-btn:hover { background:rgba(255,77,141,0.1); }
+.my-sched-empty {
+  text-align:center; padding:40px 20px;
+  background:rgba(4,29,58,0.5); border:1px dashed rgba(0,212,200,0.2);
+  border-radius:16px;
+}
+.empty-icon { font-size:44px; display:block; margin-bottom:12px; }
+.empty-title { font-size:16px; font-weight:700; color:var(--text-light); margin-bottom:6px; }
+.empty-sub { font-size:13px; color:var(--text-muted); line-height:1.6; }
+.my-day-label { font-size:13px; font-weight:700; color:var(--teal-glow); letter-spacing:0.5px; text-transform:uppercase; padding:10px 0 6px; border-top:1px solid rgba(255,255,255,0.06); margin-top:6px; }
+.my-day-label:first-child { border-top:none; margin-top:0; }
 
-  /* Stage color strip at top */
-  .card-stage-strip {
-    position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  }
-  .artist-card.dnb  .card-stage-strip { background: linear-gradient(90deg, var(--purple-mutiny), #c084fc); }
-  .artist-card.oasis .card-stage-strip { background: linear-gradient(90deg, var(--teal-glow), #00ffa3); }
+/* SEARCH EMPTY */
+.no-results { text-align:center; padding:30px 16px; color:var(--text-muted); font-size:14px; }
 
-  /* Headliner star badge */
-  .card-headliner-badge {
-    position: absolute; top: 10px; right: 10px;
-    background: var(--gold-bright); color: var(--ocean-deep);
-    font-size: 9px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;
-    padding: 3px 8px; border-radius: 20px;
-  }
+/* BOTTOM NAV */
+.bottom-nav {
+  position:fixed; bottom:0; left:0; right:0; height:72px;
+  background:rgba(2,11,26,0.97); border-top:1px solid rgba(245,200,66,0.2);
+  display:flex; align-items:center; justify-content:space-around;
+  z-index:200; padding:0 4px; padding-bottom:env(safe-area-inset-bottom,0);
+}
+.nav-item { display:flex; flex-direction:column; align-items:center; gap:3px; padding:6px 8px; border-radius:12px; cursor:pointer; transition:all 0.15s; min-width:48px; border:none; background:transparent; text-decoration:none; }
+.nav-item:active { transform:scale(0.93); }
+.nav-icon-wrap { width:36px; height:36px; border-radius:10px; background:transparent; border:1px solid transparent; display:flex; align-items:center; justify-content:center; transition:all 0.15s; font-size:18px; }
+.nav-label { font-size:10px; font-weight:600; letter-spacing:0.5px; color:rgba(122,184,224,0.6); text-transform:uppercase; white-space:nowrap; }
+.nav-item.active .nav-icon-wrap { background:linear-gradient(135deg,rgba(245,200,66,0.2),rgba(232,148,26,0.2)); border-color:rgba(245,200,66,0.5); }
+.nav-item.active .nav-label { color:var(--gold-bright); }
+.nav-item.nav-sos .nav-icon-wrap { background:rgba(255,77,141,0.15); border-color:rgba(255,77,141,0.4); }
+.nav-item.nav-sos .nav-label { color:var(--pink-coral); }
 
-  /* Bottom label area */
-  .card-label {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    padding: 12px 10px 10px;
-  }
-  .card-name {
-    font-family: 'Poppins', sans-serif;
-    font-size: clamp(11px, 2vw, 14px);
-    font-weight: 800;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    line-height: 1.2;
-    text-shadow: 0 1px 6px rgba(0,0,0,0.8);
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  }
-  .card-time {
-    font-size: clamp(9px, 1.5vw, 11px);
-    font-weight: 600;
-    color: var(--gold-bright);
-    margin-top: 2px;
-    opacity: 0.9;
-  }
+/* ARTIST MODAL */
+.modal-backdrop { position:fixed; inset:0; background:rgba(2,11,26,0.88); backdrop-filter:blur(8px); z-index:500; display:none; align-items:flex-end; justify-content:center; }
+.modal-backdrop.open { display:flex; }
+.artist-modal { width:100%; max-width:540px; background:linear-gradient(180deg,#0a1f3a 0%,#020b1a 100%); border:1px solid rgba(245,200,66,0.3); border-radius:24px 24px 0 0; padding-bottom:90px; max-height:88vh; overflow-y:auto; animation:slideUp 0.28s ease; }
+@keyframes slideUp { from{transform:translateY(100%)} to{transform:translateY(0)} }
+.modal-drag { width:40px; height:4px; background:rgba(255,255,255,0.2); border-radius:2px; margin:12px auto 0; }
+.modal-header { display:flex; align-items:center; justify-content:space-between; padding:16px 20px 0; }
+.modal-header-label { font-size:11px; font-weight:700; color:var(--text-muted); letter-spacing:2px; text-transform:uppercase; }
+.modal-close { width:32px; height:32px; border-radius:50%; background:rgba(255,255,255,0.1); border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; color:var(--text-light); font-size:16px; }
+.modal-hero { padding:16px 20px; display:flex; gap:16px; align-items:center; }
+.modal-avatar { width:80px; height:80px; border-radius:16px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-family:'Poppins',sans-serif; font-size:16px; font-weight:800; color:white; border:2px solid rgba(245,200,66,0.4); }
+.modal-name { font-family:'Poppins',sans-serif; font-size:22px; font-weight:800; color:white; line-height:1.15; margin-bottom:5px; }
+.modal-stage-badge { display:inline-block; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:3px 10px; border-radius:20px; margin-bottom:5px; }
+.modal-genre { font-size:14px; color:var(--text-muted); font-weight:500; }
+.modal-divider { height:1px; background:rgba(255,255,255,0.07); margin:0 20px; }
+.modal-section { padding:14px 20px; }
+.modal-section-title { font-size:11px; font-weight:700; color:var(--gold-bright); letter-spacing:2px; text-transform:uppercase; margin-bottom:10px; }
+.modal-bio { font-size:15px; color:var(--text-muted); line-height:1.8; }
+.set-info-row { display:flex; gap:8px; }
+.set-info-card { flex:1; background:rgba(10,61,107,0.4); border:1px solid rgba(0,212,200,0.2); border-radius:12px; padding:10px; }
+.set-info-label { font-size:10px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:3px; font-weight:600; }
+.set-info-val { font-size:14px; font-weight:700; color:white; }
+.social-row { display:flex; gap:8px; flex-wrap:wrap; }
+.social-btn { display:inline-flex; align-items:center; gap:6px; padding:8px 14px; border-radius:20px; cursor:pointer; font-size:13px; font-weight:600; text-decoration:none; border:1px solid rgba(255,255,255,0.15); transition:opacity 0.15s; color:white; }
+.social-btn.spotify  { background:rgba(30,215,96,0.15);  border-color:rgba(30,215,96,0.4);  color:#1ed760; }
+.social-btn.instagram{ background:rgba(225,48,108,0.15); border-color:rgba(225,48,108,0.4); color:#e1306c; }
+.social-btn.soundcloud{background:rgba(255,85,0,0.15);   border-color:rgba(255,85,0,0.4);   color:#ff5500; }
+.spotify-embed { background:rgba(30,215,96,0.08); border:1px solid rgba(30,215,96,0.2); border-radius:12px; padding:14px; text-align:center; }
+.spotify-placeholder { font-size:12px; color:var(--text-muted); margin-bottom:10px; }
+.spotify-play-btn { display:inline-flex; align-items:center; gap:8px; background:#1ed760; color:#000; border:none; padding:10px 22px; border-radius:20px; font-weight:700; font-size:13px; cursor:pointer; font-family:'Poppins',sans-serif; }
 
-  /* NO RESULTS */
-  .no-results {
-    text-align: center; padding: 60px 20px;
-    color: var(--text-muted); font-size: 15px; line-height: 1.7;
-    display: none;
-  }
-  .no-results .nr-icon { font-size: 40px; display: block; margin-bottom: 12px; }
+/* MODAL ADD TO SCHED BUTTON */
+.modal-add-sched-btn {
+  width:100%; margin:0 20px; width:calc(100% - 40px);
+  padding:13px; border-radius:12px; border:none; cursor:pointer;
+  font-family:'Poppins',sans-serif; font-size:15px; font-weight:700;
+  transition:all 0.2s;
+  background:linear-gradient(135deg,var(--teal-glow),#00a89e);
+  color:var(--ocean-deep);
+}
+.modal-add-sched-btn.added {
+  background:rgba(255,77,141,0.15); color:var(--pink-coral);
+  border:1px solid rgba(255,77,141,0.4);
+}
 
-  /* BOTTOM NAV */
-  .bottom-nav {
-    position: fixed; bottom: 0; left: 0; right: 0; height: 72px;
-    background: rgba(2,11,26,0.97); border-top: 1px solid rgba(245,200,66,0.2);
-    display: flex; align-items: center; justify-content: space-around;
-    z-index: 200; padding: 0 4px; padding-bottom: env(safe-area-inset-bottom,0);
-  }
-  .nav-item {
-    display: flex; flex-direction: column; align-items: center; gap: 3px;
-    padding: 6px 8px; border-radius: 12px; cursor: pointer;
-    transition: all 0.15s; min-width: 48px; border: none; background: transparent; text-decoration: none;
-  }
-  .nav-item:active { transform: scale(0.93); }
-  .nav-icon-wrap {
-    width: 36px; height: 36px; border-radius: 10px; background: transparent;
-    border: 1px solid transparent; display: flex; align-items: center; justify-content: center;
-    transition: all 0.15s; font-size: 18px;
-  }
-  .nav-label { font-size: 10px; font-weight: 600; letter-spacing: 0.5px; color: rgba(122,184,224,0.6); text-transform: uppercase; white-space: nowrap; }
-  .nav-item.active .nav-icon-wrap { background: linear-gradient(135deg,rgba(245,200,66,0.2),rgba(232,148,26,0.2)); border-color: rgba(245,200,66,0.5); }
-  .nav-item.active .nav-label { color: var(--gold-bright); }
-  .nav-item.nav-sos .nav-icon-wrap { background: rgba(255,77,141,0.15); border-color: rgba(255,77,141,0.4); }
-  .nav-item.nav-sos .nav-label { color: var(--pink-coral); }
+/* TOAST */
+#schedToast {
+  position:fixed; bottom:90px; left:50%; transform:translateX(-50%);
+  background:rgba(4,29,58,0.97); border:1px solid rgba(0,212,200,0.4);
+  color:var(--text-light); font-family:'Poppins',sans-serif; font-size:13px; font-weight:600;
+  padding:10px 20px; border-radius:24px; z-index:9999;
+  white-space:nowrap; box-shadow:0 4px 20px rgba(0,0,0,0.4);
+  transition:opacity 0.3s; opacity:0; pointer-events:none;
+}
 
-  /* ARTIST MODAL */
-  .modal-backdrop {
-    position: fixed; inset: 0; background: rgba(2,11,26,0.88);
-    backdrop-filter: blur(8px); z-index: 500;
-    display: none; align-items: flex-end; justify-content: center;
-  }
-  .modal-backdrop.open { display: flex; }
-  .artist-modal {
-    width: 100%; max-width: 480px;
-    background: linear-gradient(180deg,#0a1f3a 0%,#020b1a 100%);
-    border: 1px solid rgba(245,200,66,0.3);
-    border-radius: 24px 24px 0 0;
-    padding-bottom: 90px;
-    max-height: 90vh; overflow-y: auto;
-    animation: slideUp 0.28s ease;
-  }
-  @media (min-width: 768px) {
-    .modal-backdrop { align-items: center; }
-    .artist-modal { border-radius: 24px; max-height: 85vh; padding-bottom: 24px; }
-  }
-  @keyframes slideUp { from{transform:translateY(100%)} to{transform:translateY(0)} }
+/* ── VIEW TOGGLE ─────────────────────────────────────────── */
+.view-toggle {
+  display:flex; gap:3px;
+  background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);
+  border-radius:10px; padding:3px; flex-shrink:0; margin-left:4px;
+}
+.view-btn {
+  width:30px; height:26px; border-radius:7px; border:none; cursor:pointer;
+  font-size:15px; display:flex; align-items:center; justify-content:center;
+  background:transparent; color:var(--text-muted); transition:all 0.15s;
+}
+.view-btn.active {
+  background:linear-gradient(135deg,var(--gold-warm),var(--gold-sunset));
+  color:var(--ocean-deep);
+}
 
-  .modal-drag { width: 40px; height: 4px; background: rgba(255,255,255,0.2); border-radius: 2px; margin: 12px auto 0; }
-  @media (min-width: 768px) { .modal-drag { display: none; } }
+/* ── BLOCK VIEW ─────────────────────────────────────────── */
+.block-view { display:none; }
+.block-view.active { display:block; }
+.list-view-wrap { display:block; }
+.list-view-wrap.hidden { display:none; }
 
-  .modal-header {
-    display: flex; align-items: center; justify-content: space-between; padding: 16px 20px 0;
-  }
-  .modal-header-label { font-size: 12px; font-weight: 700; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
-  .modal-close {
-    width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.1);
-    border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
-    color: var(--text-light); font-size: 16px;
-  }
+/* Timeline grid */
+.timeline-grid {
+  display:grid;
+  grid-template-columns:44px 1fr 1fr;
+  gap:0 8px;
+  position:relative;
+}
+.timeline-grid.single-col { grid-template-columns:44px 1fr; }
 
-  .modal-hero { padding: 16px 20px; display: flex; gap: 16px; align-items: center; }
-  .modal-avatar {
-    width: 80px; height: 80px; border-radius: 16px; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 800;
-    color: white; border: 2px solid rgba(245,200,66,0.4); text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-  }
-  .modal-name { font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 800; color: white; line-height: 1.1; margin-bottom: 6px; }
-  .modal-genre { font-size: 14px; color: var(--text-muted); font-weight: 500; }
+/* Stage header row */
+.tg-stage-headers {
+  display:grid;
+  grid-template-columns:44px 1fr 1fr;
+  gap:0 8px;
+  margin-bottom:4px;
+  position:sticky; top:0; z-index:10;
+}
+.tg-stage-headers.single-col { grid-template-columns:44px 1fr; }
+.tg-corner { /* spacer */ }
+.tg-stage-head {
+  padding:10px 14px; border-radius:12px 12px 0 0;
+  font-size:12px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase;
+  text-align:center;
+}
+.tg-stage-head.dnb   { background:rgba(155,61,255,0.25); color:#c084fc; border:1px solid rgba(155,61,255,0.4); }
+.tg-stage-head.oasis { background:rgba(0,212,200,0.18);  color:var(--teal-glow); border:1px solid rgba(0,212,200,0.35); }
 
-  .modal-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 0 20px; }
-  .modal-section { padding: 14px 20px; }
-  .modal-section-title { font-size: 11px; font-weight: 700; color: var(--gold-bright); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
-  .modal-bio { font-size: 15px; color: var(--text-muted); line-height: 1.8; }
+/* Time ruler column */
+.tg-time-col {
+  display:flex; flex-direction:column;
+  padding-top:0;
+}
+.tg-hour-label {
+  height:72px; display:flex; align-items:flex-start; justify-content:flex-end;
+  padding-right:8px; padding-top:6px;
+  font-size:11px; font-weight:700; color:var(--text-muted);
+  border-top:1px solid rgba(255,255,255,0.06); flex-shrink:0;
+}
+.tg-hour-label:first-child { border-top:none; }
 
-  .set-info-row { display: flex; gap: 8px; }
-  .set-info-card {
-    flex: 1; background: rgba(10,61,107,0.4); border: 1px solid rgba(0,212,200,0.2);
-    border-radius: 12px; padding: 10px;
-  }
-  .set-info-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; font-weight: 600; }
-  .set-info-val { font-size: 14px; font-weight: 700; color: white; }
+/* Stage columns */
+.tg-stage-col {
+  position:relative; min-height:100%;
+  background:rgba(4,29,58,0.35);
+  border:1px solid rgba(255,255,255,0.06); border-radius:0 0 10px 10px;
+}
 
-  .social-row { display: flex; gap: 8px; flex-wrap: wrap; }
-  .social-btn {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 8px 14px; border-radius: 20px; cursor: pointer; font-size: 13px; font-weight: 600;
-    text-decoration: none; border: 1px solid rgba(255,255,255,0.15); transition: opacity 0.15s; color: white;
-  }
-  .social-btn:active { opacity: 0.7; }
-  .social-btn.spotify    { background: rgba(30,215,96,0.15);  border-color: rgba(30,215,96,0.4);  color: #1ed760; }
-  .social-btn.instagram  { background: rgba(225,48,108,0.15); border-color: rgba(225,48,108,0.4); color: #e1306c; }
-  .social-btn.soundcloud { background: rgba(255,85,0,0.15);   border-color: rgba(255,85,0,0.4);   color: #ff5500; }
-  .social-btn.twitter    { background: rgba(29,161,242,0.15); border-color: rgba(29,161,242,0.4); color: #1da1f2; }
-  .social-btn.facebook   { background: rgba(24,119,242,0.15); border-color: rgba(24,119,242,0.4); color: #1877f2; }
-  .social-btn.youtube    { background: rgba(255,0,0,0.12);    border-color: rgba(255,0,0,0.3);    color: #ff4444; }
-  .social-btn.website    { background: rgba(245,200,66,0.12); border-color: rgba(245,200,66,0.3); color: var(--gold-bright); }
+/* Hour grid lines inside columns */
+.tg-gridline {
+  position:absolute; left:0; right:0; height:1px;
+  background:rgba(255,255,255,0.06);
+}
 
-  .spotify-embed {
-    background: rgba(30,215,96,0.08); border: 1px solid rgba(30,215,96,0.2);
-    border-radius: 12px; padding: 14px; text-align: center;
-  }
-  .spotify-placeholder { font-size: 14px; color: var(--text-muted); margin-bottom: 10px; }
-  .spotify-play-btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: #1ed760; color: #000; border: none;
-    padding: 10px 22px; border-radius: 20px; font-weight: 700; font-size: 14px; cursor: pointer;
-    font-family: 'Poppins', sans-serif;
-  }
+/* Artist block */
+.tg-block {
+  position:absolute; left:4px; right:4px;
+  border-radius:8px; padding:7px 9px;
+  cursor:pointer; transition:all 0.15s;
+  display:flex; flex-direction:column; justify-content:flex-start;
+  overflow:hidden; border:1px solid rgba(255,255,255,0.12);
+  min-height:28px;
+}
+.tg-block:hover { filter:brightness(1.15); transform:scale(1.02); z-index:5; box-shadow:0 4px 20px rgba(0,0,0,0.5); }
+.tg-block.dnb-block   { background:linear-gradient(160deg,rgba(155,61,255,0.55),rgba(107,31,204,0.7)); }
+.tg-block.oasis-block { background:linear-gradient(160deg,rgba(0,212,200,0.45),rgba(0,168,158,0.65)); }
+.tg-block.headliner-block { border-color:rgba(245,200,66,0.5); box-shadow:inset 0 0 0 1px rgba(245,200,66,0.2); }
 
-  /* SECTION DIVIDERS in grid */
-  .grid-section-label {
-    grid-column: 1 / -1;
-    display: flex; align-items: center; gap: 12px;
-    margin-top: 8px; margin-bottom: 4px;
-  }
-  .grid-section-label span {
-    font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 700;
-    letter-spacing: 1.5px; text-transform: uppercase; white-space: nowrap;
-  }
-  .grid-section-label.dnb span  { color: #c084fc; }
-  .grid-section-label.oasis span { color: var(--teal-glow); }
-  .grid-section-label.local span { color: var(--text-muted); }
-  .grid-section-line {
-    flex: 1; height: 1px; background: rgba(255,255,255,0.07);
-  }
+.tg-block-name {
+  font-size:12px; font-weight:800; color:#fff;
+  text-shadow:0 1px 3px rgba(0,0,0,0.6);
+  line-height:1.2; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.tg-block-time {
+  font-size:10px; font-weight:600; color:rgba(255,255,255,0.75);
+  margin-top:3px; white-space:nowrap;
+}
+.tg-block-badge {
+  font-size:8px; font-weight:800; letter-spacing:1px; text-transform:uppercase;
+  background:rgba(245,200,66,0.3); color:var(--gold-bright);
+  padding:1px 5px; border-radius:4px; display:inline-block; margin-top:3px;
+  width:fit-content;
+}
+
+/* Non-artist event block (doors open, pool party) */
+.tg-event-block {
+  position:absolute; left:4px; right:4px; border-radius:6px;
+  background:rgba(245,200,66,0.1); border:1px dashed rgba(245,200,66,0.3);
+  padding:5px 8px; font-size:10px; font-weight:600; color:var(--gold-bright);
+  display:flex; align-items:center; gap:4px; overflow:hidden;
+  pointer-events:none;
+}
+
+/* TBA blocks (supporting acts) */
+.tg-tba-block {
+  position:relative; margin:4px; border-radius:6px;
+  background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07);
+  padding:5px 8px; cursor:pointer;
+  display:flex; align-items:center; gap:6px; transition:background 0.15s;
+}
+.tg-tba-block:hover { background:rgba(255,255,255,0.08); }
+.tg-tba-name { font-size:11px; font-weight:700; color:var(--text-muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.tg-tba-label { font-size:9px; color:rgba(122,184,224,0.5); font-weight:600; flex-shrink:0; }
+
+/* TBA section at bottom of column */
+.tg-tba-section {
+  padding:8px 4px 4px;
+  border-top:1px solid rgba(255,255,255,0.06);
+  margin-top:8px;
+}
+.tg-tba-heading {
+  font-size:10px; font-weight:700; color:var(--text-muted);
+  letter-spacing:1px; text-transform:uppercase;
+  padding:0 4px 5px;
+}
+
+/* Scrollable wrapper for block view on mobile */
+.block-view-scroll {
+  overflow-x:auto;
+  padding-bottom:8px;
+}
+.block-view-inner {
+  min-width:320px;
+}
+
+/* ── CALENDAR EXPORT ─────────────────────────────────────── */
+.cal-btn-row {
+  display:flex; gap:8px; flex-wrap:wrap;
+}
+.cal-btn {
+  flex:1; min-width:90px;
+  display:flex; align-items:center; justify-content:center; gap:7px;
+  padding:10px 12px; border-radius:12px; border:none; cursor:pointer;
+  font-family:'Poppins',sans-serif; font-size:13px; font-weight:700;
+  transition:all 0.18s; white-space:nowrap;
+}
+.cal-btn:active { transform:scale(0.96); }
+.cal-icon {
+  width:20px; height:20px; border-radius:4px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:13px; font-weight:900; flex-shrink:0;
+}
+.cal-btn.gcal {
+  background:rgba(66,133,244,0.15); color:#4285f4;
+  border:1px solid rgba(66,133,244,0.35);
+}
+.cal-btn.gcal:hover { background:rgba(66,133,244,0.25); }
+.cal-btn.gcal .cal-icon {
+  background:#4285f4; color:#fff; font-size:11px;
+}
+.cal-btn.apple {
+  background:rgba(255,255,255,0.07); color:var(--text-light);
+  border:1px solid rgba(255,255,255,0.2);
+}
+.cal-btn.apple:hover { background:rgba(255,255,255,0.14); }
+.cal-btn.outlook {
+  background:rgba(0,120,212,0.15); color:#3aa0f3;
+  border:1px solid rgba(0,120,212,0.35);
+}
+.cal-btn.outlook:hover { background:rgba(0,120,212,0.25); }
+
+.cal-tba-note {
+  display:none;
+  font-size:12px; color:var(--text-muted); margin-top:8px;
+  padding:8px 12px; background:rgba(255,255,255,0.04);
+  border-radius:8px; border:1px solid rgba(255,255,255,0.08);
+}
+
+/* Export My Schedule button */
+.export-cal-btn {
+  background:rgba(0,212,200,0.12); border:1px solid rgba(0,212,200,0.3);
+  color:var(--teal-glow); font-family:'Poppins',sans-serif;
+  font-size:12px; font-weight:700; padding:5px 12px;
+  border-radius:20px; cursor:pointer; transition:all 0.15s;
+  white-space:nowrap;
+}
+.export-cal-btn:hover { background:rgba(0,212,200,0.22); }
+.export-cal-btn:disabled { opacity:0.4; cursor:default; }
 
 /* ── NAV SHARED ─────────────────────────────────────────── */
 .top-nav {
@@ -623,12 +708,8 @@
 <body>
 
 <div class="bg-ocean"></div>
-<svg class="wave" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="rgba(0,212,200,1)">
-  <path d="M0,60 C300,120 600,0 900,60 C1050,90 1150,30 1200,60 L1200,120 L0,120 Z"/>
-</svg>
-<svg class="wave" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="rgba(245,200,66,1)">
-  <path d="M0,80 C200,20 500,100 800,50 C1000,20 1100,80 1200,60 L1200,120 L0,120 Z"/>
-</svg>
+<svg class="wave" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="rgba(0,212,200,1)"><path d="M0,60 C300,120 600,0 900,60 C1050,90 1150,30 1200,60 L1200,120 L0,120 Z"/></svg>
+<svg class="wave" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="rgba(245,200,66,1)"><path d="M0,80 C200,20 500,100 800,50 C1000,20 1100,80 1200,60 L1200,120 L0,120 Z"/></svg>
 
 <!-- TOP NAV -->
 <nav class="top-nav">
@@ -637,8 +718,8 @@
   <!-- Desktop nav links -->
   <nav class="desktop-nav-links">
     <a class="desktop-nav-link" href="index.html">🏠 Home</a>
-    <a class="desktop-nav-link" href="schedule.html">📅 Schedule</a>
-    <a class="desktop-nav-link active" href="artists.html">🎤 Artists</a>
+    <a class="desktop-nav-link active" href="schedule.html">📅 Schedule</a>
+    <a class="desktop-nav-link" href="artists.html">🎤 Artists</a>
     <a class="desktop-nav-link" href="map.html">🗺️ Map</a>
     <a class="desktop-nav-link" href="checklist.html">✅ Checklist</a>
     <a class="desktop-nav-link" href="more.html">⋯ More</a>
@@ -690,8 +771,8 @@
   <div class="drawer-panel">
     <div class="drawer-links">
       <a class="drawer-link" href="index.html">🏠 Home</a>
-      <a class="drawer-link" href="schedule.html">📅 Schedule</a>
-      <a class="drawer-link active" href="artists.html">🎤 Artists</a>
+      <a class="drawer-link active" href="schedule.html">📅 Schedule</a>
+      <a class="drawer-link" href="artists.html">🎤 Artists</a>
       <a class="drawer-link" href="map.html">🗺️ Map</a>
       <a class="drawer-link" href="checklist.html">✅ Checklist</a>
       <a class="drawer-link" href="more.html">⋯ More</a>
@@ -705,28 +786,218 @@
 <main class="main-content">
 
   <div class="page-header">
-    <div class="page-title">🎤 Artists</div>
-    <div class="page-subtitle">47+ artists · 2 stages · Jul 17–19, Sturbridge MA</div>
+    <div class="page-title">📅 Full Schedule</div>
+    <div class="page-sub">Sturbridge Host Hotel · Tap any artist to view profile &amp; add to your schedule</div>
   </div>
 
-  <div class="filter-bar">
+  <!-- STICKY CONTROLS -->
+  <div class="controls-bar">
     <div class="search-wrap">
       <span class="search-icon">🔍</span>
-      <input class="search-input" type="text" id="searchInput" placeholder="Search artists, genres…" autocomplete="off">
+      <input type="text" class="search-input" id="searchInput" placeholder="Search artists, stage, genre…">
     </div>
-    <div class="stage-filters">
-      <button class="stage-btn active-all" data-filter="all" onclick="setFilter('all',this)">All</button>
-      <button class="stage-btn" data-filter="dnb" onclick="setFilter('dnb',this)">🥁 DNB</button>
-      <button class="stage-btn" data-filter="oasis" onclick="setFilter('oasis',this)">🌴 Oasis</button>
+    <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+      <div class="day-tabs" style="flex:1;">
+        <button class="day-tab active" data-day="fri">FRI 7/17</button>
+        <button class="day-tab" data-day="sat">SAT 7/18</button>
+        <button class="day-tab" data-day="sun">SUN 7/19</button>
+        <button class="day-tab mine-tab" data-day="mine" id="mySchedTab">⭐ Mine</button>
+      </div>
+      <div class="filter-row">
+        <span class="filter-label">Stage:</span>
+        <button class="stage-pill all on"   data-stage="all">All</button>
+        <button class="stage-pill dnb"      data-stage="dnb">🥁 DNB</button>
+        <button class="stage-pill oasis"    data-stage="oasis">🌴 Oasis</button>
+        <div class="view-toggle">
+          <button class="view-btn active" id="viewList" title="List view">☰</button>
+          <button class="view-btn" id="viewGrid" title="Block view">⊞</button>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="results-meta" id="resultsMeta">47 artists</div>
+  <!-- LIST VIEW WRAP -->
+  <div class="list-view-wrap" id="listViewWrap">
 
-  <div class="artist-grid" id="artistGrid"></div>
-  <div class="no-results" id="noResults">
-    <span class="nr-icon">🌊</span>
-    No artists found for that search.<br>Try a different name or genre.
+  <!-- FRIDAY -->
+  <div class="schedule-day active" id="day-fri">
+
+    <div class="stage-section" data-section="dnb">
+      <div class="stage-section-header dnb">
+        <div class="stage-dot" style="background:#9b3dff;"></div>
+        🥁 DNB Stage — Hosted by BP²
+      </div>
+      <div class="sched-list">
+        <div class="sched-event-row">
+          <div class="event-icon">🚪</div>
+          <div class="event-info"><div class="event-name">Doors Open · Welcome</div><div class="event-meta">9:00 PM · Main Lobby</div></div>
+        </div>
+        <div class="sched-item headliner" data-artist="JFB" data-stage="dnb" data-search="jfb drum bass scratch dj">
+          <div class="item-time">9:30<div class="ampm">PM</div></div>
+          <div class="item-avatar" style="background:linear-gradient(135deg,#9b3dff,#00d4c8)">JFB</div>
+          <div class="item-info"><div class="item-name">JFB</div><div class="item-meta">Drum & Bass · Scratch DJ</div></div>
+          <div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="JFB">+</button></div>
+        </div>
+        <div class="sched-item" data-artist="DEEKLINE" data-stage="dnb" data-search="deekline drum bass breakbeat">
+          <div class="item-time">10:30<div class="ampm">PM</div></div>
+          <div class="item-avatar" style="background:linear-gradient(135deg,#f5c842,#e8941a)">DK</div>
+          <div class="item-info"><div class="item-name">Deekline</div><div class="item-meta">Drum & Bass · Breakbeat</div></div>
+          <div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="DEEKLINE">+</button></div>
+        </div>
+        <div class="sched-item" data-artist="DARA" data-stage="dnb" data-search="dara drum bass jungle">
+          <div class="item-time">11:30<div class="ampm">PM</div></div>
+          <div class="item-avatar" style="background:linear-gradient(135deg,#9b3dff,#ff4d8d)">DA</div>
+          <div class="item-info"><div class="item-name">Dara</div><div class="item-meta">Drum & Bass · Jungle</div></div>
+          <div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="DARA">+</button></div>
+        </div>
+        <div class="sched-item headliner" data-artist="RONI SIZE" data-stage="dnb" data-search="roni size drum bass jazz live headliner">
+          <div class="item-time">1:00<div class="ampm">AM</div></div>
+          <div class="item-avatar" style="background:linear-gradient(135deg,#9b3dff,#6b1fcc)">RS</div>
+          <div class="item-info"><div class="item-name">Roni Size <span class="item-headliner-badge">HEADLINER</span></div><div class="item-meta">Drum & Bass · Jazz · Live</div></div>
+          <div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="RONI SIZE">+</button></div>
+        </div>
+        <!-- Supporting -->
+        <div class="sched-item" data-artist="BICLOPS"      data-stage="dnb" data-search="biclops drum bass"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#00d4c8,#f5c842)">BI</div><div class="item-info"><div class="item-name">Biclops</div><div class="item-meta">Drum & Bass</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="BICLOPS">+</button></div></div>
+        <div class="sched-item" data-artist="COEXIST"      data-stage="dnb" data-search="coexist drum bass"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#9b3dff,#00d4c8)">CX</div><div class="item-info"><div class="item-name">Coexist</div><div class="item-meta">Drum & Bass</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="COEXIST">+</button></div></div>
+        <div class="sched-item" data-artist="DADAM"        data-stage="dnb" data-search="dadam drum bass"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#ff6b1a,#9b3dff)">DD</div><div class="item-info"><div class="item-name">Dadam</div><div class="item-meta">Drum & Bass</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="DADAM">+</button></div></div>
+      </div>
+    </div>
+
+    <div class="stage-section" data-section="oasis">
+      <div class="stage-section-header oasis">
+        <div class="stage-dot" style="background:#00d4c8;"></div>
+        🌴 Oasis Stage
+      </div>
+      <div class="sched-list">
+        <div class="sched-item" data-artist="THE SPONGES" data-stage="oasis" data-search="the sponges house funk"><div class="item-time">9:30<div class="ampm">PM</div></div><div class="item-avatar" style="background:linear-gradient(135deg,#f5c842,#00d4c8)">TS</div><div class="item-info"><div class="item-name">The Sponges</div><div class="item-meta">House · Funk</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="THE SPONGES">+</button></div></div>
+        <div class="sched-item" data-artist="CARLO LIO"   data-stage="oasis" data-search="carlo lio techno house"><div class="item-time">10:30<div class="ampm">PM</div></div><div class="item-avatar" style="background:linear-gradient(135deg,#ff4d8d,#9b3dff)">CL</div><div class="item-info"><div class="item-name">Carlo Lio</div><div class="item-meta">Techno · House</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="CARLO LIO">+</button></div></div>
+        <div class="sched-item" data-artist="CODES"       data-stage="oasis" data-search="codes house breaks"><div class="item-time">11:30<div class="ampm">PM</div></div><div class="item-avatar" style="background:linear-gradient(135deg,#00d4c8,#041d3a)">CO</div><div class="item-info"><div class="item-name">Codes</div><div class="item-meta">House · Breaks</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="CODES">+</button></div></div>
+        <div class="sched-item oasis-headliner" data-artist="J. PHLIP" data-stage="oasis" data-search="j phlip house techno headliner"><div class="item-time">1:00<div class="ampm">AM</div></div><div class="item-avatar" style="background:linear-gradient(135deg,#9b3dff,#f5c842)">JP</div><div class="item-info"><div class="item-name">J. Phlip <span class="item-headliner-badge">HEADLINER</span></div><div class="item-meta">House · Techno</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="J. PHLIP">+</button></div></div>
+        <div class="sched-item" data-artist="CHANANAGAINS"  data-stage="oasis" data-search="chananagains house breaks"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#f5c842,#9b3dff)">CH</div><div class="item-info"><div class="item-name">Chananagains</div><div class="item-meta">House · Breaks</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="CHANANAGAINS">+</button></div></div>
+        <div class="sched-item" data-artist="COLLIN IN KIND" data-stage="oasis" data-search="collin in kind house deep"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#ff4d8d,#f5c842)">CIK</div><div class="item-info"><div class="item-name">Collin In Kind</div><div class="item-meta">House · Deep</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="COLLIN IN KIND">+</button></div></div>
+        <div class="sched-item" data-artist="GAVIN QUINN"   data-stage="oasis" data-search="gavin quinn tech house"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#f5c842,#ff4d8d)">GQ</div><div class="item-info"><div class="item-name">Gavin Quinn</div><div class="item-meta">House · Tech House</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="GAVIN QUINN">+</button></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SATURDAY -->
+  <div class="schedule-day" id="day-sat">
+
+    <div class="stage-section" data-section="dnb">
+      <div class="stage-section-header dnb"><div class="stage-dot" style="background:#9b3dff;"></div>🥁 DNB Stage — Hosted by BP²</div>
+      <div class="sched-list">
+        <div class="sched-item" data-artist="DEGS"        data-stage="dnb" data-search="degs drum bass"><div class="item-time">8:00<div class="ampm">PM</div></div><div class="item-avatar" style="background:linear-gradient(135deg,#00d4c8,#0a3d6b)">DG</div><div class="item-info"><div class="item-name">Degs</div><div class="item-meta">Drum & Bass</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="DEGS">+</button></div></div>
+        <div class="sched-item" data-artist="PHANTOM 45"  data-stage="dnb" data-search="phantom 45 drum bass liquid"><div class="item-time">9:00<div class="ampm">PM</div></div><div class="item-avatar" style="background:linear-gradient(135deg,#3d1f8a,#9b3dff)">P45</div><div class="item-info"><div class="item-name">Phantom 45</div><div class="item-meta">Drum & Bass · Liquid</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="PHANTOM 45">+</button></div></div>
+        <div class="sched-item" data-artist="GEORGIE RIOT" data-stage="dnb" data-search="georgie riot drum bass jump up"><div class="item-time">10:00<div class="ampm">PM</div></div><div class="item-avatar" style="background:linear-gradient(135deg,#ff4d8d,#f5c842)">GR</div><div class="item-info"><div class="item-name">Georgie Riot</div><div class="item-meta">Drum & Bass · Jump-Up</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="GEORGIE RIOT">+</button></div></div>
+        <div class="sched-item headliner" data-artist="SPOR" data-stage="dnb" data-search="spor drum bass neurofunk headliner"><div class="item-time">12:00<div class="ampm">AM</div></div><div class="item-avatar" style="background:linear-gradient(135deg,#f5c842,#e8941a)">SP</div><div class="item-info"><div class="item-name">SPOR <span class="item-headliner-badge">HEADLINER</span></div><div class="item-meta">Drum & Bass · Neurofunk</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="SPOR">+</button></div></div>
+        <div class="sched-item" data-artist="D. BROWN"    data-stage="dnb" data-search="d brown drum bass"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#9b3dff,#ff4d8d)">DB</div><div class="item-info"><div class="item-name">D. Brown</div><div class="item-meta">Drum & Bass</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="D. BROWN">+</button></div></div>
+        <div class="sched-item" data-artist="DEMIEN SIXX" data-stage="dnb" data-search="demien sixx drum bass dark"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#ff4d8d,#9b3dff)">DS</div><div class="item-info"><div class="item-name">Demien Sixx</div><div class="item-meta">Drum & Bass · Dark</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="DEMIEN SIXX">+</button></div></div>
+        <div class="sched-item" data-artist="K COMPLEX"   data-stage="dnb" data-search="k complex drum bass"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#9b3dff,#f5c842)">KC</div><div class="item-info"><div class="item-name">K Complex</div><div class="item-meta">Drum & Bass</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="K COMPLEX">+</button></div></div>
+        <div class="sched-item" data-artist="KREESAY"     data-stage="dnb" data-search="kreesay drum bass"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#ff6b1a,#9b3dff)">KR</div><div class="item-info"><div class="item-name">Kreesay</div><div class="item-meta">Drum & Bass</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="KREESAY">+</button></div></div>
+      </div>
+    </div>
+
+    <div class="stage-section" data-section="oasis">
+      <div class="stage-section-header oasis"><div class="stage-dot" style="background:#00d4c8;"></div>🌴 Oasis Stage</div>
+      <div class="sched-list">
+        <div class="sched-item" data-artist="MADAM X"      data-stage="oasis" data-search="madam x techno industrial"><div class="item-time">8:00<div class="ampm">PM</div></div><div class="item-avatar" style="background:linear-gradient(135deg,#00d4c8,#9b3dff)">MX</div><div class="item-info"><div class="item-name">Madam X</div><div class="item-meta">Techno · Industrial</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="MADAM X">+</button></div></div>
+        <div class="sched-item" data-artist="GETTOBLASTER" data-stage="oasis" data-search="gettoblaster house techno"><div class="item-time">10:00<div class="ampm">PM</div></div><div class="item-avatar" style="background:linear-gradient(135deg,#ff6b1a,#ff4d8d)">GB</div><div class="item-info"><div class="item-name">Gettoblaster</div><div class="item-meta">House · Techno</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="GETTOBLASTER">+</button></div></div>
+        <div class="sched-item oasis-headliner" data-artist="CARLO LIO" data-stage="oasis" data-search="carlo lio techno house headliner"><div class="item-time">12:00<div class="ampm">AM</div></div><div class="item-avatar" style="background:linear-gradient(135deg,#ff4d8d,#9b3dff)">CL</div><div class="item-info"><div class="item-name">Carlo Lio <span class="item-headliner-badge">HEADLINER</span></div><div class="item-meta">Techno · House</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="CARLO LIO">+</button></div></div>
+        <div class="sched-item" data-artist="DJ SEAMUS"    data-stage="oasis" data-search="dj seamus house electronic"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#f5c842,#00d4c8)">DS</div><div class="item-info"><div class="item-name">DJ Seamus</div><div class="item-meta">House · Electronic</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="DJ SEAMUS">+</button></div></div>
+        <div class="sched-item" data-artist="EDDIE MERCED" data-stage="oasis" data-search="eddie merced house latin"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#9b3dff,#ff4d8d)">EM</div><div class="item-info"><div class="item-name">Eddie Merced</div><div class="item-meta">House · Latin</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="EDDIE MERCED">+</button></div></div>
+        <div class="sched-item" data-artist="GREEN JEANS"  data-stage="oasis" data-search="green jeans house funky"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#00d4c8,#9b3dff)">GJ</div><div class="item-info"><div class="item-name">Green Jeans</div><div class="item-meta">House · Funky</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="GREEN JEANS">+</button></div></div>
+        <div class="sched-item" data-artist="HONEY BUNCHES OF BEATS" data-stage="oasis" data-search="honey bunches of beats house funk soul"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#f5c842,#ff6b1a)">HB</div><div class="item-info"><div class="item-name">Honey Bunches of Beats</div><div class="item-meta">House · Funk · Soul</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="HONEY BUNCHES OF BEATS">+</button></div></div>
+        <div class="sched-item" data-artist="KOHAKU"       data-stage="oasis" data-search="kohaku house melodic"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#ff4d8d,#00d4c8)">KO</div><div class="item-info"><div class="item-name">Kohaku</div><div class="item-meta">House · Melodic</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="KOHAKU">+</button></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUNDAY -->
+  <div class="schedule-day" id="day-sun">
+
+    <div class="stage-section" data-section="dnb">
+      <div class="stage-section-header dnb"><div class="stage-dot" style="background:#9b3dff;"></div>🥁 DNB Stage — Hosted by BP²</div>
+      <div class="sched-list">
+        <div class="sched-event-row"><div class="event-icon">🏊</div><div class="event-info"><div class="event-name">Pool Party + Games</div><div class="event-meta">4:00 PM · Poolside · All welcome</div></div></div>
+        <div class="sched-item" data-artist="DALI"         data-stage="dnb" data-search="dali drum bass"><div class="item-time">7:00<div class="ampm">PM</div></div><div class="item-avatar" style="background:linear-gradient(135deg,#f5c842,#ff6b1a)">DL</div><div class="item-info"><div class="item-name">Dali</div><div class="item-meta">Drum & Bass</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="DALI">+</button></div></div>
+        <div class="sched-item" data-artist="UNGLUED"      data-stage="dnb" data-search="unglued drum bass rollers"><div class="item-time">8:00<div class="ampm">PM</div></div><div class="item-avatar" style="background:linear-gradient(135deg,#ff6b1a,#f5c842)">UN</div><div class="item-info"><div class="item-name">Unglued</div><div class="item-meta">Drum & Bass · Rollers</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="UNGLUED">+</button></div></div>
+        <div class="sched-item headliner" data-artist="EVOL INTENT" data-stage="dnb" data-search="evol intent drum bass neurofunk headliner"><div class="item-time">10:00<div class="ampm">PM</div></div><div class="item-avatar" style="background:linear-gradient(135deg,#ff6b1a,#9b3dff)">EI</div><div class="item-info"><div class="item-name">Evol Intent <span class="item-headliner-badge">HEADLINER</span></div><div class="item-meta">Drum & Bass · Neurofunk</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="EVOL INTENT">+</button></div></div>
+        <div class="sched-item" data-artist="LAST ACTION HEROES" data-stage="dnb" data-search="last action heroes drum bass jungle"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#ff6b1a,#9b3dff)">LA</div><div class="item-info"><div class="item-name">Last Action Heroes</div><div class="item-meta">Drum & Bass · Jungle</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="LAST ACTION HEROES">+</button></div></div>
+        <div class="sched-item" data-artist="OSCILLOT"     data-stage="dnb" data-search="oscillot drum bass neurofunk"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#9b3dff,#00d4c8)">OS</div><div class="item-info"><div class="item-name">Oscillot</div><div class="item-meta">Drum & Bass · Neurofunk</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="OSCILLOT">+</button></div></div>
+        <div class="sched-item" data-artist="PAPA RUNKZ"   data-stage="dnb" data-search="papa runkz drum bass jump up"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#f5c842,#ff4d8d)">PR</div><div class="item-info"><div class="item-name">Papa Runkz</div><div class="item-meta">Drum & Bass · Jump-Up</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="PAPA RUNKZ">+</button></div></div>
+        <div class="sched-item" data-artist="STEPPO"       data-stage="dnb" data-search="steppo drum bass"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#ff6b1a,#f5c842)">ST</div><div class="item-info"><div class="item-name">Steppo</div><div class="item-meta">Drum & Bass</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="STEPPO">+</button></div></div>
+        <div class="sched-item" data-artist="MENTALLY ILL" data-stage="dnb" data-search="mentally ill drum bass dark"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#ff6b1a,#ff4d8d)">MI</div><div class="item-info"><div class="item-name">Mentally Ill</div><div class="item-meta">Drum & Bass · Dark</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="MENTALLY ILL">+</button></div></div>
+        <div class="sched-item" data-artist="NICK MINIERI" data-stage="dnb" data-search="nick minieri drum bass"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#9b3dff,#ff6b1a)">NM</div><div class="item-info"><div class="item-name">Nick Minieri</div><div class="item-meta">Drum & Bass</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="NICK MINIERI">+</button></div></div>
+        <div class="sched-item" data-artist="RED DAWN"     data-stage="dnb" data-search="red dawn drum bass"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#ff4d8d,#ff6b1a)">RD</div><div class="item-info"><div class="item-name">Red Dawn</div><div class="item-meta">Drum & Bass</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="RED DAWN">+</button></div></div>
+        <div class="sched-item" data-artist="SLAYTOVEN"    data-stage="dnb" data-search="slaytoven drum bass heavy"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#ff6b1a,#00d4c8)">SL</div><div class="item-info"><div class="item-name">Slaytoven</div><div class="item-meta">Drum & Bass · Heavy</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="SLAYTOVEN">+</button></div></div>
+        <div class="sched-item" data-artist="SYNESTHESIA"  data-stage="dnb" data-search="synesthesia drum bass sensory"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#9b3dff,#ff6b1a)">SY</div><div class="item-info"><div class="item-name">Synesthesia</div><div class="item-meta">Drum & Bass · Sensory</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="SYNESTHESIA">+</button></div></div>
+        <div class="sched-item" data-artist="WHO:IS"       data-stage="dnb" data-search="who is drum bass mystery"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#9b3dff,#00d4c8)">WI</div><div class="item-info"><div class="item-name">Who:Is</div><div class="item-meta">Drum & Bass · Mystery</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="WHO:IS">+</button></div></div>
+        <div class="sched-item" data-artist="EXZACKTO"     data-stage="dnb" data-search="exzackto drum bass"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#00d4c8,#ff6b1a)">EX</div><div class="item-info"><div class="item-name">Exzackto</div><div class="item-meta">Drum & Bass</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="EXZACKTO">+</button></div></div>
+        <div class="sched-item" data-artist="ORIGINATE"    data-stage="dnb" data-search="originate drum bass original"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#00d4c8,#ff6b1a)">OR</div><div class="item-info"><div class="item-name">Originate</div><div class="item-meta">Drum & Bass</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="ORIGINATE">+</button></div></div>
+        <div class="sched-item" data-artist="KUNAII"       data-stage="dnb" data-search="kunaii drum bass liquid"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#00d4c8,#ff4d8d)">KU</div><div class="item-info"><div class="item-name">Kunaii</div><div class="item-meta">Drum & Bass · Liquid</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="KUNAII">+</button></div></div>
+        <div class="sched-item" data-artist="LOUD NOISES!" data-stage="dnb" data-search="loud noises drum bass hard"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#ff4d8d,#ff6b1a)">LN</div><div class="item-info"><div class="item-name">Loud Noises!</div><div class="item-meta">Drum & Bass · Hard</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="LOUD NOISES!">+</button></div></div>
+      </div>
+    </div>
+
+    <div class="stage-section" data-section="oasis">
+      <div class="stage-section-header oasis"><div class="stage-dot" style="background:#00d4c8;"></div>🌴 Oasis Stage</div>
+      <div class="sched-list">
+        <div class="sched-item" data-artist="KRAFTY KUTZ"  data-stage="oasis" data-search="krafty kutz breaks breakbeat"><div class="item-time">7:00<div class="ampm">PM</div></div><div class="item-avatar" style="background:linear-gradient(135deg,#00d4c8,#9b3dff)">KK</div><div class="item-info"><div class="item-name">Krafty Kutz</div><div class="item-meta">Breaks · Breakbeat</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="KRAFTY KUTZ">+</button></div></div>
+        <div class="sched-item oasis-headliner" data-artist="UNIQU3" data-stage="oasis" data-search="uniqu3 house electronic headliner"><div class="item-time">9:00<div class="ampm">PM</div></div><div class="item-avatar" style="background:linear-gradient(135deg,#ff4d8d,#f5c842)">U3</div><div class="item-info"><div class="item-name">Uniqu3 <span class="item-headliner-badge">HEADLINER</span></div><div class="item-meta">House · Electronic</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="UNIQU3">+</button></div></div>
+        <div class="sched-item" data-artist="GRUV 42"      data-stage="oasis" data-search="gruv 42 house groove"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#00d4c8,#f5c842)">G42</div><div class="item-info"><div class="item-name">Gruv 42</div><div class="item-meta">House · Groove</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="GRUV 42">+</button></div></div>
+        <div class="sched-item" data-artist="LENORE"       data-stage="oasis" data-search="lenore house deep"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#ff4d8d,#f5c842)">LE</div><div class="item-info"><div class="item-name">Lenore</div><div class="item-meta">House · Deep House</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="LENORE">+</button></div></div>
+        <div class="sched-item" data-artist="SOAPPY"       data-stage="oasis" data-search="soappy house breaks"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#00d4c8,#9b3dff)">SO</div><div class="item-info"><div class="item-name">Soappy</div><div class="item-meta">House · Breaks</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="SOAPPY">+</button></div></div>
+        <div class="sched-item" data-artist="TARI"         data-stage="oasis" data-search="tari house electronic"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#9b3dff,#ff4d8d)">TR</div><div class="item-info"><div class="item-name">Tari</div><div class="item-meta">House · Electronic</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="TARI">+</button></div></div>
+        <div class="sched-item" data-artist="LOWKEE"       data-stage="oasis" data-search="lowkee house deep hypnotic"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#9b3dff,#00d4c8)">LK</div><div class="item-info"><div class="item-name">Lowkee</div><div class="item-meta">House · Deep</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="LOWKEE">+</button></div></div>
+        <div class="sched-item" data-artist="MCCOOEY"      data-stage="oasis" data-search="mccooey house breaks"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#f5c842,#9b3dff)">MC</div><div class="item-info"><div class="item-name">McCooey</div><div class="item-meta">House · Breaks</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="MCCOOEY">+</button></div></div>
+        <div class="sched-item" data-artist="MISS HAZE"    data-stage="oasis" data-search="miss haze house atmospheric"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#ff4d8d,#9b3dff)">MH</div><div class="item-info"><div class="item-name">Miss Haze</div><div class="item-meta">House · Atmospheric</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="MISS HAZE">+</button></div></div>
+        <div class="sched-item" data-artist="MO' BACON"    data-stage="oasis" data-search="mo bacon house funk"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#ff6b1a,#f5c842)">MB</div><div class="item-info"><div class="item-name">Mo' Bacon</div><div class="item-meta">House · Funk</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="MO' BACON">+</button></div></div>
+        <div class="sched-item" data-artist="NOTORIOUS CHOW" data-stage="oasis" data-search="notorious chow house bass"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#f5c842,#ff4d8d)">NC</div><div class="item-info"><div class="item-name">Notorious Chow</div><div class="item-meta">House · Bass</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="NOTORIOUS CHOW">+</button></div></div>
+        <div class="sched-item" data-artist="PAULYWOG"     data-stage="oasis" data-search="paulywog house breaks"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#9b3dff,#f5c842)">PW</div><div class="item-info"><div class="item-name">Paulywog</div><div class="item-meta">House · Breaks</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="PAULYWOG">+</button></div></div>
+        <div class="sched-item" data-artist="QUEERVOYANT"  data-stage="oasis" data-search="queervoyant house queer electronic"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#ff4d8d,#00d4c8)">QV</div><div class="item-info"><div class="item-name">Queervoyant</div><div class="item-meta">House · Queer Electronic</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="QUEERVOYANT">+</button></div></div>
+        <div class="sched-item" data-artist="SESH"         data-stage="oasis" data-search="sesh house session"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#9b3dff,#ff4d8d)">SE</div><div class="item-info"><div class="item-name">Sesh</div><div class="item-meta">House · Session Vibes</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="SESH">+</button></div></div>
+        <div class="sched-item" data-artist="SINGLE GRIND" data-stage="oasis" data-search="single grind house groove hypnotic"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#f5c842,#9b3dff)">SG</div><div class="item-info"><div class="item-name">Single Grind</div><div class="item-meta">House · Hypnotic Groove</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="SINGLE GRIND">+</button></div></div>
+        <div class="sched-item" data-artist="SOKOMODO"     data-stage="oasis" data-search="sokomodo house world global"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#00d4c8,#9b3dff)">SK</div><div class="item-info"><div class="item-name">Sokomodo</div><div class="item-meta">House · World</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="SOKOMODO">+</button></div></div>
+        <div class="sched-item" data-artist="TIMMOLOGY"   data-stage="oasis" data-search="timmology house classic"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#f5c842,#00d4c8)">TM</div><div class="item-info"><div class="item-name">Timmology</div><div class="item-meta">House · Classic</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="TIMMOLOGY">+</button></div></div>
+        <div class="sched-item" data-artist="VALDEE"       data-stage="oasis" data-search="valdee house electronic expressive"><div class="item-time">TBA</div><div class="item-avatar" style="background:linear-gradient(135deg,#ff4d8d,#f5c842)">VA</div><div class="item-info"><div class="item-name">Valdee</div><div class="item-meta">House · Electronic</div></div><div class="item-actions"><span class="item-arrow">›</span><button class="add-btn" data-artist="VALDEE">+</button></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MY SCHEDULE -->
+  <div class="schedule-day" id="day-mine">
+    <div class="my-sched-section">
+      <div class="my-sched-header">
+        <div class="my-sched-title">⭐ My Schedule</div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <button class="export-cal-btn" id="exportCalBtn" title="Export to Calendar">📅 Export</button>
+          <button class="my-sched-clear-btn" id="clearMySchedule" style="display:none;">🗑 Clear All</button>
+        </div>
+      </div>
+      <div id="mySchedContent">
+        <div class="my-sched-empty" id="mySchedEmpty">
+          <span class="empty-icon">⭐</span>
+          <div class="empty-title">Your schedule is empty</div>
+          <div class="empty-sub">Browse the lineup and tap <strong style="color:var(--teal-glow);">+</strong> next to any artist to save them here.</div>
+        </div>
+        <div id="mySchedList"></div>
+      </div>
+    </div>
+  </div><!-- end day-mine -->
+
+  </div><!-- end list-view-wrap -->
+
+  <!-- NO SEARCH RESULTS -->
+  <div class="no-results" id="noResults" style="display:none;">
+    <div style="font-size:32px;margin-bottom:10px;">🔍</div>
+    No artists found matching your search.
+  </div>
+
+  <!-- BLOCK VIEW — rendered by JS -->
+  <div class="block-view" id="blockView">
+    <div class="block-view-scroll">
+      <div class="block-view-inner" id="blockViewInner"></div>
+    </div>
   </div>
 
 </main>
@@ -734,8 +1005,8 @@
 <!-- BOTTOM NAV -->
 <nav class="bottom-nav">
   <a class="nav-item" href="index.html"><div class="nav-icon-wrap">🏠</div><span class="nav-label">Home</span></a>
-  <a class="nav-item" href="schedule.html"><div class="nav-icon-wrap">📅</div><span class="nav-label">Schedule</span></a>
-  <a class="nav-item active" href="artists.html"><div class="nav-icon-wrap">🎤</div><span class="nav-label">Artists</span></a>
+  <a class="nav-item active" href="schedule.html"><div class="nav-icon-wrap">📅</div><span class="nav-label">Schedule</span></a>
+  <a class="nav-item" href="artists.html"><div class="nav-icon-wrap">🎤</div><span class="nav-label">Artists</span></a>
   <a class="nav-item" href="map.html"><div class="nav-icon-wrap">🗺️</div><span class="nav-label">Map</span></a>
   <a class="nav-item" href="checklist.html"><div class="nav-icon-wrap">✅</div><span class="nav-label">List</span></a>
   <a class="nav-item" href="more.html"><div class="nav-icon-wrap">⋯</div><span class="nav-label">More</span></a>
@@ -754,9 +1025,23 @@
       <div class="modal-avatar" id="modalAvatar"></div>
       <div>
         <div class="modal-name" id="modalName"></div>
-        <div id="modalStageBadge" style="margin-bottom:5px;"></div>
+        <div class="modal-stage-badge" id="modalStageBadge"></div>
         <div class="modal-genre" id="modalGenre"></div>
       </div>
+    </div>
+    <div class="modal-divider"></div>
+    <div class="modal-section">
+      <button class="modal-add-sched-btn" id="modalAddBtn">⭐ Add to My Schedule</button>
+    </div>
+    <div class="modal-divider" id="calDivider"></div>
+    <div class="modal-section" id="calSection">
+      <div class="modal-section-title">📅 Add to Calendar</div>
+      <div class="cal-btn-row">
+        <button class="cal-btn gcal"   id="calGoogle">  <span class="cal-icon">G</span>Google</button>
+        <button class="cal-btn apple"  id="calApple">   <span class="cal-icon">🍎</span>Apple</button>
+        <button class="cal-btn outlook" id="calOutlook"><span class="cal-icon">📘</span>Outlook</button>
+      </div>
+      <div class="cal-tba-note" id="calTbaNote">Time TBA — calendar export available once times are confirmed.</div>
     </div>
     <div class="modal-divider"></div>
     <div class="modal-section">
@@ -776,7 +1061,7 @@
     <div class="modal-section">
       <div class="modal-section-title">🎵 Listen</div>
       <div class="spotify-embed">
-        <div class="spotify-placeholder">Stream on Spotify</div>
+        <div class="spotify-placeholder">Curated playlist from this artist</div>
         <button class="spotify-play-btn" id="modalSpotifyBtn">▶ Open on Spotify</button>
       </div>
     </div>
@@ -788,368 +1073,261 @@
   </div>
 </div>
 
+<div id="schedToast"></div>
+
 <script>
 // ============================================================
-// ARTIST DATABASE — full lineup with rich bios + real links
+// ARTIST DATABASE
 // ============================================================
 const artists = {
-
-  // ─── DNB HEADLINERS ────────────────────────────────────────
-  "RONI SIZE": {
-    initials:"RS", color:"linear-gradient(135deg,#9b3dff,#6b1fcc)",
-    stage:"DNB Stage", time:"1:00 AM", day:"Fri", headliner:true,
-    genre:"Drum & Bass · Bristol, UK",
-    bio:"Born Ryan Owen Granville Williams in Bristol in 1969, Roni Size is one of drum & bass's most celebrated pioneers. His 1997 album New Forms with his collective Reprazent won the Mercury Prize — a landmark moment that brought D&B to the mainstream. Co-founder of the legendary Full Cycle Records alongside DJ Krust, he blended live instrumentation, jazz, funk, and hip-hop into a groundbreaking live-band format. Tracks like 'Brown Paper Bag' remain all-time classics. He relaunched Full Cycle in 2016 and continues touring globally.",
-    links:{ spotify:"https://open.spotify.com/artist/0bnpNEX3OFoWbGjfD1bkuL", instagram:"https://www.instagram.com/ronisizeofficial/", twitter:"https://twitter.com/ronisizeofficial" }
-  },
-  "SPOR": {
-    initials:"SP", color:"linear-gradient(135deg,#f5c842,#e8941a)",
-    stage:"DNB Stage", time:"12:00 AM", day:"Sat", headliner:true,
-    genre:"Drum & Bass · Neurofunk · Hertfordshire, UK",
-    bio:"Jon Gooch (born 1984) is a genre-spanning British producer operating as Spor (drum & bass) and Feed Me (electro house). As Spor he secured an early deal with Renegade Hardware and co-founded Lifted Music. Known for technically precise neurofunk tracks like 'Aztec' and 'Pacifica,' he released his debut Spor LP Caligo in 2015. As Feed Me he debuted on deadmau5's mau5trap label, earning widespread acclaim for his Calamari Tuesday album. One of the scene's most respected dual-identity artists.",
-    links:{ spotify:"https://open.spotify.com/artist/0HWFPqTcSMPxKzEE1JHBLu", instagram:"https://www.instagram.com/spor_feedme/", twitter:"https://twitter.com/sporlifted", soundcloud:"https://soundcloud.com/spor" }
-  },
-  "EVOL INTENT": {
-    initials:"EI", color:"linear-gradient(135deg,#ff6b1a,#9b3dff)",
-    stage:"DNB Stage", time:"10:00 PM", day:"Sun", headliner:true,
-    genre:"Drum & Bass · Hardstep · Atlanta, GA",
-    bio:"The Enemy (Ashley Jones), Knick (Nick Weiller), and Gigantor (Mike Diasio) formed Evol Intent in Tuscaloosa, AL around 2000. Growing out of hardcore-punk culture, they pioneered a raw, aggressive hardstep sound and are widely regarded as one of the most influential groups in American D&B. Their 2008 LP Era of Diversion was critically acclaimed. Collaborators include Noisia, Dieselboy, and jazz legend Bill Laswell. They have had music featured in EA's Need for Speed and Adult Swim promos, and run their own Evol Intent Recordings label.",
-    links:{ spotify:"https://open.spotify.com/artist/4LWXQ4q4GN4qBPfkpEXGpx", soundcloud:"https://soundcloud.com/evolintent", website:"https://evolintent.com" }
-  },
-
-  // ─── DNB FEATURED ──────────────────────────────────────────
-  "DARA": {
-    initials:"DA", color:"linear-gradient(135deg,#9b3dff,#ff4d8d)",
-    stage:"DNB Stage", time:"11:30 PM", day:"Fri",
-    genre:"Drum & Bass · Jungle · Brooklyn, NY",
-    bio:"Darragh Guilfoyle, known as DJ Dara, is an Irish-American D&B legend and co-founder (with DJ DB) of Breakbeat Science — the first and largest drum & bass record store in the US, based in NYC. A member of the seminal Planet of the Drums crew alongside AK1200, Dieselboy, and J Messinian, Dara has been a dominant force in North American D&B since 1994. His discography spans two artist albums, eight DJ mix CDs, and remixes for Afrika Bambaataa and Freq Nasty. He previously hosted the acclaimed internet D&B broadcast Velocity.",
-    links:{ spotify:"https://open.spotify.com/artist/2SbkWwRNkFpkjR1vwVJHpz", twitter:"https://twitter.com/thedjdara", soundcloud:"https://soundcloud.com/dj-dara" }
-  },
-  "DEEKLINE": {
-    initials:"DK", color:"linear-gradient(135deg,#f5c842,#e8941a)",
-    stage:"DNB Stage", time:"10:30 PM", day:"Fri",
-    genre:"Breakbeat · Jungle · London, UK",
-    bio:"Nicholas Annand (born 1979), known as Deekline, is the inventor of breakstep — a bass-heavy, breakbeat-infused 2-step style he pioneered with his 1999 hit 'I Don't Smoke,' which reached #11 on the UK Singles Chart. He founded multiple labels including Rat Records, Jungle Cakes, and Hot Cakes Music. A globe-trotting performer with five US tours and two Australian tours, he has collaborated with DJ Fresh, Stanton Warriors, and the Freestylers across a 25+ year career at the forefront of breakbeat culture.",
-    links:{ spotify:"https://open.spotify.com/artist/5bN3bkPl2mFZFH4ugvj0h2", instagram:"https://www.instagram.com/deekline/", soundcloud:"https://soundcloud.com/deekline" }
-  },
-  "DEGS": {
-    initials:"DG", color:"linear-gradient(135deg,#00d4c8,#0a3d6b)",
-    stage:"DNB Stage", time:"8:00 PM", day:"Sat",
-    genre:"Vocalist · MC · Producer · Hospital Records",
-    bio:"Degs is a multi-talented vocalist, rapper, and producer signed to Hospital Records. He first came to attention through freestyle videos on social media — freestyling over iconic Hospital classics — catching the ear of London Elektricity. His debut single 'Poveglia' became a summer 2018 D&B anthem. His album Letters From Ndegwa showcases soulful vocals and sharp lyricism across collaborations with Logistics, LSB, and Etherwood. Since April 2022 Degs hosts the legendary Hospital Records Podcast.",
-    links:{ spotify:"https://open.spotify.com/artist/1wDNOrgGzAMIoqMH1p6Mbk", instagram:"https://www.instagram.com/degsmusic/", soundcloud:"https://soundcloud.com/degsmusic" }
-  },
-  "GEORGIE RIOT": {
-    initials:"GR", color:"linear-gradient(135deg,#ff4d8d,#f5c842)",
-    stage:"DNB Stage", time:"10:00 PM", day:"Sat",
-    genre:"Drum & Bass · Jump-Up · West Midlands, UK",
-    bio:"Georgie Riot is an English DJ, producer, and label owner who broke into the D&B scene in 2020, transitioning from a career as a professional model and agency owner. Her debut single 'Take Over' on UKF (August 2022) gained 100,000+ streams in under two weeks and heavy BBC Radio 1 support. She founded Riot Records in September 2022 — named Beatport's 'Label of the Month' in early 2023. With 3M+ Spotify streams and festival appearances at Tomorrowland, Let It Roll, and Rampage, she placed 3rd for Best Female Producer at the 2023 D&B Awards.",
-    links:{ spotify:"https://open.spotify.com/artist/3DH4V4BaLEW2IH2RFHbJK4", instagram:"https://www.instagram.com/georgieriot/", website:"https://www.georgieriot.com" }
-  },
-  "JFB": {
-    initials:"JFB", color:"linear-gradient(135deg,#9b3dff,#00d4c8)",
-    stage:"DNB Stage", time:"9:30 PM", day:"Fri",
-    genre:"Turntablism · D&B · Brighton, UK",
-    bio:"JFB is Britain's most decorated scratch DJ — UK DMC Champion in 2007, 2011, and 2015, Red Bull Thre3style European Wildcard Champion 2016, IDA UK Technical Champion 2019, and DMC World Champion 2021. Fatboy Slim called him 'the thinking man's Grandmaster Flash.' Based in Brighton with French and Hungarian roots, JFB brings world-class turntablism to club and festival environments, spanning D&B, hip-hop, funk, and breaks. He has performed at Glastonbury, Shambhala, and the 2012 London Olympics BMX arena.",
-    links:{ spotify:"https://open.spotify.com/artist/1b1QjZ0l0YcupbEVm2wFLp", instagram:"https://www.instagram.com/jfbdj/", twitter:"https://twitter.com/jfbscratch", youtube:"https://www.youtube.com/c/JFBdj", soundcloud:"https://soundcloud.com/jfbdj" }
-  },
-  "PHANTOM 45": {
-    initials:"P45", color:"linear-gradient(135deg,#3d1f8a,#9b3dff)",
-    stage:"DNB Stage", time:"9:00 PM", day:"Sat",
-    genre:"Drum & Bass · Jungle · Chicago, IL",
-    bio:"Brian Sarpalius, aka Phantom 45, began DJing in 1987 playing house music in Chicago before transitioning to UK hardcore and then jungle/D&B in the early 1990s. A pioneering figure in Chicago's D&B scene alongside Danny the Wildchild, he became known for smooth, meticulous mixing rooted in classic Chicago house sensibility. Released mix CDs on Moonshine and Surge Recordings, and toured nationally. He returned to DJing in January 2023 after a decade managing clubs, immediately releasing 28 new mixes.",
-    links:{ soundcloud:"https://soundcloud.com/TheRealPhantom45", website:"https://jumpupandroll.com/dj-producer-phantom-45/" }
-  },
-  "UNGLUED": {
-    initials:"UN", color:"linear-gradient(135deg,#ff6b1a,#f5c842)",
-    stage:"DNB Stage", time:"8:00 PM", day:"Sun",
-    genre:"Drum & Bass · Hospital Records · Brighton, UK",
-    bio:"Josh Croft, aka Unglued, is a Brighton-based D&B producer signed to Hospital Records. He burst onto the scene in 2017 when Nu:Tone discovered his demos, leading to a debut on the Hospitality In The Park compilation. His bootleg of High Contrast's 'If We Ever' became 2018's most sought-after dubplate and won Best Remix at the D&B Arena Awards. Debut album Interplanetary Radio (2021) blends jungle, jazz, funk, and hardcore. He holds a physics degree and teaches D&B production coaching alongside his touring career.",
-    links:{ spotify:"https://open.spotify.com/artist/1VBflYyxBhnDc9uVib98rw", instagram:"https://www.instagram.com/unglueddnb/", soundcloud:"https://soundcloud.com/unglueddnb", website:"https://unglued.co.uk" }
-  },
-
-  // ─── OASIS HEADLINERS ──────────────────────────────────────
-  "J. PHLIP": {
-    initials:"JP", color:"linear-gradient(135deg,#9b3dff,#f5c842)",
-    stage:"Oasis Stage", time:"1:00 AM", day:"Fri", headliner:true,
-    genre:"House · Techno · San Francisco, CA",
-    bio:"J.Phlip is a San Francisco-based DJ and producer with a long-running presence in the Bay Area underground and the Dirtybird Records ecosystem. Known for deep, hypnotic track selections and immersive mixing style, she moves fluidly between house and techno. A regular at Dirtybird events and festivals across North America, she has performed alongside Claude VonStroke, Bianca Oblivion, Doc Martin, and Gettoblaster.",
-    links:{ spotify:"https://open.spotify.com/artist/6Hn2nHtj0Iqc1Y2D9Ddfr4", instagram:"https://www.instagram.com/jphlip/", soundcloud:"https://soundcloud.com/jphlip" }
-  },
-  "CARLO LIO": {
-    initials:"CL", color:"linear-gradient(135deg,#ff4d8d,#9b3dff)",
-    stage:"Oasis Stage", time:"12:00 AM", day:"Sat", headliner:true,
-    genre:"House · Techno · Toronto, Canada",
-    bio:"Toronto-born Carlo Lio broke internationally when Dubfire discovered him on MySpace and signed him to SCI+TEC, then took him on a near three-year world tour. Carl Cox championed his music on INTEC and invited him to Ibiza. Lio has released on SCI+TEC, Bedrock Records, Desolat, Suara, Circus, and his own Rawthentic Music imprint. Known for refusing to be boxed into one genre, he has performed at BPM Festival, DC10 Ibiza, and Movement Detroit.",
-    links:{ spotify:"https://open.spotify.com/artist/51NwQz5MA32kigUGYjdA3z", instagram:"https://www.instagram.com/carlolio/", soundcloud:"https://soundcloud.com/carlo-lio" }
-  },
-
-  // ─── OASIS FEATURED ────────────────────────────────────────
-  "CODES": {
-    initials:"CO", color:"linear-gradient(135deg,#00d4c8,#041d3a)",
-    stage:"Oasis Stage", time:"11:30 PM", day:"Fri",
-    genre:"House · Underground · New York, NY",
-    bio:"New York-based DJ and producer Codes is known for his versatile, genre-defying approach to underground house. Described by DJ Mag as a 'jack-of-all sonic trades,' his music spans spaced-out grooves to bass-heavy club bangers with a strong ear for turntablism. His 'SOS' EP charted in Beatport's Top 10 House, earning co-signs from A-Trak, AC Slater, and Martin Garrix. A regular touring partner of The Sponges, he is a staple on the US festival house circuit.",
-    links:{ spotify:"https://open.spotify.com/artist/3mBJiJBrqTWp5eMqIVJpBO", instagram:"https://www.instagram.com/codesdj/", soundcloud:"https://soundcloud.com/codesdj" }
-  },
-  "GETTOBLASTER": {
-    initials:"GB", color:"linear-gradient(135deg,#ff6b1a,#ff4d8d)",
-    stage:"Oasis Stage", time:"10:00 PM", day:"Sat",
-    genre:"House · Tech House · Chicago, IL",
-    bio:"Gettoblaster (Paul Anthony) is a Chicago house devotee committed to the raw energy of the city's warehouse sound. His track 'H O U S E' ft. Missy was Beatport's #1 house track for seven weeks — one of the genre's biggest records in recent years. He has released on Defected, Dirtybird, Chris Lake's Black Book, Toolroom, and his own Aliens on Mushrooms imprint, with rotation from Carl Cox, Laurent Garnier, Dom Dolla, and Solomun. His influences: DJ Deeon, DJ Slugo, Bad Boy Bill, Felix da Housecat, and Daft Punk.",
-    links:{ spotify:"https://open.spotify.com/artist/5LGa1U6Mwiib6ocVuJItcG", instagram:"https://www.instagram.com/gettoblasterdj/", soundcloud:"https://soundcloud.com/gettoblaster" }
-  },
-  "KRAFTY KUTZ": {
-    initials:"KK", color:"linear-gradient(135deg,#00d4c8,#9b3dff)",
-    stage:"Oasis Stage", time:"7:00 PM", day:"Sun",
-    genre:"Breaks · Hip-Hop · Brighton, UK",
-    bio:"Krafty Kuts is a multi-award-winning Brighton DJ and producer and one of the most respected figures in the global breaks scene. A former DMC World DJ Championship winner, he runs the Funk Weapons imprint and is known for technically brilliant, high-energy sets spanning nu-skool breaks, hip-hop, and funk. He has performed at festivals worldwide and is cited as a key architect of the nu-skool breaks movement.",
-    links:{ spotify:"https://open.spotify.com/artist/0k0wRzlOlmTHfBGhSuuFUW", instagram:"https://www.instagram.com/kraftykuts/", twitter:"https://twitter.com/kraftykuts", soundcloud:"https://soundcloud.com/kraftykuts" }
-  },
-  "MADAM X": {
-    initials:"MX", color:"linear-gradient(135deg,#00d4c8,#9b3dff)",
-    stage:"Oasis Stage", time:"8:00 PM", day:"Sat",
-    genre:"Techno · Industrial · Detroit, MI",
-    bio:"Madam X is a Detroit-born DJ and producer associated with Underground Resistance — Detroit's legendary machine-music collective. She delivers raw, industrial-grade techno rooted in the Motor City's electronic heritage. A formidable live presence who has performed at Movement Festival Detroit, Berghain, and underground institutions worldwide, she is a vocal champion for Black women in electronic music. Her sets are uncompromising, physically powerful, and unapologetically Detroit.",
-    links:{ spotify:"https://open.spotify.com/artist/0eBGCLUkbMU1VKSKcLNI8H", instagram:"https://www.instagram.com/madamxdetroit/", soundcloud:"https://soundcloud.com/madamxdetroit" }
-  },
-  "THE SPONGES": {
-    initials:"TS", color:"linear-gradient(135deg,#f5c842,#00d4c8)",
-    stage:"Oasis Stage", time:"9:30 PM", day:"Fri",
-    genre:"Funk · House · Bass · South Florida",
-    bio:"Ryan Slepin and Nik Eaton are The Sponges — a South Florida duo who fuse 70s funk, heavy bass, and nostalgic sample chops with a four-on-the-floor rhythm. Their sound is rooted in James Brown, Stevie Wonder, and Earth Wind & Fire, re-cooked into modern dancefloor weapons. Collaborators include GRiZ, The Floozies, and Father Funk. With 152K+ Spotify monthly listeners and their 'Disco-Fried' tagline, they are a rising force in the funky bass underground.",
-    links:{ spotify:"https://open.spotify.com/artist/3cj6O7NrjS5l0CVo8LhpV1", instagram:"https://www.instagram.com/thesponges/", soundcloud:"https://soundcloud.com/thesponges", website:"https://thespongesmusic.com" }
-  },
-  "UNIQU3": {
-    initials:"U3", color:"linear-gradient(135deg,#ff4d8d,#f5c842)",
-    stage:"Oasis Stage", time:"9:00 PM", day:"Sun",
-    genre:"Jersey Club · Newark, NJ",
-    bio:"Born Cherise Gary in Newark, NJ, UNiiQU3 is widely known as the Queen of Jersey Club. She came up DJing local DIY parties and initially made her name as a vocalist on club tracks before pivoting to production. She began playing shows nationwide in 2014 and launched her first world tour in 2016. Jersey club — running 130–140bpm with its signature eight-bar patterns and vocal chops — has spread globally in large part through her advocacy. She has 67K+ Spotify monthly listeners and is an award-winning producer.",
-    links:{ spotify:"https://open.spotify.com/artist/5aR8qSaApKChlZvzB0Jfpx", instagram:"https://www.instagram.com/uniiqu3music/", twitter:"https://twitter.com/UNIIQU3", soundcloud:"https://soundcloud.com/uniiqu3" }
-  },
-
-  // ─── MID-TIER ──────────────────────────────────────────────
-  "DALI": {
-    initials:"DL", color:"linear-gradient(135deg,#f5c842,#ff6b1a)",
-    stage:"DNB Stage", time:"7:00 PM", day:"Sun",
-    genre:"Drum & Bass",
-    bio:"Dali is a skilled DnB DJ bringing creative energy and a sharp ear for the dance floor to Sunken Suite. Expect a set that moves between sub-genres with confidence and flair — a great warm-up for the heavy hitters to come."
-  },
-  "D. BROWN": {
-    initials:"DB", color:"linear-gradient(135deg,#9b3dff,#ff4d8d)",
-    stage:"DNB Stage", time:"TBA", day:"Sat",
-    genre:"Drum & Bass",
-    bio:"D. Brown is a rising force in the DnB scene, delivering hard-hitting sets that showcase both technical skill and a deep understanding of what makes a dance floor move. A respected voice in the regional underground."
-  },
-  "DEMIEN SIXX": {
-    initials:"DS", color:"linear-gradient(135deg,#ff4d8d,#9b3dff)",
-    stage:"DNB Stage", time:"TBA", day:"Sat",
-    genre:"Drum & Bass · Dark",
-    bio:"Demien Sixx brings a dark, intense edge to the DNB stage with sets that pull no punches. A fan favorite at underground events known for pushing the harder side of the genre with relentless energy."
-  },
-  "GRUV 42": {
-    initials:"G42", color:"linear-gradient(135deg,#00d4c8,#f5c842)",
-    stage:"Oasis Stage", time:"TBA", day:"Sun",
-    genre:"House · Groove",
-    bio:"Gruv 42 lives up to the name — every set is packed with deep, rolling grooves and soulful house music that keeps the crowd locked in. A high-quality selector with an ear for the right tune at the right moment."
-  },
-  "LAST ACTION HEROES": {
-    initials:"LA", color:"linear-gradient(135deg,#ff6b1a,#9b3dff)",
-    stage:"DNB Stage", time:"TBA", day:"Sun",
-    genre:"Drum & Bass · Jungle",
-    bio:"Last Action Heroes bring an old-school jungle-influenced sound to the modern DnB stage. Their high-energy back-to-back sets are legendary among East Coast festival-goers — expect classic rave energy and modern production."
-  },
-  "LENORE": {
-    initials:"LE", color:"linear-gradient(135deg,#ff4d8d,#f5c842)",
-    stage:"DNB Stage", time:"TBA", day:"Sun",
-    genre:"Drum & Bass · Boston, MA",
-    bio:"Connecticut-born, Boston-based DJ Lenore is one of New England's most respected drum & bass selectors. She co-founded Elements in January 1999 — a weekly D&B night at Phoenix Landing in Cambridge, MA that became one of the longest-running underground dance nights in the US, still going after 25+ years. Known for seamless mixing across all D&B styles — liquid, dark, footwork, jungle — she has booked and played alongside Dom & Roland, Goldie, LTJ Bukem, and Ed Rush.",
-    links:{ soundcloud:"https://soundcloud.com/djlenore", website:"https://elements-dnb.com" }
-  },
-  "OSCILLOT": {
-    initials:"OS", color:"linear-gradient(135deg,#9b3dff,#00d4c8)",
-    stage:"DNB Stage", time:"TBA", day:"Sun",
-    genre:"Drum & Bass · Neurofunk",
-    bio:"Oscillot is a technically gifted DnB producer and DJ whose oscillating, complex sound design draws from the neurofunk tradition while pushing into new sonic territory. High-precision sets that reward attentive listening."
-  },
-  "PAPA RUNKZ": {
-    initials:"PR", color:"linear-gradient(135deg,#f5c842,#ff4d8d)",
-    stage:"DNB Stage", time:"TBA", day:"Sun",
-    genre:"Drum & Bass · Connecticut",
-    bio:"Papa Runkz is a Connecticut-based DJ affiliated with the ConnecticutLive community, known for drum & bass and dubstep. Active in the New England underground bass scene, he hosts events and promotes the local D&B community. His SoundCloud tagline says it all: 'Real Riddim Only — DNB is the way.' He has headlined D&B boat parties in New York.",
-    links:{ soundcloud:"https://soundcloud.com/paparunkz" }
-  },
-  "SOAPPY": {
-    initials:"SO", color:"linear-gradient(135deg,#00d4c8,#9b3dff)",
-    stage:"Oasis Stage", time:"TBA", day:"Sun",
-    genre:"House · Breaks",
-    bio:"Soappy is a versatile selector who moves fluidly between house and breaks, delivering feel-good sets with a technical edge that keeps both the head and the feet moving. Underground credentials, above-ground energy."
-  },
-  "STEPPO": {
-    initials:"ST", color:"linear-gradient(135deg,#ff6b1a,#f5c842)",
-    stage:"DNB Stage", time:"TBA", day:"Sun",
-    genre:"Drum & Bass",
-    bio:"Steppo is a dedicated DnB DJ who brings consistent, quality sets to every event. Known for careful track selection and a smooth, confident style behind the decks — a dependable cornerstone of the regional bass music community."
-  },
-  "TARI": {
-    initials:"TR", color:"linear-gradient(135deg,#9b3dff,#ff4d8d)",
-    stage:"Oasis Stage", time:"TBA", day:"Sun",
-    genre:"House · Electronic",
-    bio:"Tari blends melodic, emotive electronic music with driving house rhythms to create sets that feel both intimate and anthemic — a unique voice in the Oasis Stage lineup with a knack for building an atmosphere from the ground up."
-  },
-
-  // ─── LOCAL / SUPPORTING ────────────────────────────────────
-  "BICLOPS":                { initials:"BI",  color:"linear-gradient(135deg,#00d4c8,#f5c842)", stage:"DNB Stage",   time:"TBA", day:"Fri", genre:"Drum & Bass",               bio:"Biclops is a rising local DnB talent bringing fresh energy and regional flavor to the Sunken Suite lineup. A name to watch in the New England bass music community." },
-  "CHANANAGAINS":           { initials:"CH",  color:"linear-gradient(135deg,#f5c842,#9b3dff)", stage:"Oasis Stage", time:"TBA", day:"Fri", genre:"House · Breaks",            bio:"Chananagains brings a high-energy, eclectic approach to the Oasis Stage, blending house and breaks into a seamless dance floor experience with personality to spare." },
-  "COEXIST":                { initials:"CX",  color:"linear-gradient(135deg,#9b3dff,#00d4c8)", stage:"DNB Stage",   time:"TBA", day:"Fri", genre:"Drum & Bass",               bio:"Coexist is a DnB act known for collaborative chemistry and the ability to read a room. Their sets are a showcase in synchronicity and deep genre knowledge." },
-  "COLLIN IN KIND":         { initials:"CIK", color:"linear-gradient(135deg,#ff4d8d,#f5c842)", stage:"Oasis Stage", time:"TBA", day:"Fri", genre:"House · Deep",              bio:"Collin In Kind delivers deep, thoughtful house music with soulful undertones. A skilled selector whose sets reward close listening and patient dance floor exploration." },
-  "DADAM":                  { initials:"DD",  color:"linear-gradient(135deg,#ff6b1a,#9b3dff)", stage:"DNB Stage",   time:"TBA", day:"Fri", genre:"Drum & Bass",               bio:"Dadam is a passionate DnB DJ who brings authentic energy and a love of the genre to every performance. A staple of the regional scene and a crowd favorite." },
-  "DJ SEAMUS":              { initials:"DS",  color:"linear-gradient(135deg,#f5c842,#00d4c8)", stage:"Oasis Stage", time:"TBA", day:"Sat", genre:"House · Electronic",        bio:"DJ Seamus has been holding down dance floors for years with a deep well of house music knowledge and the skills to deploy it at exactly the right moment." },
-  "EDDIE MERCED":           { initials:"EM",  color:"linear-gradient(135deg,#9b3dff,#ff4d8d)", stage:"Oasis Stage", time:"TBA", day:"Sat", genre:"House · Latin",             bio:"Eddie Merced brings a Latin-influenced house sound full of rhythm, soul, and infectious warmth. His sets feel like a celebration — music that moves the whole body." },
-  "EXZACKTO":               { initials:"EX",  color:"linear-gradient(135deg,#00d4c8,#ff6b1a)", stage:"DNB Stage",   time:"TBA", day:"Sun", genre:"Drum & Bass",               bio:"Exzackto is a precise and powerful DnB DJ whose exact, surgical mixing is matched only by the weight of his track selection. Technical excellence on the dance floor." },
-  "GAVIN QUINN":            { initials:"GQ",  color:"linear-gradient(135deg,#f5c842,#ff4d8d)", stage:"Oasis Stage", time:"TBA", day:"Fri", genre:"House · Tech House",        bio:"Gavin Quinn is a technically accomplished DJ who excels at building tension and releasing it at exactly the right moment. A crowd-pleasing tech house specialist." },
-  "GREEN JEANS":            { initials:"GJ",  color:"linear-gradient(135deg,#00d4c8,#9b3dff)", stage:"Oasis Stage", time:"TBA", day:"Sat", genre:"House · Funky",             bio:"Green Jeans brings a funky, laid-back house vibe that gets under your skin and stays there. Feel-good music delivered with style and ease — the definition of vibes." },
-  "HONEY BUNCHES OF BEATS": { initials:"HB",  color:"linear-gradient(135deg,#f5c842,#ff6b1a)", stage:"Oasis Stage", time:"TBA", day:"Sat", genre:"House · Funk · Soul",       bio:"Honey Bunches of Beats sweetens the Oasis Stage with soulful, funky house music dripping with warmth. Pure joy on the dance floor — a name that delivers exactly what it promises." },
-  "K COMPLEX":              { initials:"KC",  color:"linear-gradient(135deg,#9b3dff,#f5c842)", stage:"DNB Stage",   time:"TBA", day:"Sat", genre:"Drum & Bass",               bio:"K Complex brings intricate, layered DnB to the stage — sets that reward both casual listeners and deep genre enthusiasts with their compositional depth and technical precision." },
-  "KOHAKU":                 { initials:"KO",  color:"linear-gradient(135deg,#ff4d8d,#00d4c8)", stage:"Oasis Stage", time:"TBA", day:"Sat", genre:"House · Melodic",           bio:"Kohaku weaves melodic, emotive threads through house music sets that feel like watching a sunrise. Beautiful, introspective, and deeply moving — a unique Oasis Stage presence." },
-  "KREESAY":                { initials:"KR",  color:"linear-gradient(135deg,#ff6b1a,#9b3dff)", stage:"DNB Stage",   time:"TBA", day:"Sat", genre:"Drum & Bass",               bio:"Kreesay is an up-and-coming DnB talent whose energy behind the decks and sharp instincts for crowd-reading make every set a must-see. One of the scene's bright new names." },
-  "KUNAII":                 { initials:"KU",  color:"linear-gradient(135deg,#00d4c8,#ff4d8d)", stage:"DNB Stage",   time:"TBA", day:"Sun", genre:"Drum & Bass · Liquid",      bio:"Kunaii brings liquid DnB warmth and melodic sensibility to the stage, delivering sets that feel both uplifting and deeply satisfying — music that lifts the room." },
-  "LOUD NOISES!":           { initials:"LN",  color:"linear-gradient(135deg,#ff4d8d,#ff6b1a)", stage:"DNB Stage",   time:"TBA", day:"Sun", genre:"Drum & Bass · Hard",        bio:"Loud Noises! does exactly what it says on the tin — big, loud, uncompromising DnB that shakes the walls and rattles the crowd into a frenzy. No warning needed." },
-  "LOWKEE":                 { initials:"LK",  color:"linear-gradient(135deg,#9b3dff,#00d4c8)", stage:"Oasis Stage", time:"TBA", day:"Sun", genre:"House · Deep",              bio:"Lowkee keeps it refined and understated — deep, hypnotic house music that draws you in slowly and doesn't let go until the very last beat. Subtlety as a superpower." },
-  "MCCOOEY":                { initials:"MC",  color:"linear-gradient(135deg,#f5c842,#9b3dff)", stage:"Oasis Stage", time:"TBA", day:"Sun", genre:"House · Breaks",            bio:"McCooey is a versatile selector who moves between house and breaks with natural ease, always keeping one eye on the dance floor and one on the next move." },
-  "MENTALLY ILL":           { initials:"MI",  color:"linear-gradient(135deg,#ff6b1a,#ff4d8d)", stage:"DNB Stage",   time:"TBA", day:"Sun", genre:"Drum & Bass · Dark",        bio:"Mentally Ill takes DnB to its darkest corners — relentless, intense sets that push the BPM and the mind to their limits. Prepare accordingly. Not for the faint-hearted." },
-  "MISS HAZE":              { initials:"MH",  color:"linear-gradient(135deg,#ff4d8d,#9b3dff)", stage:"Oasis Stage", time:"TBA", day:"Sun", genre:"House · Atmospheric",       bio:"Miss Haze wraps the Oasis Stage in a dreamy, atmospheric layer of house music — warm, hazy, and hypnotic sets that blur the line between day and night." },
-  "MO' BACON":              { initials:"MB",  color:"linear-gradient(135deg,#ff6b1a,#f5c842)", stage:"Oasis Stage", time:"TBA", day:"Sun", genre:"House · Funk",              bio:"Mo' Bacon sizzles on the Oasis Stage with funky, flavorful house music that brings the heat and keeps the crowd coming back for more. Crispy, satisfying, essential." },
-  "NICK MINIERI":           { initials:"NM",  color:"linear-gradient(135deg,#9b3dff,#ff6b1a)", stage:"DNB Stage",   time:"TBA", day:"Sun", genre:"Drum & Bass",               bio:"Nick Minieri is a respected DnB DJ with deep record knowledge and the ability to build a set that takes the crowd on a genuine journey through the music's history and future." },
-  "NOTORIOUS CHOW":         { initials:"NC",  color:"linear-gradient(135deg,#f5c842,#ff4d8d)", stage:"Oasis Stage", time:"TBA", day:"Sun", genre:"House · Bass",              bio:"Notorious Chow delivers a deliciously heavy dose of bass-driven house music — flavorful, satisfying, and always leaving the crowd wanting one more track." },
-  "ORIGINATE":              { initials:"OR",  color:"linear-gradient(135deg,#00d4c8,#ff6b1a)", stage:"DNB Stage",   time:"TBA", day:"Sun", genre:"Drum & Bass",               bio:"Originate lives up to the name — sets that feel genuinely fresh, drawing from classic DnB heritage and pushing into new territory with original productions and ideas." },
-  "PAULYWOG":               { initials:"PW",  color:"linear-gradient(135deg,#9b3dff,#f5c842)", stage:"Oasis Stage", time:"TBA", day:"Sun", genre:"House · Breaks",            bio:"Paulywog is a fun, energetic selector who blends house and breaks into feel-good sets that bring smiles and movement to the Oasis Stage. Pure dance floor joy." },
-  "QUEERVOYANT":            { initials:"QV",  color:"linear-gradient(135deg,#ff4d8d,#00d4c8)", stage:"Oasis Stage", time:"TBA", day:"Sun", genre:"House · Queer Electronic",  bio:"Queervoyant brings a bold, joyful, and boundary-pushing queer electronic sound to the stage — inclusive, uplifting music made with love for the community and the dance floor." },
-  "RED DAWN":               { initials:"RD",  color:"linear-gradient(135deg,#ff4d8d,#ff6b1a)", stage:"DNB Stage",   time:"TBA", day:"Sun", genre:"Drum & Bass",               bio:"Red Dawn arrives on the stage like the name implies — blazing, energetic, impossible to ignore. DnB sets that announce themselves loudly and deliver on every promise." },
-  "SESH":                   { initials:"SE",  color:"linear-gradient(135deg,#9b3dff,#ff4d8d)", stage:"Oasis Stage", time:"TBA", day:"Sun", genre:"House · Session Vibes",     bio:"Sesh keeps the session alive — laid-back but driving house music perfectly suited for the late-night hours when the real magic happens and the real heads are still on the floor." },
-  "SINGLE GRIND":           { initials:"SG",  color:"linear-gradient(135deg,#f5c842,#9b3dff)", stage:"Oasis Stage", time:"TBA", day:"Sun", genre:"House · Hypnotic",          bio:"Single Grind locks into a groove and stays there — relentless, hypnotic house music that rewards patience and keeps the floor locked in for the long haul." },
-  "SLAYTOVEN":              { initials:"SL",  color:"linear-gradient(135deg,#ff6b1a,#00d4c8)", stage:"DNB Stage",   time:"TBA", day:"Sun", genre:"Drum & Bass · Heavy",       bio:"Slaytoven brings orchestral drama to the DnB stage — heavy, cinematic sets that feel like a movie score mixed at 174 BPM. Bold, unforgettable, and relentlessly powerful." },
-  "SOKOMODO":               { initials:"SK",  color:"linear-gradient(135deg,#00d4c8,#9b3dff)", stage:"Oasis Stage", time:"TBA", day:"Sun", genre:"House · World",             bio:"Sokomodo blends global rhythms and world music influences into a unique house sound that travels far and wide without ever losing the dance floor. Music with no borders." },
-  "SYNESTHESIA":            { initials:"SY",  color:"linear-gradient(135deg,#9b3dff,#ff6b1a)", stage:"DNB Stage",   time:"TBA", day:"Sun", genre:"Drum & Bass · Sensory",     bio:"Synesthesia turns DnB into a full sensory experience — sets designed to make you see sound and feel music in color. A truly immersive performer who blurs art and rave." },
-  "TIMMOLOGY":              { initials:"TM",  color:"linear-gradient(135deg,#f5c842,#00d4c8)", stage:"Oasis Stage", time:"TBA", day:"Sun", genre:"House · Time-Tested",       bio:"Timmology brings a time-tested approach to house music — classic influences filtered through a modern lens for sets that feel timeless and fresh in equal measure." },
-  "VALDEE":                 { initials:"VA",  color:"linear-gradient(135deg,#ff4d8d,#f5c842)", stage:"Oasis Stage", time:"TBA", day:"Sun", genre:"House · Electronic",        bio:"Valdee is a nimble, expressive DJ whose house sets carry emotional depth and playful energy in equal measure — always surprising, always satisfying, always worth your night." },
-  "WHO:IS":                 { initials:"WI",  color:"linear-gradient(135deg,#9b3dff,#00d4c8)", stage:"DNB Stage",   time:"TBA", day:"Sun", genre:"Drum & Bass · Mystery",     bio:"WHO:IS remains one of the scene's most intriguing acts — enigmatic, genre-blending DnB that keeps audiences guessing and coming back to find out more. The question is worth asking." },
+  "DARA":{"initials":"DA","color":"linear-gradient(135deg,#9b3dff,#ff4d8d)","stage":"DNB Stage","time":"11:30 PM","day":"Fri","genre":"Drum & Bass · Jungle","bio":"Dara is a legendary veteran of the drum & bass scene, revered for his deep, soulful selections and encyclopedic knowledge of jungle and DnB. A true selector whose sets feel like a journey through the genre's entire history."},
+  "DEEKLINE":{"initials":"DK","color":"linear-gradient(135deg,#f5c842,#e8941a)","stage":"DNB Stage","time":"10:30 PM","day":"Fri","genre":"Drum & Bass · Breakbeat","bio":"Deekline is a prolific producer and DJ whose infectious energy and genre-blending style have made him a global festival favorite. Co-founder of Utter Gutter Records, pushing boundaries for over two decades."},
+  "DEGS":{"initials":"DG","color":"linear-gradient(135deg,#00d4c8,#0a3d6b)","stage":"DNB Stage","time":"8:00 PM","day":"Sat","genre":"Drum & Bass","bio":"Degs brings a raw, energetic approach to drum & bass, blending old school influences with a modern sound. A respected figure in the UK DnB underground."},
+  "EVOL INTENT":{"initials":"EI","color":"linear-gradient(135deg,#ff6b1a,#9b3dff)","stage":"DNB Stage","time":"10:00 PM","day":"Sun","genre":"Drum & Bass · Neurofunk","bio":"Evol Intent is an Atlanta-based drum & bass collective that helped put American DnB on the map. Known for dark, hard-hitting neurofunk and legendary live energy."},
+  "GEORGIE RIOT":{"initials":"GR","color":"linear-gradient(135deg,#ff4d8d,#f5c842)","stage":"DNB Stage","time":"10:00 PM","day":"Sat","genre":"Drum & Bass · Jump-Up","bio":"Georgie Riot is known for high-energy sets packed with jump-up bangers and crowd-wrecking drops. A firm festival favorite across the UK and US."},
+  "JFB":{"initials":"JFB","color":"linear-gradient(135deg,#9b3dff,#00d4c8)","stage":"DNB Stage","time":"9:30 PM","day":"Fri","genre":"Drum & Bass · Scratch DJ","bio":"JFB is a multi-award winning scratch DJ and drum & bass artist. World DMC Champion, renowned for incorporating live scratching into DnB sets in a way no one else can match."},
+  "PHANTOM 45":{"initials":"P45","color":"linear-gradient(135deg,#3d1f8a,#9b3dff)","stage":"DNB Stage","time":"9:00 PM","day":"Sat","genre":"Drum & Bass · Liquid","bio":"Phantom 45 delivers smooth, rolling liquid drum & bass with emotional depth and precise mixing. A key player in the liquid DnB movement."},
+  "RONI SIZE":{"initials":"RS","color":"linear-gradient(135deg,#9b3dff,#6b1fcc)","stage":"DNB Stage","time":"1:00 AM","day":"Fri","genre":"Drum & Bass · Jazz · Live","bio":"Roni Size is a Bristol legend and Mercury Prize winner whose album New Forms with Reprazent changed music forever in 1997. A true pioneer in drum & bass history."},
+  "SPOR":{"initials":"SP","color":"linear-gradient(135deg,#f5c842,#e8941a)","stage":"DNB Stage","time":"12:00 AM","day":"Sat","genre":"Drum & Bass · Neurofunk","bio":"SPOR (Jon Gooch) is one of the defining voices of neurofunk drum & bass. His clinical sound design and intense live sets have cemented his status as a true innovator."},
+  "UNGLUED":{"initials":"UN","color":"linear-gradient(135deg,#ff6b1a,#f5c842)","stage":"DNB Stage","time":"8:00 PM","day":"Sun","genre":"Drum & Bass · Rollers","bio":"Unglued is a celebrated producer and DJ known for his rolling, head-nodding DnB sound. His productions have been supported by the biggest names in the scene."},
+  "CARLO LIO":{"initials":"CL","color":"linear-gradient(135deg,#ff4d8d,#9b3dff)","stage":"Oasis Stage","time":"10:30 PM","day":"Fri","genre":"Techno · House","bio":"Carlo Lio is a Canadian techno and house artist known for his hypnotic, driving sound. A veteran of underground clubs globally with releases on top-tier labels."},
+  "CODES":{"initials":"CO","color":"linear-gradient(135deg,#00d4c8,#041d3a)","stage":"Oasis Stage","time":"11:30 PM","day":"Fri","genre":"House · Breaks","bio":"Codes brings a fresh, modern take to the Oasis Stage with a sound rooted in deep house and breaks. A rising star with a rapidly growing international following."},
+  "GETTOBLASTER":{"initials":"GB","color":"linear-gradient(135deg,#ff6b1a,#ff4d8d)","stage":"Oasis Stage","time":"10:00 PM","day":"Sat","genre":"House · Techno","bio":"Gettoblaster is a Chicago native who embodies the raw spirit of house music. Expect dirty, funky, groove-laden sets that keep the dance floor moving all night."},
+  "J. PHLIP":{"initials":"JP","color":"linear-gradient(135deg,#9b3dff,#f5c842)","stage":"Oasis Stage","time":"1:00 AM","day":"Fri","genre":"House · Techno","bio":"J. Phlip is a San Francisco-based DJ and producer known for her infectious energy and impeccable track selection. A beloved fixture of the US house and techno circuit."},
+  "KRAFTY KUTZ":{"initials":"KK","color":"linear-gradient(135deg,#00d4c8,#9b3dff)","stage":"Oasis Stage","time":"7:00 PM","day":"Sun","genre":"Breaks · Breakbeat","bio":"Krafty Kutz is a pioneering breaks artist who helped define the modern breakbeat sound. His razor-sharp mixing and original productions have earned him a global fanbase."},
+  "MADAM X":{"initials":"MX","color":"linear-gradient(135deg,#00d4c8,#9b3dff)","stage":"Oasis Stage","time":"8:00 PM","day":"Sat","genre":"Techno · Industrial","bio":"Madam X is a Detroit-born techno artist delivering powerful, bass-heavy industrial techno. A fierce performer whose sets are an uncompromising journey into the machine."},
+  "THE SPONGES":{"initials":"TS","color":"linear-gradient(135deg,#f5c842,#00d4c8)","stage":"Oasis Stage","time":"9:30 PM","day":"Fri","genre":"House · Funk","bio":"The Sponges bring fun, funky house energy that soaks up every vibe in the room and gives it back tenfold. Known for dynamic b2b performances."},
+  "UNIQU3":{"initials":"U3","color":"linear-gradient(135deg,#ff4d8d,#f5c842)","stage":"Oasis Stage","time":"9:00 PM","day":"Sun","genre":"House · Electronic","bio":"UNIQU3 brings a distinctive, soulful touch to house music with carefully curated sets that take listeners from deep grooves to peak-time euphoria."},
+  "DALI":{"initials":"DL","color":"linear-gradient(135deg,#f5c842,#ff6b1a)","stage":"DNB Stage","time":"7:00 PM","day":"Sun","genre":"Drum & Bass","bio":"Dali is a skilled DnB DJ bringing creative energy and a sharp ear for the dance floor to Sunken Suite."},
+  "D. BROWN":{"initials":"DB","color":"linear-gradient(135deg,#9b3dff,#ff4d8d)","stage":"DNB Stage","time":"TBA","day":"Sat","genre":"Drum & Bass","bio":"D. Brown is a rising force in the DnB scene, delivering hard-hitting sets that showcase technical skill and deep understanding of the dance floor."},
+  "DEMIEN SIXX":{"initials":"DS","color":"linear-gradient(135deg,#ff4d8d,#9b3dff)","stage":"DNB Stage","time":"TBA","day":"Sat","genre":"Drum & Bass · Dark","bio":"Demien Sixx brings a dark, intense edge to the DNB stage with sets that push the harder side of the genre."},
+  "GRUV 42":{"initials":"G42","color":"linear-gradient(135deg,#00d4c8,#f5c842)","stage":"Oasis Stage","time":"TBA","day":"Sun","genre":"House · Groove","bio":"Gruv 42 lives up to the name — every set is packed with deep, rolling grooves and soulful house music."},
+  "LAST ACTION HEROES":{"initials":"LA","color":"linear-gradient(135deg,#ff6b1a,#9b3dff)","stage":"DNB Stage","time":"TBA","day":"Sun","genre":"Drum & Bass · Jungle","bio":"Last Action Heroes bring an old-school jungle-influenced sound to the modern DnB stage with legendary back-to-back energy."},
+  "LENORE":{"initials":"LE","color":"linear-gradient(135deg,#ff4d8d,#f5c842)","stage":"Oasis Stage","time":"TBA","day":"Sun","genre":"House · Deep House","bio":"Lenore crafts deeply emotional, immersive house sets. Her careful track selection and smooth transitions have earned her a devoted following."},
+  "OSCILLOT":{"initials":"OS","color":"linear-gradient(135deg,#9b3dff,#00d4c8)","stage":"DNB Stage","time":"TBA","day":"Sun","genre":"Drum & Bass · Neurofunk","bio":"Oscillot is a technically gifted DnB producer and DJ whose complex sound design draws from neurofunk while pushing into new territory."},
+  "PAPA RUNKZ":{"initials":"PR","color":"linear-gradient(135deg,#f5c842,#ff4d8d)","stage":"DNB Stage","time":"TBA","day":"Sun","genre":"Drum & Bass · Jump-Up","bio":"Papa Runkz is a crowd-pleasing DnB DJ known for jump-up rollers and a performance style that gets every corner of the room bouncing."},
+  "SOAPPY":{"initials":"SO","color":"linear-gradient(135deg,#00d4c8,#9b3dff)","stage":"Oasis Stage","time":"TBA","day":"Sun","genre":"House · Breaks","bio":"Soappy is a versatile selector who moves fluidly between house and breaks with feel-good sets and technical edge."},
+  "STEPPO":{"initials":"ST","color":"linear-gradient(135deg,#ff6b1a,#f5c842)","stage":"DNB Stage","time":"TBA","day":"Sun","genre":"Drum & Bass","bio":"Steppo brings consistent, quality DnB to every event. Known for careful track selection and a smooth, confident style behind the decks."},
+  "TARI":{"initials":"TR","color":"linear-gradient(135deg,#9b3dff,#ff4d8d)","stage":"Oasis Stage","time":"TBA","day":"Sun","genre":"House · Electronic","bio":"Tari blends melodic, emotive electronic music with driving house rhythms for sets that feel both intimate and anthemic."},
+  "BICLOPS":{"initials":"BI","color":"linear-gradient(135deg,#00d4c8,#f5c842)","stage":"DNB Stage","time":"TBA","day":"Fri","genre":"Drum & Bass","bio":"Biclops is a rising local DnB talent bringing fresh energy and regional flavor to the Sunken Suite lineup."},
+  "CHANANAGAINS":{"initials":"CH","color":"linear-gradient(135deg,#f5c842,#9b3dff)","stage":"Oasis Stage","time":"TBA","day":"Fri","genre":"House · Breaks","bio":"Chananagains brings a high-energy, eclectic approach blending house and breaks into a seamless dance floor experience."},
+  "COEXIST":{"initials":"CX","color":"linear-gradient(135deg,#9b3dff,#00d4c8)","stage":"DNB Stage","time":"TBA","day":"Fri","genre":"Drum & Bass","bio":"Coexist is a DnB duo known for collaborative chemistry and ability to read a room."},
+  "COLLIN IN KIND":{"initials":"CIK","color":"linear-gradient(135deg,#ff4d8d,#f5c842)","stage":"Oasis Stage","time":"TBA","day":"Fri","genre":"House · Deep","bio":"Collin In Kind delivers deep, thoughtful house music with soulful undertones and careful selection."},
+  "DADAM":{"initials":"DD","color":"linear-gradient(135deg,#ff6b1a,#9b3dff)","stage":"DNB Stage","time":"TBA","day":"Fri","genre":"Drum & Bass","bio":"Dadam is a passionate DnB DJ bringing authentic energy and love of the genre to every performance."},
+  "DJ SEAMUS":{"initials":"DS","color":"linear-gradient(135deg,#f5c842,#00d4c8)","stage":"Oasis Stage","time":"TBA","day":"Sat","genre":"House · Electronic","bio":"DJ Seamus has been holding down dance floors for years with a deep well of house music knowledge."},
+  "EDDIE MERCED":{"initials":"EM","color":"linear-gradient(135deg,#9b3dff,#ff4d8d)","stage":"Oasis Stage","time":"TBA","day":"Sat","genre":"House · Latin","bio":"Eddie Merced brings a Latin-influenced house sound full of rhythm, soul, and infectious warmth."},
+  "EXZACKTO":{"initials":"EX","color":"linear-gradient(135deg,#00d4c8,#ff6b1a)","stage":"DNB Stage","time":"TBA","day":"Sun","genre":"Drum & Bass","bio":"Exzackto is a precise and powerful DnB DJ whose surgical mixing is matched only by the weight of his track selection."},
+  "GAVIN QUINN":{"initials":"GQ","color":"linear-gradient(135deg,#f5c842,#ff4d8d)","stage":"Oasis Stage","time":"TBA","day":"Fri","genre":"House · Tech House","bio":"Gavin Quinn excels at building tension and releasing it at exactly the right moment. A tech house specialist."},
+  "GREEN JEANS":{"initials":"GJ","color":"linear-gradient(135deg,#00d4c8,#9b3dff)","stage":"Oasis Stage","time":"TBA","day":"Sat","genre":"House · Funky","bio":"Green Jeans brings a funky, laid-back house vibe that gets under your skin and stays there."},
+  "HONEY BUNCHES OF BEATS":{"initials":"HB","color":"linear-gradient(135deg,#f5c842,#ff6b1a)","stage":"Oasis Stage","time":"TBA","day":"Sat","genre":"House · Funk · Soul","bio":"Honey Bunches of Beats sweetens the Oasis Stage with soulful, funky house music dripping with warmth."},
+  "K COMPLEX":{"initials":"KC","color":"linear-gradient(135deg,#9b3dff,#f5c842)","stage":"DNB Stage","time":"TBA","day":"Sat","genre":"Drum & Bass","bio":"K Complex brings intricate, layered DnB to the stage with compositional depth that rewards close listening."},
+  "KOHAKU":{"initials":"KO","color":"linear-gradient(135deg,#ff4d8d,#00d4c8)","stage":"Oasis Stage","time":"TBA","day":"Sat","genre":"House · Melodic","bio":"Kohaku weaves melodic, emotive threads through house sets that feel like watching a sunrise."},
+  "KREESAY":{"initials":"KR","color":"linear-gradient(135deg,#ff6b1a,#9b3dff)","stage":"DNB Stage","time":"TBA","day":"Sat","genre":"Drum & Bass","bio":"Kreesay is an up-and-coming DnB talent whose energy and crowd-reading instincts make every set a must-see."},
+  "KUNAII":{"initials":"KU","color":"linear-gradient(135deg,#00d4c8,#ff4d8d)","stage":"DNB Stage","time":"TBA","day":"Sun","genre":"Drum & Bass · Liquid","bio":"Kunaii brings liquid DnB warmth and melodic sensibility — uplifting and deeply satisfying sets."},
+  "LOUD NOISES!":{"initials":"LN","color":"linear-gradient(135deg,#ff4d8d,#ff6b1a)","stage":"DNB Stage","time":"TBA","day":"Sun","genre":"Drum & Bass · Hard","bio":"Loud Noises! does exactly what it says — big, loud, uncompromising DnB that shakes the walls."},
+  "LOWKEE":{"initials":"LK","color":"linear-gradient(135deg,#9b3dff,#00d4c8)","stage":"Oasis Stage","time":"TBA","day":"Sun","genre":"House · Deep","bio":"Lowkee keeps it refined — deep, hypnotic house that draws you in slowly and doesn't let go."},
+  "MCCOOEY":{"initials":"MC","color":"linear-gradient(135deg,#f5c842,#9b3dff)","stage":"Oasis Stage","time":"TBA","day":"Sun","genre":"House · Breaks","bio":"McCooey moves between house and breaks with natural ease, always keeping one eye on the dance floor."},
+  "MENTALLY ILL":{"initials":"MI","color":"linear-gradient(135deg,#ff6b1a,#ff4d8d)","stage":"DNB Stage","time":"TBA","day":"Sun","genre":"Drum & Bass · Dark","bio":"Mentally Ill takes DnB to its darkest corners — relentless, intense sets not for the faint-hearted."},
+  "MISS HAZE":{"initials":"MH","color":"linear-gradient(135deg,#ff4d8d,#9b3dff)","stage":"Oasis Stage","time":"TBA","day":"Sun","genre":"House · Atmospheric","bio":"Miss Haze wraps the Oasis Stage in atmospheric, dreamy house — warm, hazy, and hypnotic."},
+  "MO' BACON":{"initials":"MB","color":"linear-gradient(135deg,#ff6b1a,#f5c842)","stage":"Oasis Stage","time":"TBA","day":"Sun","genre":"House · Funk","bio":"Mo' Bacon sizzles on the Oasis Stage with funky, flavorful house that brings the heat."},
+  "NICK MINIERI":{"initials":"NM","color":"linear-gradient(135deg,#9b3dff,#ff6b1a)","stage":"DNB Stage","time":"TBA","day":"Sun","genre":"Drum & Bass","bio":"Nick Minieri is a respected DnB DJ with deep record knowledge who builds sets that take you on a genuine journey."},
+  "NOTORIOUS CHOW":{"initials":"NC","color":"linear-gradient(135deg,#f5c842,#ff4d8d)","stage":"Oasis Stage","time":"TBA","day":"Sun","genre":"House · Bass","bio":"Notorious Chow delivers a deliciously heavy dose of bass-driven house — flavourful and satisfying."},
+  "ORIGINATE":{"initials":"OR","color":"linear-gradient(135deg,#00d4c8,#ff6b1a)","stage":"DNB Stage","time":"TBA","day":"Sun","genre":"Drum & Bass","bio":"Originate lives up to the name — sets that feel genuinely fresh, drawing from classic heritage while pushing forward."},
+  "PAULYWOG":{"initials":"PW","color":"linear-gradient(135deg,#9b3dff,#f5c842)","stage":"Oasis Stage","time":"TBA","day":"Sun","genre":"House · Breaks","bio":"Paulywog blends house and breaks into feel-good sets that bring smiles and movement to the Oasis Stage."},
+  "QUEERVOYANT":{"initials":"QV","color":"linear-gradient(135deg,#ff4d8d,#00d4c8)","stage":"Oasis Stage","time":"TBA","day":"Sun","genre":"House · Queer Electronic","bio":"Queervoyant brings a bold, joyful queer electronic sound — inclusive, uplifting music made with love."},
+  "RED DAWN":{"initials":"RD","color":"linear-gradient(135deg,#ff4d8d,#ff6b1a)","stage":"DNB Stage","time":"TBA","day":"Sun","genre":"Drum & Bass","bio":"Red Dawn arrives blazing — energetic DnB sets that announce themselves loudly and deliver every time."},
+  "SESH":{"initials":"SE","color":"linear-gradient(135deg,#9b3dff,#ff4d8d)","stage":"Oasis Stage","time":"TBA","day":"Sun","genre":"House · Session Vibes","bio":"Sesh keeps the session alive — laid-back but driving house perfectly suited for the late-night hours."},
+  "SINGLE GRIND":{"initials":"SG","color":"linear-gradient(135deg,#f5c842,#9b3dff)","stage":"Oasis Stage","time":"TBA","day":"Sun","genre":"House · Hypnotic","bio":"Single Grind locks into a groove and stays there — relentless, hypnotic house that rewards patience."},
+  "SLAYTOVEN":{"initials":"SL","color":"linear-gradient(135deg,#ff6b1a,#00d4c8)","stage":"DNB Stage","time":"TBA","day":"Sun","genre":"Drum & Bass · Heavy","bio":"Slaytoven brings orchestral drama to the DnB stage — heavy, cinematic sets at 174 BPM."},
+  "SOKOMODO":{"initials":"SK","color":"linear-gradient(135deg,#00d4c8,#9b3dff)","stage":"Oasis Stage","time":"TBA","day":"Sun","genre":"House · World","bio":"Sokomodo blends global rhythms into a unique house sound that travels far without losing the dance floor."},
+  "SYNESTHESIA":{"initials":"SY","color":"linear-gradient(135deg,#9b3dff,#ff6b1a)","stage":"DNB Stage","time":"TBA","day":"Sun","genre":"Drum & Bass · Sensory","bio":"Synesthesia turns DnB into a full sensory experience — sets designed to make you see sound in colors."},
+  "TIMMOLOGY":{"initials":"TM","color":"linear-gradient(135deg,#f5c842,#00d4c8)","stage":"Oasis Stage","time":"TBA","day":"Sun","genre":"House · Classic","bio":"Timmology brings a time-tested approach to house music — classic influences filtered through a modern lens."},
+  "VALDEE":{"initials":"VA","color":"linear-gradient(135deg,#ff4d8d,#f5c842)","stage":"Oasis Stage","time":"TBA","day":"Sun","genre":"House · Electronic","bio":"Valdee is a nimble, expressive DJ whose house sets carry emotional depth and playful energy."},
+  "WHO:IS":{"initials":"WI","color":"linear-gradient(135deg,#9b3dff,#00d4c8)","stage":"DNB Stage","time":"TBA","day":"Sun","genre":"Drum & Bass","bio":"WHO:IS remains one of the scene's most intriguing acts — enigmatic, genre-blending DnB that keeps audiences guessing."},
 };
 
 // ============================================================
-// LINK ICON MAP
+// PERSONAL SCHEDULE — localStorage
 // ============================================================
-const linkIcons = {
-  spotify:   { icon:'🎵', label:'Spotify',    cls:'spotify' },
-  instagram: { icon:'📷', label:'Instagram',  cls:'instagram' },
-  twitter:   { icon:'🐦', label:'Twitter',    cls:'twitter' },
-  soundcloud:{ icon:'☁',  label:'SoundCloud', cls:'soundcloud' },
-  facebook:  { icon:'📘', label:'Facebook',   cls:'facebook' },
-  youtube:   { icon:'▶',  label:'YouTube',    cls:'youtube' },
-  website:   { icon:'🌐', label:'Website',    cls:'website' },
-};
+const MY_SCHED_KEY = 'sunkensuite_my_schedule';
+function getMySchedule() { try { return JSON.parse(localStorage.getItem(MY_SCHED_KEY)) || []; } catch(e) { return []; } }
+function saveMySchedule(arr) { localStorage.setItem(MY_SCHED_KEY, JSON.stringify(arr)); }
 
-// ============================================================
-// RENDER CARDS
-// ============================================================
-let currentFilter = 'all';
-let currentSearch = '';
-
-function getStageClass(stage) {
-  return stage === 'DNB Stage' ? 'dnb' : 'oasis';
+function toggleMySchedule(key) {
+  let mine = getMySchedule();
+  const idx = mine.indexOf(key);
+  if (idx === -1) { mine.push(key); showToast(`⭐ ${key} added to your schedule`); }
+  else { mine.splice(idx, 1); showToast(`Removed ${key} from schedule`); }
+  saveMySchedule(mine);
+  refreshAllButtons();
+  updateMySchedTab();
+  if (document.getElementById('day-mine').classList.contains('active')) renderMySchedule();
+  // Update modal button if open
+  const openName = document.getElementById('modalName').textContent;
+  if (openName === key) updateModalAddBtn(key);
 }
 
-function buildCard(name, a) {
-  const sc = getStageClass(a.stage);
-  const headlinerBadge = a.headliner
-    ? `<div class="card-headliner-badge">⭐ Headliner</div>` : '';
-  const timeLabel = a.time !== 'TBA'
-    ? `<div class="card-time">${a.time} · ${a.day}</div>` : '';
-
-  // Placeholder SVG — pirate ship anchor / wave logo using Sunken Suite palette
-  const placeholderSvg = `
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none">
-      <circle cx="50" cy="50" r="48" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-      <!-- Stylised skull icon -->
-      <ellipse cx="50" cy="42" rx="18" ry="16" fill="rgba(255,255,255,0.18)"/>
-      <rect x="38" y="55" width="24" height="8" rx="3" fill="rgba(255,255,255,0.18)"/>
-      <circle cx="43" cy="42" r="4" fill="rgba(2,11,26,0.7)"/>
-      <circle cx="57" cy="42" r="4" fill="rgba(2,11,26,0.7)"/>
-      <rect x="47" y="50" width="6" height="2" rx="1" fill="rgba(2,11,26,0.5)"/>
-      <!-- Crossbones -->
-      <line x1="30" y1="68" x2="70" y2="74" stroke="rgba(255,255,255,0.15)" stroke-width="3" stroke-linecap="round"/>
-      <line x1="70" y1="68" x2="30" y2="74" stroke="rgba(255,255,255,0.15)" stroke-width="3" stroke-linecap="round"/>
-    </svg>`;
-
-  // Placeholder bg uses the artist's gradient color
-  const placeholderStyle = `background:${a.color};`;
-
-  return `
-    <div class="artist-card ${sc}"
-         data-name="${name}"
-         data-stage="${sc}"
-         data-search="${name.toLowerCase()} ${a.genre.toLowerCase()} ${a.bio.toLowerCase()}"
-         onclick="openArtist(this.dataset.name)">
-      <div class="card-placeholder" style="${placeholderStyle}">
-        ${placeholderSvg}
-      </div>
-      <div class="card-stage-strip"></div>
-      <div class="card-overlay"></div>
-      ${headlinerBadge}
-      <div class="card-label">
-        <div class="card-name">${name}</div>
-        ${timeLabel}
-      </div>
-    </div>
-  `;
+function refreshAllButtons() {
+  const mine = getMySchedule();
+  document.querySelectorAll('.add-btn').forEach(btn => {
+    const isAdded = mine.includes(btn.dataset.artist);
+    btn.textContent = isAdded ? '✓' : '+';
+    btn.classList.toggle('added', isAdded);
+    btn.title = isAdded ? 'Remove from my schedule' : 'Add to my schedule';
+  });
 }
 
-function renderGrid() {
-  const grid = document.getElementById('artistGrid');
-  grid.innerHTML = Object.entries(artists).map(([name, a]) => buildCard(name, a)).join('');
-  applyFilters();
+function updateMySchedTab() {
+  const mine = getMySchedule();
+  const tab = document.getElementById('mySchedTab');
+  if (tab) tab.textContent = mine.length > 0 ? `⭐ Mine (${mine.length})` : '⭐ Mine';
+  document.getElementById('clearMySchedule').style.display = mine.length > 0 ? 'block' : 'none';
 }
+
+function renderMySchedule() {
+  const mine = getMySchedule();
+  const listEl = document.getElementById('mySchedList');
+  const emptyEl = document.getElementById('mySchedEmpty');
+  emptyEl.style.display = mine.length === 0 ? 'block' : 'none';
+  if (mine.length === 0) { listEl.innerHTML = ''; return; }
+
+  const days = { Fri: [], Sat: [], Sun: [], TBA: [] };
+  mine.forEach(k => { const a = artists[k]; if (!a) return; const d = a.day || 'TBA'; (days[d] || days.TBA).push(k); });
+
+  const dayLabels = { Fri:'🎉 Friday · July 17', Sat:'🎉 Saturday · July 18', Sun:'🎉 Sunday · July 19', TBA:'📌 TBA' };
+  const dotMap = { 'DNB Stage':'#9b3dff', 'Oasis Stage':'#00d4c8' };
+
+  let html = '';
+  Object.entries(days).forEach(([day, keys]) => {
+    if (!keys.length) return;
+    html += `<div class="my-day-label">${dayLabels[day]}</div>`;
+    keys.forEach(k => {
+      const a = artists[k];
+      const dot = dotMap[a.stage] || '#888';
+      html += `<div class="sched-item" onclick="openArtist('${k.replace(/'/g,"\\'")}')">
+        <div class="item-time" style="font-size:12px;">${a.time}</div>
+        <div class="item-avatar" style="background:${a.color};font-family:'Poppins',sans-serif;font-size:11px;font-weight:800;color:white;width:42px;height:42px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">${a.initials}</div>
+        <div class="item-info"><div class="item-name">${k}</div><div class="item-meta">${a.stage}</div></div>
+        <div class="item-actions">
+          <span class="item-arrow">›</span>
+          <button class="add-btn added" data-artist="${k}" onclick="event.stopPropagation();toggleMySchedule('${k.replace(/'/g,"\\'")}')">✓</button>
+        </div>
+      </div>`;
+    });
+  });
+  listEl.innerHTML = html;
+}
+
+// ============================================================
+// DAY TABS
+// ============================================================
+let currentDay = 'fri';
+document.querySelectorAll('.day-tab').forEach(tab => {
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+    currentDay = this.dataset.day;
+    document.querySelectorAll('.schedule-day').forEach(d => d.classList.remove('active'));
+    if (currentDay === 'mine') {
+      document.getElementById('day-mine').classList.add('active');
+      renderMySchedule();
+    } else {
+      const el = document.getElementById('day-' + currentDay);
+      if (el) el.classList.add('active');
+      applyFilters();
+    }
+    document.getElementById('noResults').style.display = 'none';
+  });
+});
+
+// ============================================================
+// STAGE FILTER
+// ============================================================
+let currentStage = 'all';
+document.querySelectorAll('.stage-pill').forEach(pill => {
+  pill.addEventListener('click', function() {
+    document.querySelectorAll('.stage-pill').forEach(p => p.classList.remove('on'));
+    this.classList.add('on');
+    currentStage = this.dataset.stage;
+    applyFilters();
+  });
+});
 
 function applyFilters() {
-  const cards = document.querySelectorAll('.artist-card');
-  let visible = 0;
-  cards.forEach(card => {
-    const matchFilter = currentFilter === 'all' || card.dataset.stage === currentFilter;
-    const matchSearch = !currentSearch || card.dataset.search.includes(currentSearch);
-    if (matchFilter && matchSearch) {
-      card.classList.remove('hidden');
-      visible++;
-    } else {
-      card.classList.add('hidden');
-    }
+  if (currentDay === 'mine') return;
+  const dayEl = document.getElementById('day-' + currentDay);
+  if (!dayEl) return;
+  dayEl.querySelectorAll('.stage-section').forEach(section => {
+    const sectionStage = section.dataset.section;
+    const show = currentStage === 'all' || currentStage === sectionStage;
+    section.style.display = show ? 'block' : 'none';
   });
-  document.getElementById('resultsMeta').textContent = `${visible} artist${visible !== 1 ? 's' : ''}`;
-  document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
 }
 
-function setFilter(filter, btn) {
-  currentFilter = filter;
-  document.querySelectorAll('.stage-btn').forEach(b => {
-    b.className = 'stage-btn';
-  });
-  if (filter === 'all')   btn.classList.add('active-all');
-  if (filter === 'dnb')   btn.classList.add('active-dnb');
-  if (filter === 'oasis') btn.classList.add('active-oasis');
-  applyFilters();
-}
-
+// ============================================================
+// SEARCH
+// ============================================================
 document.getElementById('searchInput').addEventListener('input', function() {
-  currentSearch = this.value.toLowerCase().trim();
-  applyFilters();
+  const q = this.value.toLowerCase().trim();
+  if (!q) {
+    // Reset — show all in current day
+    document.querySelectorAll('.sched-item').forEach(i => i.classList.remove('hidden'));
+    document.querySelectorAll('.stage-section').forEach(s => s.style.display = '');
+    document.querySelectorAll('.sched-event-row').forEach(r => r.style.display = '');
+    document.querySelectorAll('.schedule-day').forEach(d => d.classList.remove('active'));
+    const dayEl = document.getElementById('day-' + currentDay);
+    if (dayEl) dayEl.classList.add('active');
+    document.getElementById('noResults').style.display = 'none';
+    applyFilters();
+    return;
+  }
+
+  // Search mode: show ALL days, hide non-matches
+  document.querySelectorAll('.schedule-day').forEach(d => d.classList.add('active'));
+  document.querySelectorAll('.sched-event-row').forEach(r => r.style.display = 'none');
+  document.querySelectorAll('.stage-section').forEach(s => s.style.display = 'block');
+
+  let anyVisible = false;
+  document.querySelectorAll('.sched-item[data-artist]').forEach(item => {
+    const searchText = (item.dataset.search || '') + ' ' + (item.dataset.artist || '');
+    const match = searchText.toLowerCase().includes(q);
+    item.classList.toggle('hidden', !match);
+    if (match) anyVisible = true;
+  });
+
+  document.getElementById('noResults').style.display = anyVisible ? 'none' : 'block';
+
+  // Hide stage sections that have no visible items
+  document.querySelectorAll('.stage-section').forEach(section => {
+    const hasVisible = section.querySelectorAll('.sched-item:not(.hidden)').length > 0;
+    section.style.display = hasVisible ? 'block' : 'none';
+  });
+});
+
+// ============================================================
+// ADD BUTTONS — click handlers
+// ============================================================
+document.addEventListener('click', function(e) {
+  const addBtn = e.target.closest('.add-btn');
+  if (addBtn && addBtn.dataset.artist) {
+    e.stopPropagation();
+    toggleMySchedule(addBtn.dataset.artist);
+  }
+  const schedItem = e.target.closest('.sched-item[data-artist]');
+  if (schedItem && !e.target.closest('.add-btn')) {
+    openArtist(schedItem.dataset.artist);
+  }
 });
 
 // ============================================================
 // MODAL
 // ============================================================
+let currentModalArtist = null;
+
 function openArtist(name) {
   const a = artists[name];
   if (!a) return;
-  const sc = getStageClass(a.stage);
+  currentModalArtist = name;
 
   document.getElementById('modalAvatar').style.background = a.color;
   document.getElementById('modalAvatar').textContent = a.initials;
@@ -1161,54 +1339,70 @@ function openArtist(name) {
   document.getElementById('modalDay').textContent = a.day;
 
   const badge = document.getElementById('modalStageBadge');
-  if (sc === 'dnb') {
-    badge.style.cssText = 'background:rgba(155,61,255,0.25);color:#c084fc;border:1px solid rgba(155,61,255,0.4);display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:20px;';
+  if (a.stage === 'DNB Stage') {
+    badge.style.cssText = 'background:rgba(155,61,255,0.25);color:#c084fc;border:1px solid rgba(155,61,255,0.4);display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:5px;';
     badge.textContent = '🥁 DNB Stage';
   } else {
-    badge.style.cssText = 'background:rgba(0,212,200,0.2);color:#00d4c8;border:1px solid rgba(0,212,200,0.4);display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:20px;';
+    badge.style.cssText = 'background:rgba(0,212,200,0.2);color:#00d4c8;border:1px solid rgba(0,212,200,0.4);display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:5px;';
     badge.textContent = '🌴 Oasis Stage';
   }
 
-  // Social links
-  const soc = document.getElementById('modalSocials');
-  if (a.links && Object.keys(a.links).length > 0) {
-    soc.innerHTML = Object.entries(a.links).map(([type, url]) => {
-      const li = linkIcons[type] || { icon:'🔗', label: type, cls: '' };
-      return `<a class="social-btn ${li.cls}" href="${url}" target="_blank" rel="noopener">${li.icon} ${li.label}</a>`;
-    }).join('');
-  } else {
-    const q = encodeURIComponent(name);
-    soc.innerHTML = `
-      <a class="social-btn spotify"    href="https://open.spotify.com/search/${q}" target="_blank">🎵 Spotify</a>
-      <a class="social-btn instagram"  href="https://www.instagram.com/explore/search/keyword/?q=${q}" target="_blank">📷 Instagram</a>
-      <a class="social-btn soundcloud" href="https://soundcloud.com/search?q=${q}" target="_blank">☁ SoundCloud</a>
-    `;
-  }
+  document.getElementById('modalSocials').innerHTML = `
+    <a class="social-btn spotify"    href="https://open.spotify.com/search/${encodeURIComponent(name)}" target="_blank">▶ Spotify</a>
+    <a class="social-btn instagram"  href="https://www.instagram.com/explore/search/keyword/?q=${encodeURIComponent(name)}" target="_blank">📷 Instagram</a>
+    <a class="social-btn soundcloud" href="https://soundcloud.com/search?q=${encodeURIComponent(name)}" target="_blank">☁ SoundCloud</a>
+  `;
+  document.getElementById('modalSpotifyBtn').onclick = () => window.open(`https://open.spotify.com/search/${encodeURIComponent(name)}`,'_blank');
 
-  // Spotify button
-  const spotifyUrl = a.links && a.links.spotify
-    ? a.links.spotify
-    : `https://open.spotify.com/search/${encodeURIComponent(name)}`;
-  document.getElementById('modalSpotifyBtn').onclick = () => window.open(spotifyUrl, '_blank');
-
+  updateModalAddBtn(name);
   document.getElementById('artistModal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 
-document.getElementById('modalClose').addEventListener('click', closeModal);
-document.getElementById('artistModal').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
-});
-function closeModal() {
-  document.getElementById('artistModal').classList.remove('open');
-  document.body.style.overflow = '';
+function updateModalAddBtn(name) {
+  const mine = getMySchedule();
+  const btn = document.getElementById('modalAddBtn');
+  const isAdded = mine.includes(name);
+  btn.textContent = isAdded ? '✓ Added to My Schedule — Tap to Remove' : '⭐ Add to My Schedule';
+  btn.classList.toggle('added', isAdded);
 }
 
-// Escape key
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+document.getElementById('modalAddBtn').addEventListener('click', function() {
+  if (currentModalArtist) toggleMySchedule(currentModalArtist);
+});
 
-// Init
-renderGrid();
+document.getElementById('modalClose').addEventListener('click', closeModal);
+document.getElementById('artistModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+function closeModal() { document.getElementById('artistModal').classList.remove('open'); document.body.style.overflow = ''; currentModalArtist = null; }
+
+// ============================================================
+// CLEAR SCHEDULE
+// ============================================================
+document.getElementById('clearMySchedule').addEventListener('click', function() {
+  if (confirm('Clear your entire personal schedule?')) {
+    saveMySchedule([]);
+    refreshAllButtons();
+    updateMySchedTab();
+    renderMySchedule();
+  }
+});
+
+// ============================================================
+// TOAST
+// ============================================================
+function showToast(msg) {
+  const toast = document.getElementById('schedToast');
+  toast.textContent = msg;
+  toast.style.opacity = '1';
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => { toast.style.opacity = '0'; }, 2200);
+}
+
+// ============================================================
+// INIT
+// ============================================================
+refreshAllButtons();
+updateMySchedTab();
 </script>
 
 <script>
@@ -1247,6 +1441,451 @@ renderGrid();
 })();
 </script>
 
+<script>
+// ============================================================
+// BLOCK VIEW — timeline grid renderer
+// ============================================================
+
+// Schedule data: per-day, per-stage, timed and TBA artists
+const blockSchedule = {
+  fri: {
+    // start hour (24h), end hour (24h). After midnight = 24+
+    startHour: 21, endHour: 26, // 9PM → 2AM
+    stages: {
+      dnb: {
+        label: '🥁 DNB Stage — BP²',
+        cls: 'dnb',
+        timed: [
+          { artist:'JFB',       start:21.5,  end:22.5,  headliner:true  },
+          { artist:'DEEKLINE',  start:22.5,  end:23.5  },
+          { artist:'DARA',      start:23.5,  end:24.5  },
+          { artist:'RONI SIZE', start:25,    end:26.5,  headliner:true  },
+        ],
+        events: [
+          { label:'🚪 Doors Open', start:21, end:21.5 }
+        ],
+        tba: ['BICLOPS','COEXIST','DADAM']
+      },
+      oasis: {
+        label: '🌴 Oasis Stage',
+        cls: 'oasis',
+        timed: [
+          { artist:'THE SPONGES', start:21.5, end:22.5 },
+          { artist:'CARLO LIO',   start:22.5, end:23.5 },
+          { artist:'CODES',       start:23.5, end:24.5 },
+          { artist:'J. PHLIP',    start:25,   end:26.5, headliner:true },
+        ],
+        tba: ['CHANANAGAINS','COLLIN IN KIND','GAVIN QUINN']
+      }
+    }
+  },
+  sat: {
+    startHour: 20, endHour: 26,
+    stages: {
+      dnb: {
+        label: '🥁 DNB Stage — BP²',
+        cls: 'dnb',
+        timed: [
+          { artist:'DEGS',        start:20,   end:21   },
+          { artist:'PHANTOM 45',  start:21,   end:22   },
+          { artist:'GEORGIE RIOT',start:22,   end:23.5 },
+          { artist:'SPOR',        start:24,   end:25.5, headliner:true },
+        ],
+        tba: ['D. BROWN','DEMIEN SIXX','K COMPLEX','KREESAY']
+      },
+      oasis: {
+        label: '🌴 Oasis Stage',
+        cls: 'oasis',
+        timed: [
+          { artist:'MADAM X',     start:20,   end:22   },
+          { artist:'GETTOBLASTER',start:22,   end:24   },
+          { artist:'CARLO LIO',   start:24,   end:25.5, headliner:true },
+        ],
+        tba: ['DJ SEAMUS','EDDIE MERCED','GREEN JEANS','HONEY BUNCHES OF BEATS','KOHAKU']
+      }
+    }
+  },
+  sun: {
+    startHour: 19, endHour: 26,
+    stages: {
+      dnb: {
+        label: '🥁 DNB Stage — BP²',
+        cls: 'dnb',
+        timed: [
+          { artist:'DALI',        start:19,   end:20   },
+          { artist:'UNGLUED',     start:20,   end:21.5 },
+          { artist:'EVOL INTENT', start:22,   end:23.5, headliner:true },
+        ],
+        events: [
+          { label:'🏊 Pool Party', start:16, end:19 }
+        ],
+        tba: ['LAST ACTION HEROES','OSCILLOT','PAPA RUNKZ','STEPPO','MENTALLY ILL',
+              'NICK MINIERI','RED DAWN','SLAYTOVEN','SYNESTHESIA','WHO:IS','EXZACKTO',
+              'ORIGINATE','KUNAII','LOUD NOISES!']
+      },
+      oasis: {
+        label: '🌴 Oasis Stage',
+        cls: 'oasis',
+        timed: [
+          { artist:'KRAFTY KUTZ', start:19,   end:20.5 },
+          { artist:'UNIQU3',      start:21,   end:22.5, headliner:true },
+        ],
+        tba: ['GRUV 42','LENORE','SOAPPY','TARI','LOWKEE','MCCOOEY','MISS HAZE',
+              'MO\' BACON','NOTORIOUS CHOW','PAULYWOG','QUEERVOYANT','SESH',
+              'SINGLE GRIND','SOKOMODO','TIMMOLOGY','VALDEE']
+      }
+    }
+  }
+};
+
+const PX_PER_HOUR = 72; // matches .tg-hour-label height
+
+function hourLabel(h) {
+  const actual = h % 24;
+  if (actual === 0) return '12<br>AM';
+  if (actual < 12)  return actual + '<br>AM';
+  if (actual === 12) return '12<br>PM';
+  return (actual - 12) + '<br>PM';
+}
+
+function buildBlockDay(dayKey, stageFilter) {
+  const day = blockSchedule[dayKey];
+  if (!day) return '';
+
+  const { startHour, endHour, stages } = day;
+  const totalHours = endHour - startHour;
+  const totalPx = totalHours * PX_PER_HOUR;
+
+  // Determine which stages to show
+  const stageKeys = stageFilter === 'all'
+    ? Object.keys(stages)
+    : Object.keys(stages).filter(k => k === stageFilter);
+
+  const single = stageKeys.length === 1;
+  const gridCls = single ? 'single-col' : '';
+
+  // Header row
+  let headerHtml = `<div class="tg-stage-headers ${gridCls}"><div class="tg-corner"></div>`;
+  stageKeys.forEach(k => {
+    const s = stages[k];
+    headerHtml += `<div class="tg-stage-head ${s.cls}">${s.label}</div>`;
+  });
+  headerHtml += '</div>';
+
+  // Hour labels
+  let hourColHtml = '<div class="tg-time-col">';
+  for (let h = startHour; h <= endHour; h++) {
+    hourColHtml += `<div class="tg-hour-label">${hourLabel(h)}</div>`;
+  }
+  hourColHtml += '</div>';
+
+  // Stage columns
+  const stageCols = stageKeys.map(k => {
+    const s = stages[k];
+    let colHtml = `<div class="tg-stage-col" style="height:${totalPx}px;">`;
+
+    // Grid lines
+    for (let i = 0; i <= totalHours; i++) {
+      colHtml += `<div class="tg-gridline" style="top:${i * PX_PER_HOUR}px;"></div>`;
+    }
+
+    // Non-artist events
+    (s.events || []).forEach(ev => {
+      const top  = Math.max(0, (ev.start - startHour) * PX_PER_HOUR);
+      const height = (ev.end - ev.start) * PX_PER_HOUR - 4;
+      if (top < 0) return;
+      colHtml += `<div class="tg-event-block" style="top:${top}px;height:${height}px;">${ev.label}</div>`;
+    });
+
+    // Timed artist blocks
+    (s.timed || []).forEach(item => {
+      const top    = Math.max(0, (item.start - startHour) * PX_PER_HOUR);
+      const height = Math.max(28, (item.end - item.start) * PX_PER_HOUR - 6);
+      const artData = artists[item.artist.toUpperCase()] || artists[item.artist] || {};
+      const clsExtra = item.headliner ? ' headliner-block' : '';
+      const timeStr = formatBlockTime(item.start) + ' – ' + formatBlockTime(item.end);
+      colHtml += `
+        <div class="tg-block ${s.cls}-block${clsExtra}"
+             style="top:${top}px;height:${height}px;"
+             onclick="openArtist('${item.artist.replace(/'/g,"\\'")}')">
+          <div class="tg-block-name">${item.artist}</div>
+          <div class="tg-block-time">${timeStr}</div>
+          ${item.headliner ? '<div class="tg-block-badge">Headliner</div>' : ''}
+        </div>`;
+    });
+
+    colHtml += '</div>'; // end tg-stage-col
+
+    // TBA section below the timed grid
+    if (s.tba && s.tba.length) {
+      colHtml += `<div class="tg-tba-section">
+        <div class="tg-tba-heading">TBA</div>`;
+      s.tba.forEach(name => {
+        colHtml += `<div class="tg-tba-block" onclick="openArtist('${name.replace(/'/g,"\\'")}')">
+          <div class="tg-tba-name">${name}</div>
+          <div class="tg-tba-label">TBA</div>
+        </div>`;
+      });
+      colHtml += '</div>';
+    }
+
+    return colHtml;
+  });
+
+  return `
+    <div class="timeline-grid ${gridCls}">
+      ${hourColHtml}
+      ${stageCols.join('')}
+    </div>`;
+}
+
+function formatBlockTime(h) {
+  const actual = h % 24;
+  const mins   = Math.round((h % 1) * 60);
+  const period = actual < 12 ? 'AM' : 'PM';
+  let displayH = actual % 12;
+  if (displayH === 0) displayH = 12;
+  return mins > 0
+    ? `${displayH}:${String(mins).padStart(2,'0')} ${period}`
+    : `${displayH} ${period}`;
+}
+
+function renderBlockView(dayKey, stageFilter) {
+  const inner = document.getElementById('blockViewInner');
+  if (!inner) return;
+  // My schedule / mine tab — fall back to list
+  if (dayKey === 'mine') {
+    inner.innerHTML = '<div style="text-align:center;padding:40px;color:var(--text-muted);font-size:14px;">Block view not available for personal schedule. Switch to list view.</div>';
+    return;
+  }
+  // If search is active, don't render block view
+  const q = document.getElementById('searchInput').value.trim();
+  if (q) {
+    inner.innerHTML = '<div style="text-align:center;padding:40px;color:var(--text-muted);font-size:14px;">Block view not available during search. Clear search to use block view.</div>';
+    return;
+  }
+  inner.innerHTML = headerForDay(dayKey) + buildBlockDay(dayKey, stageFilter);
+}
+
+function headerForDay(dayKey) {
+  const labels = { fri:'Friday · July 17', sat:'Saturday · July 18', sun:'Sunday · July 19' };
+  const label = labels[dayKey] || '';
+  return `<div style="font-size:13px;font-weight:700;color:var(--gold-bright);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;">${label}</div>`;
+}
+
+// ── VIEW TOGGLE ──────────────────────────────────────────────
+let currentViewMode = 'list'; // 'list' | 'block'
+
+document.getElementById('viewList').addEventListener('click', function() {
+  currentViewMode = 'list';
+  document.getElementById('viewList').classList.add('active');
+  document.getElementById('viewGrid').classList.remove('active');
+  document.getElementById('listViewWrap').classList.remove('hidden');
+  document.getElementById('blockView').classList.remove('active');
+  document.getElementById('noResults').style.display = 'none';
+});
+
+document.getElementById('viewGrid').addEventListener('click', function() {
+  currentViewMode = 'block';
+  document.getElementById('viewGrid').classList.add('active');
+  document.getElementById('viewList').classList.remove('active');
+  document.getElementById('listViewWrap').classList.add('hidden');
+  document.getElementById('blockView').classList.add('active');
+  document.getElementById('noResults').style.display = 'none';
+  renderBlockView(currentDay, currentStage);
+});
+
+// Re-render block view when day or stage changes
+const _origApplyFilters = applyFilters;
+function applyFilters() {
+  _origApplyFilters();
+  if (currentViewMode === 'block') renderBlockView(currentDay, currentStage);
+}
+
+// Also re-render when search cleared
+document.getElementById('searchInput').addEventListener('input', function() {
+  if (!this.value.trim() && currentViewMode === 'block') {
+    renderBlockView(currentDay, currentStage);
+  }
+});
+
+// ============================================================
+// CALENDAR EXPORT
+// ============================================================
+
+// Festival date anchors (July 17–19 2026, Eastern Time UTC-4 in summer)
+const FEST_DATES = { Fri: '20260717', Sat: '20260718', Sun: '20260719' };
+const TZ_OFFSET  = '-04:00'; // EDT
+const LOCATION   = 'Sturbridge Host Hotel, 366 Main St, Sturbridge, MA 01566';
+const EVENT_NAME = 'Sunken Suite 2026';
+
+// Parse "9:30 PM" / "1:00 AM" into {h,m} on 24h, accounting for after-midnight
+function parseTime(timeStr, day) {
+  if (!timeStr || timeStr === 'TBA') return null;
+  const m = timeStr.match(/(\d+):(\d+)\s*(AM|PM)/i);
+  if (!m) return null;
+  let h = parseInt(m[1]);
+  const mins = parseInt(m[2]);
+  const period = m[3].toUpperCase();
+  if (period === 'PM' && h !== 12) h += 12;
+  if (period === 'AM' && h === 12) h = 0;
+  // After midnight (1 AM, 2 AM) on Fri/Sat belongs to the NEXT calendar day
+  const isAfterMidnight = period === 'AM' && h < 6;
+  return { h, mins, isAfterMidnight };
+}
+
+function isoDateTime(dateStr, h, mins) {
+  // dateStr = 'YYYYMMDD'
+  const y = dateStr.slice(0,4), mo = dateStr.slice(4,6), d = dateStr.slice(6,8);
+  return `${y}${mo}${d}T${String(h).padStart(2,'0')}${String(mins).padStart(2,'0')}00`;
+}
+
+function nextDay(dateStr) {
+  const d = new Date(dateStr.slice(0,4)+'-'+dateStr.slice(4,6)+'-'+dateStr.slice(6,8));
+  d.setDate(d.getDate() + 1);
+  return d.toISOString().slice(0,10).replace(/-/g,'');
+}
+
+function buildICSEvent(name, a, uid) {
+  const dateStr = FEST_DATES[a.day];
+  if (!dateStr) return null;
+  const parsed = parseTime(a.time, a.day);
+  if (!parsed) return null;
+
+  const { h, mins, isAfterMidnight } = parsed;
+  const startDate = isAfterMidnight ? nextDay(dateStr) : dateStr;
+  const startDT   = isoDateTime(startDate, h, mins);
+  // Default set length 90 min
+  const endH   = h + 1; const endMins = mins + 30;
+  const endDate = (endH >= 24) ? nextDay(startDate) : startDate;
+  const endDT   = isoDateTime(endDate, endH % 24, endMins % 60);
+
+  const dayLabel = { Fri:'Friday July 17', Sat:'Saturday July 18', Sun:'Sunday July 19' }[a.day] || a.day;
+  const desc = `${a.genre}\\n${a.stage}\\nSunken Suite 2026 — ${dayLabel}\\n\\n${a.bio}`;
+
+  return [
+    'BEGIN:VEVENT',
+    `UID:${uid}@sunkensuite2026`,
+    `DTSTART;TZID=America/New_York:${startDT}`,
+    `DTEND;TZID=America/New_York:${endDT}`,
+    `SUMMARY:${name} @ Sunken Suite 2026`,
+    `DESCRIPTION:${desc}`,
+    `LOCATION:${LOCATION}`,
+    'STATUS:CONFIRMED',
+    'END:VEVENT'
+  ].join('\r\n');
+}
+
+function wrapICS(events) {
+  return [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//Sunken Suite 2026//Festival Schedule//EN',
+    'CALSCALE:GREGORIAN',
+    'METHOD:PUBLISH',
+    'X-WR-CALNAME:Sunken Suite 2026',
+    'X-WR-TIMEZONE:America/New_York',
+    ...events,
+    'END:VCALENDAR'
+  ].join('\r\n');
+}
+
+function downloadICS(filename, content) {
+  const blob = new Blob([content], { type: 'text/calendar;charset=utf-8' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href = url; a.download = filename; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function buildGoogleURL(name, a) {
+  const dateStr = FEST_DATES[a.day];
+  if (!dateStr) return null;
+  const parsed = parseTime(a.time, a.day);
+  if (!parsed) return null;
+
+  const { h, mins, isAfterMidnight } = parsed;
+  const startDate = isAfterMidnight ? nextDay(dateStr) : dateStr;
+  const startDT   = isoDateTime(startDate, h, mins);
+  const endH = h + 1; const endMins = mins + 30;
+  const endDate = endH >= 24 ? nextDay(startDate) : startDate;
+  const endDT   = isoDateTime(endDate, endH % 24, endMins % 60);
+
+  const params = new URLSearchParams({
+    action: 'TEMPLATE',
+    text:   `${name} @ Sunken Suite 2026`,
+    dates:  `${startDT}/${endDT}`,
+    details:`${a.genre}\n${a.stage}\n\n${a.bio}`,
+    location: LOCATION,
+    ctz:    'America/New_York'
+  });
+  return 'https://calendar.google.com/calendar/render?' + params.toString();
+}
+
+// ── Wire up modal calendar buttons ───────────────────────────
+function updateCalButtons(name, a) {
+  const section    = document.getElementById('calSection');
+  const tbaNote    = document.getElementById('calTbaNote');
+  const btnRow     = section.querySelector('.cal-btn-row');
+  const hasTimed   = a.time && a.time !== 'TBA' && FEST_DATES[a.day];
+
+  tbaNote.style.display  = hasTimed ? 'none'  : 'block';
+  btnRow.style.display   = hasTimed ? 'flex'  : 'none';
+
+  if (!hasTimed) return;
+
+  document.getElementById('calGoogle').onclick = function() {
+    const url = buildGoogleURL(name, a);
+    if (url) window.open(url, '_blank');
+  };
+
+  const makeICS = () => {
+    const ev = buildICSEvent(name, a, name.replace(/\s+/g,'-').toLowerCase());
+    return ev ? wrapICS([ev]) : null;
+  };
+
+  document.getElementById('calApple').onclick = function() {
+    const ics = makeICS();
+    if (ics) downloadICS(`${name.replace(/\s+/g,'-')}-sunkensuite2026.ics`, ics);
+  };
+  document.getElementById('calOutlook').onclick = function() {
+    const ics = makeICS();
+    if (ics) downloadICS(`${name.replace(/\s+/g,'-')}-sunkensuite2026.ics`, ics);
+  };
+}
+
+// Patch openArtist to also update cal buttons
+const _origOpenArtist = openArtist;
+function openArtist(name) {
+  _origOpenArtist(name);
+  const a = artists[name];
+  if (a) updateCalButtons(name, a);
+}
+
+// ── Export entire My Schedule ─────────────────────────────────
+document.getElementById('exportCalBtn').addEventListener('click', function() {
+  const mine = getMySchedule();
+  if (mine.length === 0) {
+    showToast('Your schedule is empty — add artists first.');
+    return;
+  }
+  const events = mine
+    .map(k => {
+      const a = artists[k];
+      if (!a) return null;
+      return buildICSEvent(k, a, k.replace(/\s+/g,'-').toLowerCase());
+    })
+    .filter(Boolean);
+
+  if (events.length === 0) {
+    showToast('No timed sets to export yet. Times TBA for your saved artists.');
+    return;
+  }
+  const ics = wrapICS(events);
+  downloadICS('sunken-suite-2026-my-schedule.ics', ics);
+  showToast(`📅 Exported ${events.length} set${events.length !== 1 ? 's' : ''} to calendar`);
+});
+</script>
 
 <script>
 /* ── WEATHER WIDGET ── */
