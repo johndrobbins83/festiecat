@@ -423,6 +423,60 @@ body { font-family:'Poppins',sans-serif; background:var(--ocean-deep); color:var
   min-width:320px;
 }
 
+/* ── CALENDAR EXPORT ─────────────────────────────────────── */
+.cal-btn-row {
+  display:flex; gap:8px; flex-wrap:wrap;
+}
+.cal-btn {
+  flex:1; min-width:90px;
+  display:flex; align-items:center; justify-content:center; gap:7px;
+  padding:10px 12px; border-radius:12px; border:none; cursor:pointer;
+  font-family:'Poppins',sans-serif; font-size:13px; font-weight:700;
+  transition:all 0.18s; white-space:nowrap;
+}
+.cal-btn:active { transform:scale(0.96); }
+.cal-icon {
+  width:20px; height:20px; border-radius:4px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:13px; font-weight:900; flex-shrink:0;
+}
+.cal-btn.gcal {
+  background:rgba(66,133,244,0.15); color:#4285f4;
+  border:1px solid rgba(66,133,244,0.35);
+}
+.cal-btn.gcal:hover { background:rgba(66,133,244,0.25); }
+.cal-btn.gcal .cal-icon {
+  background:#4285f4; color:#fff; font-size:11px;
+}
+.cal-btn.apple {
+  background:rgba(255,255,255,0.07); color:var(--text-light);
+  border:1px solid rgba(255,255,255,0.2);
+}
+.cal-btn.apple:hover { background:rgba(255,255,255,0.14); }
+.cal-btn.outlook {
+  background:rgba(0,120,212,0.15); color:#3aa0f3;
+  border:1px solid rgba(0,120,212,0.35);
+}
+.cal-btn.outlook:hover { background:rgba(0,120,212,0.25); }
+
+.cal-tba-note {
+  display:none;
+  font-size:12px; color:var(--text-muted); margin-top:8px;
+  padding:8px 12px; background:rgba(255,255,255,0.04);
+  border-radius:8px; border:1px solid rgba(255,255,255,0.08);
+}
+
+/* Export My Schedule button */
+.export-cal-btn {
+  background:rgba(0,212,200,0.12); border:1px solid rgba(0,212,200,0.3);
+  color:var(--teal-glow); font-family:'Poppins',sans-serif;
+  font-size:12px; font-weight:700; padding:5px 12px;
+  border-radius:20px; cursor:pointer; transition:all 0.15s;
+  white-space:nowrap;
+}
+.export-cal-btn:hover { background:rgba(0,212,200,0.22); }
+.export-cal-btn:disabled { opacity:0.4; cursor:default; }
+
 /* ── NAV SHARED ─────────────────────────────────────────── */
 .top-nav {
   position: fixed; top: 0; left: 0; right: 0;
@@ -836,7 +890,10 @@ body { font-family:'Poppins',sans-serif; background:var(--ocean-deep); color:var
     <div class="my-sched-section">
       <div class="my-sched-header">
         <div class="my-sched-title">⭐ My Schedule</div>
-        <button class="my-sched-clear-btn" id="clearMySchedule" style="display:none;">🗑 Clear All</button>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <button class="export-cal-btn" id="exportCalBtn" title="Export to Calendar">📅 Export</button>
+          <button class="my-sched-clear-btn" id="clearMySchedule" style="display:none;">🗑 Clear All</button>
+        </div>
       </div>
       <div id="mySchedContent">
         <div class="my-sched-empty" id="mySchedEmpty">
@@ -895,6 +952,16 @@ body { font-family:'Poppins',sans-serif; background:var(--ocean-deep); color:var
     <div class="modal-divider"></div>
     <div class="modal-section">
       <button class="modal-add-sched-btn" id="modalAddBtn">⭐ Add to My Schedule</button>
+    </div>
+    <div class="modal-divider" id="calDivider"></div>
+    <div class="modal-section" id="calSection">
+      <div class="modal-section-title">📅 Add to Calendar</div>
+      <div class="cal-btn-row">
+        <button class="cal-btn gcal"   id="calGoogle">  <span class="cal-icon">G</span>Google</button>
+        <button class="cal-btn apple"  id="calApple">   <span class="cal-icon">🍎</span>Apple</button>
+        <button class="cal-btn outlook" id="calOutlook"><span class="cal-icon">📘</span>Outlook</button>
+      </div>
+      <div class="cal-tba-note" id="calTbaNote">Time TBA — calendar export available once times are confirmed.</div>
     </div>
     <div class="modal-divider"></div>
     <div class="modal-section">
@@ -1560,6 +1627,183 @@ document.getElementById('searchInput').addEventListener('input', function() {
   if (!this.value.trim() && currentViewMode === 'block') {
     renderBlockView(currentDay, currentStage);
   }
+});
+
+// ============================================================
+// CALENDAR EXPORT
+// ============================================================
+
+// Festival date anchors (July 17–19 2026, Eastern Time UTC-4 in summer)
+const FEST_DATES = { Fri: '20260717', Sat: '20260718', Sun: '20260719' };
+const TZ_OFFSET  = '-04:00'; // EDT
+const LOCATION   = 'Sturbridge Host Hotel, 366 Main St, Sturbridge, MA 01566';
+const EVENT_NAME = 'Sunken Suite 2026';
+
+// Parse "9:30 PM" / "1:00 AM" into {h,m} on 24h, accounting for after-midnight
+function parseTime(timeStr, day) {
+  if (!timeStr || timeStr === 'TBA') return null;
+  const m = timeStr.match(/(\d+):(\d+)\s*(AM|PM)/i);
+  if (!m) return null;
+  let h = parseInt(m[1]);
+  const mins = parseInt(m[2]);
+  const period = m[3].toUpperCase();
+  if (period === 'PM' && h !== 12) h += 12;
+  if (period === 'AM' && h === 12) h = 0;
+  // After midnight (1 AM, 2 AM) on Fri/Sat belongs to the NEXT calendar day
+  const isAfterMidnight = period === 'AM' && h < 6;
+  return { h, mins, isAfterMidnight };
+}
+
+function isoDateTime(dateStr, h, mins) {
+  // dateStr = 'YYYYMMDD'
+  const y = dateStr.slice(0,4), mo = dateStr.slice(4,6), d = dateStr.slice(6,8);
+  return `${y}${mo}${d}T${String(h).padStart(2,'0')}${String(mins).padStart(2,'0')}00`;
+}
+
+function nextDay(dateStr) {
+  const d = new Date(dateStr.slice(0,4)+'-'+dateStr.slice(4,6)+'-'+dateStr.slice(6,8));
+  d.setDate(d.getDate() + 1);
+  return d.toISOString().slice(0,10).replace(/-/g,'');
+}
+
+function buildICSEvent(name, a, uid) {
+  const dateStr = FEST_DATES[a.day];
+  if (!dateStr) return null;
+  const parsed = parseTime(a.time, a.day);
+  if (!parsed) return null;
+
+  const { h, mins, isAfterMidnight } = parsed;
+  const startDate = isAfterMidnight ? nextDay(dateStr) : dateStr;
+  const startDT   = isoDateTime(startDate, h, mins);
+  // Default set length 90 min
+  const endH   = h + 1; const endMins = mins + 30;
+  const endDate = (endH >= 24) ? nextDay(startDate) : startDate;
+  const endDT   = isoDateTime(endDate, endH % 24, endMins % 60);
+
+  const dayLabel = { Fri:'Friday July 17', Sat:'Saturday July 18', Sun:'Sunday July 19' }[a.day] || a.day;
+  const desc = `${a.genre}\\n${a.stage}\\nSunken Suite 2026 — ${dayLabel}\\n\\n${a.bio}`;
+
+  return [
+    'BEGIN:VEVENT',
+    `UID:${uid}@sunkensuite2026`,
+    `DTSTART;TZID=America/New_York:${startDT}`,
+    `DTEND;TZID=America/New_York:${endDT}`,
+    `SUMMARY:${name} @ Sunken Suite 2026`,
+    `DESCRIPTION:${desc}`,
+    `LOCATION:${LOCATION}`,
+    'STATUS:CONFIRMED',
+    'END:VEVENT'
+  ].join('\r\n');
+}
+
+function wrapICS(events) {
+  return [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//Sunken Suite 2026//Festival Schedule//EN',
+    'CALSCALE:GREGORIAN',
+    'METHOD:PUBLISH',
+    'X-WR-CALNAME:Sunken Suite 2026',
+    'X-WR-TIMEZONE:America/New_York',
+    ...events,
+    'END:VCALENDAR'
+  ].join('\r\n');
+}
+
+function downloadICS(filename, content) {
+  const blob = new Blob([content], { type: 'text/calendar;charset=utf-8' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href = url; a.download = filename; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function buildGoogleURL(name, a) {
+  const dateStr = FEST_DATES[a.day];
+  if (!dateStr) return null;
+  const parsed = parseTime(a.time, a.day);
+  if (!parsed) return null;
+
+  const { h, mins, isAfterMidnight } = parsed;
+  const startDate = isAfterMidnight ? nextDay(dateStr) : dateStr;
+  const startDT   = isoDateTime(startDate, h, mins);
+  const endH = h + 1; const endMins = mins + 30;
+  const endDate = endH >= 24 ? nextDay(startDate) : startDate;
+  const endDT   = isoDateTime(endDate, endH % 24, endMins % 60);
+
+  const params = new URLSearchParams({
+    action: 'TEMPLATE',
+    text:   `${name} @ Sunken Suite 2026`,
+    dates:  `${startDT}/${endDT}`,
+    details:`${a.genre}\n${a.stage}\n\n${a.bio}`,
+    location: LOCATION,
+    ctz:    'America/New_York'
+  });
+  return 'https://calendar.google.com/calendar/render?' + params.toString();
+}
+
+// ── Wire up modal calendar buttons ───────────────────────────
+function updateCalButtons(name, a) {
+  const section    = document.getElementById('calSection');
+  const tbaNote    = document.getElementById('calTbaNote');
+  const btnRow     = section.querySelector('.cal-btn-row');
+  const hasTimed   = a.time && a.time !== 'TBA' && FEST_DATES[a.day];
+
+  tbaNote.style.display  = hasTimed ? 'none'  : 'block';
+  btnRow.style.display   = hasTimed ? 'flex'  : 'none';
+
+  if (!hasTimed) return;
+
+  document.getElementById('calGoogle').onclick = function() {
+    const url = buildGoogleURL(name, a);
+    if (url) window.open(url, '_blank');
+  };
+
+  const makeICS = () => {
+    const ev = buildICSEvent(name, a, name.replace(/\s+/g,'-').toLowerCase());
+    return ev ? wrapICS([ev]) : null;
+  };
+
+  document.getElementById('calApple').onclick = function() {
+    const ics = makeICS();
+    if (ics) downloadICS(`${name.replace(/\s+/g,'-')}-sunkensuite2026.ics`, ics);
+  };
+  document.getElementById('calOutlook').onclick = function() {
+    const ics = makeICS();
+    if (ics) downloadICS(`${name.replace(/\s+/g,'-')}-sunkensuite2026.ics`, ics);
+  };
+}
+
+// Patch openArtist to also update cal buttons
+const _origOpenArtist = openArtist;
+function openArtist(name) {
+  _origOpenArtist(name);
+  const a = artists[name];
+  if (a) updateCalButtons(name, a);
+}
+
+// ── Export entire My Schedule ─────────────────────────────────
+document.getElementById('exportCalBtn').addEventListener('click', function() {
+  const mine = getMySchedule();
+  if (mine.length === 0) {
+    showToast('Your schedule is empty — add artists first.');
+    return;
+  }
+  const events = mine
+    .map(k => {
+      const a = artists[k];
+      if (!a) return null;
+      return buildICSEvent(k, a, k.replace(/\s+/g,'-').toLowerCase());
+    })
+    .filter(Boolean);
+
+  if (events.length === 0) {
+    showToast('No timed sets to export yet. Times TBA for your saved artists.');
+    return;
+  }
+  const ics = wrapICS(events);
+  downloadICS('sunken-suite-2026-my-schedule.ics', ics);
+  showToast(`📅 Exported ${events.length} set${events.length !== 1 ? 's' : ''} to calendar`);
 });
 </script>
 </body>
