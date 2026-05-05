@@ -22,8 +22,8 @@ body { font-family:'Poppins',sans-serif; background:var(--ocean-deep); color:var
 
 /* ── NAV ── */
 .top-nav { position:fixed; top:0; left:0; right:0; height:var(--nav-height); background:rgba(2,11,26,0.93); backdrop-filter:blur(14px); border-bottom:1px solid rgba(245,200,66,0.25); z-index:300; display:flex; align-items:center; justify-content:space-between; padding:0 24px; }
-.nav-logo { font-family:'Pirata One',cursive; font-size:24px; color:var(--gold-bright); text-shadow:0 0 18px rgba(245,200,66,0.45); line-height:1; text-decoration:none; }
-.nav-logo span { display:block; font-size:11px; font-family:'Poppins',sans-serif; color:var(--teal-glow); letter-spacing:3px; text-transform:uppercase; font-weight:600; }
+.nav-logo { font-family:'Pirata One',cursive; font-size:22px; color:var(--gold-bright); text-shadow:0 0 18px rgba(245,200,66,0.45); line-height:1; white-space:nowrap; flex-shrink:0; text-decoration:none; }
+.nav-logo span { display:block; font-size:10px; font-family:'Poppins',sans-serif; color:var(--teal-glow); letter-spacing:2px; text-transform:uppercase; font-weight:600; white-space:nowrap; }
 .nav-right { display:flex; align-items:center; gap:10px; }
 .nav-bell { width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); display:flex; align-items:center; justify-content:center; cursor:pointer; position:relative; font-size:15px; }
 .notif-dot { position:absolute; top:6px; right:6px; width:8px; height:8px; background:var(--pink-coral); border-radius:50%; border:1.5px solid var(--ocean-deep); }
@@ -291,6 +291,25 @@ body { font-family:'Poppins',sans-serif; background:var(--ocean-deep); color:var
   font-size: 11px; font-weight: 700; color: var(--gold-bright); text-align: center;
 }
 
+
+/* ── NAV FINAL OVERRIDES ─────────────────────────────────── */
+/* Desktop: show top links, hide bottom nav */
+@media (min-width: 768px) {
+  .desktop-nav-links { display: flex !important; align-items: center; gap: 4px; }
+  .bottom-nav         { display: none !important; }
+  .hamburger-btn      { display: none !important; }
+  .mobile-drawer      { display: none !important; }
+}
+/* Mobile: hide top links, show bottom nav */
+@media (max-width: 767px) {
+  .desktop-nav-links { display: none !important; }
+  .bottom-nav        { display: flex !important; }
+  .hamburger-btn     { display: none !important; }
+  .mobile-drawer     { display: none !important; }
+}
+/* Ensure nav-logo is always a link */
+.nav-logo { text-decoration: none; }
+
 </style>
 </head>
 <body>
@@ -301,28 +320,26 @@ body { font-family:'Poppins',sans-serif; background:var(--ocean-deep); color:var
 
 <!-- TOP NAV -->
 <nav class="top-nav">
-  <div class="nav-logo">☠ SUNKEN SUITE<span>Festival App · BP² Edition</span></div>
+  <a class="nav-logo" href="index.html">☠ SUNKEN SUITE<span>The Mutiny</span></a>
   <nav class="desktop-nav-links">
     <a class="desktop-nav-link" href="index.html">🏠 Home</a>
     <a class="desktop-nav-link" href="schedule.html">📅 Schedule</a>
     <a class="desktop-nav-link" href="artists.html">🎤 Artists</a>
     <a class="desktop-nav-link active" href="map.html">🗺️ Map</a>
-    <a class="desktop-nav-link" href="checklist.html">✅ Checklist</a>
-    <a class="desktop-nav-link" href="more.html">⋯ More</a>
+    <a class="desktop-nav-link" href="checklist.html">✅ List</a>
     <a class="desktop-nav-link sos" href="sos.html">🆘 SOS</a>
   </nav>
   <div class="nav-right">
     <div class="nav-bell">🔔<div class="notif-dot"></div></div>
     <div class="nav-avatar">AD</div>
-    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+  </div>
+</nav>
+  <div class="nav-right">
+    <div class="nav-bell">🔔<div class="notif-dot"></div></div>
+    <div class="nav-avatar">AD</div>
   </div>
 </nav>
 
-<!-- Mobile drawer -->
-<div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
-  <div class="drawer-backdrop" id="drawerBackdrop"></div>
   <div class="drawer-panel">
     <div class="drawer-links">
       <a class="drawer-link" href="index.html">🏠 Home</a>
@@ -771,17 +788,6 @@ function showToast(msg) {
 }
 
 // ── Hamburger nav ───────────────────────────────────────────────
-(function() {
-  const btn      = document.getElementById('hamburgerBtn');
-  const drawer   = document.getElementById('mobileDrawer');
-  const backdrop = document.getElementById('drawerBackdrop');
-  function open()  { btn.classList.add('open'); drawer.classList.add('open'); btn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
-  function close() { btn.classList.remove('open'); drawer.classList.remove('open'); btn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
-  btn.addEventListener('click', e => { e.stopPropagation(); drawer.classList.contains('open') ? close() : open(); });
-  backdrop.addEventListener('click', close);
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
-  drawer.querySelectorAll('.drawer-link').forEach(l => l.addEventListener('click', close));
-})();
 </script>
 
 <script>
