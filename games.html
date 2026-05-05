@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Games · Sunken Suite 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --ocean-deep:#020b1a; --ocean-mid:#041d3a; --ocean-surf:#0a3d6b;
+  --gold-bright:#f5c842; --gold-warm:#e8941a; --gold-sunset:#ff6b1a;
+  --teal-glow:#00d4c8; --pink-coral:#ff4d8d; --purple-mutiny:#9b3dff;
+  --text-light:#e8f4ff; --text-muted:#7ab8e0; --nav-height:64px;
+}
+body { font-family:'Poppins',sans-serif; background:var(--ocean-deep); color:var(--text-light); min-height:100vh; overflow-x:hidden; }
+.bg-ocean { position:fixed; inset:0; background:linear-gradient(180deg,#020b1a 0%,#041d3a 40%,#0a3d6b 70%,#041d3a 100%); z-index:0; }
+.wave { position:fixed; bottom:0; left:-100%; width:300%; height:100px; z-index:1; opacity:0.1; animation:waveFlow 8s linear infinite; }
+.wave:nth-child(2){ animation-delay:-3s; opacity:0.06; height:70px; }
+@keyframes waveFlow { 0%{transform:translateX(0)} 100%{transform:translateX(33.33%)} }
+
+/* NAV */
+.top-nav { position:fixed; top:0; left:0; right:0; height:var(--nav-height); background:rgba(2,11,26,0.93); backdrop-filter:blur(14px); border-bottom:1px solid rgba(245,200,66,0.25); z-index:300; display:flex; align-items:center; justify-content:space-between; padding:0 24px; }
+.nav-logo { font-family:'Pirata One',cursive; font-size:22px; color:var(--gold-bright); text-shadow:0 0 18px rgba(245,200,66,0.45); line-height:1; white-space:nowrap; flex-shrink:0; text-decoration:none; }
+.nav-logo span { display:block; font-size:10px; font-family:'Poppins',sans-serif; color:var(--teal-glow); letter-spacing:2px; text-transform:uppercase; font-weight:600; white-space:nowrap; }
+.nav-right { display:flex; align-items:center; gap:10px; }
+.nav-back { padding:7px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.06); color:var(--text-muted); font-family:'Poppins',sans-serif; font-size:13px; font-weight:700; text-decoration:none; cursor:pointer; transition:all 0.15s; }
+.nav-back:hover { border-color:rgba(245,200,66,0.3); color:var(--gold-bright); background:rgba(245,200,66,0.08); }
+.desktop-nav-links { display:none; }
+@media(min-width:768px) { .desktop-nav-links { display:flex; align-items:center; gap:4px; } .bottom-nav { display:none !important; } }
+.desktop-nav-link { display:flex; align-items:center; gap:5px; padding:7px 13px; border-radius:10px; cursor:pointer; font-family:'Poppins',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; text-decoration:none; color:var(--text-muted); border:1px solid transparent; transition:all 0.15s; white-space:nowrap; }
+.desktop-nav-link:hover { color:var(--gold-bright); border-color:rgba(245,200,66,0.3); background:rgba(245,200,66,0.06); }
+.desktop-nav-link.active { color:var(--gold-bright); border-color:rgba(245,200,66,0.4); background:rgba(245,200,66,0.1); }
+.desktop-nav-link.sos { color:var(--pink-coral); border-color:rgba(255,77,141,0.3); background:rgba(255,77,141,0.08); }
+.bottom-nav { position:fixed; bottom:0; left:0; right:0; height:72px; background:rgba(2,11,26,0.97); border-top:1px solid rgba(245,200,66,0.2); display:flex; align-items:center; justify-content:space-around; z-index:200; padding:0 4px; padding-bottom:env(safe-area-inset-bottom,0); }
+.nav-item { display:flex; flex-direction:column; align-items:center; gap:3px; padding:6px 8px; border-radius:12px; cursor:pointer; transition:all 0.15s; min-width:48px; border:none; background:transparent; text-decoration:none; }
+.nav-item:active { transform:scale(0.93); }
+.nav-icon-wrap { width:36px; height:36px; border-radius:10px; background:transparent; border:1px solid transparent; display:flex; align-items:center; justify-content:center; transition:all 0.15s; font-size:18px; }
+.nav-label { font-size:10px; font-weight:600; letter-spacing:0.5px; color:rgba(122,184,224,0.6); text-transform:uppercase; white-space:nowrap; }
+.nav-item.active .nav-icon-wrap { background:linear-gradient(135deg,rgba(245,200,66,0.2),rgba(232,148,26,0.2)); border-color:rgba(245,200,66,0.5); }
+.nav-item.active .nav-label { color:var(--gold-bright); }
+.nav-item.nav-sos .nav-icon-wrap { background:rgba(255,77,141,0.15); border-color:rgba(255,77,141,0.4); }
+.nav-item.nav-sos .nav-label { color:var(--pink-coral); }
+
+/* NAV OVERRIDE */
+@media(min-width:768px) { .desktop-nav-links { display:flex !important; } .bottom-nav { display:none !important; } }
+@media(max-width:767px) { .desktop-nav-links { display:none !important; } .bottom-nav { display:flex !important; } }
+
+/* MAIN */
+.main-content { position:relative; z-index:10; max-width:700px; margin:0 auto; padding:calc(var(--nav-height) + 20px) 16px calc(80px + 24px); }
+@media(min-width:768px) { .main-content { padding:calc(var(--nav-height) + 28px) 32px 48px; } }
+
+/* ── GAME HUB ── */
+.page-title { font-size:24px; font-weight:800; color:var(--gold-bright); letter-spacing:1px; text-transform:uppercase; margin-bottom:4px; }
+.page-sub { font-size:14px; color:var(--text-muted); font-weight:500; margin-bottom:24px; }
+
+.game-card {
+  background:rgba(4,29,58,0.8); border:1px solid rgba(255,255,255,0.1);
+  border-radius:20px; padding:20px; margin-bottom:16px; cursor:pointer;
+  transition:all 0.2s; display:flex; align-items:center; gap:16px;
+}
+.game-card:hover { border-color:rgba(245,200,66,0.4); transform:translateY(-3px); box-shadow:0 10px 36px rgba(0,0,0,0.4); background:rgba(4,29,58,0.95); }
+.game-icon { width:60px; height:60px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:28px; flex-shrink:0; }
+.game-body { flex:1; }
+.game-title { font-size:17px; font-weight:800; color:var(--text-light); margin-bottom:4px; }
+.game-desc { font-size:13px; color:var(--text-muted); line-height:1.5; }
+.game-meta { display:flex; gap:8px; margin-top:8px; }
+.game-badge { font-size:10px; font-weight:700; padding:3px 9px; border-radius:10px; letter-spacing:0.5px; text-transform:uppercase; }
+.game-arrow { font-size:22px; color:var(--text-muted); flex-shrink:0; transition:transform 0.15s; }
+.game-card:hover .game-arrow { transform:translateX(4px); color:var(--gold-bright); }
+
+/* ── TRIVIA GAME ── */
+#triviaGame { display:none; }
+
+/* Stage intro screen */
+.stage-intro {
+  text-align:center; padding:32px 20px;
+  background:rgba(4,29,58,0.8); border-radius:20px;
+  border:1px solid rgba(255,255,255,0.1);
+  animation:fadeIn 0.3s ease;
+}
+@keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+.stage-badge {
+  display:inline-block; font-size:11px; font-weight:800; letter-spacing:2px;
+  text-transform:uppercase; padding:5px 14px; border-radius:20px; margin-bottom:16px;
+}
+.stage-number { font-family:'Pirata One',cursive; font-size:52px; color:var(--gold-bright); line-height:1; margin-bottom:8px; }
+.stage-name { font-size:22px; font-weight:800; color:var(--text-light); margin-bottom:8px; }
+.stage-desc { font-size:14px; color:var(--text-muted); line-height:1.7; margin-bottom:24px; }
+.stage-info-row { display:flex; justify-content:center; gap:20px; margin-bottom:24px; }
+.stage-info-item { text-align:center; }
+.stage-info-val { font-size:22px; font-weight:800; color:var(--gold-bright); }
+.stage-info-lbl { font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; }
+.start-btn {
+  padding:14px 36px; border-radius:14px; border:none; cursor:pointer;
+  background:linear-gradient(135deg,var(--gold-warm),var(--gold-sunset));
+  color:var(--ocean-deep); font-family:'Poppins',sans-serif; font-size:16px; font-weight:800;
+  transition:all 0.15s; letter-spacing:0.5px;
+}
+.start-btn:hover { filter:brightness(1.1); transform:scale(1.03); }
+
+/* Question screen */
+.q-screen { animation:fadeIn 0.25s ease; }
+.q-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
+.q-stage-pill { font-size:11px; font-weight:800; padding:4px 12px; border-radius:20px; letter-spacing:1px; text-transform:uppercase; }
+.q-progress-wrap { flex:1; margin:0 12px; }
+.q-progress-bg { height:6px; background:rgba(255,255,255,0.08); border-radius:6px; overflow:hidden; }
+.q-progress-fill { height:100%; border-radius:6px; transition:width 0.4s ease; }
+.q-counter { font-size:12px; font-weight:700; color:var(--text-muted); white-space:nowrap; }
+.q-score-bar { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
+.q-score { font-size:13px; font-weight:700; color:var(--gold-bright); }
+.q-timer-wrap { display:flex; align-items:center; gap:6px; }
+.q-timer { font-size:18px; font-weight:800; color:var(--text-light); min-width:28px; text-align:center; font-variant-numeric:tabular-nums; }
+.q-timer.warning { color:var(--pink-coral); animation:timerPulse 0.5s ease-in-out infinite; }
+@keyframes timerPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.15)} }
+
+.q-card {
+  background:rgba(4,29,58,0.85); border:1px solid rgba(255,255,255,0.1);
+  border-radius:20px; padding:24px; margin-bottom:16px;
+}
+.q-category { font-size:10px; font-weight:800; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px; }
+.q-text { font-size:17px; font-weight:700; color:var(--text-light); line-height:1.5; }
+
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-option {
+  padding:14px 18px; border-radius:14px; cursor:pointer;
+  background:rgba(10,61,107,0.4); border:1px solid rgba(255,255,255,0.1);
+  font-size:14px; font-weight:600; color:var(--text-light); text-align:left;
+  transition:all 0.15s; display:flex; align-items:center; gap:10px;
+  font-family:'Poppins',sans-serif;
+}
+.q-option:hover:not(:disabled) { border-color:rgba(0,212,200,0.5); background:rgba(0,212,200,0.1); color:#fff; transform:translateX(3px); }
+.q-option:disabled { cursor:default; }
+.q-option.correct { background:rgba(74,222,128,0.18) !important; border-color:#4ade80 !important; color:#4ade80 !important; transform:none !important; }
+.q-option.wrong { background:rgba(255,77,141,0.18) !important; border-color:var(--pink-coral) !important; color:var(--pink-coral) !important; transform:none !important; }
+.q-option.reveal { background:rgba(74,222,128,0.08) !important; border-color:rgba(74,222,128,0.3) !important; }
+.q-opt-letter { width:26px; height:26px; border-radius:8px; background:rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; flex-shrink:0; }
+
+.q-feedback {
+  padding:14px 18px; border-radius:14px; margin-bottom:12px;
+  font-size:14px; font-weight:600; line-height:1.5;
+  animation:fadeIn 0.2s ease;
+}
+.q-feedback.correct { background:rgba(74,222,128,0.12); border:1px solid rgba(74,222,128,0.3); color:#4ade80; }
+.q-feedback.wrong { background:rgba(255,77,141,0.12); border:1px solid rgba(255,77,141,0.3); color:var(--pink-coral); }
+.q-feedback-fact { color:var(--text-muted); font-size:12px; margin-top:4px; font-weight:500; }
+
+.q-next-btn {
+  width:100%; padding:13px; border-radius:14px; border:none; cursor:pointer;
+  background:linear-gradient(135deg,var(--teal-glow),#00a89e);
+  color:var(--ocean-deep); font-family:'Poppins',sans-serif; font-size:15px; font-weight:800;
+  transition:all 0.15s;
+}
+.q-next-btn:hover { filter:brightness(1.08); }
+
+/* Results screen */
+.results-screen { text-align:center; padding:24px 16px; animation:fadeIn 0.4s ease; }
+.results-skull { font-size:64px; margin-bottom:12px; }
+.results-grade { font-family:'Pirata One',cursive; font-size:56px; line-height:1; margin-bottom:8px; }
+.results-title { font-size:22px; font-weight:800; color:var(--text-light); margin-bottom:8px; }
+.results-score-big { font-size:48px; font-weight:900; color:var(--gold-bright); line-height:1; margin:16px 0 4px; }
+.results-score-sub { font-size:14px; color:var(--text-muted); margin-bottom:24px; }
+.results-stats { display:flex; justify-content:center; gap:16px; margin-bottom:28px; flex-wrap:wrap; }
+.results-stat { background:rgba(4,29,58,0.8); border:1px solid rgba(255,255,255,0.1); border-radius:14px; padding:14px 20px; min-width:90px; }
+.results-stat-val { font-size:24px; font-weight:800; color:var(--gold-bright); }
+.results-stat-lbl { font-size:10px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; }
+.results-stage-breakdown { text-align:left; background:rgba(4,29,58,0.6); border-radius:16px; padding:16px; margin-bottom:24px; }
+.results-sb-title { font-size:12px; font-weight:800; color:var(--text-muted); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:12px; }
+.results-sb-row { display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+.results-sb-row:last-child { border:none; }
+.results-sb-name { flex:1; font-size:13px; font-weight:600; color:var(--text-light); }
+.results-sb-score { font-size:13px; font-weight:700; }
+.results-sb-bar { flex:1; height:6px; background:rgba(255,255,255,0.07); border-radius:6px; overflow:hidden; }
+.results-sb-fill { height:100%; border-radius:6px; }
+.results-btns { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+.results-play-again {
+  padding:13px 28px; border-radius:14px; border:none; cursor:pointer;
+  background:linear-gradient(135deg,var(--gold-warm),var(--gold-sunset));
+  color:var(--ocean-deep); font-family:'Poppins',sans-serif; font-size:15px; font-weight:800; transition:all 0.15s;
+}
+.results-play-again:hover { filter:brightness(1.1); }
+.results-back-btn {
+  padding:13px 28px; border-radius:14px; cursor:pointer;
+  background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15);
+  color:var(--text-light); font-family:'Poppins',sans-serif; font-size:15px; font-weight:700; transition:all 0.15s;
+}
+.results-back-btn:hover { border-color:rgba(0,212,200,0.4); color:var(--teal-glow); }
+
+/* More popout (same as other pages) */
+.more-overlay { position:fixed; inset:0; z-index:400; pointer-events:none; }
+.more-overlay.open { pointer-events:all; }
+.more-backdrop { position:absolute; inset:0; background:rgba(2,11,26,0.6); backdrop-filter:blur(4px); opacity:0; transition:opacity 0.2s ease; }
+.more-overlay.open .more-backdrop { opacity:1; }
+.more-panel { position:absolute; background:linear-gradient(160deg,#0a2540 0%,#020b1a 100%); border:1px solid rgba(245,200,66,0.25); border-radius:18px; padding:16px; width:280px; transform:translateY(-8px); opacity:0; transition:transform 0.22s cubic-bezier(0.4,0,0.2,1), opacity 0.22s ease; box-shadow:0 16px 48px rgba(0,0,0,0.6); z-index:1; }
+.more-overlay.open .more-panel { transform:translateY(0); opacity:1; }
+@media(max-width:767px) { .more-panel { position:fixed; bottom:80px; left:12px; right:12px; width:auto; border-radius:18px; transform:translateY(20px); } .more-overlay.open .more-panel { transform:translateY(0); } }
+.more-panel-header { font-size:11px; font-weight:800; color:var(--text-muted); letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.07); }
+.more-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.more-btn { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; padding:16px 10px; border-radius:14px; cursor:pointer; border:1px solid rgba(255,255,255,0.08); background:rgba(255,255,255,0.04); transition:all 0.15s; text-decoration:none; }
+.more-btn:hover { transform:translateY(-2px); border-color:rgba(245,200,66,0.3); background:rgba(245,200,66,0.07); }
+.more-btn-icon { width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:22px; }
+.more-btn-label { font-size:12px; font-weight:700; color:var(--text-light); text-align:center; }
+.more-btn-sub { font-size:10px; color:var(--text-muted); text-align:center; }
+.more-btn.games .more-btn-icon { background:rgba(155,61,255,0.2); }
+.more-btn.radio .more-btn-icon { background:rgba(255,77,141,0.2); }
+.more-btn.info  .more-btn-icon { background:rgba(0,212,200,0.2); }
+.more-btn.board .more-btn-icon { background:rgba(245,200,66,0.2); }
+.more-trigger.more-active, .nav-item.more-active .nav-icon-wrap { color:var(--gold-bright); border-color:rgba(245,200,66,0.4); background:rgba(245,200,66,0.1); }
+.nav-item.more-active .nav-label { color:var(--gold-bright); }
+</style>
+</head>
+<body>
+<div class="bg-ocean"></div>
+<svg class="wave" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="rgba(0,212,200,1)"><path d="M0,60 C300,120 600,0 900,60 C1050,90 1150,30 1200,60 L1200,120 L0,120 Z"/></svg>
+<svg class="wave" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="rgba(245,200,66,1)"><path d="M0,80 C200,20 500,100 800,50 C1000,20 1100,80 1200,60 L1200,120 L0,120 Z"/></svg>
+
+<nav class="top-nav">
+  <a class="nav-logo" href="index.html">☠ SUNKEN SUITE<span>The Mutiny</span></a>
+  <nav class="desktop-nav-links">
+    <a class="desktop-nav-link" href="index.html">🏠 Home</a>
+    <a class="desktop-nav-link" href="schedule.html">📅 Schedule</a>
+    <a class="desktop-nav-link" href="artists.html">🎤 Artists</a>
+    <a class="desktop-nav-link" href="map.html">🗺️ Map</a>
+    <a class="desktop-nav-link" href="checklist.html">✅ List</a>
+    <a class="desktop-nav-link more-trigger" href="#" onclick="return false;">⋯ More</a>
+    <a class="desktop-nav-link sos" href="sos.html">🆘 SOS</a>
+  </nav>
+  <div class="nav-right">
+    <a class="nav-back" href="javascript:history.back()">← Back</a>
+  </div>
+</nav>
+
+<main class="main-content">
+
+  <!-- GAME HUB -->
+  <div id="gameHub">
+    <div class="page-title">🎮 Games</div>
+    <div class="page-sub">Test your knowledge · Earn your stripes</div>
+
+    <div class="game-card" onclick="startTrivia()">
+      <div class="game-icon" style="background:linear-gradient(135deg,rgba(155,61,255,0.3),rgba(0,212,200,0.2));">🧠</div>
+      <div class="game-body">
+        <div class="game-title">Rave IQ Test</div>
+        <div class="game-desc">80 questions across 4 stages. Rave history, Sunken Suite artists, DNB culture, and more. Can you go all the way?</div>
+        <div class="game-meta">
+          <span class="game-badge" style="background:rgba(155,61,255,0.2);color:#c084fc;">Trivia</span>
+          <span class="game-badge" style="background:rgba(245,200,66,0.15);color:var(--gold-bright);">80 Questions</span>
+          <span class="game-badge" style="background:rgba(0,212,200,0.15);color:var(--teal-glow);">4 Stages</span>
+        </div>
+      </div>
+      <div class="game-arrow">›</div>
+    </div>
+
+    <div class="game-card" style="opacity:0.5;cursor:not-allowed;" onclick="alert('Coming soon!')">
+      <div class="game-icon" style="background:linear-gradient(135deg,rgba(255,77,141,0.3),rgba(245,200,66,0.2));">🎵</div>
+      <div class="game-body">
+        <div class="game-title">Beat Drop Bingo</div>
+        <div class="game-desc">Festival bingo — mark off moments as they happen at Sunken Suite!</div>
+        <div class="game-meta">
+          <span class="game-badge" style="background:rgba(255,77,141,0.2);color:var(--pink-coral);">Coming Soon</span>
+        </div>
+      </div>
+      <div class="game-arrow">›</div>
+    </div>
+  </div>
+
+  <!-- TRIVIA GAME -->
+  <div id="triviaGame"></div>
+
+</main>
+
+<nav class="bottom-nav">
+  <a class="nav-item" href="index.html"><div class="nav-icon-wrap">🏠</div><span class="nav-label">Home</span></a>
+  <a class="nav-item" href="schedule.html"><div class="nav-icon-wrap">📅</div><span class="nav-label">Schedule</span></a>
+  <a class="nav-item" href="artists.html"><div class="nav-icon-wrap">🎤</div><span class="nav-label">Artists</span></a>
+  <a class="nav-item" href="map.html"><div class="nav-icon-wrap">🗺️</div><span class="nav-label">Map</span></a>
+  <a class="nav-item" href="checklist.html"><div class="nav-icon-wrap">✅</div><span class="nav-label">List</span></a>
+  <a class="nav-item more-trigger" href="#" onclick="return false;"><div class="nav-icon-wrap">⋯</div><span class="nav-label">More</span></a>
+  <a class="nav-item nav-sos" href="sos.html"><div class="nav-icon-wrap">🆘</div><span class="nav-label">SOS</span></a>
+</nav>
+
+<!-- MORE POPOUT -->
+<div class="more-overlay" id="moreOverlay">
+  <div class="more-backdrop" id="moreBackdrop"></div>
+  <div class="more-panel" id="morePanel">
+    <div class="more-panel-header">⋯ More</div>
+    <div class="more-grid">
+      <a class="more-btn games" href="games.html"><div class="more-btn-icon">🎮</div><div class="more-btn-label">Games</div><div class="more-btn-sub">Mini-games & fun</div></a>
+      <a class="more-btn radio" href="radio.html"><div class="more-btn-icon">📻</div><div class="more-btn-label">Radio</div><div class="more-btn-sub">Live stream & mixes</div></a>
+      <a class="more-btn info"  href="info.html"><div class="more-btn-icon">ℹ️</div><div class="more-btn-label">Information</div><div class="more-btn-sub">FAQ & event info</div></a>
+      <a class="more-btn board" href="board.html"><div class="more-btn-icon">🏴‍☠️</div><div class="more-btn-label">Mutiny Board</div><div class="more-btn-sub">Community & crew</div></a>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// TRIVIA DATA — 80 questions, 4 stages of 20
+// Stage 1: Warm Up (easy)  Stage 2: In The Mix (medium)
+// Stage 3: Deep Cut (hard) Stage 4: Legend Status (expert)
+// ============================================================
+const STAGES = [
+  { id:1, name:"Warm Up",       emoji:"🎧", color:"#00d4c8", bg:"rgba(0,212,200,0.15)",  badge:"Stage 1", desc:"Basic rave knowledge. Get your bearings on the dance floor.",   timePerQ:20 },
+  { id:2, name:"In The Mix",    emoji:"🎛️", color:"#9b3dff", bg:"rgba(155,61,255,0.15)", badge:"Stage 2", desc:"Things are heating up. DNB, house, and festival culture.",       timePerQ:18 },
+  { id:3, name:"Deep Cut",      emoji:"🔊", color:"#e8941a", bg:"rgba(232,148,26,0.15)",  badge:"Stage 3", desc:"Only the real ones make it here. Artist history and subgenres.", timePerQ:15 },
+  { id:4, name:"Legend Status", emoji:"💀", color:"#ff4d8d", bg:"rgba(255,77,141,0.15)",  badge:"Stage 4", desc:"Expert territory. Sunken Suite deep cuts and scene knowledge.",   timePerQ:12 },
+];
+
+const ALL_QUESTIONS = [
+// ── STAGE 1: WARM UP (Q1-20) ─────────────────────────────────
+{ stage:1, cat:"Rave History",   q:"What decade did rave culture first emerge in the UK?",              opts:["1970s","1980s","1990s","2000s"],                       ans:1, fact:"UK rave culture exploded in the late 1980s, driven by Acid House arriving from Chicago." },
+{ stage:1, cat:"Rave Culture",   q:"What does 'PLUR' stand for in rave culture?",                      opts:["Party, Love, Unity, Respect","Peace, Love, Unity, Respect","Peace, Love, Understanding, Rave","Party, Love, Unity, Rave"], ans:1, fact:"PLUR is the foundational philosophy of rave culture, originating in the early 1990s New York scene." },
+{ stage:1, cat:"DNB Basics",     q:"What is the typical BPM range of drum & bass music?",              opts:["100-120 BPM","120-140 BPM","160-180 BPM","180-220 BPM"],ans:2, fact:"Drum & bass typically runs at 160-180 BPM, distinguishing it from house and techno." },
+{ stage:1, cat:"Sunken Suite",   q:"Where is Sunken Suite 2026 taking place?",                         opts:["Boston Park Hotel","Sturbridge Host Hotel","Salem Waterfront","Providence Marriott"], ans:1, fact:"Sunken Suite 2026 is at the Sturbridge Host Hotel on Cedar Lake, MA." },
+{ stage:1, cat:"Rave History",   q:"Which city is widely considered the birthplace of house music?",   opts:["New York","Detroit","Chicago","London"],                  ans:2, fact:"House music was born in Chicago's underground club scene in the early 1980s at venues like The Warehouse." },
+{ stage:1, cat:"DNB Basics",     q:"Which city is the spiritual home of drum & bass?",                 opts:["Manchester","Birmingham","Bristol","London"],             ans:3, fact:"London, particularly south and east London, is the home of drum & bass culture." },
+{ stage:1, cat:"Rave History",   q:"What drug became synonymous with the 1988 UK 'Second Summer of Love'?", opts:["LSD","MDMA","Cocaine","Amphetamine"],               ans:1, fact:"MDMA (ecstasy) became the defining drug of the Second Summer of Love, fuelling all-night dancing." },
+{ stage:1, cat:"Sunken Suite",   q:"How many stages does Sunken Suite 2026 have?",                     opts:["1","2","3","4"],                                          ans:1, fact:"Sunken Suite features the DNB Stage (BP²) and the Oasis Stage." },
+{ stage:1, cat:"Rave Culture",   q:"What is a 'DJ set' typically measured in?",                        opts:["Songs","Hours","BPM","Watts"],                            ans:1, fact:"DJ sets are booked in hours, typically ranging from 1 to 3 hours at festivals." },
+{ stage:1, cat:"DNB Basics",     q:"What does 'DNB' stand for?",                                       opts:["Dance N Bass","Drum N Bass","Deep N Bass","Dark N Bass"], ans:1, fact:"Drum and Bass — the genre born in the UK in the early 90s from jungle and breakbeat hardcore." },
+{ stage:1, cat:"Lineup",         q:"Which legendary Bristol artist headlines the DNB Stage on Friday?", opts:["Goldie","Roni Size","LTJ Bukem","Shy FX"],              ans:1, fact:"Roni Size & Reprazent won the Mercury Prize in 1997 for their album New Forms." },
+{ stage:1, cat:"Rave History",   q:"What was the name of the famous Chicago club where house music was born?", opts:["The Haçienda","The Warehouse","Fabric","BERGHAIN"], ans:1, fact:"The Warehouse, run by Frankie Knuckles, gave house music its name." },
+{ stage:1, cat:"Lineup",         q:"Which Sunken Suite headliner is known for the album 'New Forms'?", opts:["Spor","Evol Intent","Roni Size","Dara"],                  ans:2, fact:"Roni Size's New Forms won the Mercury Prize in 1997, changing the face of drum & bass." },
+{ stage:1, cat:"Rave Culture",   q:"What is the practice of trading bead bracelets at raves called?",  opts:["Kandi trading","Bead swapping","PLUR passing","Wristleting"], ans:0, fact:"Kandi trading is a rave tradition where beaded bracelets are exchanged using the PLUR handshake." },
+{ stage:1, cat:"DNB Basics",     q:"What music genre directly preceded drum & bass?",                   opts:["Techno","Jungle","Garage","Trance"],                      ans:1, fact:"Jungle (or breakbeat hardcore) evolved into drum and bass in the early-to-mid 1990s." },
+{ stage:1, cat:"Sunken Suite",   q:"What body of water is the Sturbridge Host Hotel located on?",      opts:["Lake Quinsigamond","Brimfield Pond","Cedar Lake","Quaboag Pond"], ans:2, fact:"The Sturbridge Host Hotel sits on the shores of Cedar Lake in Sturbridge, MA." },
+{ stage:1, cat:"Lineup",         q:"Spor is the drum & bass alias of which producer?",                 opts:["Ed Rush","Jon Gooch","Friction","DC Breaks"],              ans:1, fact:"Spor is the DnB alias of Jon Gooch, who also produces under the Feed Me name." },
+{ stage:1, cat:"Rave History",   q:"What was the UK's Criminal Justice Act 1994 primarily aimed at restricting?", opts:["Drug sales","Outdoor raves","Club hours","DJ licensing"], ans:1, fact:"The CJA 1994 famously targeted outdoor raves, defining illegal gatherings as music with 'repetitive beats'." },
+{ stage:1, cat:"Lineup",         q:"What stage does Carlo Lio play at Sunken Suite 2026?",             opts:["DNB Stage","Oasis Stage","Main Stage","Poolside"],         ans:1, fact:"Carlo Lio is a Canadian techno and house artist performing on the Oasis Stage." },
+{ stage:1, cat:"Rave Culture",   q:"What does a DJ use to smoothly transition between two tracks?",    opts:["A fade","A mix","A drop","A blend"],                       ans:1, fact:"Mixing — blending the outro of one track with the intro of another — is the core DJ skill." },
+
+// ── STAGE 2: IN THE MIX (Q21-40) ──────────────────────────────
+{ stage:2, cat:"DNB History",    q:"In what year did Goldie release the landmark DnB album 'Timeless'?", opts:["1993","1995","1997","1999"],                            ans:1, fact:"Goldie's Timeless (1995) is one of the most important albums in drum & bass history." },
+{ stage:2, cat:"Lineup",         q:"Evol Intent is based in which US city?",                            opts:["New York","Los Angeles","Atlanta","Chicago"],             ans:2, fact:"Evol Intent is an Atlanta-based drum & bass collective that helped put American DnB on the map." },
+{ stage:2, cat:"DNB Culture",    q:"What subgenre of DnB is characterised by dark, sci-fi influenced, complex sounds?", opts:["Liquid funk","Neurofunk","Jump-up","Ragga DnB"], ans:1, fact:"Neurofunk, pioneered by artists like Ed Rush & Optical, features dark and technical sound design." },
+{ stage:2, cat:"Rave History",   q:"Which Detroit producer is widely regarded as the 'Father of Techno'?", opts:["Carl Craig","Juan Atkins","Derrick May","Jeff Mills"],  ans:1, fact:"Juan Atkins, as Model 500, is credited as one of the originators of Detroit techno." },
+{ stage:2, cat:"Lineup",         q:"JFB is a world champion in which specialist DJ discipline?",        opts:["Mixing","Scratching","Beat juggling","Turntablism"],      ans:1, fact:"JFB is a multiple World DMC Champion, renowned for incorporating live scratching into DnB sets." },
+{ stage:2, cat:"Rave History",   q:"What is the name of Manchester's legendary club that brought acid house to the north of England?", opts:["The Warehouse","Sankeys","The Haçienda","Cream"], ans:2, fact:"The Haçienda, run by Factory Records, was pivotal in spreading rave culture throughout the UK." },
+{ stage:2, cat:"DNB Culture",    q:"What is 'liquid funk' DnB best known for?",                        opts:["Heavy bass and aggression","Melodic, soulful, smooth sounds","Reggae-influenced vocals","Sci-fi dark textures"], ans:1, fact:"Liquid funk is characterised by its smooth, melodic basslines and soulful vocal chops." },
+{ stage:2, cat:"Lineup",         q:"Which Sunken Suite artist co-founded Utter Gutter Records?",       opts:["JFB","Deekline","Phantom 45","Unglued"],                  ans:1, fact:"Deekline co-founded Utter Gutter Records and has been a prolific producer and DJ for over two decades." },
+{ stage:2, cat:"Rave History",   q:"Which seminal rave took place at a British airfield in 1992 and attracted 40,000 people?", opts:["Castlemorton Common","Spiral Tribe","Orbit","Fantazia"], ans:0, fact:"Castlemorton Common 1992 was one of the UK's biggest-ever illegal raves, triggering the CJA 1994." },
+{ stage:2, cat:"Lineup",         q:"Madam X is originally from which city?",                           opts:["London","Chicago","Detroit","Berlin"],                    ans:2, fact:"Madam X is a Detroit-born techno artist delivering powerful, bass-heavy industrial techno." },
+{ stage:2, cat:"DNB History",    q:"What record label, founded by Metalheadz, is one of DnB's most iconic?", opts:["Hospital Records","Moving Shadow","Metalheadz","Ram Records"], ans:2, fact:"Metalheadz, founded by Goldie in 1994, remains one of drum & bass's most respected labels." },
+{ stage:2, cat:"Lineup",         q:"Which Sunken Suite artist is known for a 'rolling, head-nodding DnB sound'?", opts:["Spor","Degs","Unglued","Phantom 45"],            ans:2, fact:"Unglued is celebrated for his rolling, deeply satisfying DnB productions supported by the biggest names in the scene." },
+{ stage:2, cat:"Rave History",   q:"Frankie Knuckles is associated with pioneering which genre?",      opts:["Drum & Bass","Techno","House","Trance"],                  ans:2, fact:"Frankie Knuckles, 'The Godfather of House', was the resident DJ at Chicago's Warehouse." },
+{ stage:2, cat:"Lineup",         q:"Krafty Kutz is known for pioneering which genre?",                 opts:["Liquid DnB","Techno","Breakbeat","Neurofunk"],             ans:2, fact:"Krafty Kutz is a pioneering breaks artist who helped define the modern breakbeat sound." },
+{ stage:2, cat:"DNB Culture",    q:"What does 'jump-up' DnB typically feature?",                       opts:["Heavy bass stabs and crowd-friendly drops","Deep rolling basslines","Jazz samples","Reggae vocals"], ans:0, fact:"Jump-up DnB is known for its energetic bass stabs and crowd-wrecking drops, aimed squarely at the dance floor." },
+{ stage:2, cat:"Rave History",   q:"The famous 'Second Summer of Love' occurred in which year?",       opts:["1986","1987","1988","1990"],                              ans:2, fact:"The Second Summer of Love in 1988 saw acid house explode across the UK with massive outdoor parties." },
+{ stage:2, cat:"Lineup",         q:"J.Phlip is based in which US city?",                              opts:["New York","Los Angeles","San Francisco","Chicago"],        ans:2, fact:"J.Phlip is a San Francisco-based DJ and producer known for her infectious energy and impeccable track selection." },
+{ stage:2, cat:"DNB History",    q:"Hospital Records, one of DnB's biggest labels, was founded in which city?", opts:["Bristol","Manchester","London","Birmingham"],     ans:2, fact:"Hospital Records was founded in London in 1996 by Chris Goss and London Elektricity." },
+{ stage:2, cat:"Lineup",         q:"Georgie Riot is best known for which DnB subgenre?",               opts:["Liquid","Neurofunk","Jump-Up","Ragga"],                    ans:2, fact:"Georgie Riot is a firm festival favourite known for high-energy jump-up sets packed with bangers." },
+{ stage:2, cat:"Rave Culture",   q:"What is the term for the moment in a track when the beat drops back in after a breakdown?", opts:["The peak","The drop","The intro","The outro"], ans:1, fact:"'The drop' is one of the most anticipated moments in rave music, where the full bassline and drums return." },
+
+// ── STAGE 3: DEEP CUT (Q41-60) ──────────────────────────────
+{ stage:3, cat:"DnB History",    q:"Roni Size's Mercury Prize-winning album New Forms was released in which year?", opts:["1995","1996","1997","1998"],                  ans:2, fact:"New Forms by Roni Size & Reprazent won the Mercury Prize in 1997, the first DnB album to do so." },
+{ stage:3, cat:"Lineup",         q:"What is SPOR's other well-known alias?",                           opts:["DJ Friction","Feed Me","Shy FX","Pendulum"],              ans:1, fact:"Jon Gooch records electronic music as Feed Me, a more house and electro-influenced project alongside his DnB alias SPOR." },
+{ stage:3, cat:"DnB History",    q:"Which influential DnB duo created the seminal album 'Virus' on Moving Shadow?", opts:["Grooverider & Fabio","Ed Rush & Optical","LTJ Bukem & MC Conrad","Pendulum"], ans:1, fact:"Ed Rush & Optical's Virus (1998) is a cornerstone of the neurofunk subgenre." },
+{ stage:3, cat:"Rave History",   q:"Which act is credited with creating the 'amen break', the most sampled drum loop in music history?", opts:["James Brown","The Winstons","Clyde Stubblefield","The JBs"], ans:1, fact:"The Amen Break comes from 'Amen, Brother' by The Winstons (1969) and is the backbone of jungle and DnB." },
+{ stage:3, cat:"Lineup",         q:"Dara is renowned for his encyclopedic knowledge of which early genre closely related to DnB?", opts:["Techno","Jungle","Garage","Breakbeat"],                         ans:1, fact:"Dara is revered as a legendary veteran of the drum & bass and jungle scene." },
+{ stage:3, cat:"Rave History",   q:"Which Berlin club opened in 2004 and became arguably the world's most famous techno venue?", opts:["Tresor","Watergate","Berghain","Fabric"],                      ans:2, fact:"Berghain opened in 2004 in a former power plant and is famous for its intense door policy and 24-hour parties." },
+{ stage:3, cat:"DnB Culture",    q:"What label did Roni Size co-found in Bristol?",                   opts:["Full Cycle","V Recordings","Metalheadz","Shogun Audio"],   ans:0, fact:"Full Cycle Records, founded by Roni Size and Krust in Bristol, is one of DnB's most respected independent labels." },
+{ stage:3, cat:"Lineup",         q:"What genre description best suits Madam X's sound?",               opts:["Liquid DnB","Industrial techno","Deep house","Neurofunk"],  ans:1, fact:"Madam X is a Detroit-born artist delivering powerful, bass-heavy industrial techno." },
+{ stage:3, cat:"DnB History",    q:"Which artist is credited with pioneering the 'rollers' style of DnB?", opts:["Goldie","Digital","Dillinja","Calibre"],               ans:1, fact:"Digital is one of the pioneers of the rolling, percussion-driven DnB style that became the blueprint for modern DnB." },
+{ stage:3, cat:"Rave History",   q:"What was the first rave record to reach the UK Top 10?", opts:["Pump Up the Volume by MARRS","Strings of Life by Derrick May","Pacific State by 808 State","Theme from S-Express by S-Express"], ans:3, fact:"S-Express's Theme from S-Express hit #1 in the UK in 1988, one of the first house records to cross over." },
+{ stage:3, cat:"Lineup",         q:"Gettoblaster is from which US city often associated with the roots of house music?", opts:["Detroit","New York","Chicago","Miami"],     ans:2, fact:"Gettoblaster is a Chicago native who embodies the raw spirit of house music." },
+{ stage:3, cat:"DnB Culture",    q:"What is the name for a DnB set where two DJs play back-to-back?",  opts:["B2B","Duo set","Tag team","Double drop"],                 ans:0, fact:"B2B (back-to-back) sets are a celebrated format where two DJs trade records, keeping crowds guessing." },
+{ stage:3, cat:"Rave History",   q:"Which influential record label released the jungle classic 'Original Nuttah' by Shy FX & T Power?", opts:["Metalheadz","Moving Shadow","Sour Records","Formation"], ans:2, fact:"Sour Records released 'Original Nuttah' in 1994, one of the defining records of the UK jungle scene." },
+{ stage:3, cat:"Lineup",         q:"Which Sunken Suite artist is a member of the collective that helped pioneer American DnB?", opts:["JFB","Dara","Evol Intent","Degs"],   ans:2, fact:"Evol Intent is an Atlanta-based DnB collective credited with putting American drum & bass on the map." },
+{ stage:3, cat:"DnB History",    q:"What year did Pendulum release 'Hold Your Colour', their groundbreaking debut album?", opts:["2003","2005","2007","2009"],              ans:1, fact:"Hold Your Colour (2005) by Pendulum was a major crossover moment for drum & bass." },
+{ stage:3, cat:"Rave Culture",   q:"What is the term for the technique where a DJ uses two copies of the same record to extend a break?", opts:["Scratching","Beat juggling","The spinback","Looping"], ans:1, fact:"Beat juggling, pioneered by hip-hop DJs, involves manipulating two copies of a record to create new rhythms." },
+{ stage:3, cat:"Lineup",         q:"JFB is a multi-award winner in the World DMC Championships. What does DMC stand for?", opts:["Digital Music Championship","Disco Mix Club","DJ Master Class","Digital Mix Championship"], ans:1, fact:"The DMC (Disco Mix Club) World DJ Championships are the most prestigious DJ competition in the world." },
+{ stage:3, cat:"DnB History",    q:"Which seminal DnB album by LTJ Bukem is considered a cornerstone of atmospheric/intelligent DnB?", opts:["Journey Inwards","Progression Sessions","Logic","Demon's Theme"], ans:0, fact:"Journey Inwards (2001) by LTJ Bukem is a masterpiece of atmospheric, jazzy drum & bass." },
+{ stage:3, cat:"Rave History",   q:"What was the name of the legendary New York club that helped define house and techno in the US?", opts:["Studio 54","The Loft","The Paradise Garage","CBGB"],          ans:2, fact:"The Paradise Garage, run by Larry Levan, was one of the most influential clubs in dance music history." },
+{ stage:3, cat:"Lineup",         q:"Phantom 45 is associated with which DnB subgenre?",                opts:["Jump-up","Neurofunk","Liquid funk","Ragga DnB"],            ans:2, fact:"Phantom 45 delivers smooth, rolling liquid drum & bass with emotional depth and precise mixing." },
+
+// ── STAGE 4: LEGEND STATUS (Q61-80) ──────────────────────────
+{ stage:4, cat:"Expert DnB",     q:"What is the name of Roni Size's live band project that recorded New Forms?",         opts:["Reprazent","Roni Size Collective","Full Cycle All Stars","Bristolian Sound"], ans:0, fact:"Reprazent was the group assembled by Roni Size for New Forms — a groundbreaking live DnB band." },
+{ stage:4, cat:"Scene Knowledge",q:"Which Sunken Suite 2026 artist plays both Drum & Bass and is a World Champion Scratch DJ?", opts:["Deekline","JFB","Dara","Unglued"],                                  ans:1, fact:"JFB uniquely incorporates live scratching into DnB sets, winning the World DMC Championship multiple times." },
+{ stage:4, cat:"Expert DnB",     q:"The 'Amen break' sample originally came from which song recorded in 1969?",           opts:["Give It Up or Turnit a Loose","Think","Amen, Brother","Cold Sweat"],     ans:2, fact:"'Amen, Brother' by The Winstons (the B-side to Colour Him Father) contains the most sampled break in history." },
+{ stage:4, cat:"Expert History", q:"Which Chicago DJ is often credited with first playing records at 45 RPM sped up to create the 'house' sound?", opts:["Frankie Knuckles","Larry Heard","Ron Hardy","Jesse Saunders"], ans:2, fact:"Ron Hardy at the Music Box was known for experimental DJing including speeding up tracks, helping birth house music." },
+{ stage:4, cat:"Scene Knowledge",q:"Sunken Suite is presented by BP². What does BP² stand for in the context of the New England DnB scene?", opts:["Bass People Squared","Breakbeat Productions","Boston Promotions","Bassline Pioneers"], ans:0, fact:"BP² (Bass People Squared) is the New England DnB collective behind Sunken Suite." },
+{ stage:4, cat:"Expert DnB",     q:"Which DnB label, known for the 'Ram sound', released early work by Chase & Status and Sub Focus?", opts:["Hospital Records","Shogun Audio","Ram Records","Metalheadz"],   ans:2, fact:"Ram Records, founded by Andy C, is one of the UK's biggest and most influential DnB labels." },
+{ stage:4, cat:"Expert History", q:"The 'Haçienda Must Be Built' slogan referenced which Situationist text?",             opts:["Society of the Spectacle","The Beach Beneath the Street","Report on the Construction of Situations","Leaving the 20th Century"], ans:2, fact:"The phrase 'The Haçienda Must Be Built' was taken from Ivan Chtcheglov's 'Formulary for a New Urbanism' (1953)." },
+{ stage:4, cat:"Lineup Deep",    q:"Evol Intent's home city has produced other influential DnB acts. Which of these is also from Atlanta?", opts:["Dieselboy","Gridlok","Usual Suspects","Dara"],              ans:2, fact:"Usual Suspects is another Atlanta-based DnB crew, part of the same flourishing US DnB scene as Evol Intent." },
+{ stage:4, cat:"Expert DnB",     q:"Which producer co-created the neurofunk sound with Ed Rush under the Virus label?",  opts:["Photek","Optical","Dillinja","Konflict"],                               ans:1, fact:"Optical and Ed Rush created the Virus label and together defined the neurofunk sound with albums like Wormhole and Virus." },
+{ stage:4, cat:"Scene Knowledge",q:"What is the name of the venue style, popular in the early UK rave scene, that replaced illegal outdoor raves?", opts:["Licensed clubs","Arena raves","Superclubs","Warehouse parties"], ans:2, fact:"Superclubs like Cream (Liverpool), Gatecrasher (Sheffield), and Ministry of Sound (London) were the licensed successor to the illegal outdoor rave scene." },
+{ stage:4, cat:"Lineup Deep",    q:"Deekline has collaborated extensively with which Bristolian MC known for jungle and DnB?", opts:["Dynamite MC","Skibadee","Ed Solo","Redman"],                        ans:2, fact:"Deekline and Ed Solo have been long-time collaborators, releasing jungle and DnB music together." },
+{ stage:4, cat:"Expert DnB",     q:"What year was the Metalheadz Sunday Sessions at the Blue Note club in London launched?", opts:["1993","1994","1995","1996"],                                        ans:1, fact:"The Metalheadz Sunday Sessions launched in 1994 at the Blue Note in Hoxton, becoming one of the most legendary club nights in DnB history." },
+{ stage:4, cat:"Expert History", q:"Which seminal 1992 EP by 4Hero is considered one of the first true jungle records?",  opts:["Mr. Kirk's Nightmare","Terminator","Playing with Fire","Journey into Bass"], ans:0, fact:"'Mr. Kirk's Nightmare' by 4Hero (1992) is a seminal early jungle record, sampling from classic breaks." },
+{ stage:4, cat:"Scene Knowledge",q:"Sunken Suite 2026 runs across how many days?",                                       opts:["1","2","3","4"],                                                          ans:2, fact:"Sunken Suite 2026 runs Friday July 17 through Sunday July 19 — three days of music on Cedar Lake." },
+{ stage:4, cat:"Expert DnB",     q:"Which DnB producer created the iconic 'Valve D' bass sound that defined the 'dark' era?", opts:["Dillinja","Goldie","Grooverider","4Hero"],                          ans:0, fact:"Dillinja, known as the 'Dark Destroyer', created the Valve D synthesizer and helped define dark and technical DnB." },
+{ stage:4, cat:"Lineup Deep",    q:"Carlo Lio's music is primarily released on which type of labels?",                   opts:["Major labels","Underground techno and house labels","Pop crossover labels","DnB labels"], ans:1, fact:"Carlo Lio releases on underground labels like Rawthentic, Cocoon, and Rejection, staying true to the underground scene." },
+{ stage:4, cat:"Expert History", q:"What was the name of the pirate radio station that championed early jungle and DnB in the UK?", opts:["Kiss FM","Rinse FM","Kool FM","Flex FM"],                      ans:2, fact:"Kool FM was one of the most important pirate radio stations for jungle and drum & bass in the early 1990s." },
+{ stage:4, cat:"Scene Knowledge",q:"Which Sunken Suite 2026 headliner won the Mercury Prize and changed drum & bass history?", opts:["Spor","Evol Intent","Roni Size","Goldie"],                         ans:2, fact:"Roni Size & Reprazent's New Forms won the 1997 Mercury Prize — one of the most celebrated moments in DnB history." },
+{ stage:4, cat:"Expert DnB",     q:"The 'think break' — another hugely sampled drum break — comes from which artist?",  opts:["James Brown","Lyn Collins","The Incredible Bongo Band","The Honeydrippers"], ans:1, fact:"'Think (About It)' by Lyn Collins (1972) contains the 'think break', one of the most sampled breaks alongside the Amen." },
+{ stage:4, cat:"Lineup Deep",    q:"Krafty Kutz has been releasing music since the early 2000s in which primary genre?", opts:["Drum & Bass","Techno","Breaks / Breakbeat","Deep House"],               ans:2, fact:"Krafty Kutz is a pioneering breaks and breakbeat artist who helped shape the UK breaks scene in the 2000s." },
+];
+
+// ── GAME STATE ────────────────────────────────────────────────
+let state = {
+  currentStage: 0,
+  currentQ: 0,
+  score: 0,
+  stageScores: [0, 0, 0, 0],
+  stageCorrect: [0, 0, 0, 0],
+  answered: false,
+  timer: null,
+  timeLeft: 0,
+  stageQuestions: [],
+};
+
+function getStageQuestions(stageNum) {
+  const qs = ALL_QUESTIONS.filter(q => q.stage === stageNum);
+  // Shuffle
+  for (let i = qs.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [qs[i], qs[j]] = [qs[j], qs[i]];
+  }
+  return qs.slice(0, 20);
+}
+
+function startTrivia() {
+  document.getElementById('gameHub').style.display = 'none';
+  document.getElementById('triviaGame').style.display = 'block';
+  state = { currentStage:0, currentQ:0, score:0, stageScores:[0,0,0,0], stageCorrect:[0,0,0,0], answered:false, timer:null, timeLeft:0, stageQuestions:[] };
+  showStageIntro(0);
+}
+
+function showStageIntro(stageIdx) {
+  const stage = STAGES[stageIdx];
+  const el = document.getElementById('triviaGame');
+  el.innerHTML = `
+    <div class="stage-intro">
+      <div class="stage-badge" style="background:${stage.bg};color:${stage.color};">${stage.badge}</div>
+      <div class="stage-number">${stage.emoji}</div>
+      <div class="stage-name">${stage.name}</div>
+      <div class="stage-desc">${stage.desc}</div>
+      <div class="stage-info-row">
+        <div class="stage-info-item"><div class="stage-info-val">20</div><div class="stage-info-lbl">Questions</div></div>
+        <div class="stage-info-item"><div class="stage-info-val">${stage.timePerQ}s</div><div class="stage-info-lbl">Per Question</div></div>
+        <div class="stage-info-item"><div class="stage-info-val">${stageIdx > 0 ? state.score : '0'}</div><div class="stage-info-lbl">Score So Far</div></div>
+      </div>
+      <button class="start-btn" onclick="beginStage(${stageIdx})">
+        ${stageIdx === 0 ? '🎧 Start The Game' : '🔊 Begin Stage ' + (stageIdx + 1)}
+      </button>
+    </div>`;
+}
+
+function beginStage(stageIdx) {
+  state.currentStage = stageIdx;
+  state.currentQ = 0;
+  state.stageQuestions = getStageQuestions(stageIdx + 1);
+  showQuestion();
+}
+
+function showQuestion() {
+  const stage = STAGES[state.currentStage];
+  const q = state.stageQuestions[state.currentQ];
+  const qNum = state.currentStage * 20 + state.currentQ + 1;
+  const totalQ = 80;
+  const stageQ = state.currentQ + 1;
+  state.answered = false;
+
+  const letters = ['A','B','C','D'];
+  const optHTML = q.opts.map((opt, i) => `
+    <button class="q-option" onclick="selectAnswer(${i})" id="opt${i}">
+      <span class="q-opt-letter">${letters[i]}</span>${opt}
+    </button>`).join('');
+
+  document.getElementById('triviaGame').innerHTML = `
+    <div class="q-screen">
+      <div class="q-header">
+        <span class="q-stage-pill" style="background:${stage.bg};color:${stage.color};">${stage.emoji} ${stage.name}</span>
+        <div class="q-progress-wrap">
+          <div class="q-progress-bg"><div class="q-progress-fill" id="qProgress" style="width:${(qNum/totalQ*100).toFixed(1)}%;background:${stage.color};"></div></div>
+        </div>
+        <span class="q-counter">Q${qNum}/80</span>
+      </div>
+      <div class="q-score-bar">
+        <span class="q-score">⭐ ${state.score} pts</span>
+        <div class="q-timer-wrap">⏱ <span class="q-timer" id="qTimer">${stage.timePerQ}</span>s</div>
+      </div>
+      <div class="q-card">
+        <div class="q-category" style="color:${stage.color};">${q.cat}</div>
+        <div class="q-text">${q.q}</div>
+      </div>
+      <div class="q-options" id="qOptions">${optHTML}</div>
+      <div id="qFeedback"></div>
+      <button class="q-next-btn" id="qNextBtn" style="display:none;" onclick="nextQuestion()">Next Question →</button>
+    </div>`;
+
+  startTimer(stage.timePerQ);
+}
+
+function startTimer(secs) {
+  clearInterval(state.timer);
+  state.timeLeft = secs;
+  updateTimerDisplay();
+  state.timer = setInterval(() => {
+    state.timeLeft--;
+    updateTimerDisplay();
+    if (state.timeLeft <= 0) {
+      clearInterval(state.timer);
+      if (!state.answered) timeOut();
+    }
+  }, 1000);
+}
+
+function updateTimerDisplay() {
+  const el = document.getElementById('qTimer');
+  if (!el) return;
+  el.textContent = state.timeLeft;
+  el.className = 'q-timer' + (state.timeLeft <= 5 ? ' warning' : '');
+}
+
+function timeOut() {
+  state.answered = true;
+  const q = state.stageQuestions[state.currentQ];
+  disableOptions();
+  document.getElementById(`opt${q.ans}`).classList.add('reveal');
+  showFeedback(false, null, q, true);
+}
+
+function selectAnswer(idx) {
+  if (state.answered) return;
+  state.answered = true;
+  clearInterval(state.timer);
+
+  const q = state.stageQuestions[state.currentQ];
+  const stage = STAGES[state.currentStage];
+  const correct = idx === q.ans;
+
+  disableOptions();
+  document.getElementById(`opt${idx}`).classList.add(correct ? 'correct' : 'wrong');
+  if (!correct) document.getElementById(`opt${q.ans}`).classList.add('reveal');
+
+  if (correct) {
+    // Points: base + time bonus
+    const timeBonus = Math.floor(state.timeLeft * 2);
+    const stageBonus = (state.currentStage + 1) * 10;
+    const pts = 50 + stageBonus + timeBonus;
+    state.score += pts;
+    state.stageScores[state.currentStage] += pts;
+    state.stageCorrect[state.currentStage]++;
+  }
+
+  showFeedback(correct, idx, q, false);
+}
+
+function disableOptions() {
+  document.querySelectorAll('.q-option').forEach(b => b.disabled = true);
+}
+
+function showFeedback(correct, idx, q, timedOut) {
+  const fb = document.getElementById('qFeedback');
+  const next = document.getElementById('qNextBtn');
+  if (timedOut) {
+    fb.className = 'q-feedback wrong';
+    fb.innerHTML = `⏰ Time's up! <div class="q-feedback-fact">💡 ${q.fact}</div>`;
+  } else {
+    fb.className = `q-feedback ${correct ? 'correct' : 'wrong'}`;
+    fb.innerHTML = correct
+      ? `✓ Correct! <div class="q-feedback-fact">💡 ${q.fact}</div>`
+      : `✗ Not quite. <div class="q-feedback-fact">💡 ${q.fact}</div>`;
+  }
+  if (next) next.style.display = 'block';
+}
+
+function nextQuestion() {
+  state.currentQ++;
+  if (state.currentQ >= 20) {
+    // Stage complete
+    if (state.currentStage < 3) {
+      showStageIntro(state.currentStage + 1);
+    } else {
+      showResults();
+    }
+  } else {
+    showQuestion();
+  }
+}
+
+function showResults() {
+  const pct = Math.round((state.stageCorrect.reduce((a,b)=>a+b,0) / 80) * 100);
+  const grade = pct >= 90 ? '☠️ Legend' : pct >= 75 ? '🔊 Master' : pct >= 60 ? '🎛️ Veteran' : pct >= 40 ? '🎧 Raver' : '👶 Fresher';
+  const gradeColor = pct >= 90 ? '#ff4d8d' : pct >= 75 ? '#f5c842' : pct >= 60 ? '#9b3dff' : pct >= 40 ? '#00d4c8' : '#7ab8e0';
+  const totalCorrect = state.stageCorrect.reduce((a,b)=>a+b,0);
+
+  const stageRows = STAGES.map((s, i) => {
+    const pct = Math.round((state.stageCorrect[i] / 20) * 100);
+    return `<div class="results-sb-row">
+      <span style="font-size:16px;">${s.emoji}</span>
+      <span class="results-sb-name">${s.name}</span>
+      <div class="results-sb-bar"><div class="results-sb-fill" style="width:${pct}%;background:${s.color};"></div></div>
+      <span class="results-sb-score" style="color:${s.color};">${state.stageCorrect[i]}/20</span>
+    </div>`;
+  }).join('');
+
+  document.getElementById('triviaGame').innerHTML = `
+    <div class="results-screen">
+      <div class="results-skull">${pct >= 75 ? '💀' : pct >= 50 ? '🎧' : '🎵'}</div>
+      <div class="results-grade" style="color:${gradeColor};">${grade}</div>
+      <div class="results-title">Game Complete!</div>
+      <div class="results-score-big">${state.score.toLocaleString()}</div>
+      <div class="results-score-sub">Total Points · ${pct}% correct</div>
+      <div class="results-stats">
+        <div class="results-stat"><div class="results-stat-val">${totalCorrect}</div><div class="results-stat-lbl">Correct</div></div>
+        <div class="results-stat"><div class="results-stat-val">${80 - totalCorrect}</div><div class="results-stat-lbl">Wrong</div></div>
+        <div class="results-stat"><div class="results-stat-val">${pct}%</div><div class="results-stat-lbl">Accuracy</div></div>
+      </div>
+      <div class="results-stage-breakdown">
+        <div class="results-sb-title">Stage Breakdown</div>
+        ${stageRows}
+      </div>
+      <div class="results-btns">
+        <button class="results-play-again" onclick="startTrivia()">🔄 Play Again</button>
+        <button class="results-back-btn" onclick="backToHub()">← Game Hub</button>
+      </div>
+    </div>`;
+}
+
+function backToHub() {
+  clearInterval(state.timer);
+  document.getElementById('gameHub').style.display = 'block';
+  document.getElementById('triviaGame').style.display = 'none';
+  document.getElementById('triviaGame').innerHTML = '';
+}
+
+// More popout
+(function() {
+  const overlay  = document.getElementById('moreOverlay');
+  const panel    = document.getElementById('morePanel');
+  const backdrop = document.getElementById('moreBackdrop');
+  if (!overlay) return;
+  const triggers = document.querySelectorAll('.more-trigger');
+  function openMore(t) {
+    if (t && window.innerWidth >= 768) {
+      const r = t.getBoundingClientRect();
+      panel.style.top  = (r.bottom + 8) + 'px';
+      panel.style.left = Math.max(8, r.right - 280) + 'px';
+      panel.style.bottom = '';
+    }
+    overlay.classList.add('open');
+    triggers.forEach(t => t.classList.add('more-active'));
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMore() {
+    overlay.classList.remove('open');
+    triggers.forEach(t => t.classList.remove('more-active'));
+    document.body.style.overflow = '';
+  }
+  triggers.forEach(t => t.addEventListener('click', function(e) { e.preventDefault(); e.stopPropagation(); overlay.classList.contains('open') ? closeMore() : openMore(this); }));
+  backdrop.addEventListener('click', closeMore);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMore(); });
+})();
+</script>
+</body>
+</html>
