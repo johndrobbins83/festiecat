@@ -56,12 +56,14 @@
     justify-content: space-between; padding: 0 24px;
   }
   .nav-logo {
-    font-family: 'Pirata One', cursive; font-size: 24px;
-    color: var(--gold-bright); text-shadow: 0 0 18px rgba(245,200,66,0.45); line-height: 1;
+    font-family: 'Pirata One', cursive; font-size: 22px;
+    color: var(--gold-bright); text-shadow: 0 0 18px rgba(245,200,66,0.45);
+    line-height: 1; white-space: nowrap; flex-shrink: 0;
   }
   .nav-logo span {
-    display: block; font-size: 11px; font-family: 'Poppins', sans-serif;
-    color: var(--teal-glow); letter-spacing: 3px; text-transform: uppercase; font-weight: 600;
+    display: block; font-size: 10px; font-family: 'Poppins', sans-serif;
+    color: var(--teal-glow); letter-spacing: 2px; text-transform: uppercase; font-weight: 600;
+    white-space: nowrap;
   }
   .nav-right { display: flex; align-items: center; gap: 10px; }
   .nav-bell {
@@ -146,15 +148,42 @@
   .announce-banner {
     background: linear-gradient(90deg, rgba(155,61,255,0.18), rgba(0,212,200,0.18));
     border: 1px solid rgba(155,61,255,0.3);
-    border-radius: 12px; padding: 9px 14px;
-    display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
+    border-radius: 12px; padding: 10px 14px;
+    display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
   }
   .announce-icon { font-size: 18px; flex-shrink: 0; }
+  .announce-text { flex: 1; min-width: 0; }
   .announce-text strong {
-    display: block; font-size: 15px; font-weight: 700;
-    color: var(--gold-bright); letter-spacing: 1px; text-transform: uppercase;
+    display: block; font-size: 11px; font-weight: 800;
+    color: var(--gold-bright); letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 5px;
   }
-  .announce-text p { font-size: 15px; color: var(--text-muted); line-height: 1.4; }
+  .announce-text p { font-size: 12px; color: var(--text-muted); margin-top: 5px; }
+
+  /* Countdown clock */
+  .countdown-clock {
+    display: flex; align-items: center; gap: 4px;
+  }
+  .cd-unit {
+    display: flex; flex-direction: column; align-items: center;
+    background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px; padding: 4px 8px; min-width: 42px;
+  }
+  .cd-num {
+    font-size: 22px; font-weight: 900; color: var(--text-light);
+    line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: -0.5px;
+  }
+  .cd-lbl {
+    font-size: 9px; font-weight: 700; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 1px; margin-top: 2px;
+  }
+  .cd-sep {
+    font-size: 20px; font-weight: 900; color: var(--gold-bright);
+    line-height: 1; margin-bottom: 10px; opacity: 0.7;
+  }
+  /* Pulse the seconds number */
+  @keyframes cdPulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
+  #cd-secs { animation: cdPulse 1s ease-in-out infinite; }
 
   /* FLYER SECTION */
   .flyer-section {
@@ -263,6 +292,93 @@
     color: var(--text-muted); font-size: 14px; line-height: 1.7;
   }
   .my-sched-empty .empty-icon { font-size: 36px; display: block; margin-bottom: 10px; }
+
+  /* ── FEATURED ARTIST CARDS ── */
+  .featured-card {
+    display:flex; align-items:center; gap:14px;
+    padding:14px; border-radius:16px; margin-bottom:10px; cursor:pointer;
+    border:1px solid rgba(255,255,255,0.07);
+    background:rgba(4,29,58,0.65);
+    transition:all 0.18s; position:relative; overflow:hidden;
+  }
+  .featured-card::before {
+    content:''; position:absolute; inset:0;
+    background:var(--card-accent,rgba(155,61,255,0.07));
+    opacity:0; transition:opacity 0.18s;
+  }
+  .featured-card:hover { border-color:rgba(255,255,255,0.18); transform:translateY(-2px); box-shadow:0 8px 28px rgba(0,0,0,0.35); }
+  .featured-card:hover::before { opacity:1; }
+  .featured-card:active { transform:scale(0.98); }
+  .featured-avatar {
+    width:52px; height:52px; border-radius:14px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-size:13px; font-weight:800; color:#fff;
+    border:2px solid rgba(255,255,255,0.15); position:relative; z-index:1;
+  }
+  .featured-body { flex:1; min-width:0; position:relative; z-index:1; }
+  .featured-name { font-size:15px; font-weight:800; color:var(--text-light); line-height:1.2; margin-bottom:3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .featured-genre { font-size:12px; color:var(--text-muted); font-weight:500; }
+  .featured-meta { display:flex; gap:6px; margin-top:5px; flex-wrap:wrap; }
+  .featured-badge { font-size:10px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; padding:2px 8px; border-radius:8px; }
+  .featured-badge.stage-dnb   { background:rgba(155,61,255,0.2); color:#c084fc; }
+  .featured-badge.stage-oasis { background:rgba(0,212,200,0.18); color:var(--teal-glow); }
+  .featured-badge.headliner   { background:rgba(245,200,66,0.18); color:var(--gold-bright); }
+  .featured-arrow { font-size:20px; color:var(--text-muted); flex-shrink:0; position:relative; z-index:1; transition:transform 0.15s; }
+  .featured-card:hover .featured-arrow { transform:translateX(3px); color:var(--gold-bright); }
+
+  /* ── VENUE CARD ── */
+  .venue-card {
+    border-radius:18px; overflow:hidden;
+    border:1px solid rgba(0,212,200,0.2);
+    background:rgba(4,29,58,0.7);
+    margin-bottom:4px;
+  }
+  .venue-map-wrap {
+    position:relative; height:160px;
+  }
+  .venue-map-wrap iframe { width:100%; height:100%; display:block; border:none; }
+  .venue-map-open {
+    position:absolute; top:10px; right:10px;
+    padding:5px 11px; border-radius:8px; font-size:11px; font-weight:700;
+    background:rgba(2,11,26,0.88); backdrop-filter:blur(8px);
+    border:1px solid rgba(245,200,66,0.3); color:var(--gold-bright);
+    text-decoration:none; transition:background 0.15s;
+  }
+  .venue-map-open:hover { background:rgba(245,200,66,0.15); }
+  .venue-info { padding:14px 16px 16px; }
+  .venue-name { font-size:16px; font-weight:800; color:var(--text-light); line-height:1.2; }
+  .venue-sub  { font-size:12px; color:var(--text-muted); font-weight:500; margin-bottom:12px; }
+  .venue-rows { display:flex; flex-direction:column; gap:10px; margin-bottom:14px; }
+  .venue-row  { display:flex; align-items:flex-start; gap:10px; }
+  .venue-row-icon { font-size:16px; flex-shrink:0; margin-top:1px; }
+  .venue-row-body { flex:1; min-width:0; }
+  .venue-row-val  { font-size:13px; font-weight:700; color:var(--text-light); line-height:1.3; }
+  .venue-row-sub  { font-size:11px; color:var(--text-muted); margin-top:1px; }
+  .venue-link     { color:var(--teal-glow); text-decoration:none; }
+  .venue-link:hover { text-decoration:underline; }
+  .venue-copy-btn {
+    flex-shrink:0; width:28px; height:28px; border-radius:8px; border:none; cursor:pointer;
+    background:rgba(245,200,66,0.1); color:var(--gold-bright); font-size:13px;
+    display:flex; align-items:center; justify-content:center; transition:background 0.15s;
+  }
+  .venue-copy-btn:hover { background:rgba(245,200,66,0.22); }
+  .venue-dir-row  { display:flex; gap:6px; }
+  .venue-dir-btn  {
+    flex:1; display:flex; align-items:center; justify-content:center; gap:5px;
+    padding:8px 6px; border-radius:10px; text-decoration:none; font-family:'Poppins',sans-serif;
+    font-size:12px; font-weight:700; border:1px solid rgba(255,255,255,0.1);
+    background:rgba(255,255,255,0.05); color:var(--text-muted); transition:all 0.15s;
+    white-space:nowrap;
+  }
+  .venue-dir-btn:hover  { transform:translateY(-2px); }
+  .venue-dir-btn.google { border-color:rgba(66,133,244,0.35); color:#5b9bf8; }
+  .venue-dir-btn.google:hover { background:rgba(66,133,244,0.12); }
+  .venue-dir-btn.apple  { border-color:rgba(255,255,255,0.2); color:var(--text-light); }
+  .venue-dir-btn.apple:hover  { background:rgba(255,255,255,0.08); }
+  .venue-dir-btn.waze   { border-color:rgba(28,203,255,0.3); color:#1ccbff; }
+  .venue-dir-btn.waze:hover   { background:rgba(28,203,255,0.1); }
+  .venue-dir-btn.uber   { border-color:rgba(255,255,255,0.15); color:var(--text-light); }
+  .venue-dir-btn.uber:hover   { background:rgba(255,255,255,0.07); }
   .my-sched-clear {
     display: block; margin: 12px auto 0;
     background: transparent; border: 1px solid rgba(255,77,141,0.35);
@@ -566,6 +682,25 @@
   font-size: 11px; font-weight: 700; color: var(--gold-bright); text-align: center;
 }
 
+
+/* ── NAV FINAL OVERRIDES ─────────────────────────────────── */
+/* Desktop: show top links, hide bottom nav */
+@media (min-width: 768px) {
+  .desktop-nav-links { display: flex !important; align-items: center; gap: 4px; }
+  .bottom-nav         { display: none !important; }
+  .hamburger-btn      { display: none !important; }
+  .mobile-drawer      { display: none !important; }
+}
+/* Mobile: hide top links, show bottom nav */
+@media (max-width: 767px) {
+  .desktop-nav-links { display: none !important; }
+  .bottom-nav        { display: flex !important; }
+  .hamburger-btn     { display: none !important; }
+  .mobile-drawer     { display: none !important; }
+}
+/* Ensure nav-logo is always a link */
+.nav-logo { text-decoration: none; }
+
 </style>
 </head>
 <body>
@@ -580,20 +715,15 @@
 
 <!-- TOP NAV -->
 <nav class="top-nav">
-  <div class="nav-logo">☠ SUNKEN SUITE<span>Festival App · BP² Edition</span></div>
-
-  <!-- Desktop nav links -->
+  <a class="nav-logo" href="index.html">☠ SUNKEN SUITE<span>The Mutiny</span></a>
   <nav class="desktop-nav-links">
     <a class="desktop-nav-link active" href="index.html">🏠 Home</a>
     <a class="desktop-nav-link" href="schedule.html">📅 Schedule</a>
     <a class="desktop-nav-link" href="artists.html">🎤 Artists</a>
     <a class="desktop-nav-link" href="map.html">🗺️ Map</a>
-    <a class="desktop-nav-link" href="checklist.html">✅ Checklist</a>
-    <a class="desktop-nav-link" href="more.html">⋯ More</a>
+    <a class="desktop-nav-link" href="checklist.html">✅ List</a>
     <a class="desktop-nav-link sos" href="sos.html">🆘 SOS</a>
   </nav>
-
-    <!-- Right side: weather + bell + avatar + hamburger -->
   <div class="nav-right">
     <!-- WEATHER WIDGET -->
     <div class="weather-widget" id="weatherWidget" title="Sturbridge, MA weather">
@@ -602,7 +732,6 @@
         <span class="weather-temp" id="wTemp">--°</span>
         <span class="weather-label" id="wLabel">Sturbridge</span>
       </div>
-      <!-- Expanded panel -->
       <div class="weather-panel" id="weatherPanel">
         <div class="weather-panel-header">📍 Sturbridge, MA</div>
         <div class="weather-panel-main">
@@ -622,33 +751,6 @@
         <div class="weather-panel-footer" id="wpUpdated">Fetching weather…</div>
       </div>
     </div>
-
-    <div class="nav-bell">🔔<div class="notif-dot"></div></div>
-    <div class="nav-avatar">AD</div>
-    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-
-</nav>
-
-<!-- Mobile drawer -->
-<div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
-  <div class="drawer-backdrop" id="drawerBackdrop"></div>
-  <div class="drawer-panel">
-    <div class="drawer-links">
-      <a class="drawer-link active" href="index.html">🏠 Home</a>
-      <a class="drawer-link" href="schedule.html">📅 Schedule</a>
-      <a class="drawer-link" href="artists.html">🎤 Artists</a>
-      <a class="drawer-link" href="map.html">🗺️ Map</a>
-      <a class="drawer-link" href="checklist.html">✅ Checklist</a>
-      <a class="drawer-link" href="more.html">⋯ More</a>
-      <div class="drawer-divider"></div>
-      <a class="drawer-link sos" href="sos.html">🆘 SOS</a>
-    </div>
-  </div>
-</div>
-  <div class="nav-right">
     <div class="nav-bell">🔔<div class="notif-dot"></div></div>
     <div class="nav-avatar">AD</div>
   </div>
@@ -660,7 +762,16 @@
   <div class="announce-banner">
     <div class="announce-icon">📢</div>
     <div class="announce-text">
-      <strong id="countdown-text">Loading...</strong>
+      <strong id="countdown-label">GATES OPEN IN</strong>
+      <div class="countdown-clock" id="countdown-clock">
+        <div class="cd-unit"><span class="cd-num" id="cd-days">--</span><span class="cd-lbl">Days</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><span class="cd-num" id="cd-hours">--</span><span class="cd-lbl">Hrs</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><span class="cd-num" id="cd-mins">--</span><span class="cd-lbl">Min</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><span class="cd-num" id="cd-secs">--</span><span class="cd-lbl">Sec</span></div>
+      </div>
       <p>Sturbridge Host Hotel · Jul 17–19, 2026</p>
     </div>
   </div>
@@ -685,230 +796,89 @@
         <div class="stat-card"><div class="stat-num">2</div><div class="stat-label">Stages</div></div>
       </div>
 
-      <!-- SCHEDULE -->
+      <!-- MY SCHEDULE -->
       <div class="section-header">
-        <div class="section-title">📅 Schedule Preview</div>
+        <div class="section-title">⭐ My Schedule</div>
         <a class="section-see-all" href="schedule.html">Full schedule →</a>
       </div>
-      <div class="schedule-card">
-        <div class="day-tabs">
-          <button class="day-tab active" data-day="fri">FRI 7/17</button>
-          <button class="day-tab" data-day="sat">SAT 7/18</button>
-          <button class="day-tab" data-day="sun">SUN 7/19</button>
-          <button class="day-tab" data-day="mine" id="mySchedTab">⭐ Mine</button>
+      <div class="schedule-card" id="mySchedWidget">
+        <div id="mySchedList"></div>
+        <div id="mySchedEmpty" class="my-sched-empty">
+          <span class="empty-icon">⭐</span>
+          No artists saved yet.<br>
+          Go to <a href="schedule.html" style="color:var(--teal-glow);font-weight:700;">Schedule</a> and tap <strong style="color:var(--teal-glow);">+</strong> to build your lineup.
+        </div>
+      </div>
+
+      <!-- FEATURED ARTISTS -->
+      <div class="section-header" style="margin-top:20px;">
+        <div class="section-title">🎤 Featured Today</div>
+        <a class="section-see-all" href="artists.html">All artists →</a>
+      </div>
+      <div id="featuredArtists"></div>
+
+      <!-- VENUE -->
+      <div class="section-header" style="margin-top:20px;">
+        <div class="section-title">📍 Venue</div>
+        <a class="section-see-all" href="map.html">Full map →</a>
+      </div>
+      <div class="venue-card">
+
+        <!-- Map embed -->
+        <div class="venue-map-wrap">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2962.7!2d-72.0898!3d42.1167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e6a3a322e1a0c1%3A0xe6fcfc2b19cf0fd6!2sSturbridge%20Host%20Hotel%20%26%20Conference%20Center!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Sturbridge Host Hotel">
+          </iframe>
+          <a class="venue-map-open" href="https://maps.google.com/?q=Sturbridge+Host+Hotel+366+Main+St+Sturbridge+MA" target="_blank" rel="noopener">↗ Open</a>
         </div>
 
-        <!-- FRIDAY -->
-        <div id="schedule-fri">
-          <div class="sched-stage-header">🥁 DNB Stage</div>
-          <div class="schedule-item no-profile">
-            <div class="sched-time">9:00<br>PM</div>
-            <div class="sched-dot" style="background:#9b3dff;"></div>
-            <div class="sched-info"><div class="sched-artist">Doors Open / Welcome</div><div class="sched-stage">Main Lobby</div></div>
-          </div>
-          <div class="schedule-item" data-artist="JFB">
-            <div class="sched-time">9:30<br>PM</div>
-            <div class="sched-dot" style="background:#9b3dff;"></div>
-            <div class="sched-info"><div class="sched-artist">JFB</div><div class="sched-stage">DNB Stage</div></div>
-            <span class="sched-arrow">›</span>
-          </div>
-          <div class="schedule-item" data-artist="DEEKLINE">
-            <div class="sched-time">10:30<br>PM</div>
-            <div class="sched-dot" style="background:#9b3dff;"></div>
-            <div class="sched-info"><div class="sched-artist">Deekline</div><div class="sched-stage">DNB Stage</div></div>
-            <span class="sched-arrow">›</span>
-          </div>
-          <div class="schedule-item" data-artist="DARA">
-            <div class="sched-time">11:30<br>PM</div>
-            <div class="sched-dot" style="background:#9b3dff;"></div>
-            <div class="sched-info"><div class="sched-artist">Dara</div><div class="sched-stage">DNB Stage</div></div>
-            <span class="sched-arrow">›</span>
-          </div>
-          <div class="schedule-item" data-artist="RONI SIZE">
-            <div class="sched-time">1:00<br>AM</div>
-            <div class="sched-dot" style="background:#9b3dff;"></div>
-            <div class="sched-info"><div class="sched-artist">Roni Size</div><div class="sched-stage">DNB Stage · HEADLINER</div></div>
-            <span class="sched-arrow">›</span>
+        <!-- Info rows -->
+        <div class="venue-info">
+          <div class="venue-name">Sturbridge Host Hotel</div>
+          <div class="venue-sub">& Conference Center · On Cedar Lake</div>
+
+          <div class="venue-rows">
+            <div class="venue-row">
+              <span class="venue-row-icon">📍</span>
+              <div class="venue-row-body">
+                <div class="venue-row-val">366 Main St, Sturbridge, MA 01566</div>
+                <div class="venue-row-sub">Exit 3B off I-90 · 1 hr west of Boston</div>
+              </div>
+              <button class="venue-copy-btn" id="venueCopyBtn" title="Copy address">📋</button>
+            </div>
+            <div class="venue-row">
+              <span class="venue-row-icon">📞</span>
+              <div class="venue-row-body">
+                <a class="venue-row-val venue-link" href="tel:+15083477393">(508) 347-7393</a>
+                <div class="venue-row-sub">Front desk · 24 hrs</div>
+              </div>
+            </div>
+            <div class="venue-row">
+              <span class="venue-row-icon">🗓️</span>
+              <div class="venue-row-body">
+                <div class="venue-row-val">July 17 – 19, 2026</div>
+                <div class="venue-row-sub">Friday · Saturday · Sunday</div>
+              </div>
+            </div>
           </div>
 
-          <div class="sched-stage-header" style="margin-top:12px;">🌴 Oasis Stage</div>
-          <div class="schedule-item" data-artist="THE SPONGES">
-            <div class="sched-time">9:30<br>PM</div>
-            <div class="sched-dot" style="background:#00d4c8;"></div>
-            <div class="sched-info"><div class="sched-artist">The Sponges</div><div class="sched-stage">Oasis Stage</div></div>
-            <span class="sched-arrow">›</span>
+          <!-- Direction buttons -->
+          <div class="venue-dir-row">
+            <a class="venue-dir-btn google" id="venueDirGoogle" href="#" target="_blank" rel="noopener">
+              <span>🗺️</span> Google
+            </a>
+            <a class="venue-dir-btn apple" id="venueDirApple" href="#" target="_blank" rel="noopener">
+              <span>🍎</span> Apple
+            </a>
+            <a class="venue-dir-btn waze" href="https://waze.com/ul?q=Sturbridge+Host+Hotel+366+Main+St+Sturbridge+MA&navigate=yes" target="_blank" rel="noopener">
+              <span>🚗</span> Waze
+            </a>
+            <a class="venue-dir-btn uber" href="https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]=366+Main+St+Sturbridge+MA+01566&dropoff[latitude]=42.1167&dropoff[longitude]=-72.0898" target="_blank" rel="noopener">
+              <span>🚕</span> Uber
+            </a>
           </div>
-          <div class="schedule-item" data-artist="CARLO LIO">
-            <div class="sched-time">10:30<br>PM</div>
-            <div class="sched-dot" style="background:#00d4c8;"></div>
-            <div class="sched-info"><div class="sched-artist">Carlo Lio</div><div class="sched-stage">Oasis Stage</div></div>
-            <span class="sched-arrow">›</span>
-          </div>
-          <div class="schedule-item" data-artist="CODES">
-            <div class="sched-time">11:30<br>PM</div>
-            <div class="sched-dot" style="background:#00d4c8;"></div>
-            <div class="sched-info"><div class="sched-artist">Codes</div><div class="sched-stage">Oasis Stage</div></div>
-            <span class="sched-arrow">›</span>
-          </div>
-          <div class="schedule-item" data-artist="J. PHLIP">
-            <div class="sched-time">1:00<br>AM</div>
-            <div class="sched-dot" style="background:#00d4c8;"></div>
-            <div class="sched-info"><div class="sched-artist">J. Phlip</div><div class="sched-stage">Oasis Stage · HEADLINER</div></div>
-            <span class="sched-arrow">›</span>
-          </div>
-
-          <div class="sched-stage-header" style="margin-top:12px;">🎵 Supporting Acts — Fri</div>
-          <div class="schedule-item" data-artist="BICLOPS"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Biclops</div><div class="sched-stage">DNB Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="CHANANAGAINS"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Chananagains</div><div class="sched-stage">Oasis Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="COLLIN IN KIND"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Collin In Kind</div><div class="sched-stage">Oasis Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="COEXIST"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Coexist</div><div class="sched-stage">DNB Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="DADAM"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Dadam</div><div class="sched-stage">DNB Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="GAVIN QUINN"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Gavin Quinn</div><div class="sched-stage">Oasis Stage</div></div><span class="sched-arrow">›</span></div>
-        </div>
-
-        <!-- SATURDAY -->
-        <div id="schedule-sat" style="display:none;">
-          <div class="sched-stage-header">🥁 DNB Stage</div>
-          <div class="schedule-item" data-artist="DEGS">
-            <div class="sched-time">8:00<br>PM</div>
-            <div class="sched-dot" style="background:#9b3dff;"></div>
-            <div class="sched-info"><div class="sched-artist">Degs</div><div class="sched-stage">DNB Stage</div></div>
-            <span class="sched-arrow">›</span>
-          </div>
-          <div class="schedule-item" data-artist="PHANTOM 45">
-            <div class="sched-time">9:00<br>PM</div>
-            <div class="sched-dot" style="background:#9b3dff;"></div>
-            <div class="sched-info"><div class="sched-artist">Phantom 45</div><div class="sched-stage">DNB Stage</div></div>
-            <span class="sched-arrow">›</span>
-          </div>
-          <div class="schedule-item" data-artist="GEORGIE RIOT">
-            <div class="sched-time">10:00<br>PM</div>
-            <div class="sched-dot" style="background:#9b3dff;"></div>
-            <div class="sched-info"><div class="sched-artist">Georgie Riot</div><div class="sched-stage">DNB Stage</div></div>
-            <span class="sched-arrow">›</span>
-          </div>
-          <div class="schedule-item" data-artist="SPOR">
-            <div class="sched-time">12:00<br>AM</div>
-            <div class="sched-dot" style="background:#9b3dff;"></div>
-            <div class="sched-info"><div class="sched-artist">SPOR</div><div class="sched-stage">DNB Stage · HEADLINER</div></div>
-            <span class="sched-arrow">›</span>
-          </div>
-
-          <div class="sched-stage-header" style="margin-top:12px;">🌴 Oasis Stage</div>
-          <div class="schedule-item" data-artist="MADAM X">
-            <div class="sched-time">8:00<br>PM</div>
-            <div class="sched-dot" style="background:#00d4c8;"></div>
-            <div class="sched-info"><div class="sched-artist">Madam X</div><div class="sched-stage">Oasis Stage</div></div>
-            <span class="sched-arrow">›</span>
-          </div>
-          <div class="schedule-item" data-artist="GETTOBLASTER">
-            <div class="sched-time">10:00<br>PM</div>
-            <div class="sched-dot" style="background:#00d4c8;"></div>
-            <div class="sched-info"><div class="sched-artist">Gettoblaster</div><div class="sched-stage">Oasis Stage</div></div>
-            <span class="sched-arrow">›</span>
-          </div>
-          <div class="schedule-item" data-artist="CARLO LIO">
-            <div class="sched-time">12:00<br>AM</div>
-            <div class="sched-dot" style="background:#00d4c8;"></div>
-            <div class="sched-info"><div class="sched-artist">Carlo Lio</div><div class="sched-stage">Oasis Stage · HEADLINER</div></div>
-            <span class="sched-arrow">›</span>
-          </div>
-
-          <div class="sched-stage-header" style="margin-top:12px;">🎵 Supporting Acts — Sat</div>
-          <div class="schedule-item" data-artist="D. BROWN"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">D. Brown</div><div class="sched-stage">DNB Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="DEMIEN SIXX"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Demien Sixx</div><div class="sched-stage">DNB Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="DJ SEAMUS"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">DJ Seamus</div><div class="sched-stage">Oasis Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="EDDIE MERCED"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Eddie Merced</div><div class="sched-stage">Oasis Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="GREEN JEANS"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Green Jeans</div><div class="sched-stage">Oasis Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="HONEY BUNCHES OF BEATS"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Honey Bunches of Beats</div><div class="sched-stage">Oasis Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="K COMPLEX"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">K Complex</div><div class="sched-stage">DNB Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="KOHAKU"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Kohaku</div><div class="sched-stage">Oasis Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="KREESAY"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Kreesay</div><div class="sched-stage">DNB Stage</div></div><span class="sched-arrow">›</span></div>
-        </div>
-
-        <!-- SUNDAY -->
-        <div id="schedule-sun" style="display:none;">
-          <div class="sched-stage-header">🥁 DNB Stage</div>
-          <div class="schedule-item no-profile">
-            <div class="sched-time">4:00<br>PM</div>
-            <div class="sched-dot" style="background:#f5c842;"></div>
-            <div class="sched-info"><div class="sched-artist">Pool Party / Games</div><div class="sched-stage">Poolside · All Welcome</div></div>
-          </div>
-          <div class="schedule-item" data-artist="DALI">
-            <div class="sched-time">7:00<br>PM</div>
-            <div class="sched-dot" style="background:#9b3dff;"></div>
-            <div class="sched-info"><div class="sched-artist">Dali</div><div class="sched-stage">DNB Stage</div></div>
-            <span class="sched-arrow">›</span>
-          </div>
-          <div class="schedule-item" data-artist="UNGLUED">
-            <div class="sched-time">8:00<br>PM</div>
-            <div class="sched-dot" style="background:#9b3dff;"></div>
-            <div class="sched-info"><div class="sched-artist">Unglued</div><div class="sched-stage">DNB Stage</div></div>
-            <span class="sched-arrow">›</span>
-          </div>
-          <div class="schedule-item" data-artist="EVOL INTENT">
-            <div class="sched-time">10:00<br>PM</div>
-            <div class="sched-dot" style="background:#9b3dff;"></div>
-            <div class="sched-info"><div class="sched-artist">Evol Intent</div><div class="sched-stage">DNB Stage · HEADLINER</div></div>
-            <span class="sched-arrow">›</span>
-          </div>
-
-          <div class="sched-stage-header" style="margin-top:12px;">🌴 Oasis Stage</div>
-          <div class="schedule-item" data-artist="KRAFTY KUTZ">
-            <div class="sched-time">7:00<br>PM</div>
-            <div class="sched-dot" style="background:#00d4c8;"></div>
-            <div class="sched-info"><div class="sched-artist">Krafty Kutz</div><div class="sched-stage">Oasis Stage</div></div>
-            <span class="sched-arrow">›</span>
-          </div>
-          <div class="schedule-item" data-artist="UNIQU3">
-            <div class="sched-time">9:00<br>PM</div>
-            <div class="sched-dot" style="background:#00d4c8;"></div>
-            <div class="sched-info"><div class="sched-artist">Uniqu3</div><div class="sched-stage">Oasis Stage</div></div>
-            <span class="sched-arrow">›</span>
-          </div>
-
-          <div class="sched-stage-header" style="margin-top:12px;">🎵 Supporting Acts — Sun</div>
-          <div class="schedule-item" data-artist="GRUV 42"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Gruv 42</div><div class="sched-stage">Oasis Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="LAST ACTION HEROES"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Last Action Heroes</div><div class="sched-stage">DNB Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="LENORE"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Lenore</div><div class="sched-stage">Oasis Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="OSCILLOT"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Oscillot</div><div class="sched-stage">DNB Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="PAPA RUNKZ"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Papa Runkz</div><div class="sched-stage">DNB Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="SOAPPY"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Soappy</div><div class="sched-stage">Oasis Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="STEPPO"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Steppo</div><div class="sched-stage">DNB Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="TARI"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Tari</div><div class="sched-stage">Oasis Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="KUNAII"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Kunaii</div><div class="sched-stage">DNB Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="LOUD NOISES!"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Loud Noises!</div><div class="sched-stage">DNB Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="LOWKEE"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Lowkee</div><div class="sched-stage">Oasis Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="MCCOOEY"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">McCooey</div><div class="sched-stage">Oasis Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="MENTALLY ILL"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Mentally Ill</div><div class="sched-stage">DNB Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="MISS HAZE"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Miss Haze</div><div class="sched-stage">Oasis Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="MO' BACON"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Mo' Bacon</div><div class="sched-stage">Oasis Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="NICK MINIERI"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Nick Minieri</div><div class="sched-stage">DNB Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="NOTORIOUS CHOW"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Notorious Chow</div><div class="sched-stage">Oasis Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="ORIGINATE"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Originate</div><div class="sched-stage">DNB Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="PAULYWOG"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Paulywog</div><div class="sched-stage">Oasis Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="QUEERVOYANT"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Queervoyant</div><div class="sched-stage">Oasis Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="RED DAWN"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Red Dawn</div><div class="sched-stage">DNB Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="SESH"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Sesh</div><div class="sched-stage">Oasis Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="SINGLE GRIND"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Single Grind</div><div class="sched-stage">Oasis Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="SLAYTOVEN"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Slaytoven</div><div class="sched-stage">DNB Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="SOKOMODO"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Sokomodo</div><div class="sched-stage">Oasis Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="SYNESTHESIA"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Synesthesia</div><div class="sched-stage">DNB Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="TIMMOLOGY"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Timmology</div><div class="sched-stage">Oasis Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="VALDEE"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Valdee</div><div class="sched-stage">Oasis Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="WHO:IS"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Who:Is</div><div class="sched-stage">DNB Stage</div></div><span class="sched-arrow">›</span></div>
-          <div class="schedule-item" data-artist="EXZACKTO"><div class="sched-time">TBA</div><div class="sched-dot" style="background:#888;"></div><div class="sched-info"><div class="sched-artist">Exzackto</div><div class="sched-stage">DNB Stage</div></div><span class="sched-arrow">›</span></div>
-        </div>
-
-        <!-- MY PERSONAL SCHEDULE -->
-        <div id="schedule-mine">
-          <div id="mySchedList"></div>
-          <div id="mySchedEmpty" class="my-sched-empty">
-            <span class="empty-icon">⭐</span>
-            Your personal schedule is empty.<br>
-            Tap <strong style="color:var(--teal-glow);">+</strong> next to any artist to add them.
-          </div>
-          <button class="my-sched-clear" id="clearMySchedule" style="display:none;">🗑 Clear My Schedule</button>
         </div>
 
       </div>
@@ -925,7 +895,6 @@
   <a class="nav-item" href="artists.html"><div class="nav-icon-wrap">🎤</div><span class="nav-label">Artists</span></a>
   <a class="nav-item" href="map.html"><div class="nav-icon-wrap">🗺️</div><span class="nav-label">Map</span></a>
   <a class="nav-item" href="checklist.html"><div class="nav-icon-wrap">✅</div><span class="nav-label">List</span></a>
-  <a class="nav-item" href="more.html"><div class="nav-icon-wrap">⋯</div><span class="nav-label">More</span></a>
   <a class="nav-item nav-sos" href="sos.html"><div class="nav-icon-wrap">🆘</div><span class="nav-label">SOS</span></a>
 </nav>
 
@@ -1051,139 +1020,86 @@ const artists = {
 };
 
 // ============================================================
-// PERSONAL SCHEDULE — localStorage powered
-// ============================================================
+  // ── Venue direction buttons (platform-smart) ──────────────────
+  (function() {
+    const isIOS     = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    const isAndroid = /Android/i.test(navigator.userAgent);
+    const query     = encodeURIComponent('Sturbridge Host Hotel 366 Main St Sturbridge MA 01566');
+
+    const gBtn = document.getElementById('venueDirGoogle');
+    if (gBtn) gBtn.href = isAndroid
+      ? 'geo:42.1167,-72.0898?q=' + query
+      : isIOS ? 'comgooglemaps://?daddr=' + query + '&directionsmode=driving'
+              : 'https://www.google.com/maps/dir/?api=1&destination=' + query;
+
+    const aBtn = document.getElementById('venueDirApple');
+    if (aBtn) aBtn.href = isIOS
+      ? 'maps://?daddr=366+Main+St+Sturbridge+MA+01566'
+      : 'https://maps.apple.com/?daddr=' + query;
+
+    // Copy address button
+    const copyBtn = document.getElementById('venueCopyBtn');
+    if (copyBtn) copyBtn.addEventListener('click', function() {
+      const text = 'Sturbridge Host Hotel & Conference Center\n366 Main St, Sturbridge, MA 01566\n(508) 347-7393';
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(() => showToast('📋 Address copied!'));
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = text; ta.style.cssText = 'position:fixed;opacity:0;';
+        document.body.appendChild(ta); ta.select();
+        document.execCommand('copy'); document.body.removeChild(ta);
+        showToast('📋 Address copied!');
+      }
+    });
+  })();
 const MY_SCHED_KEY = 'sunkensuite_my_schedule';
 
 function getMySchedule() {
   try { return JSON.parse(localStorage.getItem(MY_SCHED_KEY)) || []; }
   catch(e) { return []; }
 }
-function saveMySchedule(arr) {
-  localStorage.setItem(MY_SCHED_KEY, JSON.stringify(arr));
-}
 
-// Inject + buttons into every schedule item that has a data-artist
-function initAddButtons() {
-  document.querySelectorAll('.schedule-item[data-artist]').forEach(item => {
-    const artistKey = item.dataset.artist;
-
-    // Replace the plain › arrow with a + button (keep arrow for profile open)
-    const arrow = item.querySelector('.sched-arrow');
-    if (arrow) arrow.remove();
-
-    // Build button row: profile arrow + add btn
-    const btnWrap = document.createElement('div');
-    btnWrap.style.cssText = 'display:flex;align-items:center;gap:6px;flex-shrink:0;';
-
-    const profileArrow = document.createElement('span');
-    profileArrow.className = 'sched-arrow';
-    profileArrow.textContent = '›';
-
-    const addBtn = document.createElement('button');
-    addBtn.className = 'sched-add-btn';
-    addBtn.dataset.artist = artistKey;
-    addBtn.title = 'Add to my schedule';
-
-    btnWrap.appendChild(profileArrow);
-    btnWrap.appendChild(addBtn);
-    item.appendChild(btnWrap);
-
-    // Click on +/✓ button — toggle, don't open profile
-    addBtn.addEventListener('click', function(e) {
-      e.stopPropagation(); // prevent opening profile modal
-      toggleMySchedule(artistKey);
-    });
-
-    // Click on rest of row = open profile
-    item.addEventListener('click', function(e) {
-      if (!e.target.closest('.sched-add-btn')) {
-        openArtist(artistKey);
-      }
-    });
-  });
-
-  refreshAddButtons();
-}
-
-function toggleMySchedule(artistKey) {
-  let mine = getMySchedule();
-  const idx = mine.indexOf(artistKey);
-  if (idx === -1) {
-    mine.push(artistKey);
-    showToast(`⭐ ${artistKey} added to your schedule`);
-  } else {
-    mine.splice(idx, 1);
-    showToast(`Removed ${artistKey} from your schedule`);
-  }
-  saveMySchedule(mine);
-  refreshAddButtons();
-  renderMySchedule();
-}
-
-function refreshAddButtons() {
-  const mine = getMySchedule();
-  document.querySelectorAll('.sched-add-btn').forEach(btn => {
-    const isAdded = mine.includes(btn.dataset.artist);
-    btn.textContent = isAdded ? '✓' : '+';
-    btn.title = isAdded ? 'Remove from my schedule' : 'Add to my schedule';
-    btn.classList.toggle('added', isAdded);
-  });
-  // Update tab badge
-  const tab = document.getElementById('mySchedTab');
-  if (tab) {
-    tab.textContent = mine.length > 0 ? `⭐ Mine (${mine.length})` : '⭐ Mine';
-  }
-}
-
-function renderMySchedule() {
-  const mine = getMySchedule();
-  const listEl = document.getElementById('mySchedList');
+function renderMySchedWidget() {
+  const mine  = getMySchedule();
+  const listEl  = document.getElementById('mySchedList');
   const emptyEl = document.getElementById('mySchedEmpty');
-  const clearBtn = document.getElementById('clearMySchedule');
-
   if (!listEl) return;
 
   if (mine.length === 0) {
     listEl.innerHTML = '';
     emptyEl.style.display = 'block';
-    clearBtn.style.display = 'none';
     return;
   }
-
   emptyEl.style.display = 'none';
-  clearBtn.style.display = 'block';
 
   // Group by day
   const days = { Fri: [], Sat: [], Sun: [], TBA: [] };
   mine.forEach(key => {
     const a = artists[key];
     if (!a) return;
-    const day = a.day || 'TBA';
-    if (days[day]) days[day].push(key);
-    else days['TBA'].push(key);
+    (days[a.day] || days.TBA).push(key);
   });
 
-  let html = '';
-  const dayLabels = { Fri: '🎉 Friday July 17', Sat: '🎉 Saturday July 18', Sun: '🎉 Sunday July 19', TBA: '📌 Day TBA' };
-  const dotColors = { 'DNB Stage': '#9b3dff', 'Oasis Stage': '#00d4c8' };
+  const dayLabels = { Fri:'🎉 Friday · Jul 17', Sat:'🎉 Saturday · Jul 18', Sun:'🎉 Sunday · Jul 19', TBA:'📌 Day TBA' };
+  const dotColors = { 'DNB Stage':'#9b3dff', 'Oasis Stage':'#00d4c8' };
 
+  let html = '';
   Object.entries(days).forEach(([day, keys]) => {
-    if (keys.length === 0) return;
+    if (!keys.length) return;
     html += `<div class="sched-stage-header">${dayLabels[day]}</div>`;
     keys.forEach(key => {
       const a = artists[key];
+      if (!a) return;
       const dot = dotColors[a.stage] || '#888';
-      const displayName = key.charAt(0) + key.slice(1).toLowerCase().replace(/ [a-z]/g, c => c.toUpperCase());
       html += `
-        <div class="schedule-item" style="cursor:pointer;" onclick="openArtist('${key}')">
-          <div class="sched-time" style="font-family:'Orbitron',sans-serif;font-size:12px;font-weight:700;color:var(--teal-glow);min-width:44px;line-height:1.2;">${a.time}</div>
+        <div class="schedule-item" onclick="openArtist('${key.replace(/'/g,"\\'")}')">
+          <div class="sched-time" style="font-size:12px;font-weight:700;color:var(--teal-glow);min-width:44px;line-height:1.3;">${a.time || 'TBA'}</div>
           <div class="sched-dot" style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:${dot};"></div>
           <div class="sched-info" style="flex:1;">
-            <div class="sched-artist" style="font-size:14px;font-weight:700;color:var(--text-light);">${key}</div>
-            <div class="sched-stage" style="font-size:13px;color:var(--text-muted);">${a.stage}</div>
+            <div class="sched-artist">${key}</div>
+            <div class="sched-stage">${a.stage}</div>
           </div>
-          <button class="sched-add-btn added" onclick="event.stopPropagation();toggleMySchedule('${key}')" title="Remove from my schedule">✓</button>
+          <span class="sched-arrow">›</span>
         </div>`;
     });
   });
@@ -1191,56 +1107,132 @@ function renderMySchedule() {
   listEl.innerHTML = html;
 }
 
-document.getElementById('clearMySchedule').addEventListener('click', function() {
-  if (confirm('Clear your entire personal schedule?')) {
-    saveMySchedule([]);
-    refreshAddButtons();
-    renderMySchedule();
-  }
-});
-
-// ============================================================
-// TOAST NOTIFICATION
-// ============================================================
-function showToast(msg) {
-  let toast = document.getElementById('schedToast');
-  if (!toast) {
-    toast = document.createElement('div');
-    toast.id = 'schedToast';
-    toast.style.cssText = `
-      position:fixed; bottom:90px; left:50%; transform:translateX(-50%);
-      background:rgba(4,29,58,0.97); border:1px solid rgba(0,212,200,0.4);
-      color:var(--text-light); font-family:'Poppins',sans-serif; font-size:13px; font-weight:600;
-      padding:10px 20px; border-radius:24px; z-index:9999;
-      white-space:nowrap; box-shadow:0 4px 20px rgba(0,0,0,0.4);
-      transition:opacity 0.3s; opacity:0; pointer-events:none;
-    `;
-    document.body.appendChild(toast);
-  }
-  toast.textContent = msg;
-  toast.style.opacity = '1';
-  clearTimeout(toast._timeout);
-  toast._timeout = setTimeout(() => { toast.style.opacity = '0'; }, 2200);
-}
-
 // ============================================================
 // SCHEDULE CLICK — day tabs (updated to handle "mine" tab)
 // ============================================================
-document.querySelectorAll('.day-tab').forEach(tab => {
-  tab.addEventListener('click', function() {
-    document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
-    this.classList.add('active');
-    const day = this.dataset.day;
-    ['fri','sat','sun','mine'].forEach(d => {
-      const el = document.getElementById('schedule-' + d);
-      if (el) el.style.display = d === day ? 'block' : 'none';
-    });
-    if (day === 'mine') renderMySchedule();
-  });
-});
-
 // Init + buttons on load
-initAddButtons();
+renderMySchedWidget();
+
+// ============================================================
+// FEATURED ARTISTS — daily seeded random, 3 picks
+// ============================================================
+(function() {
+  const HEADLINERS = ['RONI SIZE','SPOR','EVOL INTENT'];
+  const ALL_KEYS   = Object.keys(artists);
+
+  // Seed from today's date — same picks all day, rotate each day
+  const today = new Date();
+  const seed  = today.getFullYear() * 10000 + (today.getMonth()+1) * 100 + today.getDate();
+
+  function seededRand(s) {
+    // Simple xorshift
+    let x = s ^ 0xdeadbeef;
+    x = ((x >>> 16) ^ x) * 0x45d9f3b | 0;
+    x = ((x >>> 16) ^ x) * 0x45d9f3b | 0;
+    x =  (x >>> 16) ^ x;
+    return (x >>> 0) / 0xffffffff;
+  }
+
+  // Pick 3 unique artists: bias toward headliners (always include 1), then any
+  const picked = [];
+
+  // Always feature 1 headliner, seeded by day
+  const hIdx  = Math.floor(seededRand(seed) * HEADLINERS.length);
+  picked.push(HEADLINERS[hIdx]);
+
+  // Pick 2 more from the full pool (excluding already picked)
+  const pool  = ALL_KEYS.filter(k => !picked.includes(k));
+  let s2 = seed * 31 + 7;
+  while (picked.length < 3 && pool.length > 0) {
+    const i = Math.floor(seededRand(s2) * pool.length);
+    picked.push(pool.splice(i, 1)[0]);
+    s2 = s2 * 31 + 13;
+  }
+
+  const stageClass = { 'DNB Stage':'stage-dnb', 'Oasis Stage':'stage-oasis' };
+  const headlineSet = new Set(HEADLINERS);
+
+  const html = picked.map(key => {
+    const a = artists[key];
+    if (!a) return '';
+    const stageCls = stageClass[a.stage] || 'stage-dnb';
+    const isHL     = headlineSet.has(key);
+    const dayLabel = { Fri:'Fri 7/17', Sat:'Sat 7/18', Sun:'Sun 7/19', TBA:'TBA' }[a.day] || a.day;
+    // Extract a dominant color from the gradient for the card accent
+    const accentMatch = a.color.match(/#[0-9a-fA-F]{6}/);
+    const accent = accentMatch ? accentMatch[0] + '12' : 'rgba(155,61,255,0.07)';
+
+    return `
+      <div class="featured-card" onclick="openArtist('${key.replace(/'/g,"\\'")}') " style="--card-accent:${accent};">
+        <div class="featured-avatar" style="background:${a.color};">${a.initials}</div>
+        <div class="featured-body">
+          <div class="featured-name">${key}</div>
+          <div class="featured-genre">${a.genre}</div>
+          <div class="featured-meta">
+            <span class="featured-badge ${stageCls}">${a.stage}</span>
+            ${isHL ? '<span class="featured-badge headliner">⭐ Headliner</span>' : ''}
+            <span class="featured-badge" style="background:rgba(122,184,224,0.1);color:var(--text-muted);">${dayLabel}</span>
+          </div>
+        </div>
+        <span class="featured-arrow">›</span>
+      </div>`;
+  }).join('');
+
+  const el = document.getElementById('featuredArtists');
+  if (el) el.innerHTML = html;
+})();
+
+// ============================================================
+// COUNTDOWN CLOCK
+// ============================================================
+(function() {
+  const FEST = new Date('2026-07-17T21:00:00-04:00'); // Gates open 9 PM EDT
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function tick() {
+    const now  = new Date();
+    const diff = FEST - now;
+
+    const label = document.getElementById('countdown-label');
+    if (!label) return;
+
+    if (diff <= 0) {
+      const end = new Date('2026-07-20T04:00:00-04:00');
+      if (new Date() < end) {
+        label.textContent = '🎉 SUNKEN SUITE IS LIVE';
+        ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.textContent = '🔥';
+        });
+      } else {
+        label.textContent = '🏴‍☠️ SEE YOU NEXT YEAR';
+        ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.textContent = '--';
+        });
+      }
+      return;
+    }
+
+    const days  = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins  = Math.floor((diff % 3600000)  / 60000);
+    const secs  = Math.floor((diff % 60000)    / 1000);
+
+    label.textContent = 'GATES OPEN IN';
+    document.getElementById('cd-days').textContent  = days;
+    document.getElementById('cd-hours').textContent = pad(hours);
+    document.getElementById('cd-mins').textContent  = pad(mins);
+    document.getElementById('cd-secs').textContent  = pad(secs);
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    tick();
+    setInterval(tick, 1000);
+  });
+})();
+
 // ============================================================
 // MODAL
 // ============================================================
@@ -1289,10 +1281,6 @@ function closeModal() {
   document.body.style.overflow = '';
 }
 
-// Countdown
-const days = Math.ceil((new Date('2026-07-17T21:00:00') - new Date()) / 86400000);
-document.getElementById('countdown-text').textContent = days > 0 ? `Gates open in ${days} days` : 'Event is happening NOW!';
-
 // Bottom nav active state
 document.querySelectorAll('.nav-item:not(.nav-sos)').forEach(item => {
   item.addEventListener('click', function(e) {
@@ -1304,37 +1292,6 @@ document.querySelectorAll('.nav-item:not(.nav-sos)').forEach(item => {
 </script>
 
 <script>
-(function() {
-  const btn      = document.getElementById('hamburgerBtn');
-  const drawer   = document.getElementById('mobileDrawer');
-  const backdrop = document.getElementById('drawerBackdrop');
-  if (!btn || !drawer) return;
-
-  function openDrawer() {
-    btn.classList.add('open');
-    drawer.classList.add('open');
-    btn.setAttribute('aria-expanded', 'true');
-    drawer.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeDrawer() {
-    btn.classList.remove('open');
-    drawer.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
-    drawer.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  btn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    drawer.classList.contains('open') ? closeDrawer() : openDrawer();
-  });
-  backdrop.addEventListener('click', closeDrawer);
-  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeDrawer(); });
-  drawer.querySelectorAll('.drawer-link').forEach(function(link) {
-    link.addEventListener('click', closeDrawer);
-  });
-})();
 </script>
 
 
