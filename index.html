@@ -701,6 +701,110 @@
 /* Ensure nav-logo is always a link */
 .nav-logo { text-decoration: none; }
 
+
+/* ── MORE POPOUT ─────────────────────────────────────────────── */
+.more-overlay {
+  position: fixed; inset: 0; z-index: 400;
+  pointer-events: none;
+}
+.more-overlay.open { pointer-events: all; }
+
+.more-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(2,11,26,0.6); backdrop-filter: blur(4px);
+  opacity: 0; transition: opacity 0.2s ease;
+}
+.more-overlay.open .more-backdrop { opacity: 1; }
+
+/* Desktop: drops down from the More button in top nav */
+.more-panel {
+  position: absolute;
+  background: linear-gradient(160deg,#0a2540 0%,#020b1a 100%);
+  border: 1px solid rgba(245,200,66,0.25);
+  border-radius: 18px; padding: 16px;
+  width: 280px;
+  transform: translateY(-8px); opacity: 0;
+  transition: transform 0.22s cubic-bezier(0.4,0,0.2,1), opacity 0.22s ease;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+  z-index: 1;
+}
+.more-overlay.open .more-panel {
+  transform: translateY(0); opacity: 1;
+}
+
+/* Mobile: slides up from bottom */
+@media (max-width: 767px) {
+  .more-panel {
+    position: fixed;
+    bottom: 80px; left: 12px; right: 12px;
+    width: auto;
+    transform: translateY(20px);
+    border-radius: 18px;
+  }
+  .more-overlay.open .more-panel {
+    transform: translateY(0);
+  }
+}
+
+.more-panel-header {
+  font-size: 11px; font-weight: 800; color: var(--text-muted);
+  letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px;
+  padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.more-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.more-btn {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 8px; padding: 16px 10px; border-radius: 14px; cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  transition: all 0.15s; text-decoration: none;
+}
+.more-btn:hover {
+  transform: translateY(-2px);
+  border-color: rgba(245,200,66,0.3);
+  background: rgba(245,200,66,0.07);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+.more-btn:active { transform: scale(0.96); }
+
+.more-btn-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+}
+.more-btn-label {
+  font-size: 12px; font-weight: 700; color: var(--text-light);
+  text-align: center; line-height: 1.2;
+}
+.more-btn-sub {
+  font-size: 10px; color: var(--text-muted); font-weight: 500; text-align: center;
+}
+
+/* Color accents per button */
+.more-btn.games  .more-btn-icon { background: rgba(155,61,255,0.2);  color: #c084fc; }
+.more-btn.radio  .more-btn-icon { background: rgba(255,77,141,0.2);  color: var(--pink-coral); }
+.more-btn.info   .more-btn-icon { background: rgba(0,212,200,0.2);   color: var(--teal-glow); }
+.more-btn.board  .more-btn-icon { background: rgba(245,200,66,0.2);  color: var(--gold-bright); }
+
+.more-btn.games:hover  { border-color: rgba(155,61,255,0.4); background: rgba(155,61,255,0.08); }
+.more-btn.radio:hover  { border-color: rgba(255,77,141,0.4); background: rgba(255,77,141,0.08); }
+.more-btn.info:hover   { border-color: rgba(0,212,200,0.4);  background: rgba(0,212,200,0.08);  }
+.more-btn.board:hover  { border-color: rgba(245,200,66,0.4); background: rgba(245,200,66,0.08); }
+
+/* Active/highlighted state for More button in both navs */
+.desktop-nav-link.more-active,
+.nav-item.more-active .nav-icon-wrap {
+  color: var(--gold-bright);
+  border-color: rgba(245,200,66,0.4);
+  background: rgba(245,200,66,0.1);
+}
+.nav-item.more-active .nav-label { color: var(--gold-bright); }
+
 </style>
 </head>
 <body>
@@ -722,6 +826,8 @@
     <a class="desktop-nav-link" href="artists.html">🎤 Artists</a>
     <a class="desktop-nav-link" href="map.html">🗺️ Map</a>
     <a class="desktop-nav-link" href="checklist.html">✅ List</a>
+    <a class="desktop-nav-link more-trigger" href="#" onclick="return false;">⋯ More</a>
+
     <a class="desktop-nav-link sos" href="sos.html">🆘 SOS</a>
   </nav>
   <div class="nav-right">
@@ -895,6 +1001,8 @@
   <a class="nav-item" href="artists.html"><div class="nav-icon-wrap">🎤</div><span class="nav-label">Artists</span></a>
   <a class="nav-item" href="map.html"><div class="nav-icon-wrap">🗺️</div><span class="nav-label">Map</span></a>
   <a class="nav-item" href="checklist.html"><div class="nav-icon-wrap">✅</div><span class="nav-label">List</span></a>
+  <a class="nav-item more-trigger" href="#" onclick="return false;"><div class="nav-icon-wrap">⋯</div><span class="nav-label">More</span></a>
+
   <a class="nav-item nav-sos" href="sos.html"><div class="nav-icon-wrap">🆘</div><span class="nav-label">SOS</span></a>
 </nav>
 
@@ -1281,17 +1389,6 @@ function closeModal() {
   document.body.style.overflow = '';
 }
 
-// Bottom nav active state
-document.querySelectorAll('.nav-item:not(.nav-sos)').forEach(item => {
-  item.addEventListener('click', function(e) {
-    e.preventDefault();
-    document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
-    this.classList.add('active');
-  });
-});
-</script>
-
-<script>
 </script>
 
 
@@ -1404,6 +1501,85 @@ document.querySelectorAll('.nav-item:not(.nav-sos)').forEach(item => {
   // Fetch on load, refresh every 10 min
   fetchWeather();
   setInterval(fetchWeather, 600000);
+})();
+</script>
+
+
+<!-- MORE POPOUT OVERLAY -->
+<div class="more-overlay" id="moreOverlay">
+  <div class="more-backdrop" id="moreBackdrop"></div>
+  <div class="more-panel" id="morePanel">
+    <div class="more-panel-header">⋯ More</div>
+    <div class="more-grid">
+      <a class="more-btn games" href="games.html">
+        <div class="more-btn-icon">🎮</div>
+        <div class="more-btn-label">Games</div>
+        <div class="more-btn-sub">Mini-games & fun</div>
+      </a>
+      <a class="more-btn radio" href="radio.html">
+        <div class="more-btn-icon">📻</div>
+        <div class="more-btn-label">Radio</div>
+        <div class="more-btn-sub">Live stream & mixes</div>
+      </a>
+      <a class="more-btn info" href="info.html">
+        <div class="more-btn-icon">ℹ️</div>
+        <div class="more-btn-label">Information</div>
+        <div class="more-btn-sub">FAQ & event info</div>
+      </a>
+      <a class="more-btn board" href="board.html">
+        <div class="more-btn-icon">🏴‍☠️</div>
+        <div class="more-btn-label">Mutiny Board</div>
+        <div class="more-btn-sub">Community & crew</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── MORE POPOUT ── */
+(function() {
+  const overlay  = document.getElementById('moreOverlay');
+  const panel    = document.getElementById('morePanel');
+  const backdrop = document.getElementById('moreBackdrop');
+  if (!overlay) return;
+
+  // Triggers: desktop top-nav button + bottom nav item
+  const triggers = document.querySelectorAll('.more-trigger');
+
+  function openMore(triggerEl) {
+    // Desktop: position panel below the trigger button
+    if (triggerEl && window.innerWidth >= 768) {
+      const rect = triggerEl.getBoundingClientRect();
+      panel.style.top  = (rect.bottom + 8) + 'px';
+      panel.style.left = Math.max(8, rect.right - 280) + 'px';
+      panel.style.bottom = '';
+    }
+    overlay.classList.add('open');
+    triggers.forEach(t => t.classList.add('more-active'));
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMore() {
+    overlay.classList.remove('open');
+    triggers.forEach(t => t.classList.remove('more-active'));
+    document.body.style.overflow = '';
+  }
+
+  triggers.forEach(t => {
+    t.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      overlay.classList.contains('open') ? closeMore() : openMore(this);
+    });
+  });
+
+  backdrop.addEventListener('click', closeMore);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMore(); });
+
+  // Close if a more-btn link is clicked
+  overlay.querySelectorAll('.more-btn').forEach(btn => {
+    btn.addEventListener('click', closeMore);
+  });
 })();
 </script>
 
