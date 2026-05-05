@@ -743,6 +743,198 @@
 }
 .nav-item.more-active .nav-label { color: var(--gold-bright); }
 
+
+/* ── SOS POPOUT ──────────────────────────────────────────── */
+.sos-overlay {
+  position: fixed; inset: 0; z-index: 10000;
+  pointer-events: none;
+}
+.sos-overlay.open { pointer-events: all; }
+
+.sos-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(2,11,26,0.85); backdrop-filter: blur(6px);
+  opacity: 0; transition: opacity 0.25s ease;
+}
+.sos-overlay.open .sos-backdrop { opacity: 1; }
+
+.sos-panel {
+  position: absolute; bottom: 80px; left: 12px; right: 12px;
+  background: linear-gradient(160deg,#1a0520 0%,#020b1a 100%);
+  border: 1px solid rgba(255,77,141,0.45);
+  border-radius: 22px; padding: 0 0 20px;
+  transform: translateY(30px); opacity: 0;
+  transition: transform 0.28s cubic-bezier(0.4,0,0.2,1), opacity 0.25s ease;
+  box-shadow: 0 0 60px rgba(255,77,141,0.2), 0 20px 60px rgba(0,0,0,0.7);
+  max-height: 88vh; overflow-y: auto;
+}
+.sos-overlay.open .sos-panel { transform: translateY(0); opacity: 1; }
+
+@media (min-width: 768px) {
+  .sos-panel {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-60%);
+    width: 440px; bottom: auto; right: auto; left: 50%;
+  }
+  .sos-overlay.open .sos-panel {
+    transform: translate(-50%,-50%);
+  }
+}
+
+.sos-drag { width: 40px; height: 4px; background: rgba(255,77,141,0.4); border-radius: 2px; margin: 14px auto 0; }
+@media (min-width: 768px) { .sos-drag { display: none; } }
+
+.sos-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 20px 14px;
+  border-bottom: 1px solid rgba(255,77,141,0.2);
+}
+.sos-title {
+  font-size: 17px; font-weight: 800; color: var(--pink-coral);
+  display: flex; align-items: center; gap: 8px;
+}
+.sos-title-pulse {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--pink-coral); flex-shrink: 0;
+  animation: sosPulse 1s ease-in-out infinite;
+}
+@keyframes sosPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+.sos-close {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: rgba(255,255,255,0.08); border: none; cursor: pointer;
+  color: var(--text-light); font-size: 16px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.sos-body { padding: 16px 20px; display: flex; flex-direction: column; gap: 12px; }
+
+.sos-field-label {
+  font-size: 11px; font-weight: 800; color: rgba(255,77,141,0.8);
+  letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 5px;
+}
+.sos-input {
+  width: 100%; padding: 12px 14px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,77,141,0.25);
+  border-radius: 12px; color: var(--text-light);
+  font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 500;
+  outline: none; transition: border-color 0.15s; resize: none;
+}
+.sos-input:focus { border-color: var(--pink-coral); background: rgba(255,77,141,0.07); }
+.sos-input::placeholder { color: rgba(122,184,224,0.4); }
+.sos-select {
+  width: 100%; padding: 12px 14px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,77,141,0.25);
+  border-radius: 12px; color: var(--text-light);
+  font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 500;
+  outline: none; cursor: pointer; appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23ff4d8d' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center;
+  padding-right: 36px;
+}
+.sos-select option { background: #1a0520; color: var(--text-light); }
+
+/* GPS row */
+.sos-gps-row { display: flex; gap: 8px; align-items: flex-end; }
+.sos-gps-btn {
+  flex-shrink: 0; padding: 12px 16px; border-radius: 12px; border: none; cursor: pointer;
+  background: rgba(0,212,200,0.15); border: 1px solid rgba(0,212,200,0.35);
+  color: var(--teal-glow); font-family: 'Poppins', sans-serif;
+  font-size: 13px; font-weight: 700; white-space: nowrap; transition: all 0.15s;
+  display: flex; align-items: center; gap: 6px;
+}
+.sos-gps-btn:hover { background: rgba(0,212,200,0.25); }
+.sos-gps-btn.got { background: rgba(74,222,128,0.15); border-color: rgba(74,222,128,0.4); color: #4ade80; }
+.sos-gps-status {
+  font-size: 11px; color: var(--text-muted); margin-top: 4px; min-height: 16px;
+}
+
+.sos-send-btn {
+  width: 100%; padding: 15px; border-radius: 14px; border: none; cursor: pointer;
+  background: linear-gradient(135deg, #ff4d8d, #c8185a);
+  color: white; font-family: 'Poppins', sans-serif;
+  font-size: 16px; font-weight: 800; letter-spacing: 0.5px;
+  transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 8px;
+  box-shadow: 0 4px 20px rgba(255,77,141,0.4);
+}
+.sos-send-btn:hover { filter: brightness(1.1); transform: scale(1.01); }
+.sos-send-btn:active { transform: scale(0.98); }
+.sos-send-btn:disabled { opacity: 0.5; cursor: default; transform: none; }
+
+.sos-sent-screen {
+  text-align: center; padding: 32px 20px;
+}
+.sos-sent-icon { font-size: 56px; margin-bottom: 12px; }
+.sos-sent-title { font-size: 20px; font-weight: 800; color: #4ade80; margin-bottom: 8px; }
+.sos-sent-sub { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+.sos-sent-ref { font-size: 12px; color: var(--pink-coral); font-weight: 700; margin-top: 12px; }
+
+.sos-disclaimer {
+  font-size: 11px; color: rgba(122,184,224,0.4); text-align: center;
+  padding: 0 20px; line-height: 1.6;
+}
+
+</style>
+<style id="nav-force">
+
+/* ── BOTTOM NAV ────────────────────────────────────────────── */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  height: 72px;
+  background: rgba(2,11,26,0.97);
+  border-top: 1px solid rgba(245,200,66,0.2);
+  display: flex; align-items: center; justify-content: space-around;
+  z-index: 200; padding: 0 4px;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+.nav-item {
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  padding: 6px 8px; border-radius: 12px; cursor: pointer;
+  transition: all 0.15s; min-width: 0; flex: 1;
+  border: none; background: transparent; text-decoration: none;
+}
+.nav-item:active { transform: scale(0.93); }
+.nav-icon-wrap {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: transparent; border: 1px solid transparent;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s; font-size: 18px;
+}
+.nav-label {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.5px;
+  color: rgba(122,184,224,0.6); text-transform: uppercase;
+  white-space: nowrap; font-family: 'Poppins', sans-serif;
+}
+.nav-item.active .nav-icon-wrap {
+  background: linear-gradient(135deg,rgba(245,200,66,0.2),rgba(232,148,26,0.2));
+  border-color: rgba(245,200,66,0.5);
+}
+.nav-item.active .nav-label { color: var(--gold-bright); }
+.nav-item.nav-sos .nav-icon-wrap {
+  background: rgba(255,77,141,0.15); border-color: rgba(255,77,141,0.4);
+}
+.nav-item.nav-sos .nav-label { color: var(--pink-coral); }
+
+/* Force visibility on mobile, hide on desktop */
+@media (max-width: 767px) {
+  nav.bottom-nav {
+    display: flex !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 9000 !important;
+    height: 72px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: all !important;
+    transform: none !important;
+  }
+  .main-content { padding-bottom: calc(72px + 16px) !important; }
+}
+@media (min-width: 768px) {
+  nav.bottom-nav { display: none !important; }
+}
 </style>
 </head>
 <body>
@@ -862,7 +1054,6 @@
   <a class="nav-item" href="map.html"><div class="nav-icon-wrap">🗺️</div><span class="nav-label">Map</span></a>
   <a class="nav-item" href="checklist.html"><div class="nav-icon-wrap">✅</div><span class="nav-label">List</span></a>
   <a class="nav-item more-trigger" href="#" onclick="return false;"><div class="nav-icon-wrap">⋯</div><span class="nav-label">More</span></a>
-
   <a class="nav-item nav-sos" href="sos.html"><div class="nav-icon-wrap">🆘</div><span class="nav-label">SOS</span></a>
 </nav>
 
@@ -1452,6 +1643,83 @@ renderGrid();
 </script>
 
 
+
+<!-- SOS OVERLAY -->
+<div class="sos-overlay" id="sosOverlay">
+  <div class="sos-backdrop" id="sosBackdrop"></div>
+  <div class="sos-panel" id="sosPanel">
+    <div class="sos-drag"></div>
+    <div class="sos-header">
+      <div class="sos-title">
+        <div class="sos-title-pulse"></div>
+        🆘 Emergency SOS
+      </div>
+      <button class="sos-close" id="sosClose">✕</button>
+    </div>
+
+    <!-- FORM -->
+    <div class="sos-body" id="sosForm">
+      <div>
+        <div class="sos-field-label">📍 Location / Room Number</div>
+        <input class="sos-input" id="sosRoom" type="text"
+          placeholder="e.g. Room 214, Poolside, Event Hall…" autocomplete="off" maxlength="80">
+      </div>
+
+      <div>
+        <div class="sos-field-label">🎛️ Nearest Stage / Area</div>
+        <select class="sos-select" id="sosStage">
+          <option value="">— Select location —</option>
+          <option value="DNB Stage (BP²)">🥁 DNB Stage (BP²)</option>
+          <option value="Oasis Stage">🌴 Oasis Stage</option>
+          <option value="Hotel Lobby">🏨 Hotel Lobby</option>
+          <option value="Poolside">🏊 Poolside / Beach</option>
+          <option value="Parking Lot">🅿️ Parking Lot</option>
+          <option value="Hotel Room">🛏️ Hotel Room</option>
+          <option value="Corridor / Hallway">🚪 Corridor / Hallway</option>
+          <option value="Outside / Grounds">🌿 Outside / Grounds</option>
+          <option value="Other">📌 Other</option>
+        </select>
+      </div>
+
+      <div>
+        <div class="sos-field-label">📡 GPS Coordinates</div>
+        <div class="sos-gps-row">
+          <input class="sos-input" id="sosGpsDisplay" type="text"
+            placeholder="Tap button to get location" readonly style="flex:1;">
+          <button class="sos-gps-btn" id="sosGpsBtn">📡 Get GPS</button>
+        </div>
+        <div class="sos-gps-status" id="sosGpsStatus"></div>
+      </div>
+
+      <div>
+        <div class="sos-field-label">💬 Message / What's Happening</div>
+        <textarea class="sos-input" id="sosMessage" rows="3"
+          placeholder="Describe the situation clearly…" maxlength="400"></textarea>
+      </div>
+
+      <button class="sos-send-btn" id="sosSendBtn">
+        🆘 Send Emergency Alert
+      </button>
+
+      <div class="sos-disclaimer">
+        This alert is sent directly to Sunken Suite staff and security.<br>
+        For life-threatening emergencies, always call <strong style="color:var(--pink-coral);">911</strong> first.
+      </div>
+    </div>
+
+    <!-- SENT CONFIRMATION -->
+    <div class="sos-sent-screen" id="sosSentScreen" style="display:none;">
+      <div class="sos-sent-icon">✅</div>
+      <div class="sos-sent-title">Alert Sent!</div>
+      <div class="sos-sent-sub">
+        Staff have been notified and are on their way.<br>
+        Stay where you are if it's safe to do so.
+      </div>
+      <div class="sos-sent-ref" id="sosSentRef"></div>
+    </div>
+  </div>
+</div>
+
 <!-- MORE POPOUT OVERLAY -->
 <div class="more-overlay" id="moreOverlay">
   <div class="more-backdrop" id="moreBackdrop"></div>
@@ -1527,6 +1795,172 @@ renderGrid();
   overlay.querySelectorAll('.more-btn').forEach(btn => {
     btn.addEventListener('click', closeMore);
   });
+})();
+</script>
+
+
+<script>
+/* ── SOS SYSTEM ── */
+(function() {
+  const overlay  = document.getElementById('sosOverlay');
+  const backdrop = document.getElementById('sosBackdrop');
+  const closeBtn = document.getElementById('sosClose');
+  const form     = document.getElementById('sosForm');
+  const sentScr  = document.getElementById('sosSentScreen');
+  const gpsBtn   = document.getElementById('sosGpsBtn');
+  const gpsDisp  = document.getElementById('sosGpsDisplay');
+  const gpsStat  = document.getElementById('sosGpsStatus');
+  const sendBtn  = document.getElementById('sosSendBtn');
+
+  if (!overlay) return;
+
+  let gpsCoords = null;
+
+  // ── Open / Close ──
+  function openSOS() {
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    // Reset to form view
+    form.style.display = 'flex';
+    sentScr.style.display = 'none';
+    sendBtn.disabled = false;
+    sendBtn.innerHTML = '🆘 Send Emergency Alert';
+  }
+  function closeSOS() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Intercept ALL SOS links / buttons site-wide
+  document.querySelectorAll('.nav-sos, .desktop-nav-link.sos, [href="sos.html"]').forEach(el => {
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      openSOS();
+    });
+  });
+
+  closeBtn.addEventListener('click', closeSOS);
+  backdrop.addEventListener('click', closeSOS);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSOS(); });
+
+  // ── GPS ──
+  gpsBtn.addEventListener('click', function() {
+    if (!navigator.geolocation) {
+      gpsStat.textContent = 'GPS not available on this device.';
+      return;
+    }
+    gpsStat.textContent = '⏳ Getting location…';
+    gpsBtn.disabled = true;
+
+    navigator.geolocation.getCurrentPosition(
+      function(pos) {
+        const lat = pos.coords.latitude.toFixed(6);
+        const lng = pos.coords.longitude.toFixed(6);
+        const acc = Math.round(pos.coords.accuracy);
+        gpsCoords = { lat, lng, acc };
+        gpsDisp.value = lat + ', ' + lng;
+        gpsStat.textContent = '✓ Location captured (±' + acc + 'm accuracy)';
+        gpsBtn.classList.add('got');
+        gpsBtn.innerHTML = '✓ Got GPS';
+        gpsBtn.disabled = false;
+      },
+      function(err) {
+        gpsStat.textContent = '⚠ Could not get location: ' + err.message;
+        gpsBtn.disabled = false;
+      },
+      { enableHighAccuracy: true, timeout: 10000 }
+    );
+  });
+
+  // ── Send ──
+  sendBtn.addEventListener('click', async function() {
+    const message = document.getElementById('sosMessage').value.trim();
+    const room    = document.getElementById('sosRoom').value.trim();
+    const stage   = document.getElementById('sosStage').value;
+
+    if (!message) {
+      document.getElementById('sosMessage').focus();
+      document.getElementById('sosMessage').style.borderColor = 'var(--pink-coral)';
+      setTimeout(() => document.getElementById('sosMessage').style.borderColor = '', 2000);
+      return;
+    }
+
+    sendBtn.disabled = true;
+    sendBtn.innerHTML = '⏳ Sending…';
+
+    // Build the alert payload
+    const ref = 'SOS-' + Date.now().toString(36).toUpperCase();
+    const now = new Date().toLocaleString('en-US', {
+      timeZone: 'America/New_York',
+      month: 'short', day: 'numeric',
+      hour: 'numeric', minute: '2-digit', hour12: true
+    });
+
+    const payload = {
+      ref,
+      timestamp: now,
+      message,
+      room:    room  || 'Not specified',
+      stage:   stage || 'Not specified',
+      gps:     gpsCoords ? gpsCoords.lat + ', ' + gpsCoords.lng + ' (±' + gpsCoords.acc + 'm)' : 'Not captured',
+      gpsLink: gpsCoords ? 'https://maps.google.com/?q=' + gpsCoords.lat + ',' + gpsCoords.lng : null,
+      page:    window.location.pathname,
+      ua:      navigator.userAgent.slice(0, 120),
+    };
+
+    // ── Delivery methods ─────────────────────────────────────
+    // 1. SMS via sms: URI (opens native messages app pre-filled)
+    const smsBody = encodeURIComponent(
+      '[SUNKEN SUITE SOS] ' + ref + '\n' +
+      'Time: ' + now + '\n' +
+      'Room: ' + payload.room + '\n' +
+      'Area: ' + payload.stage + '\n' +
+      'GPS: ' + payload.gps + '\n' +
+      (payload.gpsLink ? payload.gpsLink + '\n' : '') +
+      'Message: ' + message
+    );
+    const smsLink = document.createElement('a');
+    smsLink.href = 'sms:+15083470000?body=' + smsBody;
+
+    // 2. Email via mailto: as a reliable fallback
+    const mailSubject = encodeURIComponent('[SOS] ' + ref + ' — Sunken Suite 2026');
+    const mailBody = encodeURIComponent(
+      'SUNKEN SUITE EMERGENCY ALERT\n' +
+      '================================\n' +
+      'Ref: ' + ref + '\n' +
+      'Time: ' + now + '\n\n' +
+      'LOCATION\n' +
+      'Room/Area: ' + payload.room + '\n' +
+      'Stage: ' + payload.stage + '\n' +
+      'GPS: ' + payload.gps + '\n' +
+      (payload.gpsLink ? 'Map: ' + payload.gpsLink + '\n' : '') +
+      '\nMESSAGE\n' + message + '\n\n' +
+      'Sent from: ' + payload.page
+    );
+    const mailLink = 'mailto:staff@sunkensuite.com?subject=' + mailSubject + '&body=' + mailBody;
+
+    // Try SMS first (mobile), then open email
+    try {
+      // On mobile: open SMS
+      if (/iPhone|Android|iPad/i.test(navigator.userAgent)) {
+        smsLink.click();
+      } else {
+        // Desktop: open email client
+        window.location.href = mailLink;
+      }
+    } catch(e) {
+      window.location.href = mailLink;
+    }
+
+    // Show sent confirmation
+    setTimeout(function() {
+      form.style.display = 'none';
+      sentScr.style.display = 'block';
+      document.getElementById('sosSentRef').textContent = 'Reference: ' + ref;
+    }, 600);
+  });
+
 })();
 </script>
 
