@@ -208,6 +208,21 @@ body { font-family:'Poppins',sans-serif; background:var(--ocean-deep); color:var
 .more-trigger.more-active, .nav-item.more-active .nav-icon-wrap { color:var(--gold-bright); border-color:rgba(245,200,66,0.4); background:rgba(245,200,66,0.1); }
 .nav-item.more-active .nav-label { color:var(--gold-bright); }
 </style>
+<style>
+/* FORCE bottom nav visible on mobile — must be last */
+@media (max-width: 767px) {
+  nav.bottom-nav {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: all !important;
+    z-index: 9000 !important;
+  }
+}
+@media (min-width: 768px) {
+  nav.bottom-nav { display: none !important; }
+}
+</style>
 </head>
 <body>
 <div class="bg-ocean"></div>
