@@ -1712,106 +1712,6 @@ body.is-admin .artist-card .artist-admin-pen { display:flex!important; }
 .edit-profile-header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.07);position:sticky;top:0;background:#0a0a0a;z-index:1;}
 .banner-upload-wrap{position:relative;height:100px;background:linear-gradient(135deg,#1a0030,#000820);cursor:pointer;margin-bottom:44px;overflow:visible;}
 .banner-avatar-overlap{position:absolute;bottom:-36px;left:16px;width:72px;height:72px;border-radius:50%;border:3px solid #0a0a0a;overflow:hidden;background:#9b3dff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:#fff;cursor:pointer;}
-/* ── PW Toggle ── */
-.pw-field-wrap{position:relative;display:flex;align-items:center;}
-.pw-field-wrap .auth-input{flex:1;padding-right:40px;}
-.pw-toggle{position:absolute;right:10px;background:none;border:none;cursor:pointer;font-size:16px;color:var(--text-muted);padding:0;line-height:1;}
-
-/* ── Notification Drawer ── */
-.notif-drawer{position:fixed;top:60px;right:12px;width:320px;max-width:calc(100vw - 24px);background:#0a0a0a;border:1px solid rgba(245,200,66,0.2);z-index:30000;display:none;flex-direction:column;max-height:80vh;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.7);}
-.notif-drawer.open{display:flex;}
-.notif-drawer-header{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,0.07);font-size:13px;font-weight:800;color:var(--gold-bright);text-transform:uppercase;letter-spacing:1px;flex-shrink:0;}
-.notif-item{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,0.05);cursor:pointer;transition:background .15s;}
-.notif-item:hover{background:rgba(255,255,255,0.04);}
-.notif-item.unread{background:rgba(245,200,66,0.04);}
-.notif-text{font-size:13px;color:var(--text-light);line-height:1.4;}
-.notif-time{font-size:11px;color:var(--text-muted);margin-top:3px;}
-.notif-badge{display:none;position:absolute;top:-4px;right:-6px;min-width:18px;height:18px;border-radius:9px;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:#000;padding:0 4px;}
-.notif-badge.blue{background:var(--teal-glow);}
-.notif-badge.yellow{background:var(--gold-bright);}
-.notif-badge.red{background:var(--pink-coral);}
-
-/* ── Trivia Game ── */
-.stage-intro{text-align:center;padding:24px 16px;}
-.stage-badge{display:inline-block;padding:4px 12px;border-radius:3px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
-.stage-number{font-size:40px;margin-bottom:8px;}
-.stage-name{font-size:22px;font-weight:900;color:var(--text-light);margin-bottom:6px;}
-.stage-desc{font-size:13px;color:var(--text-muted);margin-bottom:20px;}
-.stage-info-row{display:flex;gap:16px;justify-content:center;margin-bottom:24px;}
-.stage-info-item{text-align:center;}
-.stage-info-val{font-size:22px;font-weight:900;color:var(--gold-bright);}
-.stage-info-lbl{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;}
-.start-btn{padding:14px 32px;background:var(--gold-bright);border:none;color:#000;font-size:14px;font-weight:800;cursor:pointer;text-transform:uppercase;letter-spacing:1px;}
-.q-screen{display:flex;flex-direction:column;gap:12px;}
-.q-header{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
-.q-stage-pill{padding:4px 10px;border-radius:3px;font-size:11px;font-weight:800;}
-.q-progress-wrap{flex:1;min-width:80px;}
-.q-progress-bg{height:4px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden;}
-.q-progress-fill{height:100%;border-radius:2px;transition:width .3s;}
-.q-counter{font-size:11px;color:var(--text-muted);font-weight:700;white-space:nowrap;}
-.q-score-bar{display:flex;align-items:center;justify-content:space-between;}
-.q-score{font-size:14px;font-weight:800;color:var(--gold-bright);}
-.q-timer-wrap{font-size:13px;color:var(--text-muted);}
-.q-timer{font-weight:900;color:var(--teal-glow);}
-.q-timer.warning{color:var(--pink-coral);animation:findmePulse 0.5s infinite;}
-.q-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:16px;}
-.q-category{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
-.q-text{font-size:16px;font-weight:700;color:var(--text-light);line-height:1.4;}
-.q-options{display:flex;flex-direction:column;gap:8px;}
-.q-option{display:flex;align-items:center;gap:10px;padding:12px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:var(--text-light);font-size:14px;font-weight:600;cursor:pointer;text-align:left;transition:all .15s;}
-.q-option:hover:not(:disabled){background:rgba(245,200,66,0.1);border-color:rgba(245,200,66,0.4);}
-.q-option.correct{background:rgba(74,222,128,0.2);border-color:#4ade80;color:#4ade80;}
-.q-option.wrong{background:rgba(255,77,141,0.2);border-color:var(--pink-coral);color:var(--pink-coral);}
-.q-option.reveal{background:rgba(74,222,128,0.1);border-color:rgba(74,222,128,0.5);color:rgba(74,222,128,0.8);}
-.q-opt-letter{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;flex-shrink:0;}
-.q-feedback{padding:12px 14px;border-radius:2px;font-size:13px;font-weight:700;line-height:1.5;}
-.q-feedback.correct{background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.4);color:#4ade80;}
-.q-feedback.wrong{background:rgba(255,77,141,0.15);border:1px solid rgba(255,77,141,0.3);color:var(--pink-coral);}
-.q-feedback-fact{font-size:12px;font-weight:400;color:var(--text-muted);margin-top:6px;}
-.q-next-btn{padding:12px;background:var(--gold-bright);border:none;color:#000;font-size:13px;font-weight:800;cursor:pointer;text-transform:uppercase;letter-spacing:1px;}
-.results-screen{text-align:center;padding:24px 16px;}
-.results-skull{font-size:48px;margin-bottom:8px;}
-.results-grade{font-size:28px;font-weight:900;font-family:'Orbitron',sans-serif;margin-bottom:6px;}
-.results-title{font-size:14px;color:var(--text-muted);margin-bottom:12px;}
-.results-score-big{font-size:40px;font-weight:900;color:var(--gold-bright);}
-.results-score-sub{font-size:13px;color:var(--text-muted);margin-bottom:16px;}
-.results-stats{display:flex;gap:16px;justify-content:center;margin-bottom:20px;}
-.results-stat{text-align:center;}
-.results-stat-val{font-size:24px;font-weight:900;color:var(--text-light);}
-.results-stat-lbl{font-size:10px;color:var(--text-muted);text-transform:uppercase;}
-.results-stage-breakdown{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);padding:14px;margin-bottom:16px;text-align:left;}
-.results-sb-title{font-size:11px;font-weight:800;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;}
-.results-sb-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
-.results-sb-name{font-size:12px;font-weight:700;color:var(--text-light);width:80px;flex-shrink:0;}
-.results-sb-bar{flex:1;height:6px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden;}
-.results-sb-fill{height:100%;border-radius:3px;}
-.results-sb-score{font-size:12px;font-weight:700;width:40px;text-align:right;flex-shrink:0;}
-.results-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
-.results-play-again{padding:12px 24px;background:var(--gold-bright);border:none;color:#000;font-weight:800;font-size:14px;cursor:pointer;}
-.results-back-btn{padding:12px 24px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:var(--text-light);font-weight:700;font-size:14px;cursor:pointer;}
-
-/* ── Gantt / Shift ── */
-.gantt-day-header{font-size:12px;font-weight:800;color:var(--gold-bright);text-transform:uppercase;letter-spacing:1px;padding:10px 0 6px;}
-.gantt-wrap{overflow-x:auto;margin-bottom:16px;}
-.gantt-header{display:flex;min-width:600px;border-bottom:1px solid rgba(255,255,255,0.07);padding-bottom:4px;margin-bottom:4px;}
-.gantt-label-col{width:100px;flex-shrink:0;font-size:10px;color:var(--text-muted);}
-.gantt-hours{display:flex;flex:1;gap:0;}
-.gantt-hour{flex:1;font-size:9px;color:rgba(255,255,255,0.3);text-align:center;min-width:40px;}
-.gantt-row{display:flex;min-width:600px;height:32px;margin-bottom:3px;}
-.gantt-row-label{width:100px;flex-shrink:0;font-size:11px;color:var(--text-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:6px;display:flex;align-items:center;}
-.gantt-row-track{flex:1;position:relative;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);}
-.gantt-block{position:absolute;height:100%;display:flex;align-items:center;padding:0 6px;font-size:9px;font-weight:700;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer;opacity:0.9;}
-.gantt-block.confirmed{opacity:1;}
-.gantt-block.unconfirmed{opacity:0.6;}
-
-/* ── Shift card ── */
-.shift-card{display:flex;align-items:center;gap:12px;padding:14px;border-bottom:1px solid rgba(255,255,255,0.05);border-left:3px solid transparent;}
-.shift-card.confirmed{border-left-color:var(--teal-glow);}
-.shift-card.unconfirmed{border-left-color:var(--gold-bright);}
-.shift-time-badge{font-size:11px;font-weight:800;color:var(--text-muted);text-align:center;min-width:80px;flex-shrink:0;}
-.shift-confirm-btn{padding:6px 12px;background:var(--teal-glow);border:none;color:#000;font-size:11px;font-weight:800;cursor:pointer;flex-shrink:0;}
-.shift-confirmed-badge{font-size:11px;font-weight:800;color:var(--teal-glow);flex-shrink:0;}
-
 </style>
 </head>
 <body>
@@ -2751,373 +2651,6 @@ body.is-admin .artist-card .artist-admin-pen { display:flex!important; }
 <!-- ══ TOAST ══ -->
 <div class="toast" id="toast"></div>
 
-<!-- ══ RAVEWORM GAME OVERLAY ══ -->
-<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-<div class="raveworm-overlay" id="ravewormOverlay">
-  <div class="raveworm-header">
-    <div class="raveworm-title">🪱 RAVE WORM 🪩</div>
-    <button class="raveworm-close" onclick="closeRaveworm()">✕</button>
-  </div>
-  <div class="raveworm-body">
-    <div id="page-snake" style="width:100%;max-width:440px;padding:8px;">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;font-family:'VT323',monospace;font-size:20px;">
-        <span style="color:#33ff33;">Score: <span id="snakeScore">0</span></span>
-        <span style="flex:1;"></span>
-        <span style="color:#ffff00;">Best: <span id="snakeHi">0</span></span>
-      </div>
-      <div class="snake-screen-wrap" style="background:#ff007f;border:3px solid #33ff33;border-radius:4px;box-shadow:0 0 12px rgba(51,255,51,0.27);margin-bottom:12px;line-height:0;position:relative;">
-        <canvas id="snakeCanvas" style="display:block;width:100%;"></canvas>
-        <div id="snakeMsg" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'VT323',monospace;font-size:22px;color:#33ff33;text-shadow:0 0 8px #33ff33;pointer-events:none;">TAP ▶ TO START</div>
-      </div>
-      <div class="snake-dpad-wrap" style="display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px;padding:0 8px;">
-        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
-          <button class="snake-btn snake-gb-btn" id="snakeStartBtn" onclick="snakeStart()" style="margin-left:94px;"><span style="font-size:13px;line-height:1;">▶/■</span><span class="snake-gb-label">START</span></button>
-          <button class="snake-btn snake-gb-btn" onclick="snakeReset()" style="margin-left:94px;"><span style="font-size:16px;line-height:1;">↺</span><span class="snake-gb-label">RESET</span></button>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px;width:132px;flex-shrink:0;">
-          <div></div><button class="snake-btn" onclick="snakeDirBtn(0,-1)">▲</button><div></div>
-          <button class="snake-btn" onclick="snakeDirBtn(-1,0)">◀</button>
-          <div style="background:#111;border:2px solid rgba(51,255,51,0.13);border-radius:50%;"></div>
-          <button class="snake-btn" onclick="snakeDirBtn(1,0)">▶</button>
-          <div></div><button class="snake-btn" onclick="snakeDirBtn(0,1)">▼</button><div></div>
-        </div>
-      </div>
-      <div class="snake-mobile-start" style="display:none;justify-content:center;margin-bottom:8px;">
-        <button class="snake-btn" id="snakeMobileStartBtn" onclick="snakeStart()" style="width:80px;font-size:22px;background:#111;color:#33ff33;border-color:#33ff33;">▶</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="edit-modal-overlay" id="artistEditModal">
-  <div class="edit-modal">
-    <div class="edit-modal-header">
-      <div class="edit-modal-title" id="editModalTitle">Edit Artist</div>
-      <button class="edit-modal-close" onclick="closeArtistEdit()">✕</button>
-    </div>
-    <div class="edit-modal-body">
-      <input type="hidden" id="editArtistKey">
-      <div class="edit-field">
-        <label class="edit-label">Artist Name</label>
-        <input class="edit-input" id="editArtistName" placeholder="e.g. RONI SIZE">
-      </div>
-      <div class="edit-row">
-        <div class="edit-field">
-          <label class="edit-label">Stage</label>
-          <select class="edit-select" id="editArtistStage">
-            <option value="DNB Stage">DNB Stage</option>
-            <option value="Oasis Stage">Oasis Stage</option>
-            <option value="TBA">TBA</option>
-          </select>
-        </div>
-        <div class="edit-field">
-          <label class="edit-label">Day</label>
-          <select class="edit-select" id="editArtistDay">
-            <option value="Fri">Friday 7/17</option>
-            <option value="Sat">Saturday 7/18</option>
-            <option value="Sun">Sunday 7/19</option>
-            <option value="All">All Days</option>
-            <option value="TBA">TBA</option>
-          </select>
-        </div>
-      </div>
-      <div class="edit-row">
-        <div class="edit-field">
-          <label class="edit-label">Set Time</label>
-          <input class="edit-input" id="editArtistTime" placeholder="e.g. 10:30 PM">
-        </div>
-        <div class="edit-field">
-          <label class="edit-label">Genre</label>
-          <input class="edit-input" id="editArtistGenre" placeholder="e.g. Drum & Bass">
-        </div>
-      </div>
-      <div class="edit-field">
-        <label class="edit-label">Headliner</label>
-        <select class="edit-select" id="editArtistHeadliner">
-          <option value="false">No</option>
-          <option value="true">Yes — Headliner</option>
-        </select>
-      </div>
-      <div class="edit-field">
-        <label class="edit-label">Bio</label>
-        <textarea class="edit-textarea" id="editArtistBio" rows="4" placeholder="Artist bio…"></textarea>
-      </div>
-      <div class="edit-field">
-        <label class="edit-label">Spotify URL</label>
-        <input class="edit-input" id="editArtistSpotify" placeholder="https://open.spotify.com/artist/…">
-      </div>
-      <div class="edit-field">
-        <label class="edit-label">Artist Photo</label>
-        <div style="display:flex;gap:10px;align-items:flex-start;">
-          <div id="editPhotoPreview" style="width:72px;height:72px;flex-shrink:0;
-            display:flex;align-items:center;justify-content:center;
-            font-size:18px;font-weight:900;color:#fff;background:#333;
-            overflow:hidden;position:relative;">
-          </div>
-          <div style="flex:1;display:flex;flex-direction:column;gap:8px;">
-            <label style="display:flex;align-items:center;justify-content:center;gap:8px;
-              padding:10px;border:1px dashed rgba(245,200,66,0.3);cursor:pointer;
-              color:var(--gold-bright);font-size:12px;font-weight:700;
-              text-transform:uppercase;letter-spacing:0.5px;transition:all .15s;"
-              id="editPhotoLabel" onmouseover="this.style.background='rgba(245,200,66,0.05)'"
-              onmouseout="this.style.background='transparent'">
-              📷 Choose Photo
-              <input type="file" id="editPhotoFile" accept="image/*"
-                style="display:none;" onchange="previewArtistPhoto(this)">
-            </label>
-            <div id="editPhotoStatus" style="font-size:11px;color:var(--text-muted);line-height:1.5;"></div>
-            <!-- Progress bar -->
-            <div id="editPhotoProgress" style="display:none;height:4px;background:rgba(255,255,255,0.08);overflow:hidden;">
-              <div id="editPhotoBar" style="height:100%;width:0%;background:var(--teal-glow);transition:width .1s linear;"></div>
-            </div>
-            <input type="hidden" id="editArtistPhoto">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="edit-modal-footer">
-      <button class="dash-btn" onclick="closeArtistEdit()">Cancel</button>
-      <button class="dash-btn primary" onclick="saveArtistEdit()">Save Changes</button>
-    </div>
-  </div>
-</div>
-
-
-<!-- ══ SITE ALERT OVERLAY ══ -->
-<div class="site-alert-overlay" id="siteAlertOverlay">
-  <div class="site-alert-banner">
-    <div class="site-alert-inner warning" id="siteAlertInner">
-      <div class="site-alert-icon" id="siteAlertIcon">⚠️</div>
-      <div class="site-alert-body">
-        <div class="site-alert-title" id="siteAlertTitle">Alert</div>
-        <div class="site-alert-message" id="siteAlertMessage"></div>
-        <div class="site-alert-meta" id="siteAlertMeta"></div>
-      </div>
-      <button class="site-alert-dismiss" onclick="dismissSiteAlert()">Dismiss</button>
-    </div>
-  </div>
-</div>
-
-
-<!-- ══ PROFILE SETUP OVERLAY ══ -->
-<div class="profile-setup-overlay" id="profileSetupOverlay">
-  <div class="profile-setup-box">
-    <div class="auth-logo">☠ SUNKEN SUITE<span>Set Up Your Profile</span></div>
-    <div style="margin-top:20px;">
-      <div class="profile-avatar-preview" id="profileAvatarPreview">?</div>
-      <!-- Profile pic upload -->
-      <div style="text-align:center;margin-bottom:16px;position:relative;display:inline-block;left:50%;transform:translateX(-50%);">
-        <div class="profile-avatar-preview" id="profileAvatarPreview" style="cursor:pointer;position:relative;"
-          onclick="document.getElementById('profilePicInput').click()">
-          ?
-          <div style="position:absolute;inset:0;border-radius:50%;background:rgba(0,0,0,0.4);
-            display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .15s;"
-            id="profilePicOverlay">📷</div>
-        </div>
-        <input type="file" id="profilePicInput" accept="image/*" style="display:none;"
-          onchange="previewProfilePic(this)">
-        <div style="font-size:11px;color:var(--text-muted);margin-top:6px;">Tap to upload photo</div>
-      </div>
-      <div class="auth-field" style="margin-bottom:14px;">
-        <label class="auth-label">Choose your handle</label>
-        <input class="auth-input" id="profileHandleInput" type="text" maxlength="20"
-          placeholder="@yourhandle" autocomplete="off" oninput="updateHandlePreview(this.value)">
-        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">Letters, numbers and underscores only</div>
-      </div>
-      <div class="auth-field" style="margin-bottom:14px;">
-        <label class="auth-label">Bio <span style="opacity:0.5;">(optional)</span></label>
-        <input class="auth-input" id="profileBioInput" type="text" maxlength="300" placeholder="Tell the crew about yourself…">
-      </div>
-      <div class="auth-field" style="margin-bottom:14px;">
-        <label class="auth-label">Hometown <span style="opacity:0.5;">(optional)</span></label>
-        <input class="auth-input" id="profileHometownInput" type="text" maxlength="80" placeholder="Where are you from?">
-      </div>
-      <div class="auth-field" style="margin-bottom:14px;">
-        <label class="auth-label">Favorite Artists <span style="opacity:0.5;">(optional)</span></label>
-        <input class="auth-input" id="profileFaveArtistsInput" type="text" maxlength="200" placeholder="e.g. Roni Size, Spor, J. Phlip…">
-      </div>
-      <div class="auth-field" style="margin-bottom:14px;">
-        <label class="auth-label">Music Styles <span style="opacity:0.5;">(optional)</span></label>
-        <input class="auth-input" id="profileMusicStylesInput" type="text" maxlength="200" placeholder="e.g. Drum & Bass, Techno, House…">
-      </div>
-      <div class="auth-field" style="margin-bottom:14px;">
-        <label class="auth-label">First Rave <span style="opacity:0.5;">(optional)</span></label>
-        <input class="auth-input" id="profileFirstRaveInput" type="text" maxlength="100" placeholder="When/where was your first rave?">
-      </div>
-      <div class="auth-field" style="margin-bottom:20px;">
-        <label class="auth-label">Avatar Color</label>
-        <div class="avatar-color-picker" id="avatarColorPicker"></div>
-      </div>
-      <div class="auth-error" id="profileSetupError"></div>
-      <button class="auth-btn" id="profileSetupBtn" onclick="submitProfileSetup()">Let's Go! 🏴‍☠️</button>
-      <div style="text-align:center;margin-top:12px;">
-        <a onclick="skipProfileSetup()" style="font-size:12px;color:rgba(122,184,224,0.4);cursor:pointer;">Skip for now →</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ══ DM THREAD OVERLAY ══ -->
-<div class="dm-thread-overlay" id="dmThreadOverlay">
-  <div class="dm-thread-header">
-    <button class="dm-thread-back" onclick="closeDMThread()">‹</button>
-    <div class="dm-avatar" id="dmThreadAvatar" style="width:36px;height:36px;font-size:13px;"></div>
-    <div class="dm-thread-name" id="dmThreadName"></div>
-  </div>
-  <div class="dm-thread-messages" id="dmThreadMessages"></div>
-  <div class="dm-thread-input-row">
-    <input class="dm-thread-input" id="dmThreadInput" type="text"
-      placeholder="Message…" maxlength="1000" onkeydown="if(event.key==='Enter')sendDM()">
-    <button class="dm-send-btn" onclick="sendDM()">▶</button>
-  </div>
-</div>
-
-
-<div class="edit-profile-modal" id="editProfileModal">
-  <div class="edit-profile-box">
-    <div class="edit-profile-header">
-      <span style="font-size:13px;font-weight:800;color:var(--gold-bright);text-transform:uppercase;letter-spacing:1px;">Edit Profile</span>
-      <button onclick="closeEditProfileModal()" style="background:rgba(255,255,255,0.07);border:none;color:var(--text-light);font-size:16px;cursor:pointer;width:32px;height:32px;">&#x2715;</button>
-    </div>
-    <div style="padding:16px;">
-      <div class="banner-upload-wrap" id="editBannerWrap" onclick="document.getElementById('editBannerInput').click()">
-        <div id="editBannerImg" style="width:100%;height:100%;"></div>
-        <div class="banner-avatar-overlap" id="editAvatarOverlap" onclick="event.stopPropagation();document.getElementById('editAvatarInput').click()"></div>
-      </div>
-      <input type="file" id="editBannerInput" accept="image/*" style="display:none;" onchange="previewEditBanner(this)">
-      <input type="file" id="editAvatarInput" accept="image/*" style="display:none;" onchange="previewEditAvatar(this)">
-      <div style="font-size:11px;color:var(--text-muted);margin-bottom:14px;">Click banner to change &middot; click avatar to change photo</div>
-      <div class="auth-field"><label class="auth-label">Handle</label>
-        <input class="auth-input" id="editHandle" type="text" maxlength="20"></div>
-      <div class="auth-field"><label class="auth-label">Bio</label>
-        <textarea class="auth-input" id="editBio" maxlength="300" rows="2" style="resize:none;"></textarea></div>
-      <div class="auth-field"><label class="auth-label">Hometown</label>
-        <input class="auth-input" id="editHometown" type="text" maxlength="80"></div>
-      <div class="auth-field"><label class="auth-label">Music Styles</label>
-        <input class="auth-input" id="editMusicStyles" type="text" maxlength="200" placeholder="Drum and Bass, Techno..."></div>
-      <div class="auth-field"><label class="auth-label">Favorite Artists</label>
-        <input class="auth-input" id="editFaveArtists" type="text" maxlength="200" placeholder="Roni Size, Spor..."></div>
-      <div class="auth-field"><label class="auth-label">First Rave</label>
-        <input class="auth-input" id="editFirstRave" type="text" maxlength="100"></div>
-      <div id="editProfileStatus" style="font-size:12px;color:var(--text-muted);margin-bottom:8px;"></div>
-      <button class="auth-btn" id="editProfileSaveBtn" onclick="saveProfileEdits()">Save Changes</button>
-    </div>
-  </div>
-</div>
-
-<!-- ══ INFO OVERLAY ══ -->
-<div class="info-overlay" id="infoOverlay">
-  <div class="info-header">
-    <span class="info-header-title">Sunken Suite 2026</span>
-    <button class="info-close" onclick="closeInfo()">&#x2715;</button>
-  </div>
-  <div class="info-tabs">
-    <div class="info-tab active" id="infoTabEvent" onclick="switchInfoTab('event')">Event</div>
-    <div class="info-tab" id="infoTabVenue" onclick="switchInfoTab('venue')">Venue</div>
-    <div class="info-tab" id="infoTabGuidelines" onclick="switchInfoTab('guidelines')">Guidelines</div>
-    <div class="info-tab" id="infoTabHelp" onclick="switchInfoTab('help')">Help</div>
-  </div>
-  <div class="info-body" id="infoBody"></div>
-</div>
-<!-- ══ FIND ME OVERLAY ══ -->
-<div id="findMeOverlay" style="position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;flex-direction:column;cursor:pointer;user-select:none;-webkit-user-select:none;" onclick="closeFindMe()">
-  <div id="findMeText" style="font-size:clamp(48px,15vw,96px);font-weight:900;font-family:'Orbitron','Rajdhani',sans-serif;letter-spacing:4px;text-align:center;text-shadow:0 4px 24px rgba(0,0,0,0.4);animation:findmePulse 1.5s ease-in-out infinite;padding:0 20px;line-height:1.1;">FIND ME!</div>
-  <div id="findMeHandle" style="font-size:clamp(20px,6vw,36px);font-weight:700;opacity:0.8;margin-top:16px;font-family:'Orbitron',sans-serif;letter-spacing:2px;"></div>
-  <div style="position:absolute;bottom:40px;font-size:13px;opacity:0.5;font-weight:600;text-transform:uppercase;letter-spacing:1px;">Tap anywhere to close</div>
-</div>
-<style>@keyframes findmePulse{0%,100%{transform:scale(1);}50%{transform:scale(1.06);}}</style>
-<!-- ══ DJ BINGO OVERLAY ══ -->
-<div id="djBingoOverlay" style="position:fixed;inset:0;z-index:20000;background:#020b1a;display:none;flex-direction:column;overflow:hidden;">
-  <div id="djBingoContent" style="flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;"></div>
-</div>
-<!-- ══ RAVE TRIVIA OVERLAY ══ -->
-<div id="raveTriviaOverlay" style="position:fixed;inset:0;z-index:20000;background:#020b1a;display:none;flex-direction:column;overflow-y:auto;-webkit-overflow-scrolling:touch;">
-  <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(245,200,66,0.2);background:#020b1a;position:sticky;top:0;z-index:1;flex-shrink:0;">
-    <span style="font-size:13px;font-weight:800;color:var(--gold-bright);text-transform:uppercase;letter-spacing:1px;">🎵 Rave Trivia</span>
-    <button onclick="closeTriviaGame()" style="width:32px;height:32px;background:rgba(255,255,255,0.07);border:none;color:var(--text-light);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#x2715;</button>
-  </div>
-  <div id="triviaGame" style="flex:1;padding:16px;max-width:600px;margin:0 auto;width:100%;"></div>
-</div>
-<!-- ══ AUTH OVERLAY ══ -->
-<div class="auth-overlay" id="authOverlay">
-  <div class="auth-box">
-    <div class="auth-logo">☠ SUNKEN SUITE<span>The Mutiny 2026</span></div>
-    <!-- LOGIN FORM -->
-    <div id="authLogin">
-      <div class="auth-title">Welcome Back</div>
-      <div class="auth-sub">Sign in to your Mutiny account</div>
-      <div class="auth-error" id="loginError"></div>
-      <div class="auth-field">
-        <label class="auth-label">Email</label>
-        <input class="auth-input" id="loginEmail" type="email" placeholder="your@email.com" autocomplete="email">
-      </div>
-      <div class="auth-field">
-        <label class="auth-label">Password</label>
-        <input class="auth-input" id="loginPassword" type="password" placeholder="••••••••" autocomplete="current-password"
-          onkeydown="if(event.key==='Enter')submitLogin()">
-      </div>
-      <button class="auth-btn" id="loginBtn" onclick="submitLogin()">Sign In</button>
-      <div style="text-align:center;margin-top:10px;">
-        <a onclick="showForgotPassword()" style="font-size:12px;color:rgba(122,184,224,0.5);cursor:pointer;text-decoration:underline;">Forgot your password?</a>
-      </div>
-      <div class="auth-divider"></div>
-      <div class="auth-switch">No account? <a onclick="showAuth('register')">Create one free</a></div>
-    </div>
-    <!-- REGISTER FORM -->
-    <div id="authRegister" style="display:none;">
-      <div class="auth-title">Join The Mutiny</div>
-      <div class="auth-sub">Create your free Festie account</div>
-      <div class="auth-error" id="registerError"></div>
-      <div class="auth-field">
-        <label class="auth-label">Choose Your Handle <span style="color:var(--text-muted);font-weight:400;font-size:11px;">(your @username — no spaces)</span></label>
-        <div style="position:relative;">
-          <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:14px;">@</span>
-          <input class="auth-input" id="registerHandle" type="text" placeholder="YourHandle" autocomplete="username"
-            style="padding-left:26px;" maxlength="20"
-            oninput="this.value=this.value.replace(/[^a-zA-Z0-9_]/g,'')">
-        </div>
-      </div>
-      <div class="auth-field">
-        <label class="auth-label">Email</label>
-        <input class="auth-input" id="registerEmail" type="email" placeholder="your@email.com" autocomplete="email">
-      </div>
-      <div class="auth-field">
-        <label class="auth-label">Password</label>
-        <div class="pw-field-wrap">
-          <input class="auth-input" id="registerPassword" type="password" placeholder="Min 8 characters" autocomplete="new-password"
-            onkeydown="if(event.key==='Enter')submitRegister()">
-          <button type="button" class="pw-toggle" onclick="togglePwVisibility('registerPassword',this)" tabindex="-1">👁</button>
-        </div>
-      </div>
-      <div style="margin:12px 0;display:flex;flex-direction:column;gap:10px;">
-        <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:12px;color:var(--text-muted);line-height:1.4;">
-          <input type="checkbox" id="registerNotifConsent" style="margin-top:2px;accent-color:var(--gold-bright);flex-shrink:0;">
-          I agree to receive event notifications and updates from Sunken Suite / The Mutiny
-        </label>
-        <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:12px;color:var(--text-muted);line-height:1.4;">
-          <input type="checkbox" id="registerEmailList" style="margin-top:2px;accent-color:var(--gold-bright);flex-shrink:0;">
-          Add me to the Mutiny email list for future events &amp; announcements
-        </label>
-      </div>
-      <button class="auth-btn" id="registerBtn" onclick="submitRegister()">Create Account</button>
-      <div class="auth-divider"></div>
-      <div class="auth-switch">Already have an account? <a onclick="showAuth('login')">Sign in</a></div>
-    </div>
-    <div style="text-align:center;margin-top:16px;">
-      <a onclick="closeAuth()" style="font-size:12px;color:rgba(122,184,224,0.4);cursor:pointer;">
-        Continue without signing in →
-      </a>
-    </div>
-  </div>
-</div>
-<!-- ══ NOTIFICATION DRAWER ══ -->
-<div class="notif-drawer" id="notifDrawer">
-  <div class="notif-drawer-header">
-    <span>🔔 Notifications</span>
-    <button onclick="markAllNotifsRead()" style="background:none;border:none;color:var(--text-muted);font-size:11px;cursor:pointer;">Mark all read</button>
-  </div>
-  <div id="notifList"><div style="padding:16px;text-align:center;color:var(--text-muted);font-size:13px;">No notifications yet</div></div>
-</div>
-
 <script>
 /* ════════════════════════════════════════════════════════════
    ARTIST DATABASE
@@ -3974,6 +3507,7 @@ function closeMore() {
   document.querySelectorAll('.more-trigger').forEach(t=>t.classList.remove('more-active'));
   document.body.style.overflow = '';
 }
+function showInfo() { showToast('ℹ️ Info page coming in Phase 2!'); }
 function showBoard() { showToast('🏴‍☠️ Mutiny Board coming in Phase 2!'); }
 
 /* ════════════════════════════════════════════════════════════
@@ -4364,8 +3898,6 @@ function setCurrentUser(user, token) {
     checkProfileSetup();
     // 2. Start DM polling
     startDMPolling();
-    startNotifPolling();
-    startAlertPolling();
     // 3. Pre-load friends so Connect tab is ready
     loadFriendRequests();
     loadFriends();
@@ -4397,7 +3929,7 @@ function showAuth(mode='login') {
   if (regEl)   regEl.style.display      = mode==='register' ? 'block' : 'none';
   document.body.style.overflow = 'hidden';
   setTimeout(()=>{
-    const el = document.getElementById(mode==='login' ? 'loginEmail' : 'registerHandle');
+    const el = document.getElementById(mode==='login' ? 'loginEmail' : 'registerName');
     if (el) el.focus();
   }, 100);
 }
@@ -4436,7 +3968,7 @@ async function submitLogin() {
 
 // ── Register ───────────────────────────────────────────────
 async function submitRegister() {
-  const name     = (document.getElementById('registerHandle')?.value||'').trim();
+  const name     = document.getElementById('registerName').value.trim();
   const email    = document.getElementById('registerEmail').value.trim();
   const password = document.getElementById('registerPassword').value;
   const errEl    = document.getElementById('registerError');
@@ -4451,11 +3983,7 @@ async function submitRegister() {
     const res  = await fetch(`${AUTH_URL}/auth/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name, handle: name, email, password,
-        notifConsent: document.getElementById('registerNotifConsent')?.checked || false,
-        emailList: document.getElementById('registerEmailList')?.checked || false
-      })
+      body: JSON.stringify({ name, email, password })
     });
     const data = await res.json();
     if (!res.ok) { showAuthError(errEl, data.error || 'Registration failed.'); return; }
@@ -6447,6 +5975,15 @@ async function loadDMList() {
   } catch {}
 }
 
+function updateDMBadge(count) {
+  ['dmBadgeDesktop','dmBadgeMobile'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (count > 0) { el.style.display='flex'; el.textContent=count; }
+    else           { el.style.display='none'; }
+  });
+}
+
 function openDMThread(friendId, handle, color) {
   currentDMFriendId     = friendId;
   currentDMFriendHandle = handle;
@@ -6924,6 +6461,18 @@ async function saveProfileEdits() {
 /* ════════════════════════════════════════════════════════════
    RAVEWORM GAME
 ════════════════════════════════════════════════════════════ */
+function openRaveworm() {
+  var overlay = document.getElementById('ravewormOverlay');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(function(){ if(typeof initGame==='function') initGame(); }, 80);
+}
+function closeRaveworm() {
+  if (typeof snakeReset==='function') snakeReset();
+  document.getElementById('ravewormOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
 (function() {
   var COLS=20,ROWS=20,CELL=14;
   var snake,dir,nextDir,food,running,gameLoop,snakeHiScore;
@@ -7006,968 +6555,436 @@ async function saveProfileEdits() {
 /* ════════════════════════════════════════
    PEOPLE PAGE SUB-TABS
 ════════════════════════════════════════ */
-
-/* ════════════════════════════════════════
-   FIND ME
-════════════════════════════════════════ */
-function isMobileDevice() {
-  return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
-}
-function getLuminance(hex) {
-  hex = hex.replace('#','');
-  if (hex.length === 3) hex = hex.split('').map(c=>c+c).join('');
-  const r = parseInt(hex.substr(0,2),16)/255;
-  const g = parseInt(hex.substr(2,2),16)/255;
-  const b = parseInt(hex.substr(4,2),16)/255;
-  const toLinear = c => c <= 0.03928 ? c/12.92 : Math.pow((c+0.055)/1.055,2.4);
-  return 0.2126*toLinear(r) + 0.7152*toLinear(g) + 0.0722*toLinear(b);
-}
-function openFindMe() {
-  const overlay = document.getElementById('findMeOverlay');
-  const textEl  = document.getElementById('findMeText');
-  const handleEl = document.getElementById('findMeHandle');
-  if (!overlay) return;
-  const color = currentUser?.avatarColor || '#9b3dff';
-  const handle = currentUser?.handle ? '@' + currentUser.handle : '';
-  const lum = getLuminance(color);
-  const textColor = lum > 0.4 ? '#111111' : '#ffffff';
-  overlay.style.background = color;
-  overlay.style.display = 'flex';
-  if (textEl) { textEl.style.color = textColor; }
-  if (handleEl) { handleEl.textContent = handle; handleEl.style.color = textColor; }
-  document.body.style.overflow = 'hidden';
-  try {
-    if (overlay.requestFullscreen) overlay.requestFullscreen();
-    else if (overlay.webkitRequestFullscreen) overlay.webkitRequestFullscreen();
-  } catch(e) {}
-  if ('wakeLock' in navigator) {
-    navigator.wakeLock.request('screen').catch(() => {});
-  }
-}
-function closeFindMe() {
-  const overlay = document.getElementById('findMeOverlay');
-  if (overlay) overlay.style.display = 'none';
-  document.body.style.overflow = '';
-  try {
-    if (document.exitFullscreen) document.exitFullscreen();
-    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-  } catch(e) {}
-}
-document.addEventListener('DOMContentLoaded', function() {
-  const btn = document.getElementById('findMeBtn');
-  if (btn && isMobileDevice()) btn.style.display = '';
-});
-window.addEventListener('resize', function() {
-  const btn = document.getElementById('findMeBtn');
-  if (btn) btn.style.display = isMobileDevice() ? '' : 'none';
-});
-
-/* ════════════════════════════════════════
-   DJ BINGO
-════════════════════════════════════════ */
-const DJ_BINGO_TRACKS = [
-  { track:'Brown Paper Bag',        artist:'Roni Size / Reprazent',  cat:'dnb' },
-  { track:'Heroes',                 artist:'Roni Size',               cat:'dnb' },
-  { track:'Digital',                artist:'Roni Size',               cat:'dnb' },
-  { track:'Dirty Beats',            artist:'Roni Size / Reprazent',  cat:'dnb' },
-  { track:'Who Told You',           artist:'Roni Size / Reprazent',  cat:'dnb' },
-  { track:'Railing',                artist:'Roni Size',               cat:'dnb' },
-  { track:'New Forms',              artist:'Roni Size / Reprazent',  cat:'dnb' },
-  { track:'Morse Code',             artist:'Roni Size',               cat:'dnb' },
-  { track:'Watching Windows',       artist:'Roni Size / Reprazent',  cat:'dnb' },
-  { track:'Share the Fall',         artist:'Roni Size / Reprazent',  cat:'dnb' },
-  { track:'Aztec',                  artist:'Spor',                    cat:'dnb' },
-  { track:'Krak',                   artist:'Spor',                    cat:'dnb' },
-  { track:'In the Moment',          artist:'Spor',                    cat:'dnb' },
-  { track:'Vs. The World',          artist:'Spor',                    cat:'dnb' },
-  { track:'Long Way Round',         artist:'Spor',                    cat:'dnb' },
-  { track:'Run',                    artist:'Spor',                    cat:'dnb' },
-  { track:'Pacifica',               artist:'Spor',                    cat:'dnb' },
-  { track:'Counter Culture',        artist:'Spor',                    cat:'dnb' },
-  { track:'Step to Me',             artist:'Spor',                    cat:'dnb' },
-  { track:'Dirtbox',                artist:'Spor',                    cat:'dnb' },
-  { track:'Fever',                  artist:'J. Phlip',                cat:'house' },
-  { track:'Coefficient',            artist:'J. Phlip',                cat:'house' },
-  { track:'Say My Name',            artist:'J. Phlip',                cat:'house' },
-  { track:'Walls',                  artist:'J. Phlip & Chris Lorenzo',cat:'house' },
-  { track:'Falling Into Place',     artist:'J. Phlip',                cat:'house' },
-  { track:'Inner City Life',        artist:'Goldie',                  cat:'dnb' },
-  { track:'Timeless',               artist:'Goldie',                  cat:'dnb' },
-  { track:'Deadringer',             artist:'Roni Size',               cat:'dnb' },
-  { track:'Valley of the Shadows',  artist:'Origin Unknown',          cat:'dnb' },
-  { track:'Dred Bass',              artist:'Dead Dred',               cat:'dnb' },
-  { track:'Circles',                artist:'Adam F',                  cat:'dnb' },
-  { track:'Alphabet Soup',          artist:'Aphrodite',               cat:'dnb' },
-  { track:'Bad Man',                artist:'Roni Size',               cat:'dnb' },
-  { track:'Snapshot',               artist:'Roni Size',               cat:'dnb' },
-  { track:'Music Sounds Better With You', artist:'Stardust',         cat:'house' },
-  { track:'Finally',                artist:'CeCe Peniston',           cat:'house' },
-  { track:'Good Life',              artist:'Inner City',              cat:'house' },
-  { track:'Strings of Life',        artist:'Rhythim is Rhythim',      cat:'house' },
-  { track:'Move Your Body',         artist:'Marshall Jefferson',      cat:'house' },
-  { track:'Show Me Love',           artist:'Robin S.',                cat:'house' },
-  { track:'Ghost',                  artist:'Spor',                    cat:'dnb' },
-  { track:'Warning',                artist:'Spor',                    cat:'dnb' },
-  { track:'Terrorist',              artist:'Roni Size',               cat:'dnb' },
-  { track:'Playtime',               artist:'Grooverider',             cat:'dnb' },
-  { track:'Pump Up the Jam',        artist:'Technotronic',            cat:'house' },
-  { track:'Big Fun',                artist:'Inner City',              cat:'house' },
-  { track:'Push the Feeling On',    artist:'Nightcrawlers (dnb edit)',cat:'dnb' },
-  { track:'Superfreak',             artist:'Rick James (house edit)', cat:'house' },
-  { track:'New Forms',              artist:'Roni Size',               cat:'dnb' },
-  { track:'Work It Out',            artist:'Deee-Lite',               cat:'house' },
-];
-let bingoBoardCells = [];
-let bingoMarked = new Set();
-let bingoWon = false;
-let bingoCardSeed = 0;
-function openDJBingo() {
-  const overlay = document.getElementById('djBingoOverlay');
-  if (!overlay) return;
-  overlay.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  bingoWon = false;
-  bingoMarked = new Set();
-  bingoCardSeed = Date.now();
-  renderBingoGame();
-}
-function closeDJBingo() {
-  const overlay = document.getElementById('djBingoOverlay');
-  if (overlay) overlay.style.display = 'none';
-  document.body.style.overflow = '';
-}
-function renderBingoGame() {
-  const wrap = document.getElementById('djBingoContent');
-  if (!wrap) return;
-  const shuffled = [...DJ_BINGO_TRACKS].sort(() => Math.sin(bingoCardSeed++) - 0.5);
-  bingoBoardCells = shuffled.slice(0, 24);
-  bingoBoardCells.splice(12, 0, { track: 'FREE', artist: '\u{1F3B5}', cat: 'free' });
-  wrap.innerHTML = `
-    <div style="min-height:100%;background:linear-gradient(180deg,#020b1a 0%,#0a0520 100%);padding-bottom:32px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid rgba(245,200,66,0.2);background:rgba(2,11,26,0.95);position:sticky;top:0;z-index:10;">
-        <div>
-          <div style="font-size:11px;color:var(--gold-bright);font-weight:800;text-transform:uppercase;letter-spacing:2px;">🎵 DJ Bingo</div>
-          <div style="font-size:10px;color:var(--text-muted);margin-top:1px;">Tap when you hear it!</div>
-        </div>
-        <div style="display:flex;gap:8px;">
-          <button onclick="newBingoCard()" style="padding:6px 12px;background:rgba(245,200,66,0.1);border:1px solid rgba(245,200,66,0.3);color:var(--gold-bright);font-size:11px;font-weight:700;cursor:pointer;text-transform:uppercase;">New Card</button>
-          <button onclick="closeDJBingo()" style="padding:6px 12px;background:rgba(255,255,255,0.07);border:none;color:var(--text-muted);font-size:14px;cursor:pointer;">✕</button>
-        </div>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:3px;padding:12px 12px 4px;max-width:500px;margin:0 auto;">
-        ${['B','I','N','G','O'].map(l => `<div style="text-align:center;font-size:22px;font-weight:900;color:var(--gold-bright);font-family:'Orbitron',sans-serif;text-shadow:0 0 20px rgba(245,200,66,0.5);padding:4px 0;">${l}</div>`).join('')}
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:3px;padding:4px 12px 12px;max-width:500px;margin:0 auto;" id="bingoBoard">
-        ${bingoBoardCells.map((cell, i) => renderBingoCell(cell, i)).join('')}
-      </div>
-      <div style="max-width:500px;margin:0 auto;padding:0 12px;">
-        <div style="font-size:10px;color:var(--text-muted);font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.07);">All Tracks This Card</div>
-        <div style="display:flex;flex-wrap:wrap;gap:4px;">
-          ${bingoBoardCells.filter(c=>c.cat!=='free').map((c,i) => {
-            const idx = bingoBoardCells.indexOf(c);
-            return `<div class="bingo-track-chip" data-idx="${idx}" onclick="toggleBingoFromList(${idx})" style="padding:4px 8px;border-radius:3px;font-size:10px;cursor:pointer;background:${c.cat==='dnb'?'rgba(155,61,255,0.15)':'rgba(245,158,11,0.15)'};border:1px solid ${c.cat==='dnb'?'rgba(155,61,255,0.3)':'rgba(245,158,11,0.3)'};color:${c.cat==='dnb'?'#c084fc':'#fbbf24'};transition:all .15s;">${c.track}</div>`;
-          }).join('')}
-        </div>
-      </div>
-    </div>`;
-  bingoMarked.add(12);
-}
-function renderBingoCell(cell, i) {
-  const isFree = cell.cat === 'free';
-  const isMarked = bingoMarked.has(i) || isFree;
-  const bg = isFree ? 'rgba(245,200,66,0.25)' : isMarked ? (cell.cat === 'dnb' ? 'rgba(155,61,255,0.5)' : 'rgba(245,158,11,0.5)') : 'rgba(255,255,255,0.04)';
-  const border = isFree ? '1px solid rgba(245,200,66,0.5)' : isMarked ? `1px solid ${cell.cat==='dnb'?'rgba(155,61,255,0.8)':'rgba(245,158,11,0.8)'}` : '1px solid rgba(255,255,255,0.07)';
-  const textColor = isMarked ? '#fff' : 'var(--text-muted)';
-  const checkmark = isMarked && !isFree ? '<div style="position:absolute;top:3px;right:4px;font-size:10px;color:#4ade80;">✓</div>' : '';
-  return `<div onclick="markBingoCell(${i})" style="position:relative;aspect-ratio:1;background:${bg};border:${border};display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;padding:4px;transition:all .2s;${isMarked?'transform:scale(0.97);':''}">${checkmark}<div style="font-size:clamp(8px,2.2vw,11px);font-weight:700;color:${textColor};text-align:center;line-height:1.2;word-break:break-word;">${cell.track}</div>${!isFree?`<div style="font-size:clamp(6px,1.5vw,9px);color:${isMarked?'rgba(255,255,255,0.6)':'rgba(255,255,255,0.25)'};text-align:center;margin-top:2px;line-height:1.1;">${cell.artist}</div>`:''}${isFree?'<div style="font-size:16px;margin-top:2px;">⭐</div>':''}</div>`;
-}
-function markBingoCell(i) {
-  if (bingoBoardCells[i].cat === 'free') return;
-  if (bingoMarked.has(i)) { bingoMarked.delete(i); }
-  else { bingoMarked.add(i); setTimeout(() => checkBingo(), 100); }
-  refreshBingoBoard();
-  const chip = document.querySelector(`.bingo-track-chip[data-idx="${i}"]`);
-  if (chip) {
-    if (bingoMarked.has(i)) { chip.style.opacity = '0.4'; chip.style.textDecoration = 'line-through'; }
-    else { chip.style.opacity = '1'; chip.style.textDecoration = 'none'; }
-  }
-}
-function toggleBingoFromList(i) { markBingoCell(i); }
-function refreshBingoBoard() {
-  const board = document.getElementById('bingoBoard');
-  if (!board) return;
-  board.innerHTML = bingoBoardCells.map((cell, i) => renderBingoCell(cell, i)).join('');
-}
-function checkBingo() {
-  if (bingoWon) return;
-  const m = bingoMarked;
-  for (let r = 0; r < 5; r++) { if ([0,1,2,3,4].every(c => m.has(r*5+c))) { celebrateBingo('Row '+(r+1)); return; } }
-  for (let c = 0; c < 5; c++) { if ([0,1,2,3,4].every(r => m.has(r*5+c))) { celebrateBingo('Column '+(c+1)); return; } }
-  if ([0,6,12,18,24].every(i => m.has(i))) { celebrateBingo('Diagonal!'); return; }
-  if ([4,8,12,16,20].every(i => m.has(i))) { celebrateBingo('Diagonal!'); return; }
-}
-function celebrateBingo(line) {
-  bingoWon = true;
-  const win = document.createElement('div');
-  win.style.cssText = 'position:fixed;inset:0;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,0.92);';
-  win.innerHTML = `<div style="text-align:center;padding:32px;"><div style="font-size:64px;margin-bottom:8px;animation:findmePulse 0.8s ease-in-out infinite;">🎉</div><div style="font-size:48px;font-weight:900;color:var(--gold-bright);font-family:'Orbitron',sans-serif;letter-spacing:4px;text-shadow:0 0 40px rgba(245,200,66,0.6);">BINGO!</div><div style="font-size:16px;color:var(--text-muted);margin-top:8px;">${line}</div><div style="font-size:13px;color:var(--text-muted);margin-top:16px;">Shout BINGO and show your card to claim your prize!</div><div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap;"><button onclick="this.parentElement.parentElement.parentElement.remove();bingoWon=false;" style="padding:12px 24px;background:var(--gold-bright);border:none;color:#000;font-weight:800;font-size:14px;cursor:pointer;text-transform:uppercase;letter-spacing:1px;">Keep Playing</button><button onclick="newBingoCard()" style="padding:12px 24px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;font-weight:700;font-size:14px;cursor:pointer;">New Card</button></div></div>`;
-  document.getElementById('djBingoOverlay').appendChild(win);
-}
-function newBingoCard() {
-  bingoWon = false; bingoMarked = new Set(); bingoCardSeed = Date.now();
-  document.querySelectorAll('#djBingoOverlay > div:last-child').forEach(el => { if (el.id !== 'djBingoContent') el.remove(); });
-  renderBingoGame();
-}
-
-/* ════════════════════════════════════════
-   RAVE TRIVIA GAME
-════════════════════════════════════════ */
-function openTriviaGame() {
-  const overlay = document.getElementById('raveTriviaOverlay');
-  if (!overlay) return;
-  overlay.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  const triviaEl = document.getElementById('triviaGame');
-  if (triviaEl) {
-    triviaEl.style.display = 'block';
-    triviaEl.innerHTML = `
-      <div style="text-align:center;padding:32px 16px;">
-        <div style="font-size:48px;margin-bottom:12px;">🎧</div>
-        <div style="font-size:24px;font-weight:900;color:var(--gold-bright);font-family:'Orbitron',sans-serif;margin-bottom:8px;">RAVE TRIVIA</div>
-        <div style="font-size:13px;color:var(--text-muted);margin-bottom:24px;">80 questions across 4 stages<br>Rave history, DNB culture, Sunken Suite artists</div>
-        <div style="display:flex;flex-direction:column;gap:8px;max-width:280px;margin:0 auto 24px;">
-          ${STAGES.map(s => `<div style="padding:10px 14px;background:${s.bg};border:1px solid ${s.color}40;display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">${s.emoji}</span><div style="text-align:left;"><div style="font-size:13px;font-weight:700;color:${s.color};">${s.name}</div><div style="font-size:11px;color:var(--text-muted);">${s.desc}</div></div></div>`).join('')}
-        </div>
-        <button onclick="startTrivia()" style="padding:14px 32px;background:var(--gold-bright);border:none;color:#000;font-size:14px;font-weight:800;cursor:pointer;text-transform:uppercase;letter-spacing:1px;">Start Game</button>
-        <div style="margin-top:16px;"><button onclick="closeTriviaGame()" style="background:none;border:none;color:var(--text-muted);font-size:12px;cursor:pointer;">← Back to Games</button></div>
-      </div>`;
-  }
-}
-function closeTriviaGame() {
-  const overlay = document.getElementById('raveTriviaOverlay');
-  if (overlay) overlay.style.display = 'none';
-  document.body.style.overflow = '';
-  if (state && state.timerInterval) clearInterval(state.timerInterval);
-}
-const STAGES = [
-  { id:1, name:"Warm Up",       emoji:"🎧", color:"#00d4c8", bg:"rgba(0,212,200,0.15)",  badge:"Stage 1", desc:"Basic rave knowledge.",   timePerQ:20 },
-  { id:2, name:"In The Mix",    emoji:"🎛️", color:"#9b3dff", bg:"rgba(155,61,255,0.15)", badge:"Stage 2", desc:"DNB and festival culture.", timePerQ:18 },
-  { id:3, name:"Deep Cut",      emoji:"🔊", color:"#e8941a", bg:"rgba(232,148,26,0.15)", badge:"Stage 3", desc:"Artist history and subgenres.", timePerQ:15 },
-  { id:4, name:"Legend Status", emoji:"💀", color:"#ff4d8d", bg:"rgba(255,77,141,0.15)", badge:"Stage 4", desc:"Expert territory.",          timePerQ:12 },
-];
-const ALL_QUESTIONS = [
-  { stage:1, cat:"Rave History",   q:"What decade did rave culture first emerge in the UK?",              opts:["1970s","1980s","1990s","2000s"],                       ans:1, fact:"UK rave culture exploded in the late 1980s, driven by Acid House arriving from Chicago." },
-  { stage:1, cat:"Rave Culture",   q:"What does 'PLUR' stand for in rave culture?",                      opts:["Party, Love, Unity, Respect","Peace, Love, Unity, Respect","Peace, Love, Understanding, Rave","Party, Love, Unity, Rave"], ans:1, fact:"PLUR is the foundational philosophy of rave culture, originating in the early 1990s New York scene." },
-  { stage:1, cat:"DNB Basics",     q:"What is the typical BPM range of drum & bass music?",              opts:["100-120 BPM","120-140 BPM","160-180 BPM","180-220 BPM"],ans:2, fact:"Drum & bass typically runs at 160-180 BPM." },
-  { stage:1, cat:"Sunken Suite",   q:"Where is Sunken Suite 2026 taking place?",                         opts:["Boston Park Hotel","Sturbridge Host Hotel","Salem Waterfront","Providence Marriott"], ans:1, fact:"Sunken Suite 2026 is at the Sturbridge Host Hotel on Cedar Lake, MA." },
-  { stage:1, cat:"Rave History",   q:"Which city is widely considered the birthplace of house music?",   opts:["New York","Detroit","Chicago","London"],                  ans:2, fact:"House music was born in Chicago's underground club scene in the early 1980s." },
-  { stage:1, cat:"DNB Basics",     q:"Which city is the spiritual home of drum & bass?",                 opts:["Manchester","Birmingham","Bristol","London"],             ans:3, fact:"London, particularly south and east London, is the home of drum & bass culture." },
-  { stage:1, cat:"Rave History",   q:"What drug became synonymous with the 1988 UK 'Second Summer of Love'?", opts:["LSD","MDMA","Cocaine","Amphetamine"],               ans:1, fact:"MDMA (ecstasy) became the defining drug of the Second Summer of Love." },
-  { stage:1, cat:"Sunken Suite",   q:"How many stages does Sunken Suite 2026 have?",                     opts:["1","2","3","4"],                                          ans:1, fact:"Sunken Suite features the DNB Stage (BP²) and the Oasis Stage." },
-  { stage:1, cat:"Rave Culture",   q:"What is a 'DJ set' typically measured in?",                        opts:["Songs","Hours","BPM","Watts"],                            ans:1, fact:"DJ sets are booked in hours, typically ranging from 1 to 3 hours at festivals." },
-  { stage:1, cat:"DNB Basics",     q:"What does 'DNB' stand for?",                                       opts:["Dance N Bass","Drum N Bass","Deep N Bass","Dark N Bass"], ans:1, fact:"Drum and Bass — the genre born in the UK in the early 90s from jungle and breakbeat hardcore." },
-  { stage:1, cat:"Lineup",         q:"Which legendary Bristol artist headlines the DNB Stage on Friday?", opts:["Goldie","Roni Size","LTJ Bukem","Shy FX"],              ans:1, fact:"Roni Size & Reprazent won the Mercury Prize in 1997 for their album New Forms." },
-  { stage:1, cat:"Rave History",   q:"What was the name of the famous Chicago club where house music was born?", opts:["The Haçienda","The Warehouse","Fabric","BERGHAIN"], ans:1, fact:"The Warehouse, run by Frankie Knuckles, gave house music its name." },
-  { stage:1, cat:"Lineup",         q:"Which Sunken Suite headliner is known for the album 'New Forms'?", opts:["Spor","Evol Intent","Roni Size","Dara"],                  ans:2, fact:"Roni Size's New Forms won the Mercury Prize in 1997." },
-  { stage:1, cat:"Rave Culture",   q:"What is the practice of trading bead bracelets at raves called?",  opts:["Kandi trading","Bead swapping","PLUR passing","Wristleting"], ans:0, fact:"Kandi trading is a rave tradition where beaded bracelets are exchanged using the PLUR handshake." },
-  { stage:1, cat:"DNB Basics",     q:"What music genre directly preceded drum & bass?",                   opts:["Techno","Jungle","Garage","Trance"],                      ans:1, fact:"Jungle (or breakbeat hardcore) evolved into drum and bass in the early-to-mid 1990s." },
-  { stage:1, cat:"Sunken Suite",   q:"What body of water is the Sturbridge Host Hotel located on?",      opts:["Lake Quinsigamond","Brimfield Pond","Cedar Lake","Quaboag Pond"], ans:2, fact:"The Sturbridge Host Hotel sits on the shores of Cedar Lake in Sturbridge, MA." },
-  { stage:1, cat:"Lineup",         q:"Spor is the drum & bass alias of which producer?",                 opts:["Ed Rush","Jon Gooch","Friction","DC Breaks"],              ans:1, fact:"Spor is the DnB alias of Jon Gooch, who also produces under the Feed Me name." },
-  { stage:1, cat:"Rave History",   q:"What was the UK's Criminal Justice Act 1994 primarily aimed at restricting?", opts:["Drug sales","Outdoor raves","Club hours","DJ licensing"], ans:1, fact:"The CJA 1994 famously targeted outdoor raves." },
-  { stage:1, cat:"Lineup",         q:"What stage does Carlo Lio play at Sunken Suite 2026?",             opts:["DNB Stage","Oasis Stage","Main Stage","Poolside"],         ans:1, fact:"Carlo Lio is performing on the Oasis Stage." },
-  { stage:1, cat:"Rave Culture",   q:"What does a DJ use to smoothly transition between two tracks?",    opts:["A fade","A mix","A drop","A blend"],                       ans:1, fact:"Mixing — blending the outro of one track with the intro of another — is the core DJ skill." },
-  { stage:2, cat:"DNB History",    q:"In what year did Goldie release the landmark DnB album 'Timeless'?", opts:["1993","1995","1997","1999"],                            ans:1, fact:"Goldie's Timeless (1995) is one of the most important albums in drum & bass history." },
-  { stage:2, cat:"Lineup",         q:"Evol Intent is based in which US city?",                            opts:["New York","Los Angeles","Atlanta","Chicago"],             ans:2, fact:"Evol Intent is an Atlanta-based drum & bass collective." },
-  { stage:2, cat:"DNB Culture",    q:"What subgenre of DnB is characterised by dark, sci-fi influenced, complex sounds?", opts:["Liquid funk","Neurofunk","Jump-up","Ragga DnB"], ans:1, fact:"Neurofunk features dark and technical sound design." },
-  { stage:2, cat:"Rave History",   q:"Which Detroit producer is widely regarded as the 'Father of Techno'?", opts:["Carl Craig","Juan Atkins","Derrick May","Jeff Mills"],  ans:1, fact:"Juan Atkins, as Model 500, is credited as one of the originators of Detroit techno." },
-  { stage:2, cat:"Lineup",         q:"JFB is a world champion in which specialist DJ discipline?",        opts:["Mixing","Scratching","Beat juggling","Turntablism"],      ans:1, fact:"JFB is a multiple World DMC Champion." },
-  { stage:2, cat:"Rave History",   q:"What is the name of Manchester's legendary club that brought acid house to the north of England?", opts:["The Warehouse","Sankeys","The Haçienda","Cream"], ans:2, fact:"The Haçienda, run by Factory Records, was pivotal in spreading rave culture." },
-  { stage:2, cat:"DNB Culture",    q:"What is 'liquid funk' DnB best known for?",                        opts:["Heavy bass and aggression","Melodic, soulful, smooth sounds","Reggae-influenced vocals","Sci-fi dark textures"], ans:1, fact:"Liquid funk is characterised by smooth, melodic basslines and soulful vocal chops." },
-  { stage:2, cat:"Lineup",         q:"Which Sunken Suite artist co-founded Utter Gutter Records?",       opts:["JFB","Deekline","Phantom 45","Unglued"],                  ans:1, fact:"Deekline co-founded Utter Gutter Records." },
-  { stage:2, cat:"Rave History",   q:"Which seminal rave took place at a British airfield in 1992 and attracted 40,000 people?", opts:["Castlemorton Common","Spiral Tribe","Orbit","Fantazia"], ans:0, fact:"Castlemorton Common 1992 was one of the UK's biggest-ever illegal raves." },
-  { stage:2, cat:"Lineup",         q:"Madam X is originally from which city?",                           opts:["London","Chicago","Detroit","Berlin"],                    ans:2, fact:"Madam X is a Detroit-born techno artist." },
-  { stage:2, cat:"DNB History",    q:"What record label, founded by Metalheadz, is one of DnB's most iconic?", opts:["Hospital Records","Moving Shadow","Metalheadz","Ram Records"], ans:2, fact:"Metalheadz, founded by Goldie in 1994, remains one of drum & bass's most respected labels." },
-  { stage:2, cat:"Lineup",         q:"Krafty Kutz is known for pioneering which genre?",                 opts:["Liquid DnB","Techno","Breakbeat","Neurofunk"],             ans:2, fact:"Krafty Kutz is a pioneering breaks artist." },
-  { stage:2, cat:"DNB Culture",    q:"What does 'jump-up' DnB typically feature?",                       opts:["Heavy bass stabs and crowd-friendly drops","Deep rolling basslines","Jazz samples","Reggae vocals"], ans:0, fact:"Jump-up DnB is known for its energetic bass stabs." },
-  { stage:2, cat:"Rave History",   q:"The famous 'Second Summer of Love' occurred in which year?",       opts:["1986","1987","1988","1990"],                              ans:2, fact:"The Second Summer of Love in 1988 saw acid house explode across the UK." },
-  { stage:2, cat:"Lineup",         q:"J.Phlip is based in which US city?",                              opts:["New York","Los Angeles","San Francisco","Chicago"],        ans:2, fact:"J.Phlip is a San Francisco-based DJ and producer." },
-  { stage:2, cat:"DNB History",    q:"Hospital Records was founded in which city?", opts:["Bristol","Manchester","London","Birmingham"],     ans:2, fact:"Hospital Records was founded in London in 1996." },
-  { stage:2, cat:"Lineup",         q:"Georgie Riot is best known for which DnB subgenre?",               opts:["Liquid","Neurofunk","Jump-Up","Ragga"],                    ans:2, fact:"Georgie Riot is known for high-energy jump-up sets." },
-  { stage:2, cat:"Rave Culture",   q:"What is the term for the moment in a track when the beat drops back in after a breakdown?", opts:["The peak","The drop","The intro","The outro"], ans:1, fact:"'The drop' is one of the most anticipated moments in rave music." },
-  { stage:2, cat:"Lineup",         q:"Which Sunken Suite 2026 artist plays both Drum & Bass and is a World Champion Scratch DJ?", opts:["Deekline","JFB","Dara","Unglued"],   ans:1, fact:"JFB uniquely incorporates live scratching into DnB sets." },
-  { stage:2, cat:"Lineup",         q:"Gettoblaster is from which city often associated with house music?", opts:["Detroit","New York","Chicago","Miami"],     ans:2, fact:"Gettoblaster is a Chicago native." },
-  { stage:3, cat:"DnB History",    q:"Roni Size's Mercury Prize-winning album New Forms was released in which year?", opts:["1995","1996","1997","1998"],                  ans:2, fact:"New Forms by Roni Size & Reprazent won the Mercury Prize in 1997." },
-  { stage:3, cat:"Lineup",         q:"What is SPOR's other well-known alias?",                           opts:["DJ Friction","Feed Me","Shy FX","Pendulum"],              ans:1, fact:"Jon Gooch records as Feed Me alongside his DnB alias SPOR." },
-  { stage:3, cat:"DnB History",    q:"Which influential DnB duo created the seminal album 'Virus' on Moving Shadow?", opts:["Grooverider & Fabio","Ed Rush & Optical","LTJ Bukem & MC Conrad","Pendulum"], ans:1, fact:"Ed Rush & Optical's Virus (1998) is a cornerstone of the neurofunk subgenre." },
-  { stage:3, cat:"Rave History",   q:"Which act is credited with creating the 'amen break'?", opts:["James Brown","The Winstons","Clyde Stubblefield","The JBs"], ans:1, fact:"The Amen Break comes from 'Amen, Brother' by The Winstons (1969)." },
-  { stage:3, cat:"Lineup",         q:"Dara is renowned for his encyclopedic knowledge of which early genre closely related to DnB?", opts:["Techno","Jungle","Garage","Breakbeat"],                         ans:1, fact:"Dara is revered as a legendary veteran of the drum & bass and jungle scene." },
-  { stage:3, cat:"Rave History",   q:"Which Berlin club opened in 2004 and became arguably the world's most famous techno venue?", opts:["Tresor","Watergate","Berghain","Fabric"],                      ans:2, fact:"Berghain opened in 2004 in a former power plant." },
-  { stage:3, cat:"DnB Culture",    q:"What label did Roni Size co-found in Bristol?",                   opts:["Full Cycle","V Recordings","Metalheadz","Shogun Audio"],   ans:0, fact:"Full Cycle Records, founded by Roni Size and Krust in Bristol." },
-  { stage:3, cat:"Lineup",         q:"What genre description best suits Madam X's sound?",               opts:["Liquid DnB","Industrial techno","Deep house","Neurofunk"],  ans:1, fact:"Madam X delivers powerful, bass-heavy industrial techno." },
-  { stage:3, cat:"DnB History",    q:"Which artist is credited with pioneering the 'rollers' style of DnB?", opts:["Goldie","Digital","Dillinja","Calibre"],               ans:1, fact:"Digital is one of the pioneers of the rolling style." },
-  { stage:3, cat:"Rave History",   q:"What was the first rave record to reach the UK Top 10?", opts:["Pump Up the Volume by MARRS","Strings of Life","Pacific State","Theme from S-Express"], ans:3, fact:"S-Express's Theme from S-Express hit #1 in the UK in 1988." },
-  { stage:3, cat:"DnB Culture",    q:"What is the name for a DnB set where two DJs play back-to-back?",  opts:["B2B","Duo set","Tag team","Double drop"],                 ans:0, fact:"B2B (back-to-back) sets are a celebrated format." },
-  { stage:3, cat:"Rave History",   q:"Which influential record label released the jungle classic 'Original Nuttah' by Shy FX?", opts:["Metalheadz","Moving Shadow","Sour Records","Formation"], ans:2, fact:"Sour Records released 'Original Nuttah' in 1994." },
-  { stage:3, cat:"Lineup",         q:"Which Sunken Suite artist helped pioneer American DnB?",            opts:["JFB","Dara","Evol Intent","Degs"],   ans:2, fact:"Evol Intent is credited with putting American drum & bass on the map." },
-  { stage:3, cat:"DnB History",    q:"What year did Pendulum release 'Hold Your Colour'?", opts:["2003","2005","2007","2009"],              ans:1, fact:"Hold Your Colour (2005) by Pendulum was a major crossover moment." },
-  { stage:3, cat:"Rave Culture",   q:"What is the technique where a DJ uses two copies of the same record to extend a break?", opts:["Scratching","Beat juggling","The spinback","Looping"], ans:1, fact:"Beat juggling involves manipulating two copies of a record." },
-  { stage:3, cat:"Lineup",         q:"JFB won the World DMC Championships. What does DMC stand for?", opts:["Digital Music Championship","Disco Mix Club","DJ Master Class","Digital Mix Championship"], ans:1, fact:"The DMC (Disco Mix Club) World DJ Championships are the most prestigious DJ competition." },
-  { stage:3, cat:"DnB History",    q:"Which seminal DnB album by LTJ Bukem is considered a cornerstone of atmospheric DnB?", opts:["Journey Inwards","Progression Sessions","Logic","Demon's Theme"], ans:0, fact:"Journey Inwards (2001) by LTJ Bukem is a masterpiece." },
-  { stage:3, cat:"Rave History",   q:"What was the name of the legendary New York club that helped define house and techno in the US?", opts:["Studio 54","The Loft","The Paradise Garage","CBGB"],          ans:2, fact:"The Paradise Garage, run by Larry Levan, was one of the most influential clubs." },
-  { stage:3, cat:"Lineup",         q:"Phantom 45 is associated with which DnB subgenre?",                opts:["Jump-up","Neurofunk","Liquid funk","Ragga DnB"],            ans:2, fact:"Phantom 45 delivers smooth, rolling liquid drum & bass." },
-  { stage:4, cat:"Expert DnB",     q:"What is the name of Roni Size's live band project that recorded New Forms?",         opts:["Reprazent","Roni Size Collective","Full Cycle All Stars","Bristolian Sound"], ans:0, fact:"Reprazent was the group assembled by Roni Size for New Forms." },
-  { stage:4, cat:"Expert DnB",     q:"The 'Amen break' sample originally came from which song recorded in 1969?",           opts:["Give It Up or Turnit a Loose","Think","Amen, Brother","Cold Sweat"],     ans:2, fact:"'Amen, Brother' by The Winstons contains the most sampled break in history." },
-  { stage:4, cat:"Expert History", q:"Which Chicago DJ is often credited with first playing records at 45 RPM sped up to create the 'house' sound?", opts:["Frankie Knuckles","Larry Heard","Ron Hardy","Jesse Saunders"], ans:2, fact:"Ron Hardy at the Music Box was known for experimental DJing." },
-  { stage:4, cat:"Scene Knowledge",q:"Sunken Suite is presented by BP². What does BP² stand for?", opts:["Bass People Squared","Breakbeat Productions","Boston Promotions","Bassline Pioneers"], ans:0, fact:"BP² (Bass People Squared) is the New England DnB collective behind Sunken Suite." },
-  { stage:4, cat:"Expert DnB",     q:"Which DnB label released early work by Chase & Status and Sub Focus?", opts:["Hospital Records","Shogun Audio","Ram Records","Metalheadz"],   ans:2, fact:"Ram Records, founded by Andy C, is one of the UK's biggest DnB labels." },
-  { stage:4, cat:"Expert DnB",     q:"Which producer co-created the neurofunk sound with Ed Rush under the Virus label?",  opts:["Photek","Optical","Dillinja","Konflict"],                               ans:1, fact:"Optical and Ed Rush created the Virus label and defined the neurofunk sound." },
-  { stage:4, cat:"Scene Knowledge",q:"What was the name of the venue style that replaced illegal outdoor raves in the UK?", opts:["Licensed clubs","Arena raves","Superclubs","Warehouse parties"], ans:2, fact:"Superclubs like Cream, Gatecrasher, and Ministry of Sound replaced outdoor raves." },
-  { stage:4, cat:"Lineup Deep",    q:"Deekline has collaborated extensively with which Bristolian artist?", opts:["Dynamite MC","Skibadee","Ed Solo","Redman"],                        ans:2, fact:"Deekline and Ed Solo have been long-time collaborators." },
-  { stage:4, cat:"Expert DnB",     q:"What year was the Metalheadz Sunday Sessions at the Blue Note club launched?", opts:["1993","1994","1995","1996"],                                        ans:1, fact:"The Metalheadz Sunday Sessions launched in 1994 at the Blue Note in Hoxton." },
-  { stage:4, cat:"Expert History", q:"Which seminal 1992 EP by 4Hero is considered one of the first true jungle records?",  opts:["Mr. Kirk's Nightmare","Terminator","Playing with Fire","Journey into Bass"], ans:0, fact:"'Mr. Kirk's Nightmare' by 4Hero (1992) is a seminal early jungle record." },
-  { stage:4, cat:"Scene Knowledge",q:"Sunken Suite 2026 runs across how many days?",                                       opts:["1","2","3","4"],                                                          ans:2, fact:"Sunken Suite 2026 runs Friday July 17 through Sunday July 19." },
-  { stage:4, cat:"Expert DnB",     q:"Which DnB producer created the iconic 'Valve D' bass sound?", opts:["Dillinja","Goldie","Grooverider","4Hero"],                          ans:0, fact:"Dillinja, known as the 'Dark Destroyer', created the Valve D synthesizer." },
-  { stage:4, cat:"Scene Knowledge",q:"Which Sunken Suite 2026 headliner won the Mercury Prize?", opts:["Spor","Evol Intent","Roni Size","Goldie"],                         ans:2, fact:"Roni Size & Reprazent's New Forms won the 1997 Mercury Prize." },
-  { stage:4, cat:"Expert DnB",     q:"The 'think break' comes from which artist?",  opts:["James Brown","Lyn Collins","The Incredible Bongo Band","The Honeydrippers"], ans:1, fact:"'Think (About It)' by Lyn Collins (1972) contains the 'think break'." },
-  { stage:4, cat:"Lineup Deep",    q:"Krafty Kutz has been releasing music since the early 2000s in which primary genre?", opts:["Drum & Bass","Techno","Breaks / Breakbeat","Deep House"],               ans:2, fact:"Krafty Kutz is a pioneering breaks and breakbeat artist." },
-  { stage:4, cat:"Expert History", q:"What was the name of the pirate radio station that championed early jungle and DnB?", opts:["Kiss FM","Rinse FM","Kool FM","Flex FM"],                      ans:2, fact:"Kool FM was one of the most important pirate radio stations for jungle and DnB." },
-  { stage:4, cat:"Lineup Deep",    q:"Carlo Lio's music is primarily released on which type of labels?",                   opts:["Major labels","Underground techno and house labels","Pop crossover labels","DnB labels"], ans:1, fact:"Carlo Lio releases on underground labels like Rawthentic and Cocoon." },
-];
-let state = {
-  currentStage: 0, currentQ: 0, score: 0,
-  stageScores: [0,0,0,0], stageCorrect: [0,0,0,0],
-  answered: false, timer: null, timeLeft: 0, stageQuestions: [],
-};
-function getStageQuestions(stageNum) {
-  const qs = ALL_QUESTIONS.filter(q => q.stage === stageNum);
-  for (let i = qs.length - 1; i > 0; i--) { const j = Math.floor(Math.random()*(i+1)); [qs[i],qs[j]]=[qs[j],qs[i]]; }
-  return qs.slice(0, 20);
-}
-function startTrivia() {
-  const triviaEl = document.getElementById('triviaGame');
-  if (triviaEl) triviaEl.style.display = 'block';
-  state = { currentStage:0, currentQ:0, score:0, stageScores:[0,0,0,0], stageCorrect:[0,0,0,0], answered:false, timer:null, timeLeft:0, stageQuestions:[] };
-  showStageIntro(0);
-}
-function showStageIntro(stageIdx) {
-  const stage = STAGES[stageIdx];
-  const el = document.getElementById('triviaGame');
-  el.innerHTML = `<div class="stage-intro"><div class="stage-badge" style="background:${stage.bg};color:${stage.color};">${stage.badge}</div><div class="stage-number">${stage.emoji}</div><div class="stage-name">${stage.name}</div><div class="stage-desc">${stage.desc}</div><div class="stage-info-row"><div class="stage-info-item"><div class="stage-info-val">20</div><div class="stage-info-lbl">Questions</div></div><div class="stage-info-item"><div class="stage-info-val">${stage.timePerQ}s</div><div class="stage-info-lbl">Per Question</div></div><div class="stage-info-item"><div class="stage-info-val">${stageIdx>0?state.score:'0'}</div><div class="stage-info-lbl">Score So Far</div></div></div><button class="start-btn" onclick="beginStage(${stageIdx})">${stageIdx===0?'🎧 Start The Game':'🔊 Begin Stage '+(stageIdx+1)}</button></div>`;
-}
-function beginStage(stageIdx) {
-  state.currentStage = stageIdx; state.currentQ = 0;
-  state.stageQuestions = getStageQuestions(stageIdx + 1);
-  showQuestion();
-}
-function showQuestion() {
-  const stage = STAGES[state.currentStage];
-  const q = state.stageQuestions[state.currentQ];
-  const qNum = state.currentStage * 20 + state.currentQ + 1;
-  state.answered = false;
-  const letters = ['A','B','C','D'];
-  const optHTML = q.opts.map((opt, i) => `<button class="q-option" onclick="selectAnswer(${i})" id="opt${i}"><span class="q-opt-letter">${letters[i]}</span>${opt}</button>`).join('');
-  document.getElementById('triviaGame').innerHTML = `<div class="q-screen"><div class="q-header"><span class="q-stage-pill" style="background:${stage.bg};color:${stage.color};">${stage.emoji} ${stage.name}</span><div class="q-progress-wrap"><div class="q-progress-bg"><div class="q-progress-fill" id="qProgress" style="width:${(qNum/80*100).toFixed(1)}%;background:${stage.color};"></div></div></div><span class="q-counter">Q${qNum}/80</span></div><div class="q-score-bar"><span class="q-score">⭐ ${state.score} pts</span><div class="q-timer-wrap">⏱ <span class="q-timer" id="qTimer">${stage.timePerQ}</span>s</div></div><div class="q-card"><div class="q-category" style="color:${stage.color};">${q.cat}</div><div class="q-text">${q.q}</div></div><div class="q-options" id="qOptions">${optHTML}</div><div id="qFeedback"></div><button class="q-next-btn" id="qNextBtn" style="display:none;" onclick="nextQuestion()">Next Question →</button></div>`;
-  startTimer(stage.timePerQ);
-}
-function startTimer(secs) {
-  clearInterval(state.timer); state.timeLeft = secs; updateTimerDisplay();
-  state.timer = setInterval(() => { state.timeLeft--; updateTimerDisplay(); if (state.timeLeft <= 0) { clearInterval(state.timer); if (!state.answered) timeOut(); } }, 1000);
-}
-function updateTimerDisplay() {
-  const el = document.getElementById('qTimer'); if (!el) return;
-  el.textContent = state.timeLeft;
-  el.className = 'q-timer' + (state.timeLeft <= 5 ? ' warning' : '');
-}
-function timeOut() {
-  state.answered = true;
-  const q = state.stageQuestions[state.currentQ];
-  disableOptions();
-  document.getElementById(`opt${q.ans}`)?.classList.add('reveal');
-  showFeedback(false, null, q, true);
-}
-function selectAnswer(idx) {
-  if (state.answered) return;
-  state.answered = true; clearInterval(state.timer);
-  const q = state.stageQuestions[state.currentQ];
-  const stage = STAGES[state.currentStage];
-  const correct = idx === q.ans;
-  disableOptions();
-  document.getElementById(`opt${idx}`)?.classList.add(correct ? 'correct' : 'wrong');
-  if (!correct) document.getElementById(`opt${q.ans}`)?.classList.add('reveal');
-  if (correct) {
-    const pts = 50 + (state.currentStage+1)*10 + Math.floor(state.timeLeft*2);
-    state.score += pts; state.stageScores[state.currentStage] += pts; state.stageCorrect[state.currentStage]++;
-  }
-  showFeedback(correct, idx, q, false);
-}
-function disableOptions() { document.querySelectorAll('.q-option').forEach(b => b.disabled = true); }
-function showFeedback(correct, idx, q, timedOut) {
-  const fb = document.getElementById('qFeedback');
-  const next = document.getElementById('qNextBtn');
-  if (timedOut) { fb.className = 'q-feedback wrong'; fb.innerHTML = `⏰ Time's up! <div class="q-feedback-fact">💡 ${q.fact}</div>`; }
-  else { fb.className = `q-feedback ${correct?'correct':'wrong'}`; fb.innerHTML = correct ? `✓ Correct! <div class="q-feedback-fact">💡 ${q.fact}</div>` : `✗ Not quite. <div class="q-feedback-fact">💡 ${q.fact}</div>`; }
-  if (next) next.style.display = 'block';
-}
-function nextQuestion() {
-  state.currentQ++;
-  if (state.currentQ >= 20) {
-    if (state.currentStage < 3) { showStageIntro(state.currentStage + 1); }
-    else { showResults(); }
-  } else { showQuestion(); }
-}
-function showResults() {
-  const totalCorrect = state.stageCorrect.reduce((a,b)=>a+b,0);
-  const pct = Math.round((totalCorrect / 80) * 100);
-  const grade = pct>=90?'☠️ Legend':pct>=75?'🔊 Master':pct>=60?'🎛️ Veteran':pct>=40?'🎧 Raver':'👶 Fresher';
-  const gradeColor = pct>=90?'#ff4d8d':pct>=75?'#f5c842':pct>=60?'#9b3dff':pct>=40?'#00d4c8':'#7ab8e0';
-  const stageRows = STAGES.map((s,i) => {
-    const p = Math.round((state.stageCorrect[i]/20)*100);
-    return `<div class="results-sb-row"><span style="font-size:16px;">${s.emoji}</span><span class="results-sb-name">${s.name}</span><div class="results-sb-bar"><div class="results-sb-fill" style="width:${p}%;background:${s.color};"></div></div><span class="results-sb-score" style="color:${s.color};">${state.stageCorrect[i]}/20</span></div>`;
-  }).join('');
-  document.getElementById('triviaGame').innerHTML = `<div class="results-screen"><div class="results-skull">${pct>=75?'💀':'🎧'}</div><div class="results-grade" style="color:${gradeColor};">${grade}</div><div class="results-title">Game Complete!</div><div class="results-score-big">${state.score.toLocaleString()}</div><div class="results-score-sub">Total Points · ${pct}% correct</div><div class="results-stats"><div class="results-stat"><div class="results-stat-val">${totalCorrect}</div><div class="results-stat-lbl">Correct</div></div><div class="results-stat"><div class="results-stat-val">${80-totalCorrect}</div><div class="results-stat-lbl">Wrong</div></div><div class="results-stat"><div class="results-stat-val">${pct}%</div><div class="results-stat-lbl">Accuracy</div></div></div><div class="results-stage-breakdown"><div class="results-sb-title">Stage Breakdown</div>${stageRows}</div><div class="results-btns"><button class="results-play-again" onclick="startTrivia()">🔄 Play Again</button><button class="results-back-btn" onclick="closeTriviaGame()">← Game Hub</button></div></div>`;
-}
-function backToHub() { clearInterval(state.timer); closeTriviaGame(); }
-
-/* ════════════════════════════════════════
-   SHIFT GANTT TIMELINE
-════════════════════════════════════════ */
-function timeToPercent(timeStr, dayStart=14, dayEnd=26) {
-  if (!timeStr) return 0;
-  const [h,m] = timeStr.split(':').map(Number);
-  let hour = h + m/60;
-  if (hour < 8) hour += 24;
-  const pct = ((hour - dayStart) / (dayEnd - dayStart)) * 100;
-  return Math.max(0, Math.min(100, pct));
-}
-function widthPercent(start, end, dayStart=14, dayEnd=26) {
-  const s = timeToPercent(start, dayStart, dayEnd);
-  const e = timeToPercent(end, dayStart, dayEnd);
-  return Math.max(1, e - s);
-}
-function renderShiftGantt(shifts, containerId) {
-  const wrap = document.getElementById(containerId);
-  if (!wrap) return;
-  const dayStart = 14, dayEnd = 26;
-  const hours = [];
-  for (let h = dayStart; h <= dayEnd; h++) { hours.push(h > 23 ? (h-24)+':00' : h+':00'); }
-  const roleColors = { security:'#ff4d8d', 'stage-crew':'#9b3dff', ticketing:'#f5c842', engineers:'#00d4c8', management:'#ff7c2a', all:'#888' };
-  let html = '';
-  ['Fri','Sat','Sun'].forEach(function(day) {
-    const dayShifts = shifts.filter(function(s){ return s.day === day; });
-    if (!dayShifts.length) return;
-    html += '<div class="gantt-day-header">'+(DAY_LABELS[day]||day)+'</div>';
-    html += '<div class="gantt-wrap"><div class="gantt-header"><div class="gantt-label-col">Person / Role</div><div class="gantt-hours">';
-    hours.forEach(function(h){ html += '<div class="gantt-hour">'+h+'</div>'; });
-    html += '</div></div>';
-    const groups = {};
-    dayShifts.forEach(function(s) {
-      const key = s.assignedUserId ? (s.assignedUserName || s.assignedUserId) : (s.role || 'all');
-      if (!groups[key]) groups[key] = [];
-      groups[key].push(s);
-    });
-    Object.keys(groups).forEach(function(label) {
-      html += '<div class="gantt-row"><div class="gantt-row-label" title="'+label+'">'+label+'</div><div class="gantt-row-track">';
-      groups[label].forEach(function(s) {
-        const left = timeToPercent(s.startTime, dayStart, dayEnd);
-        const width = widthPercent(s.startTime, s.endTime, dayStart, dayEnd);
-        const color = roleColors[s.role] || '#9b3dff';
-        const confirmed = s.confirmed ? 'confirmed' : 'unconfirmed';
-        html += '<div class="gantt-block '+confirmed+'" style="left:'+left+'%;width:'+width+'%;background:'+color+';" title="'+s.title+' ('+s.startTime+'-'+s.endTime+')">';
-        html += s.title.length > 12 ? s.title.slice(0,10)+'\u2026' : s.title;
-        html += '</div>';
-      });
-      html += '</div></div>';
-    });
-    html += '</div>';
-  });
-  wrap.innerHTML = html || '<div style="text-align:center;padding:24px;color:var(--text-muted);">No shifts scheduled yet</div>';
-}
-async function loadMyShifts() {
-  const wrap = document.getElementById('myShiftsList');
-  if (!wrap) return;
-  const token = localStorage.getItem('ss_auth_token');
-  wrap.innerHTML = '<div style="text-align:center;padding:16px;color:var(--text-muted);">Loading shifts...</div>';
-  try {
-    const res = await fetch(AUTH_URL+'/shifts', { headers:{'Authorization':'Bearer '+token} });
-    if (!res.ok) { wrap.innerHTML = '<div style="padding:16px;color:var(--text-muted);">No shifts assigned yet.</div>'; return; }
-    const d = await res.json();
-    const shifts = (d.shifts||[]).sort(function(a,b){
-      if (a.day !== b.day) return ['Fri','Sat','Sun'].indexOf(a.day) - ['Fri','Sat','Sun'].indexOf(b.day);
-      return (a.startTime||'').localeCompare(b.startTime||'');
-    });
-    if (!shifts.length) { wrap.innerHTML = '<div style="padding:16px;color:var(--text-muted);">No shifts assigned yet.</div>'; return; }
-    wrap.innerHTML = shifts.map(function(s) {
-      const confirmed = s.confirmed;
-      const myShift = s.assignedUserId === currentUser?.id || !s.assignedUserId;
-      return '<div class="shift-card '+(confirmed?'confirmed':'unconfirmed')+'">' +
-        '<div class="shift-time-badge">'+((DAY_LABELS||{})[s.day]||s.day)+'<br>'+s.startTime+' \u2013 '+s.endTime+'</div>' +
-        '<div style="flex:1;"><div style="font-size:14px;font-weight:800;color:var(--text-light);">'+s.title+'</div>' +
-        (s.location?'<div style="font-size:12px;color:var(--text-muted);">'+s.location+'</div>':'') +
-        (s.notes?'<div style="font-size:12px;color:var(--text-muted);margin-top:2px;">'+s.notes+'</div>':'') +
-        '</div>' +
-        (myShift && !confirmed ? '<button class="shift-confirm-btn" onclick="confirmShift(\''+s.id+'\',this)">Confirm</button>' : '') +
-        (confirmed ? '<div class="shift-confirmed-badge">&#x2713; Confirmed</div>' : '') +
-      '</div>';
-    }).join('');
-  } catch(e) {
-    wrap.innerHTML = '<div style="padding:16px;color:var(--pink-coral);">Error loading shifts: ' + e.message + '</div>';
-  }
-}
-async function confirmShift(shiftId, btn) {
-  const token = localStorage.getItem('ss_auth_token');
-  try {
-    const res = await fetch(AUTH_URL+'/shifts/'+shiftId+'/confirm', { method:'POST', headers:{'Authorization':'Bearer '+token} });
-    if (res.ok) {
-      btn.parentElement.innerHTML = btn.parentElement.innerHTML.replace(btn.outerHTML, '<div class="shift-confirmed-badge">&#x2713; Confirmed</div>');
-      btn.parentElement.classList.remove('unconfirmed'); btn.parentElement.classList.add('confirmed');
-      showToast('Shift confirmed!');
-    }
-  } catch {}
-}
-/* ════════════════════════════════════════
-   PASSWORD RESET
-════════════════════════════════════════ */
-function togglePwVisibility(inputId, btn) {
-  const input = document.getElementById(inputId); if (!input) return;
-  if (input.type === 'password') { input.type = 'text'; btn.textContent = '\u{1F648}'; }
-  else { input.type = 'password'; btn.textContent = '\u{1F441}'; }
-}
-function showForgotPassword() {
-  const email = document.getElementById('loginEmail')?.value.trim() || '';
-  const entered = prompt('Enter your email address to reset your password:', email);
-  if (!entered) return;
-  alert('Please contact the event admin to reset your password. Email: ' + entered.trim());
-}
-async function adminResetPassword(userId, userName) {
-  const newPw = prompt('Set new password for ' + userName + ' (min 6 characters):');
-  if (!newPw || newPw.length < 6) { if(newPw !== null) alert('Password must be at least 6 characters'); return; }
-  const token = localStorage.getItem('ss_auth_token');
-  try {
-    const res = await fetch(AUTH_URL + '/auth/resetpassword', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json','Authorization':'Bearer '+token},
-      body: JSON.stringify({ userId, newPassword: newPw })
-    });
-    const d = await res.json();
-    if (res.ok) { showToast('Password reset for ' + userName); }
-    else { alert('Error: ' + (d.error || 'Failed')); }
-  } catch(e) { alert('Could not connect'); }
-}
-/* ════════════════════════════════════════
-   NOTIFICATIONS
-════════════════════════════════════════ */
-let notifPollTimer = null;
-function toggleNotifDrawer() {
-  const drawer = document.getElementById('notifDrawer'); if (!drawer) return;
-  const isOpen = drawer.classList.contains('open');
-  document.getElementById('userMenu')?.classList.remove('open');
-  if (isOpen) { drawer.classList.remove('open'); }
-  else { drawer.classList.add('open'); loadNotifications(); }
-}
-async function loadNotifications() {
-  const token = localStorage.getItem('ss_auth_token'); if (!token) return;
-  try {
-    const res = await fetch(AUTH_URL + '/notifications', { headers: {'Authorization': 'Bearer ' + token} });
-    if (!res.ok) return;
-    const d = await res.json();
-    renderNotifications(d.notifications || []);
-  } catch(e) {}
-}
-function renderNotifications(notifs) {
-  const list = document.getElementById('notifList'); if (!list) return;
-  if (!notifs.length) { list.innerHTML = '<div style="padding:16px;text-align:center;color:var(--text-muted);font-size:13px;">No notifications yet</div>'; return; }
-  list.innerHTML = notifs.map(function(n) {
-    const timeAgo = formatTimeAgo(n.createdAt);
-    return '<div class="notif-item ' + (n.read ? '' : 'unread') + '" onclick="handleNotifClick(\''+n.id+'\',\''+(n.type||'')+'\')">' +
-      '<div class="notif-dot ' + (n.category||'blue') + '"></div>' +
-      '<div style="flex:1;"><div class="notif-text">' + escapeHTML(n.message||'') + '</div><div class="notif-time">' + timeAgo + '</div></div></div>';
-  }).join('');
-}
-async function handleNotifClick(notifId, type) {
-  const token = localStorage.getItem('ss_auth_token');
-  fetch(AUTH_URL + '/notifications/' + notifId + '/read', { method: 'PUT', headers: {'Authorization': 'Bearer ' + token} }).catch(() => {});
-  if (type === 'follow_request') { toggleNotifDrawer(); navigate('people'); }
-  else if (type === 'shift_assigned' || type === 'task_assigned') { toggleNotifDrawer(); navigate('staff'); }
-  loadNotifications();
-}
-async function markAllNotifsRead() {
-  const token = localStorage.getItem('ss_auth_token');
-  try {
-    await fetch(AUTH_URL + '/notifications/read', { method: 'PUT', headers: {'Authorization': 'Bearer ' + token} });
-    loadNotifications(); updateBellBadge(0, 'blue');
-  } catch(e) {}
-}
-async function pollNotifications() {
-  if (!currentUser) return;
-  const token = localStorage.getItem('ss_auth_token'); if (!token) return;
-  try {
-    const res = await fetch(AUTH_URL + '/notifications', { headers: {'Authorization': 'Bearer ' + token} });
-    if (!res.ok) return;
-    const d = await res.json();
-    const notifs = d.notifications || [];
-    const unread = notifs.filter(function(n) { return !n.read; });
-    const count = unread.length;
-    const hasRed = unread.some(function(n) { return n.category === 'red'; });
-    const hasYellow = unread.some(function(n) { return n.category === 'yellow'; });
-    const color = hasRed ? 'red' : hasYellow ? 'yellow' : 'blue';
-    updateBellBadge(count, color);
-    if (document.getElementById('notifDrawer')?.classList.contains('open')) renderNotifications(notifs);
-  } catch(e) {}
-}
-function updateBellBadge(count, color) {
-  const dot   = document.getElementById('notifDot');
-  const badge = document.getElementById('notifCount');
-  if (dot) { dot.className = 'notif-dot ' + (count > 0 ? color : ''); dot.style.display = count > 0 ? 'block' : 'none'; }
-  if (badge) { badge.textContent = count > 0 ? (count > 99 ? '99+' : count) : ''; badge.style.display = count > 0 ? 'flex' : 'none'; badge.className = 'notif-badge ' + color; }
-}
-function startNotifPolling() {
-  if (notifPollTimer) clearInterval(notifPollTimer);
-  pollNotifications();
-  notifPollTimer = setInterval(pollNotifications, 8000);
-}
-function formatTimeAgo(iso) {
-  if (!iso) return '';
-  const diff = Date.now() - new Date(iso).getTime();
-  const mins = Math.floor(diff / 60000);
-  if (mins < 1) return 'just now';
-  if (mins < 60) return mins + 'm ago';
-  const hrs = Math.floor(mins / 60);
-  if (hrs < 24) return hrs + 'h ago';
-  return Math.floor(hrs / 24) + 'd ago';
-}
-document.addEventListener('click', function(e) {
-  const drawer = document.getElementById('notifDrawer');
-  const bell   = document.getElementById('bellWrap');
-  if (drawer && drawer.classList.contains('open') && !bell?.contains(e.target)) drawer.classList.remove('open');
-});
-/* ════════════════════════════════════════
-   EMAIL LIST
-════════════════════════════════════════ */
-async function loadEmailListPreview() {
-  const el = document.getElementById('emailListPreview'); if (!el) return;
-  el.innerHTML = '<div style="color:var(--text-muted);">Loading...</div>';
-  const token = localStorage.getItem('ss_auth_token');
-  try {
-    const res = await fetch(AUTH_URL + '/admin/emaillist', { headers: {'Authorization': 'Bearer ' + token} });
-    const d = await res.json();
-    const entries = d.entries || [];
-    if (!entries.length) { el.innerHTML = '<div style="color:var(--text-muted);font-size:13px;">No signups yet.</div>'; return; }
-    el.innerHTML = '<div style="font-size:12px;color:var(--text-muted);margin-bottom:8px;">' + entries.length + ' subscriber' + (entries.length !== 1 ? 's' : '') + '</div>' +
-      '<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:12px;"><thead><tr style="border-bottom:1px solid rgba(255,255,255,0.1);"><th style="text-align:left;padding:6px 8px;color:var(--text-muted);">Handle</th><th style="text-align:left;padding:6px 8px;color:var(--text-muted);">Email</th><th style="text-align:left;padding:6px 8px;color:var(--text-muted);">Joined</th></tr></thead><tbody>' +
-      entries.map(function(e) {
-        return '<tr style="border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:6px 8px;color:var(--text-light);">@' + escapeHTML(e.handle||'—') + '</td><td style="padding:6px 8px;color:var(--text-muted);">' + escapeHTML(e.email) + '</td><td style="padding:6px 8px;color:var(--text-muted);">' + (e.addedAt ? new Date(e.addedAt).toLocaleDateString() : '—') + '</td></tr>';
-      }).join('') + '</tbody></table></div>';
-  } catch(e) { el.innerHTML = '<div style="color:var(--pink-coral);">Error loading list</div>'; }
-}
-async function downloadEmailListPDF() {
-  const token = localStorage.getItem('ss_auth_token');
-  try {
-    const res = await fetch(AUTH_URL + '/admin/emaillist', { headers: {'Authorization': 'Bearer ' + token} });
-    const d = await res.json();
-    const entries = d.entries || [];
-    const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
-    script.onload = function() {
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF();
-      const today = new Date().toLocaleDateString();
-      doc.setFillColor(10,10,10); doc.rect(0,0,210,297,'F');
-      doc.setTextColor(245,200,66); doc.setFontSize(20); doc.setFont('helvetica','bold');
-      doc.text('SUNKEN SUITE 2026', 105, 20, {align:'center'});
-      doc.setFontSize(12); doc.setTextColor(180,180,180);
-      doc.text('THE MUTINY \u2014 Email List', 105, 28, {align:'center'});
-      doc.setFontSize(10); doc.text('Generated: ' + today + '  |  Total: ' + entries.length, 105, 36, {align:'center'});
-      doc.setDrawColor(245,200,66); doc.setLineWidth(0.5); doc.line(14,40,196,40);
-      doc.setFontSize(9); doc.setFont('helvetica','bold'); doc.setTextColor(245,200,66);
-      doc.text('#',14,48); doc.text('Handle',24,48); doc.text('Email',80,48); doc.text('Date',155,48);
-      doc.line(14,50,196,50);
-      doc.setFont('helvetica','normal');
-      var y=57;
-      entries.forEach(function(e,i) {
-        if(y>275){doc.addPage();doc.setFillColor(10,10,10);doc.rect(0,0,210,297,'F');y=20;}
-        if(i%2===0){doc.setFillColor(20,20,20);doc.rect(14,y-4,182,7,'F');}
-        doc.setTextColor(200,200,200); doc.text(String(i+1),14,y);
-        doc.setTextColor(255,255,255); doc.text('@'+(e.handle||'—').slice(0,20),24,y);
-        doc.setTextColor(200,200,200); doc.text((e.email||'').slice(0,40),80,y);
-        doc.text(e.addedAt?new Date(e.addedAt).toLocaleDateString():'—',155,y);
-        y+=8;
-      });
-      doc.setFontSize(8); doc.setTextColor(100,100,100);
-      doc.text('Sunken Suite 2026 \u00B7 The Mutiny \u00B7 Confidential', 105, 290, {align:'center'});
-      doc.save('mutiny-email-list-'+today.replace(/\//g,'-')+'.pdf');
-    };
-    document.head.appendChild(script);
-  } catch(e) { showToast('Error generating PDF'); }
-}
-/* ════════════════════════════════════════
-   INFO + HELP OVERLAY
-════════════════════════════════════════ */
-const INFO_DEFAULTS = {
-  event: { title:'Event Info', sections:[
-    { title:'About The Event', body:'Sunken Suite is a 3-day underground music festival celebrating the best in Drum & Bass, Techno, and Electronic music.' },
-    { title:'Festival Days', body:'Friday July 17 \u2014 Gates 4PM, Music 6PM.\nSaturday July 18 \u2014 Gates 2PM, Music 4PM.\nSunday July 19 \u2014 Gates 2PM, Music 4PM.' },
-    { title:'Stages', body:'DNB Stage (Presented by BP\u00B2) \u00B7 Drum & Bass \u00B7 Main Indoor\nOasis Stage \u00B7 House / Techno' },
-    { title:'Contact', body:'staff@sunkensuite.com\nEmergency: Use the SOS button in More\nSturbridge Host Hotel & Conference Center' }
-  ]},
-  venue: { title:'Venue', sections:[
-    { title:'Address', body:'The Sturbridge Host Hotel & Conference Center\n366 Main Street, Sturbridge, MA 01566' },
-    { title:'Getting There', body:'By Car: Exit 2 off I-84 W or Exit 9 off I-90 (Mass Pike). Free parking on site.' },
-    { title:'On-Site Locations', body:'Hotel Lobby \u2014 Registration, Info Desk\nMedical Station \u2014 Near Main Entrance\nPool Area \u2014 Oasis Stage adjacent' }
-  ]},
-  guidelines: { title:'Guidelines', sections:[
-    { title:'General Rules', body:'Valid ID required for entry\nWristbands must be worn at all times\nNo re-entry without wristband\nNo outside alcohol\nNo professional cameras without press pass' },
-    { title:'Safety', body:'Stay Hydrated \u2014 Free water at every stage.\nBuddy System \u2014 Stay with friends.\nSOS \u2014 Hit SOS in More menu for emergencies.' },
-    { title:'Code of Conduct', body:'Respect all attendees, staff, and artists\nConsent is everything\nZero tolerance for harassment or discrimination\nViolations = immediate removal.' }
-  ]},
-  help: { title:'App Help', sections:[
-    { title:'Getting Started', body:'1. Create Your Account\n2. Set Up Your Profile\n3. Connect With Crew' },
-    { title:'Schedule & Artists', body:'Browse artists by day and stage. Tap to see set details. Tap + to save to My Schedule.' },
-    { title:'SOS', body:'More \u2192 SOS. Sends emergency alert to all staff with your location. Use for genuine emergencies only.' }
-  ]}
-};
-let INFO_CONTENT = JSON.parse(JSON.stringify(INFO_DEFAULTS));
-let currentInfoTab = 'event';
-async function showInfo() {
-  const overlay = document.getElementById('infoOverlay'); if (!overlay) return;
-  overlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
-  try {
-    const res = await fetch(AUTH_URL + '/info');
-    if (res.ok) { const d = await res.json(); if (d.content) INFO_CONTENT = { ...INFO_DEFAULTS, ...d.content }; }
-  } catch(e) {}
-  switchInfoTab('event');
-}
-function closeInfo() {
-  const overlay = document.getElementById('infoOverlay');
-  if (overlay) overlay.classList.remove('open');
-  document.body.style.overflow = '';
-}
-function renderInfoContent(tab) {
-  const data = INFO_CONTENT[tab]; if (!data) return '';
-  const isAdmin = currentUser && currentUser.role === 'admin';
-  let out = '';
-  (data.sections || []).forEach(function(sec, i) {
-    const editBtn = isAdmin ? '<button onclick="openInfoEdit(\''+tab+'\','+i+')" style="background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:13px;padding:2px 6px;float:right;" title="Edit section">\u270F\uFE0F</button>' : '';
-    out += '<div class="info-section"><div class="info-section-title">' + escapeHTML(sec.title) + editBtn + '</div><div class="info-card"><div class="info-card-body">' + escapeHTML(sec.body).replace(/\n/g,'<br>') + '</div></div></div>';
-  });
-  if (isAdmin) out += '<button onclick="openInfoAddSection(\''+tab+'\')" style="width:100%;padding:10px;background:rgba(245,200,66,0.07);border:1px dashed rgba(245,200,66,0.3);color:var(--gold-bright);cursor:pointer;font-size:12px;font-weight:700;margin-top:8px;">+ Add Section</button>';
-  return out;
-}
-function switchInfoTab(tab) {
-  currentInfoTab = tab;
-  ['event','venue','guidelines','help'].forEach(function(t) {
-    const el = document.getElementById('infoTab' + t.charAt(0).toUpperCase() + t.slice(1));
-    if (el) el.classList.toggle('active', t === tab);
-  });
-  const body = document.getElementById('infoBody');
-  if (body) { body.innerHTML = renderInfoContent(tab); body.scrollTop = 0; }
-}
-function openInfoEdit(tab, sectionIndex) {
-  const sec = INFO_CONTENT[tab]?.sections[sectionIndex]; if (!sec) return;
-  const title = prompt('Section title:', sec.title); if (title === null) return;
-  const body = prompt('Content:', sec.body); if (body === null) return;
-  INFO_CONTENT[tab].sections[sectionIndex] = { title, body };
-  saveInfoContent(); switchInfoTab(tab);
-}
-function openInfoAddSection(tab) {
-  const title = prompt('New section title:'); if (!title) return;
-  const body = prompt('Content:'); if (body === null) return;
-  if (!INFO_CONTENT[tab].sections) INFO_CONTENT[tab].sections = [];
-  INFO_CONTENT[tab].sections.push({ title, body });
-  saveInfoContent(); switchInfoTab(tab);
-}
-async function saveInfoContent() {
-  const token = localStorage.getItem('ss_auth_token');
-  try {
-    const res = await fetch(AUTH_URL + '/info', { method:'PUT', headers:{'Content-Type':'application/json','Authorization':'Bearer '+token}, body: JSON.stringify(INFO_CONTENT) });
-    if (res.ok) showToast('Info updated \u2713'); else showToast('Could not save');
-  } catch(e) { showToast('Error saving'); }
-}
-
-/* ════════════════════════════════════════
-   PWA INSTALL (updated)
-════════════════════════════════════════ */
-let _installPrompt = null;
-window.addEventListener('beforeinstallprompt', function(e) {
-  e.preventDefault(); _installPrompt = e;
-  const btn = document.getElementById('installAppBtn');
-  if (btn) btn.style.display = '';
-});
-window.addEventListener('appinstalled', function() {
-  _installPrompt = null;
-  const btn = document.getElementById('installAppBtn');
-  if (btn) btn.style.display = 'none';
-  showToast('App installed! Find it on your home screen.');
-});
-function installApp() {
-  if (_installPrompt) {
-    _installPrompt.prompt();
-    _installPrompt.userChoice.then(function(result) {
-      if (result.outcome === 'accepted') { _installPrompt = null; const btn = document.getElementById('installAppBtn'); if (btn) btn.style.display = 'none'; }
-    });
-  } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-    showInstallIOSModal();
-  } else if (window.matchMedia('(display-mode: standalone)').matches) {
-    showToast('App is already installed!');
-  } else { showInstallIOSModal(); }
-}
-function showInstallIOSModal() {
-  const existing = document.getElementById('installModal');
-  if (existing) { existing.style.display = 'flex'; return; }
-  const modal = document.createElement('div');
-  modal.id = 'installModal';
-  modal.style.cssText = 'position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.9);display:flex;align-items:flex-end;justify-content:center;';
-  modal.innerHTML = '<div style="background:#0a0a0a;border:1px solid rgba(245,200,66,0.3);border-bottom:none;padding:24px 20px 40px;max-width:420px;width:100%;text-align:center;">' +
-    '<div style="font-size:32px;margin-bottom:12px;">📱</div>' +
-    '<div style="font-size:16px;font-weight:800;color:var(--gold-bright);margin-bottom:8px;">Install Sunken Suite</div>' +
-    '<div style="font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:20px;"><strong style="color:var(--text-light);">On iPhone/iPad:</strong><br>Tap the <strong style="color:var(--teal-glow);">Share</strong> button ⬆ at the bottom of Safari,<br>then tap <strong style="color:var(--teal-glow);">Add to Home Screen</strong><br><br><strong style="color:var(--text-light);">On Android:</strong><br>Tap the <strong style="color:var(--teal-glow);">3-dot menu</strong> in Chrome,<br>then tap <strong style="color:var(--teal-glow);">Add to Home Screen</strong></div>' +
-    '<button onclick="var m=document.getElementById(\'installModal\');if(m)m.style.display=\'none\';" style="padding:12px 32px;background:var(--gold-bright);border:none;color:#000;font-weight:800;font-size:14px;cursor:pointer;width:100%;">Got It</button></div>';
-  modal.addEventListener('click', function(e) { if (e.target === modal) modal.style.display = 'none'; });
-  document.body.appendChild(modal);
-}
-if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-  document.addEventListener('DOMContentLoaded', function() {
-    var btn = document.getElementById('installAppBtn'); if (btn) btn.style.display = '';
-  });
-}
-/* ════════════════════════════════════════
-   RAVEWORM GAME
-════════════════════════════════════════ */
-function openRaveworm() {
-  var overlay = document.getElementById('ravewormOverlay');
-  if (!overlay) return;
-  overlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
-  setTimeout(function(){ if(typeof initGame==='function') initGame(); }, 80);
-}
-function closeRaveworm() {
-  if (typeof snakeReset==='function') snakeReset();
-  var overlay = document.getElementById('ravewormOverlay');
-  if (overlay) overlay.classList.remove('open');
-  document.body.style.overflow = '';
-}
-(function() {
-  var COLS=20,ROWS=20,CELL=14;
-  var snake,dir,nextDir,food,running,gameLoop,snakeHiScore;
-  var RAVE_FOOD=['\u{1F48A}','\u{1F344}','\u26A1','\u{1F48E}','\u{1F300}','\u2728','\u{1F52E}','\u{1F4AB}','\u{1F308}','\u{1F386}','\u{1F36C}','\u{1F36D}','\u{1F9FF}','\u{1F535}','\u{1F7E3}','\u{1F7E1}','\u{1F49B}','\u{1FAE7}','\u{1FA79}','\u{1F441}'];
-  var curEmoji='\u{1F386}';
-  function pickEmoji(){var p=curEmoji;do{curEmoji=RAVE_FOOD[Math.floor(Math.random()*RAVE_FOOD.length)];}while(curEmoji===p&&RAVE_FOOD.length>1);}
-  function cvs(){return document.getElementById('snakeCanvas');}
-  function ctx(){var c=cvs();return c?c.getContext('2d'):null;}
-  window.initGame=function(){
-    var c=cvs(); if(!c) return;
-    var w=c.parentElement?c.parentElement.clientWidth:320; if(w<10)w=Math.min(window.innerWidth-40,440); CELL=Math.floor(w/COLS); var s=CELL*COLS; c.width=s; c.height=s;
-    snake=[{x:10,y:8},{x:9,y:8},{x:8,y:8}]; dir={x:1,y:0}; nextDir={x:1,y:0}; food=rndFood(); running=false;
-    snakeHiScore=parseInt(localStorage.getItem('snakeHi')||'0');
-    var h=document.getElementById('snakeHi'),sc=document.getElementById('snakeScore'),mg=document.getElementById('snakeMsg');
-    if(h)h.textContent=snakeHiScore; if(sc)sc.textContent='0'; if(mg)mg.textContent='TAP \u25BA TO START';
-    draw();
-  };
-  function rndFood(){var p;do{p={x:Math.floor(Math.random()*COLS),y:Math.floor(Math.random()*ROWS)};}while(snake&&snake.some(function(s){return s.x===p.x&&s.y===p.y;}));pickEmoji();return p;}
-  function draw(){
-    var x=ctx(); if(!x)return; var c=cvs();
-    var RC=['#00ffff','#ffff00','#ff6600','#cc00ff','#00ff66'];
-    var po=Math.floor(Date.now()/120);
-    x.fillStyle='#ff007f'; x.fillRect(0,0,c.width,c.height);
-    x.fillStyle='#cc0066'; var dot=Math.max(1,Math.floor(CELL/6)),off=Math.floor(CELL/3);
-    for(var gx=0;gx<COLS;gx++)for(var gy=0;gy<ROWS;gy++)x.fillRect(gx*CELL+off,gy*CELL+off,dot,dot);
-    var es=Math.max(10,CELL-2); x.font=es+'px serif'; x.textAlign='center'; x.textBaseline='middle';
-    x.fillText(curEmoji,food.x*CELL+CELL/2,food.y*CELL+CELL/2+1); x.textBaseline='alphabetic';
-    snake.forEach(function(seg,i){
-      var ci=(i+po)%RC.length;
-      if(i===0){x.fillStyle=RC[po%RC.length];x.fillRect(seg.x*CELL,seg.y*CELL,CELL,CELL);x.fillStyle='#000';var ey=Math.max(2,Math.floor(CELL/5));x.fillRect(seg.x*CELL+2,seg.y*CELL+2,ey,ey);x.fillRect(seg.x*CELL+CELL-4,seg.y*CELL+2,ey,ey);}
-      else{x.fillStyle=RC[ci];x.fillRect(seg.x*CELL,seg.y*CELL,CELL,CELL);x.fillStyle='rgba(0,0,0,0.3)';x.fillRect(seg.x*CELL+1,seg.y*CELL+1,CELL-2,CELL-2);x.fillStyle=RC[ci];x.fillRect(seg.x*CELL+2,seg.y*CELL+2,CELL-4,CELL-4);}
-    });
-  }
-  function step(){
-    dir=nextDir; var h={x:(snake[0].x+dir.x+COLS)%COLS, y:(snake[0].y+dir.y+ROWS)%ROWS};
-    if(snake.some(function(s){return s.x===h.x&&s.y===h.y;})){gameOver();return;}
-    snake.unshift(h);
-    if(h.x===food.x&&h.y===food.y){var sc=snake.length-3;var el=document.getElementById('snakeScore');if(el)el.textContent=sc;if(sc>snakeHiScore){snakeHiScore=sc;localStorage.setItem('snakeHi',snakeHiScore);var hi=document.getElementById('snakeHi');if(hi)hi.textContent=snakeHiScore;}food=rndFood();}
-    else snake.pop();
-    draw();
-  }
-  function gameOver(){
-    running=false; clearInterval(gameLoop); var x=ctx();
-    if(x){x.fillStyle='rgba(200,0,60,0.6)';x.fillRect(0,0,cvs().width,cvs().height);x.fillStyle='#ffff00';x.font='bold 14px "VT323",monospace';x.textAlign='center';x.fillText('GAME OVER',cvs().width/2,cvs().height/2-8);x.fillText('SCORE:'+(snake.length-3),cvs().width/2,cvs().height/2+8);}
-    var mg=document.getElementById('snakeMsg'); if(mg)mg.textContent='TAP \u25BA TO RETRY';
-    setBtns('\u21BA');
-  }
-  window.snakeStart=function(){
-    if(running){running=false;clearInterval(gameLoop);setBtns('\u25BA');var mg=document.getElementById('snakeMsg');if(mg)mg.textContent='PAUSED';return;}
-    window.initGame(); running=true; var mg=document.getElementById('snakeMsg'); if(mg)mg.textContent=''; setBtns('\u25A0');
-    gameLoop=setInterval(step,150);
-    (function rp(){if(!running)return;draw();requestAnimationFrame(rp);})();
-  };
-  window.snakeReset=function(){running=false;clearInterval(gameLoop);window.initGame();setBtns('\u25BA');};
-  window.snakeDir=function(dx,dy){if(dx!==0&&dir.x!==0)return;if(dy!==0&&dir.y!==0)return;nextDir={x:dx,y:dy};};
-  window.snakeDirBtn=window.snakeDir;
-  function setBtns(t){['snakeStartBtn','snakeMobileStartBtn'].forEach(function(id){var el=document.getElementById(id);if(el)el.textContent=t;});}
-  document.addEventListener('DOMContentLoaded',function(){
-    var ov=document.getElementById('ravewormOverlay'); if(!ov)return;
-    var tx=0,ty=0,MS=25;
-    ov.addEventListener('touchstart',function(e){if(!ov.classList.contains('open'))return;if(e.target&&(e.target.id==='snakeStartBtn'||e.target.id==='snakeMobileStartBtn'))return;var t=e.touches[0];tx=t.clientX;ty=t.clientY;e.preventDefault();},{passive:false});
-    ov.addEventListener('touchmove',function(e){if(!ov.classList.contains('open'))return;e.preventDefault();},{passive:false});
-    ov.addEventListener('touchend',function(e){if(!ov.classList.contains('open'))return;if(e.target&&(e.target.id==='snakeStartBtn'||e.target.id==='snakeMobileStartBtn'))return;var t=e.changedTouches[0],dx=t.clientX-tx,dy=t.clientY-ty,ax=Math.abs(dx),ay=Math.abs(dy);if(Math.max(ax,ay)<MS){snakeStart();e.preventDefault();return;}if(ax>ay)window.snakeDir(dx>0?1:-1,0);else window.snakeDir(0,dy>0?1:-1);e.preventDefault();},{passive:false});
-  });
-  document.addEventListener('keydown',function(e){
-    var ov=document.getElementById('ravewormOverlay'); if(!ov||!ov.classList.contains('open'))return;
-    switch(e.key){case 'ArrowUp':window.snakeDir(0,-1);e.preventDefault();break;case 'ArrowDown':window.snakeDir(0,1);e.preventDefault();break;case 'ArrowLeft':window.snakeDir(-1,0);e.preventDefault();break;case 'ArrowRight':window.snakeDir(1,0);e.preventDefault();break;case 'Enter':case ' ':snakeStart();e.preventDefault();break;case 'Escape':closeRaveworm();break;}
-  });
-})();
-/* ════════════════════════════════════════
-   PEOPLE PAGE SUB-TABS (updated)
-════════════════════════════════════════ */
 function switchPeopleTab(tab, btn) {
-  ['connect','messages'].forEach(t => {
+  ['connect','feed','messages'].forEach(t => {
     const el = document.getElementById('peopleTab-'+t);
     if (el) el.style.display = t === tab ? 'block' : 'none';
   });
   document.querySelectorAll('#page-people .dash-tab').forEach(b => b.classList.remove('active'));
   if (btn) btn.classList.add('active');
-  if (tab === 'connect') { loadFriendRequests(); loadFriends(); }
-  if (tab === 'messages') { loadDMList(); }
+  if (tab === 'connect') {
+    loadFriendRequests();
+    loadFriends();
+  }
+  if (tab === 'feed') {
+    // Render feed compose + list inside the tab
+    const inner = document.getElementById('peopleFeedInner');
+    if (inner && !inner.dataset.built) {
+      inner.dataset.built = '1';
+      inner.innerHTML = buildFeedHTML();
+      initFeedCompose();
+    }
+    loadFeed(feedFilter);
+  }
+  if (tab === 'messages') {
+    loadDMList();
+  }
 }
+
 function buildFeedHTML() {
   var h = '';
-  h += '<div class="feed-compose" id="feedCompose"><div class="feed-compose-row">';
+  h += '<div class="feed-compose" id="feedCompose">';
+  h += '<div class="feed-compose-row">';
   h += '<div class="feed-compose-avatar" id="feedComposeAvatar" style="background:#9b3dff;">?</div>';
   h += '<textarea class="feed-compose-input" id="feedPostText" placeholder="What is happening at The Mutiny?" rows="2"></textarea>';
-  h += '</div><div class="feed-compose-actions">';
+  h += '</div>';
+  h += '<div class="feed-compose-actions">';
   h += '<button class="feed-compose-btn" id="checkinToggleBtn" onclick="toggleCheckin()">&#128205; Check-in</button>';
-  h += '<button class="feed-compose-btn" onclick="triggerFeedPhoto()">&#128247; Photo</button>';
+  h += '<button class="feed-compose-btn" id="photoComposeBtn" onclick="triggerFeedPhoto()">&#128247; Photo</button>';
   h += '<input type="file" id="feedPhotoInput" accept="image/*" style="display:none;">';
   h += '<button class="feed-post-btn" id="feedPostBtn" onclick="submitPost()" disabled>Post</button>';
-  h += '</div><select class="checkin-select" id="checkinSelect">';
-  h += '<option value="">Select location\u2026</option>';
-  h += '<option value="DNB Stage">DNB Stage</option><option value="Oasis Stage">Oasis Stage</option>';
-  h += '<option value="Pool">\u{1F3CA} Pool</option><option value="Beach">\u{1F3D6} Beach</option>';
-  h += '<option value="Hotel Lobby">\u{1F3E8} Hotel Lobby</option>';
+  h += '</div>';
+  h += '<select class="checkin-select" id="checkinSelect">';
+  h += '<option value="">Select location…</option>';
+  h += '<option value="DNB Stage">DNB Stage</option>';
+  h += '<option value="Oasis Stage">Oasis Stage</option>';
+  h += '<option value="Pool">Pool</option>';
+  h += '<option value="Beach">Beach</option>';
+  h += '<option value="Hotel Lobby">Hotel Lobby</option>';
+  h += '<option value="Greenhouse Restaurant">Greenhouse</option>';
+  h += '<option value="Oxhead Tavern">Oxhead Tavern</option>';
+  h += '<option value="Parking Lot">Parking Lot</option>';
   h += '</select>';
   h += '<div id="feedPhotoPreviewWrap" style="display:none;margin-top:10px;position:relative;">';
   h += '<img id="feedPhotoPreviewImg" style="max-height:180px;max-width:100%;display:block;">';
-  h += '<button onclick="clearFeedPhoto()" style="position:absolute;top:6px;right:6px;background:rgba(0,0,0,0.7);border:none;color:#fff;font-size:16px;cursor:pointer;width:28px;height:28px;">\u2715</button>';
-  h += '</div></div>';
+  h += '<button onclick="clearFeedPhoto()" style="position:absolute;top:6px;right:6px;background:rgba(0,0,0,0.7);border:none;color:#fff;font-size:16px;cursor:pointer;width:28px;height:28px;">&#x2715;</button>';
+  h += '</div>';
+  h += '</div>';
   h += '<div class="feed-filters">';
-  h += '<button class="feed-filter-btn active" onclick="loadFeed(\'all\',this)">All</button>';
-  h += '<button class="feed-filter-btn" onclick="loadFeed(\'dnb\',this)">DNB</button>';
-  h += '<button class="feed-filter-btn" onclick="loadFeed(\'oasis\',this)">Oasis</button>';
-  h += '</div><div id="feedList"></div>';
+  h += '<button class="feed-filter-btn active" onclick="loadFeed(&apos;all&apos;,this)">All</button>';
+  h += '<button class="feed-filter-btn" onclick="loadFeed(&apos;dnb&apos;,this)">DNB</button>';
+  h += '<button class="feed-filter-btn" onclick="loadFeed(&apos;oasis&apos;,this)">Oasis</button>';
+  h += '<button class="feed-filter-btn" onclick="loadFeed(&apos;fri&apos;,this)">Fri</button>';
+  h += '<button class="feed-filter-btn" onclick="loadFeed(&apos;sat&apos;,this)">Sat</button>';
+  h += '<button class="feed-filter-btn" onclick="loadFeed(&apos;sun&apos;,this)">Sun</button>';
+  h += '</div>';
+  h += '<div id="feedList"></div>';
   return h;
 }
+
 function initFeedCompose() {
   updateFeedComposeAvatar();
+  // Wire textarea input to enable Post button
   const textEl = document.getElementById('feedPostText');
-  if (textEl) textEl.addEventListener('input', function() {
-    const btn = document.getElementById('feedPostBtn');
-    if (btn) btn.disabled = !this.value.trim() && !feedPhotoFile;
-    this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px';
-  });
+  if (textEl) {
+    textEl.addEventListener('input', function() {
+      const btn = document.getElementById('feedPostBtn');
+      if (btn) btn.disabled = !this.value.trim() && !feedPhotoFile;
+      this.style.height = 'auto';
+      this.style.height = this.scrollHeight + 'px';
+    });
+  }
+  // Wire photo input change
   const photoInput = document.getElementById('feedPhotoInput');
-  if (photoInput) photoInput.addEventListener('change', function() { previewFeedPhoto(this); });
+  if (photoInput) {
+    photoInput.addEventListener('change', function() {
+      previewFeedPhoto(this);
+    });
+  }
 }
-/* Override the stub showInfo so More menu works */
-// (real showInfo already defined above, this removes the old stub)
+
+function updateDMBadge(count) {
+  ['dmBadgeDesktop','dmBadgeMobile','dmBadgeTab'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (count > 0) { el.style.display='inline-flex'; el.textContent=count; }
+    else           { el.style.display='none'; }
+  });
+}
+
 </script>
+
+<!-- ══ RAVEWORM GAME OVERLAY ══ -->
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+<div class="raveworm-overlay" id="ravewormOverlay">
+  <div class="raveworm-header">
+    <div class="raveworm-title">🪱 RAVE WORM 🪩</div>
+    <button class="raveworm-close" onclick="closeRaveworm()">✕</button>
+  </div>
+  <div class="raveworm-body">
+    <div id="page-snake" style="width:100%;max-width:440px;padding:8px;">
+
+      <!-- Score bar -->
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;font-family:'VT323',monospace;font-size:20px;">
+        <span style="color:#33ff33;">Score: <span id="snakeScore">0</span></span>
+        <span style="flex:1;"></span>
+        <span style="color:#ffff00;">Best: <span id="snakeHi">0</span></span>
+      </div>
+
+      <!-- Canvas -->
+      <div class="snake-screen-wrap" style="background:#ff007f;border:3px solid #33ff33;border-radius:4px;box-shadow:0 0 12px rgba(51,255,51,0.27);margin-bottom:12px;line-height:0;position:relative;">
+        <canvas id="snakeCanvas" style="display:block;width:100%;"></canvas>
+        <div id="snakeMsg" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'VT323',monospace;font-size:22px;color:#33ff33;text-shadow:0 0 8px #33ff33;pointer-events:none;">TAP ▶ TO START</div>
+      </div>
+
+      <!-- Desktop controls -->
+      <div class="snake-dpad-wrap" style="display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px;padding:0 8px;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+          <button class="snake-btn snake-gb-btn" id="snakeStartBtn" onclick="snakeStart()" style="margin-left:94px;">
+            <span style="font-size:13px;line-height:1;">▶/■</span>
+            <span class="snake-gb-label">START</span>
+          </button>
+          <button class="snake-btn snake-gb-btn" onclick="snakeReset()" style="margin-left:94px;">
+            <span style="font-size:16px;line-height:1;">↺</span>
+            <span class="snake-gb-label">RESET</span>
+          </button>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px;width:132px;flex-shrink:0;">
+          <div></div>
+          <button class="snake-btn" onclick="snakeDirBtn(0,-1)">▲</button>
+          <div></div>
+          <button class="snake-btn" onclick="snakeDirBtn(-1,0)">◀</button>
+          <div style="background:#111;border:2px solid rgba(51,255,51,0.13);border-radius:50%;"></div>
+          <button class="snake-btn" onclick="snakeDirBtn(1,0)">▶</button>
+          <div></div>
+          <button class="snake-btn" onclick="snakeDirBtn(0,1)">▼</button>
+          <div></div>
+        </div>
+      </div>
+
+      <!-- Mobile start button -->
+      <div class="snake-mobile-start" style="display:none;justify-content:center;margin-bottom:8px;">
+        <button class="snake-btn" id="snakeMobileStartBtn" onclick="snakeStart()" style="width:80px;font-size:22px;background:#111;color:#33ff33;border-color:#33ff33;">▶</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ AUTH OVERLAY ══ -->
+<div class="auth-overlay" id="authOverlay">
+  <div class="auth-box">
+    <div class="auth-logo">☠ SUNKEN SUITE<span>The Mutiny 2026</span></div>
+
+    <!-- LOGIN FORM -->
+    <div id="authLogin">
+      <div class="auth-title">Welcome Back</div>
+      <div class="auth-sub">Sign in to your Mutiny account</div>
+      <div class="auth-error" id="loginError"></div>
+      <div class="auth-field">
+        <label class="auth-label">Email</label>
+        <input class="auth-input" id="loginEmail" type="email" placeholder="your@email.com" autocomplete="email">
+      </div>
+      <div class="auth-field">
+        <label class="auth-label">Password</label>
+        <input class="auth-input" id="loginPassword" type="password" placeholder="••••••••" autocomplete="current-password"
+          onkeydown="if(event.key==='Enter')submitLogin()">
+      </div>
+      <button class="auth-btn" id="loginBtn" onclick="submitLogin()">Sign In</button>
+      <div class="auth-divider"></div>
+      <div class="auth-switch">No account? <a onclick="showAuth('register')">Create one free</a></div>
+    </div>
+
+    <!-- REGISTER FORM -->
+    <div id="authRegister" style="display:none;">
+      <div class="auth-title">Join The Mutiny</div>
+      <div class="auth-sub">Create your free Festie account</div>
+      <div class="auth-error" id="registerError"></div>
+      <div class="auth-field">
+        <label class="auth-label">Your Name</label>
+        <input class="auth-input" id="registerName" type="text" placeholder="Pirate name or real name" autocomplete="name">
+      </div>
+      <div class="auth-field">
+        <label class="auth-label">Email</label>
+        <input class="auth-input" id="registerEmail" type="email" placeholder="your@email.com" autocomplete="email">
+      </div>
+      <div class="auth-field">
+        <label class="auth-label">Password</label>
+        <input class="auth-input" id="registerPassword" type="password" placeholder="Min 8 characters" autocomplete="new-password"
+          onkeydown="if(event.key==='Enter')submitRegister()">
+      </div>
+      <button class="auth-btn" id="registerBtn" onclick="submitRegister()">Create Account</button>
+      <div class="auth-divider"></div>
+      <div class="auth-switch">Already have an account? <a onclick="showAuth('login')">Sign in</a></div>
+    </div>
+
+    <!-- Skip for now (closes overlay without logging in) -->
+    <div style="text-align:center;margin-top:16px;">
+      <a onclick="closeAuth()" style="font-size:12px;color:rgba(122,184,224,0.4);cursor:pointer;">
+        Continue without signing in →
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ ARTIST EDIT MODAL ══ -->
+<div class="edit-modal-overlay" id="artistEditModal">
+  <div class="edit-modal">
+    <div class="edit-modal-header">
+      <div class="edit-modal-title" id="editModalTitle">Edit Artist</div>
+      <button class="edit-modal-close" onclick="closeArtistEdit()">✕</button>
+    </div>
+    <div class="edit-modal-body">
+      <input type="hidden" id="editArtistKey">
+      <div class="edit-field">
+        <label class="edit-label">Artist Name</label>
+        <input class="edit-input" id="editArtistName" placeholder="e.g. RONI SIZE">
+      </div>
+      <div class="edit-row">
+        <div class="edit-field">
+          <label class="edit-label">Stage</label>
+          <select class="edit-select" id="editArtistStage">
+            <option value="DNB Stage">DNB Stage</option>
+            <option value="Oasis Stage">Oasis Stage</option>
+            <option value="TBA">TBA</option>
+          </select>
+        </div>
+        <div class="edit-field">
+          <label class="edit-label">Day</label>
+          <select class="edit-select" id="editArtistDay">
+            <option value="Fri">Friday 7/17</option>
+            <option value="Sat">Saturday 7/18</option>
+            <option value="Sun">Sunday 7/19</option>
+            <option value="All">All Days</option>
+            <option value="TBA">TBA</option>
+          </select>
+        </div>
+      </div>
+      <div class="edit-row">
+        <div class="edit-field">
+          <label class="edit-label">Set Time</label>
+          <input class="edit-input" id="editArtistTime" placeholder="e.g. 10:30 PM">
+        </div>
+        <div class="edit-field">
+          <label class="edit-label">Genre</label>
+          <input class="edit-input" id="editArtistGenre" placeholder="e.g. Drum & Bass">
+        </div>
+      </div>
+      <div class="edit-field">
+        <label class="edit-label">Headliner</label>
+        <select class="edit-select" id="editArtistHeadliner">
+          <option value="false">No</option>
+          <option value="true">Yes — Headliner</option>
+        </select>
+      </div>
+      <div class="edit-field">
+        <label class="edit-label">Bio</label>
+        <textarea class="edit-textarea" id="editArtistBio" rows="4" placeholder="Artist bio…"></textarea>
+      </div>
+      <div class="edit-field">
+        <label class="edit-label">Spotify URL</label>
+        <input class="edit-input" id="editArtistSpotify" placeholder="https://open.spotify.com/artist/…">
+      </div>
+      <div class="edit-field">
+        <label class="edit-label">Artist Photo</label>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div id="editPhotoPreview" style="width:72px;height:72px;flex-shrink:0;
+            display:flex;align-items:center;justify-content:center;
+            font-size:18px;font-weight:900;color:#fff;background:#333;
+            overflow:hidden;position:relative;">
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:8px;">
+            <label style="display:flex;align-items:center;justify-content:center;gap:8px;
+              padding:10px;border:1px dashed rgba(245,200,66,0.3);cursor:pointer;
+              color:var(--gold-bright);font-size:12px;font-weight:700;
+              text-transform:uppercase;letter-spacing:0.5px;transition:all .15s;"
+              id="editPhotoLabel" onmouseover="this.style.background='rgba(245,200,66,0.05)'"
+              onmouseout="this.style.background='transparent'">
+              📷 Choose Photo
+              <input type="file" id="editPhotoFile" accept="image/*"
+                style="display:none;" onchange="previewArtistPhoto(this)">
+            </label>
+            <div id="editPhotoStatus" style="font-size:11px;color:var(--text-muted);line-height:1.5;"></div>
+            <!-- Progress bar -->
+            <div id="editPhotoProgress" style="display:none;height:4px;background:rgba(255,255,255,0.08);overflow:hidden;">
+              <div id="editPhotoBar" style="height:100%;width:0%;background:var(--teal-glow);transition:width .1s linear;"></div>
+            </div>
+            <input type="hidden" id="editArtistPhoto">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="edit-modal-footer">
+      <button class="dash-btn" onclick="closeArtistEdit()">Cancel</button>
+      <button class="dash-btn primary" onclick="saveArtistEdit()">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ SITE ALERT OVERLAY ══ -->
+<div class="site-alert-overlay" id="siteAlertOverlay">
+  <div class="site-alert-banner">
+    <div class="site-alert-inner warning" id="siteAlertInner">
+      <div class="site-alert-icon" id="siteAlertIcon">⚠️</div>
+      <div class="site-alert-body">
+        <div class="site-alert-title" id="siteAlertTitle">Alert</div>
+        <div class="site-alert-message" id="siteAlertMessage"></div>
+        <div class="site-alert-meta" id="siteAlertMeta"></div>
+      </div>
+      <button class="site-alert-dismiss" onclick="dismissSiteAlert()">Dismiss</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ PROFILE SETUP OVERLAY ══ -->
+<div class="profile-setup-overlay" id="profileSetupOverlay">
+  <div class="profile-setup-box">
+    <div class="auth-logo">☠ SUNKEN SUITE<span>Set Up Your Profile</span></div>
+    <div style="margin-top:20px;">
+      <div class="profile-avatar-preview" id="profileAvatarPreview">?</div>
+      <!-- Profile pic upload -->
+      <div style="text-align:center;margin-bottom:16px;position:relative;display:inline-block;left:50%;transform:translateX(-50%);">
+        <div class="profile-avatar-preview" id="profileAvatarPreview" style="cursor:pointer;position:relative;"
+          onclick="document.getElementById('profilePicInput').click()">
+          ?
+          <div style="position:absolute;inset:0;border-radius:50%;background:rgba(0,0,0,0.4);
+            display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .15s;"
+            id="profilePicOverlay">📷</div>
+        </div>
+        <input type="file" id="profilePicInput" accept="image/*" style="display:none;"
+          onchange="previewProfilePic(this)">
+        <div style="font-size:11px;color:var(--text-muted);margin-top:6px;">Tap to upload photo</div>
+      </div>
+      <div class="auth-field" style="margin-bottom:14px;">
+        <label class="auth-label">Choose your handle</label>
+        <input class="auth-input" id="profileHandleInput" type="text" maxlength="20"
+          placeholder="@yourhandle" autocomplete="off" oninput="updateHandlePreview(this.value)">
+        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">Letters, numbers and underscores only</div>
+      </div>
+      <div class="auth-field" style="margin-bottom:14px;">
+        <label class="auth-label">Bio <span style="opacity:0.5;">(optional)</span></label>
+        <input class="auth-input" id="profileBioInput" type="text" maxlength="300" placeholder="Tell the crew about yourself…">
+      </div>
+      <div class="auth-field" style="margin-bottom:14px;">
+        <label class="auth-label">Hometown <span style="opacity:0.5;">(optional)</span></label>
+        <input class="auth-input" id="profileHometownInput" type="text" maxlength="80" placeholder="Where are you from?">
+      </div>
+      <div class="auth-field" style="margin-bottom:14px;">
+        <label class="auth-label">Favorite Artists <span style="opacity:0.5;">(optional)</span></label>
+        <input class="auth-input" id="profileFaveArtistsInput" type="text" maxlength="200" placeholder="e.g. Roni Size, Spor, J. Phlip…">
+      </div>
+      <div class="auth-field" style="margin-bottom:14px;">
+        <label class="auth-label">Music Styles <span style="opacity:0.5;">(optional)</span></label>
+        <input class="auth-input" id="profileMusicStylesInput" type="text" maxlength="200" placeholder="e.g. Drum & Bass, Techno, House…">
+      </div>
+      <div class="auth-field" style="margin-bottom:14px;">
+        <label class="auth-label">First Rave <span style="opacity:0.5;">(optional)</span></label>
+        <input class="auth-input" id="profileFirstRaveInput" type="text" maxlength="100" placeholder="When/where was your first rave?">
+      </div>
+      <div class="auth-field" style="margin-bottom:20px;">
+        <label class="auth-label">Avatar Color</label>
+        <div class="avatar-color-picker" id="avatarColorPicker"></div>
+      </div>
+      <div class="auth-error" id="profileSetupError"></div>
+      <button class="auth-btn" id="profileSetupBtn" onclick="submitProfileSetup()">Let's Go! 🏴‍☠️</button>
+      <div style="text-align:center;margin-top:12px;">
+        <a onclick="skipProfileSetup()" style="font-size:12px;color:rgba(122,184,224,0.4);cursor:pointer;">Skip for now →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ DM THREAD OVERLAY ══ -->
+<div class="dm-thread-overlay" id="dmThreadOverlay">
+  <div class="dm-thread-header">
+    <button class="dm-thread-back" onclick="closeDMThread()">‹</button>
+    <div class="dm-avatar" id="dmThreadAvatar" style="width:36px;height:36px;font-size:13px;"></div>
+    <div class="dm-thread-name" id="dmThreadName"></div>
+  </div>
+  <div class="dm-thread-messages" id="dmThreadMessages"></div>
+  <div class="dm-thread-input-row">
+    <input class="dm-thread-input" id="dmThreadInput" type="text"
+      placeholder="Message…" maxlength="1000" onkeydown="if(event.key==='Enter')sendDM()">
+    <button class="dm-send-btn" onclick="sendDM()">▶</button>
+  </div>
+</div>
+
+
+<div class="edit-profile-modal" id="editProfileModal">
+  <div class="edit-profile-box">
+    <div class="edit-profile-header">
+      <span style="font-size:13px;font-weight:800;color:var(--gold-bright);text-transform:uppercase;letter-spacing:1px;">Edit Profile</span>
+      <button onclick="closeEditProfileModal()" style="background:rgba(255,255,255,0.07);border:none;color:var(--text-light);font-size:16px;cursor:pointer;width:32px;height:32px;">&#x2715;</button>
+    </div>
+    <div style="padding:16px;">
+      <div class="banner-upload-wrap" id="editBannerWrap" onclick="document.getElementById('editBannerInput').click()">
+        <div id="editBannerImg" style="width:100%;height:100%;"></div>
+        <div class="banner-avatar-overlap" id="editAvatarOverlap" onclick="event.stopPropagation();document.getElementById('editAvatarInput').click()"></div>
+      </div>
+      <input type="file" id="editBannerInput" accept="image/*" style="display:none;" onchange="previewEditBanner(this)">
+      <input type="file" id="editAvatarInput" accept="image/*" style="display:none;" onchange="previewEditAvatar(this)">
+      <div style="font-size:11px;color:var(--text-muted);margin-bottom:14px;">Click banner to change &middot; click avatar to change photo</div>
+      <div class="auth-field"><label class="auth-label">Handle</label>
+        <input class="auth-input" id="editHandle" type="text" maxlength="20"></div>
+      <div class="auth-field"><label class="auth-label">Bio</label>
+        <textarea class="auth-input" id="editBio" maxlength="300" rows="2" style="resize:none;"></textarea></div>
+      <div class="auth-field"><label class="auth-label">Hometown</label>
+        <input class="auth-input" id="editHometown" type="text" maxlength="80"></div>
+      <div class="auth-field"><label class="auth-label">Music Styles</label>
+        <input class="auth-input" id="editMusicStyles" type="text" maxlength="200" placeholder="Drum and Bass, Techno..."></div>
+      <div class="auth-field"><label class="auth-label">Favorite Artists</label>
+        <input class="auth-input" id="editFaveArtists" type="text" maxlength="200" placeholder="Roni Size, Spor..."></div>
+      <div class="auth-field"><label class="auth-label">First Rave</label>
+        <input class="auth-input" id="editFirstRave" type="text" maxlength="100"></div>
+      <div id="editProfileStatus" style="font-size:12px;color:var(--text-muted);margin-bottom:8px;"></div>
+      <button class="auth-btn" id="editProfileSaveBtn" onclick="saveProfileEdits()">Save Changes</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
